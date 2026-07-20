@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+source: https://platform.humanity.com/docs/getting-started-with-authentication
+docs: https://platform.humanity.com/docs/getting-started-with-authentication
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - password
+  - refresh_token
+  token_delivery:
+  - authorization_header_bearer
+  - query_parameter
+schemes:
+- name: OAuth2
+  type: oauth2
+  description: >-
+    Humanity v2 API uses OAuth2. An App ID (client_id) and App Secret
+    (client_secret) are created on the Settings > API v2 page. Applications
+    exchange credentials for an access token at the token endpoint. Access
+    tokens expire (expires_in, e.g. 3600 seconds) and are renewed with the
+    refresh_token using grant_type=refresh_token. The token response is JSON:
+    access_token, expires_in, token_type (bearer), scope, refresh_token.
+  flows:
+  - flow: password
+    tokenUrl: https://www.humanity.com/oauth2/token.php
+    grant_type: password
+    parameters:
+    - client_id
+    - client_secret
+    - grant_type
+    - username
+    - password
+    - redirect_uri
+  - flow: refresh_token
+    tokenUrl: https://www.humanity.com/oauth2/token.php
+    grant_type: refresh_token
+token_usage:
+  header: 'Authorization: Bearer <access_token>'
+  query_parameter: access_token
+notes: >-
+  Scope is returned as null in the documented token response — the API does not
+  publish a granular OAuth scope surface; authorization is governed by
+  per-endpoint permission levels (3 to 5) tied to the authenticating user's role.
