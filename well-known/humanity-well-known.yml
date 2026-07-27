@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+source: probed /.well-known/ on Humanity API and platform hosts
+hosts:
+- host: https://platform.humanity.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.humanity.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+result: >-
+  No /.well-known discovery documents are published. The platform host returns
+  404 for all probed paths; the marketing/app host (www.humanity.com) returns
+  403 (WAF) for all probed paths. No security.txt, OIDC, OAuth Authorization
+  Server metadata, API Catalog, or ai-plugin manifest were found.

@@ -1,0 +1,23 @@
+# Humanity HVII Public API Documentation
+
+> Documentation for Humanity HVII Public API
+
+## Guides
+- [Getting Started with Authentication](https://platform.humanity.com/docs/getting-started-with-authentication.md)
+- [Making API calls for Group Accounts](https://platform.humanity.com/docs/making-api-calls-for-group-accounts.md)
+
+## API Reference
+- [GET Employee by Unique ID](https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md): /employees/unique_id/:unique_id Permission level: 5
+- [PUT Employee](https://platform.humanity.com/reference/put-employee.md): /employees/:id Permission level: 5
+- [GET Custom Report](https://platform.humanity.com/reference/get-custom-report.md): /reports/custom Permission level: 3
+- [GET Payroll report](https://platform.humanity.com/reference/get-payroll-report.md): /payroll/report Permission level: 5
+- [CREATE Add skills to employees](https://platform.humanity.com/reference/create-skill-expiration-data.md): /skills/:skill_id/employees/:employee_id/expiration Permission level: 3
+- [GET Master Tasks](https://platform.humanity.com/reference/get-master-tasks.md): Retrieve master tasks with search, filtering, and pagination capabilities. Includes support for searching by name or description, filtering by positions, and including deleted records.
+- [CREATE Master Tasks](https://platform.humanity.com/reference/create-master-tasks.md): API documentation for creating master tasks, including parameters, permissions, and response examples
+- [DELETE Master Tasks](https://platform.humanity.com/reference/delete-master-tasks.md): API documentation for deleting master tasks with v2 endpoint details, parameters, permissions, and response examples
+- [UPDATE Master Tasks](https://platform.humanity.com/reference/update-master-tasks.md): API documentation for updating master tasks, including endpoint details, parameters, permissions, and response examples.
+- [GET Shift Tasks](https://platform.humanity.com/reference/get-shift-tasks.md): Retrieve shift tasks for specified shifts using the Humanity API v2. Users can view shift tasks for shifts they have read permissions on.
+- [UPDATE Shift Tasks](https://platform.humanity.com/reference/update-shift-tasks.md): API documentation for updating shift tasks with bulk create, update, and delete operations
+- [GET Employee Tasks](https://platform.humanity.com/reference/get-employee-tasks.md): Retrieve employee tasks for specified shifts using the Humanity API v2. View task assignments, status, and activity details for employees with appropriate permissions.
+- [UPDATE Employee Task Status](https://platform.humanity.com/reference/update-employee-tasks.md): API documentation for starting and finishing employee tasks with status updates and permissions
+- [UPDATE Employee Task](https://platform.humanity.com/reference/update-employee-task.md): API documentation for updating employee task activity with start and end times

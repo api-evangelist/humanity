@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: https://platform.humanity.com/docs
+docs: https://platform.humanity.com/
+authentication:
+  style: oauth2-bearer
+  detail: >-
+    OAuth2 access token passed as an Authorization: Bearer header or as an
+    access_token query parameter on every request. See
+    authentication/humanity-authentication.yml.
+authorization:
+  model: permission-levels
+  detail: >-
+    Each endpoint declares a required permission level (observed range 3 to 5).
+    Callers can only read/modify records aligned with the authenticating user's
+    permission level and role.
+base_url: https://www.humanity.com/api/v2/
+versioning:
+  scheme: uri-path
+  versions:
+  - v1.0
+  - v2.0
+  current: v2.0
+  detail: Version is carried in the URI path (/api/v2/...).
+pagination:
+  style: search-and-filter
+  detail: >-
+    Collection endpoints (e.g. Master Tasks) document search, filtering, and
+    pagination capabilities — searching by name/description, filtering by
+    positions, and including deleted records. Exact page/limit parameter names
+    are not published in the harvested index.
+group_accounts:
+  detail: >-
+    The API supports making calls on behalf of Group Accounts (multi-location /
+    multi-company). See docs/making-api-calls-for-group-accounts.
+idempotency:
+  supported: false
+  detail: >-
+    Humanity does not document a dedicated idempotency-key header. Several
+    resource endpoints (tasks, skills, employee updates) are naturally
+    idempotent via resource identifiers (PUT /employees/:id,
+    /skills/:skill_id/employees/:employee_id/expiration), and bulk task update
+    endpoints perform create/update/delete against known identifiers, but no
+    Idempotency-Key contract is published.
+error_envelope:
+  detail: >-
+    A structured error envelope is not published in the harvested docs index;
+    the OpenAPI/reference pages were not machine-harvestable at enrichment time.
+rate_limiting:
+  detail: Not documented in the harvested developer docs.
+related_artifacts:
+- authentication/humanity-authentication.yml
+- conformance/humanity-conformance.yml
+- llms/humanity-llms.txt

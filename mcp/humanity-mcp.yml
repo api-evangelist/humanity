@@ -1,0 +1,63 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: https://platform.humanity.com/llms.txt
+note: >-
+  No official hosted/remote MCP server was found for Humanity. This is a
+  DERIVED candidate tool list built from the documented HVII Public API
+  endpoints (from the developer platform reference index). Each tool maps to a
+  documented endpoint; a real MCP server would front the Humanity v2 REST API
+  and reuse its OAuth2 bearer authentication.
+server:
+  name: humanity
+  transport: http
+  auth: oauth2-bearer
+  base_url: https://www.humanity.com/api/v2/
+tools:
+- name: get_employee_by_unique_id
+  description: Retrieve an employee by their unique ID.
+  source_operation: GET /employees/unique_id/:unique_id
+  permission_level: 5
+- name: update_employee
+  description: Update an employee record.
+  source_operation: PUT /employees/:id
+  permission_level: 5
+- name: get_custom_report
+  description: Retrieve a custom report.
+  source_operation: GET /reports/custom
+  permission_level: 3
+- name: get_payroll_report
+  description: Retrieve a payroll report.
+  source_operation: GET /payroll/report
+  permission_level: 5
+- name: add_skills_to_employee
+  description: Add skill expiration data to an employee.
+  source_operation: CREATE /skills/:skill_id/employees/:employee_id/expiration
+  permission_level: 3
+- name: get_master_tasks
+  description: Retrieve master tasks with search, filtering, and pagination.
+  source_operation: GET master tasks
+- name: create_master_tasks
+  description: Create master tasks.
+  source_operation: CREATE master tasks
+- name: update_master_tasks
+  description: Update master tasks.
+  source_operation: UPDATE master tasks
+- name: delete_master_tasks
+  description: Delete master tasks.
+  source_operation: DELETE master tasks
+- name: get_shift_tasks
+  description: Retrieve shift tasks for specified shifts.
+  source_operation: GET shift tasks
+- name: update_shift_tasks
+  description: Bulk create/update/delete shift tasks.
+  source_operation: UPDATE shift tasks
+- name: get_employee_tasks
+  description: Retrieve employee tasks for specified shifts.
+  source_operation: GET employee tasks
+- name: update_employee_task_status
+  description: Start and finish employee tasks with status updates.
+  source_operation: UPDATE employee task status
+- name: update_employee_task
+  description: Update employee task activity start and end times.
+  source_operation: UPDATE employee task
