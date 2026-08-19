@@ -2,12 +2,10 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: https://platform.humanity.com/llms.txt
-note: >-
-  No official hosted/remote MCP server was found for Humanity. This is a
-  DERIVED candidate tool list built from the documented HVII Public API
-  endpoints (from the developer platform reference index). Each tool maps to a
-  documented endpoint; a real MCP server would front the Humanity v2 REST API
-  and reuse its OAuth2 bearer authentication.
+note: No official hosted/remote MCP server was found for Humanity. This is a DERIVED candidate tool list
+  built from the documented HVII Public API endpoints (from the developer platform reference index). Each
+  tool maps to a documented endpoint; a real MCP server would front the Humanity v2 REST API and reuse
+  its OAuth2 bearer authentication.
 server:
   name: humanity
   transport: http
@@ -61,3 +59,9 @@ tools:
 - name: update_employee_task
   description: Update employee task activity start and end times.
   source_operation: UPDATE employee task
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census
