@@ -60,6 +60,12 @@ apis:
   - Workforce Management
   - Employee Scheduling
   - Time Tracking
+  - Task
+  - Reports
+  tags_raw:
+  - Workforce Management
+  - Employee Scheduling
+  - Time Tracking
   - Tasks
   - Reports
   properties:
