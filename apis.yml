@@ -46,6 +46,9 @@ specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
 image: https://tcpsoftware.com/products/humanity/
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Company
 - Workforce Management
@@ -56,6 +59,7 @@ tags:
 - Leave Management
 - Payroll
 - Workforce
+- Scheduling
 apis:
 - name: Humanity HVII Public API
   description: >-
