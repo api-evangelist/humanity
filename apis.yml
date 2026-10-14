@@ -1,23 +1,27 @@
 aid: humanity
+
 name: Humanity
-description: >-
-  Humanity (Humanity Schedule) is an employee scheduling and workforce
-  management platform owned by TCP Software (TimeClock Plus, LLC). It automates
-  shift planning, closes coverage gaps, forecasts demand, and manages labor
-  compliance across employees, positions, and locations, with time tracking,
-  leave management, training, tasks, and payroll integration. Humanity exposes a
-  public REST API (v1.0 and v2.0) documented on its ReadMe-hosted developer
-  platform, using OAuth2 for authentication, so integrators can synchronize
-  employees, shifts, timeclocks, leaves, reports, skills, and tasks with
-  external HR, payroll, and workforce systems.
+
+description: Humanity (Humanity Schedule) is an employee scheduling and workforce management platform owned by TCP Software (TimeClock Plus, LLC).
+  It automates shift planning, closes coverage gaps, forecasts demand, and manages labor compliance across employees, positions, and locations,
+  with time tracking, leave management, training, tasks, and payroll integration. Humanity exposes a public REST API (v1.0 and v2.0) documented
+  on its ReadMe-hosted developer platform, using OAuth2 for authentication, so integrators can synchronize employees, shifts, timeclocks, leaves,
+  reports, skills, and tasks with external HR, payroll, and workforce systems.
+
 url: https://raw.githubusercontent.com/api-evangelist/humanity/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: vc-portfolio
+
 x-backed-by:
 - point-nine
 - seedcamp
+
 x-tier: stub
+
 x-tier-reason: portfolio-lead
+
 deliveryModel:
   model: saas
   open_source: false
@@ -29,6 +33,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -39,16 +44,27 @@ accessModel:
   confidence: medium
   source:
   - authentication
-  - {url: 'https://www.humanity.com', status: 302, note: 'declared website redirects to https://tcpsoftware.com/products/humanity/ — a different registrable domain (humanity.com -> tcpsoftware.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  - url: https://www.humanity.com
+    status: 302
+    note: declared website redirects to https://tcpsoftware.com/products/humanity/ — a different registrable domain (humanity.com -> tcpsoftware.com),
+      possible rename or acquisition (probed 2026-09-03, roadmap#169)
   generated: '2026-07-22'
   method: derived
+
 specificationVersion: '0.23'
+
 created: '2026-07-17'
+
 modified: '2026-07-19'
+
 image: https://tcpsoftware.com/products/humanity/
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-10-03
+
 tags:
 - Company
 - Workforce Management
@@ -60,16 +76,74 @@ tags:
 - Payroll
 - Workforce
 - Scheduling
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
+
+common:
+- type: AgenticAccess
+  url: agentic-access/humanity-agentic-access.yml
+- type: Spectral
+  url: rules/humanity-rules.yml
+- type: ErrorCatalog
+  url: errors/humanity-problem-types.yml
+- type: Hosts
+  url: hosts/humanity-hosts.yml
+- type: Vendors
+  url: vendors/humanity-vendors.yml
+- type: Security
+  url: https://tcpsoftware.com/security/
+- type: Website
+  url: https://www.humanity.com
+- type: DeveloperPortal
+  url: https://platform.humanity.com/
+- type: Documentation
+  url: https://platform.humanity.com/docs
+- type: APIReference
+  url: https://platform.humanity.com/reference
+- type: GettingStarted
+  url: https://platform.humanity.com/docs/getting-started-with-authentication
+- type: Authentication
+  url: authentication/humanity-authentication.yml
+- type: DomainSecurity
+  url: security/humanity-domain-security.yml
+- type: WellKnown
+  url: well-known/humanity-well-known.yml
+- type: LLMsTxt
+  url: llms/humanity-llms.txt
+- type: X-MCPServerCandidate
+  url: mcp/humanity-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+    API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+    the artifact-type surfaces with a server that does not exist.'
+- type: Conformance
+  url: conformance/humanity-conformance.yml
+- type: Support
+  url: https://community.tcpsoftware.com/s/
+- type: Blog
+  url: https://tcpsoftware.com/resource-library/?type=post
+- type: Pricing
+  url: https://tcpsoftware.com/pricing/
+- type: SignUp
+  url: https://www.humanity.com/app/
+- type: Login
+  url: https://www.humanity.com/app/
+- type: TermsOfService
+  url: https://tcpsoftware.com/legal/
+- type: PrivacyPolicy
+  url: https://tcpsoftware.com/privacy-policy/
+- type: Integrations
+  url: https://tcpsoftware.com/products/integrations/
+
 apis:
 - name: Humanity HVII Public API
-  description: >-
-    The Humanity HVII Public API is a REST API for workforce management —
-    employees, positions, locations, shifts, shift swaps and trades, timeclocks,
-    leaves, messages, training, tasks (master/shift/employee), skills, custom
-    fields, and payroll/schedule/timesheet reports. Authentication is OAuth2
-    (authorization-code / password grant); access tokens are passed as a Bearer
-    token or an access_token query parameter. Versions v1.0 and v2.0 are
-    available.
+  description: The Humanity HVII Public API is a REST API for workforce management — employees, positions, locations, shifts, shift swaps and
+    trades, timeclocks, leaves, messages, training, tasks (master/shift/employee), skills, custom fields, and payroll/schedule/timesheet reports.
+    Authentication is OAuth2 (authorization-code / password grant); access tokens are passed as a Bearer token or an access_token query parameter.
+    Versions v1.0 and v2.0 are available.
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
@@ -99,56 +173,41 @@ apis:
     url: llms/humanity-llms.txt
   - type: X-MCPServerCandidate
     url: mcp/humanity-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+      API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+      the artifact-type surfaces with a server that does not exist.'
   - type: Conformance
     url: conformance/humanity-conformance.yml
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-- FN: APIs.json
-  email: info@apis.io
-common:
-- type: Website
-  url: https://www.humanity.com
-- type: DeveloperPortal
-  url: https://platform.humanity.com/
-- type: Documentation
-  url: https://platform.humanity.com/docs
-- type: APIReference
-  url: https://platform.humanity.com/reference
-- type: GettingStarted
-  url: https://platform.humanity.com/docs/getting-started-with-authentication
-- type: Authentication
-  url: authentication/humanity-authentication.yml
-- type: DomainSecurity
-  url: security/humanity-domain-security.yml
-- type: WellKnown
-  url: well-known/humanity-well-known.yml
-- type: LLMsTxt
-  url: llms/humanity-llms.txt
-- type: X-MCPServerCandidate
-  url: mcp/humanity-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-- type: Conformance
-  url: conformance/humanity-conformance.yml
-- type: Support
-  url: https://community.tcpsoftware.com/s/
-- type: Blog
-  url: https://tcpsoftware.com/resource-library/?type=post
-- type: Pricing
-  url: https://tcpsoftware.com/pricing/
-- type: SignUp
-  url: https://www.humanity.com/app/
-- type: Login
-  url: https://www.humanity.com/app/
-- type: TermsOfService
-  url: https://tcpsoftware.com/legal/
-- type: PrivacyPolicy
-  url: https://tcpsoftware.com/privacy-policy/
-- type: Integrations
-  url: https://tcpsoftware.com/products/integrations/
+  aid: humanity:humanity-hvii-public-api
+- aid: humanity:humanity-default
+  name: Humanity Default Openapi.Yml API
+  description: The Default Openapi.Yml API from Humanity — 135 operation(s) for default openapi.yml.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Default Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-default-openapi.yml
+- aid: humanity:humanity-json
+  name: Humanity Json Openapi.Yml API
+  description: The Json Openapi.Yml API from Humanity — 2 operation(s) for json openapi.yml.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Json Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-json-openapi.yml
+
 x-enrichment:
   date: '2026-07-19'
   status: backfilled
   pass: local-v1
   note: backfilled from .gitignore signal + verified work evidence
+
+x-readme-harvest:
+  date: '2026-10-14'
+  ops: 212
+  tool: harvest-readme-openapi.py
+  portal: https://platform.humanity.com

@@ -1,0 +1,16 @@
+generated: '2026-10-14'
+method: none
+source:
+- https://zapier.com/apps/humanity/integrations
+- https://n8n.io/integrations/humanity/
+- https://composio.dev/toolkits/humanity
+- https://monid.ai/tools/humanity
+checked:
+- https://composio.dev/toolkits/humanity
+- https://monid.ai/tools/humanity
+- https://n8n.io/integrations/humanity/
+- https://zapier.com/apps/humanity/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

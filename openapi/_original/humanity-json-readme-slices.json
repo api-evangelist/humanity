@@ -1,0 +1,202 @@
+[
+ {
+  "page": "https://platform.humanity.com/reference/update-shift-tasks.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "json",
+    "version": "2.0"
+   },
+   "servers": [
+    {
+     "url": "https://www.humanity.com/api/v2"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "access_token"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/shifts/{shiftId}/tasks": {
+     "put": {
+      "description": "",
+      "operationId": "get_new-endpoint",
+      "responses": {
+       "200": {
+        "description": ""
+       }
+      },
+      "parameters": [
+       {
+        "in": "path",
+        "name": "shiftId",
+        "schema": {
+         "type": "string"
+        },
+        "required": true
+       }
+      ]
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://platform.humanity.com/reference/create-data-points.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "json",
+    "version": "2.0"
+   },
+   "servers": [
+    {
+     "url": "https://www.humanity.com/api/v2"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "access_token"
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/demand_driven_scheduling/data-points": {
+     "post": {
+      "summary": "CREATE Data Points",
+      "description": "/demand_driven_scheduling/data-points",
+      "operationId": "create-data-points",
+      "parameters": [
+       {
+        "name": "access_token",
+        "in": "query",
+        "required": true,
+        "schema": {
+         "type": "string"
+        }
+       }
+      ],
+      "requestBody": {
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "metric_id": {
+            "type": "integer",
+            "description": "Metric ID",
+            "format": "int32"
+           },
+           "data_points": {
+            "type": "string",
+            "description": "Stringified Array of Objects"
+           }
+          }
+         },
+         "examples": {
+          "BODY params": {
+           "value": {
+            "metric_id": 727,
+            "data_points": "[{\"time_point\": \"2022-01-06 08:00\",\"value\": 15}, {\"time_point\": \"2022-01-06 08:15\",\"value\": 26}]"
+           }
+          }
+         }
+        }
+       }
+      },
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Response": {
+            "value": "{\n    \"status\": 1,\n    \"data\": {\n        \"message\": \"Data Points successfully created!\"\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "status": {
+             "type": "integer",
+             "example": 1,
+             "default": 0
+            },
+            "data": {
+             "type": "object",
+             "properties": {
+              "message": {
+               "type": "string",
+               "example": "Data Points successfully created!"
+              }
+             }
+            },
+            "metadata": {
+             "type": "array"
+            },
+            "token": {
+             "type": "string",
+             "example": "xxxxx"
+            },
+            "error": {}
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false,
+      "x-readme": {
+       "code-samples": [
+        {
+         "language": "http",
+         "code": "https://www.humanity.com/api/v2/demand_driven_scheduling/data-points?access_token=xxxxxxxxxxxx",
+         "name": "HTTP example"
+        },
+        {
+         "language": "text",
+         "code": "Content-Type=application/json",
+         "name": "HEADER params"
+        }
+       ],
+       "samples-languages": [
+        "http",
+        "text"
+       ]
+      }
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

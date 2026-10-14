@@ -1,0 +1,64 @@
+generated: '2026-10-14'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 4
+  own: 2
+  other_domain: 2
+  platform: 0
+  roles:
+  - marketing
+  - portal
+  - support
+  - website
+hosts:
+- host: community.tcpsoftware.com
+  found_by:
+  - pointer
+  types:
+  - Support
+  serves: []
+  registrable_domain: tcpsoftware.com
+  role: support
+  relation: other-domain
+- host: platform.humanity.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - GettingStarted
+  serves:
+  - docs
+  registrable_domain: humanity.com
+  role: portal
+  relation: own
+- host: tcpsoftware.com
+  found_by:
+  - pointer
+  types:
+  - Blog
+  - Pricing
+  - TermsOfService
+  - PrivacyPolicy
+  - Integrations
+  serves: []
+  registrable_domain: tcpsoftware.com
+  role: marketing
+  relation: other-domain
+- host: www.humanity.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - Website
+  - SignUp
+  - Login
+  serves:
+  - api
+  registrable_domain: humanity.com
+  role: website
+  relation: own

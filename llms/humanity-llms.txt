@@ -2,16 +2,22 @@
 
 > Documentation for Humanity HVII Public API
 
-## Guides
+## Guides: Documentation
 - [Getting Started with Authentication](https://platform.humanity.com/docs/getting-started-with-authentication.md)
 - [Making API calls for Group Accounts](https://platform.humanity.com/docs/making-api-calls-for-group-accounts.md)
 
-## API Reference
+## API Reference: Employees
 - [GET Employee by Unique ID](https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md): /employees/unique_id/:unique_id Permission level: 5
 - [PUT Employee](https://platform.humanity.com/reference/put-employee.md): /employees/:id Permission level: 5
+
+## API Reference: Reports
 - [GET Custom Report](https://platform.humanity.com/reference/get-custom-report.md): /reports/custom Permission level: 3
 - [GET Payroll report](https://platform.humanity.com/reference/get-payroll-report.md): /payroll/report Permission level: 5
+
+## API Reference: Employee Skills
 - [CREATE Add skills to employees](https://platform.humanity.com/reference/create-skill-expiration-data.md): /skills/:skill_id/employees/:employee_id/expiration Permission level: 3
+
+## API Reference: Shift Tasks
 - [GET Master Tasks](https://platform.humanity.com/reference/get-master-tasks.md): Retrieve master tasks with search, filtering, and pagination capabilities. Includes support for searching by name or description, filtering by positions, and including deleted records.
 - [CREATE Master Tasks](https://platform.humanity.com/reference/create-master-tasks.md): API documentation for creating master tasks, including parameters, permissions, and response examples
 - [DELETE Master Tasks](https://platform.humanity.com/reference/delete-master-tasks.md): API documentation for deleting master tasks with v2 endpoint details, parameters, permissions, and response examples
