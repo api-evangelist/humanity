@@ -1,16 +1,34 @@
 generated: '2026-10-14'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/humanity/integrations
 - https://n8n.io/integrations/humanity/
 - https://composio.dev/toolkits/humanity
 - https://monid.ai/tools/humanity
 checked:
+- bamboohr/integrations/bamboohr-integration-edges.yml
 - https://composio.dev/toolkits/humanity
 - https://monid.ai/tools/humanity
 - https://n8n.io/integrations/humanity/
 - https://zapier.com/apps/humanity/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: BambooHR (own)
+  partner: bamboohr
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.bamboohr.com/integrations/listings/humanity
+  mirror_of: bamboohr/integrations/bamboohr-integration-edges.yml
+  apps:
+  - Humanity Scheduling
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Time Tracking & Scheduling
 templates: []
