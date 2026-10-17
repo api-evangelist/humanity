@@ -1,0 +1,3076 @@
+openapi: 3.2.0
+info:
+  title: default Timeclocks API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Timeclocks
+paths:
+  /timeclocks:
+    get:
+      summary: GET Timeclocks
+      description: '/timeclocks
+
+        Permission level: 5'
+      operationId: get-timeclocks
+      parameters:
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: schedule
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: employee
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: status
+        in: query
+        description: '[approved, unapproved]'
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: order_by
+        in: query
+        description: '[id, end_timestamp]'
+        schema:
+          type: string
+      - name: direction
+        in: query
+        description: '[asc, desc]'
+        schema:
+          type: string
+      - name: updated_at
+        in: query
+        description: Returns timeclocks which were updated after the given DateTime.
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"46504175\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1321635\",\n        \"name\": \"Waiter\"\n      },\n      \"notes\": null,\n      \"created\": \"1470143318\",\n      \"in_timestamp\": \"1470110700\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"1470141120\",\n      \"out_day\": \"2652\",\n      \"in_hour\": \"25\",\n      \"out_hour\": \"59\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 06:05:00\",\n      \"end_timestamp\": \"2016-08-02 14:32:00\",\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": null,\n      \"employee\": {\n        \"id\": \"2736727\",\n        \"name\": \"Brian Lane\"\n      },\n      \"in_time\": {\n        \"time\": \"6:05am\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 06:05:00\"\n      },\n      \"length\": {\n        \"hours\": 8,\n        \"mins\": 27,\n        \"total_hours\": \"8.45\"\n      },\n      \"out_time\": {\n        \"time\": \"2:32pm\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 14:32:00\"\n      },\n      \"current_length\": {\n        \"hours\": 9,\n        \"mins\": 41,\n        \"total_hours\": \"9.69\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63256051\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 06:05:00\",\n          \"clock_time\": \"46504175\",\n          \"data\": {\n            \"position\": \"1321635\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46489414\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1321634\",\n        \"name\": \"Manager\"\n      },\n      \"notes\": null,\n      \"created\": \"1470132429\",\n      \"in_timestamp\": \"1470132429\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"1470138961\",\n      \"out_day\": \"2652\",\n      \"in_hour\": \"49\",\n      \"out_hour\": \"57\",\n      \"in_location\": \"82.117.214.54\",\n      \"out_location\": \"82.117.214.54\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 12:07:09\",\n      \"end_timestamp\": \"2016-08-02 13:56:01\",\n      \"in_picture_url\": \"\",\n      \"out_picture_url\": \"\",\n      \"in_gps\": \"{\\\"latitude\\\":\\\"\\\",\\\"longitude\\\":\\\"\\\",\\\"supported\\\":0}\",\n      \"out_gps\": \"{\\\"latitude\\\":\\\"\\\",\\\"longitude\\\":\\\"\\\",\\\"supported\\\":0}\",\n      \"shift\": null,\n      \"employee\": {\n        \"id\": \"2736727\",\n        \"name\": \"Brian Lane\"\n      },\n      \"in_time\": {\n        \"time\": \"12:07pm\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 12:07:09\"\n      },\n      \"length\": {\n        \"hours\": 1,\n        \"mins\": 49,\n        \"total_hours\": \"1.81\"\n      },\n      \"out_time\": {\n        \"time\": \"1:56pm\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 13:56:01\"\n      },\n      \"current_length\": {\n        \"hours\": 3,\n        \"mins\": 39,\n        \"total_hours\": \"3.65\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63239681\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 12:07:10\",\n          \"clock_time\": \"46489414\",\n          \"data\": {\n            \"position\": \"1321634\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504116\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1321636\",\n        \"name\": \"Desk Service\"\n      },\n      \"notes\": null,\n      \"created\": \"1470143288\",\n      \"in_timestamp\": \"1470121200\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"1470135600\",\n      \"out_day\": \"2652\",\n      \"in_hour\": \"37\",\n      \"out_hour\": \"53\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 09:00:00\",\n      \"end_timestamp\": \"2016-08-02 13:00:00\",\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": \"314238628\",\n      \"employee\": {\n        \"id\": \"2744092\",\n        \"name\": \"Derrick Arnold\"\n      },\n      \"in_time\": {\n        \"time\": \"9:00am\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 09:00:00\"\n      },\n      \"length\": {\n        \"hours\": 4,\n        \"mins\": 0,\n        \"total_hours\": \"4.00\"\n      },\n      \"out_time\": {\n        \"time\": \"1:00pm\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 13:00:00\"\n      },\n      \"current_length\": {\n        \"hours\": 6,\n        \"mins\": 46,\n        \"total_hours\": \"6.77\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63255989\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 09:00:00\",\n          \"clock_time\": \"46504116\",\n          \"data\": {\n            \"position\": \"1321636\"\n          }\n        },\n        {\n          \"id\": \"63255990\",\n          \"type\": \"4\",\n          \"timestamp\": \"2016-08-02 09:00:00\",\n          \"clock_time\": \"46504116\",\n          \"data\": {\n            \"location\": \"542312\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504479\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1324358\",\n        \"name\": \"Barista\"\n      },\n      \"notes\": \"I was working overtime.\",\n      \"created\": \"1470143512\",\n      \"in_timestamp\": \"1470027180\",\n      \"in_day\": \"2651\",\n      \"out_timestamp\": \"1470065220\",\n      \"out_day\": \"2651\",\n      \"in_hour\": \"29\",\n      \"out_hour\": \"71\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-01 06:53:00\",\n      \"end_timestamp\": \"2016-08-01 17:27:00\",\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": null,\n      \"employee\": {\n        \"id\": \"2744095\",\n        \"name\": \"Kian Simonette\"\n      },\n      \"in_time\": {\n        \"time\": \"6:53am\",\n        \"day\": \"Aug 1, 2016\",\n        \"timestamp\": \"2016-08-01 06:53:00\"\n      },\n      \"length\": {\n        \"hours\": 10,\n        \"mins\": 34,\n        \"total_hours\": \"10.57\"\n      },\n      \"out_time\": {\n        \"time\": \"5:27pm\",\n        \"day\": \"Aug 1, 2016\",\n        \"timestamp\": \"2016-08-01 17:27:00\"\n      },\n      \"current_length\": {\n        \"hours\": 32,\n        \"mins\": 53,\n        \"total_hours\": \"32.89\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63256408\",\n          \"type\": \"3\",\n          \"timestamp\": \"2016-08-01 06:53:00\",\n          \"clock_time\": \"46504479\",\n          \"data\": {\n            \"notes\": \"I was working overtime.\"\n          }\n        },\n        {\n          \"id\": \"63256409\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-01 06:53:00\",\n          \"clock_time\": \"46504479\",\n          \"data\": {\n            \"position\": \"1324358\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504362\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1324361\",\n        \"name\": \"Customer service\"\n      },\n      \"notes\": null,\n      \"created\": \"1470143432\",\n      \"in_timestamp\": \"1470030480\",\n      \"in_day\": \"2651\",\n      \"out_timestamp\": \"1470057540\",\n      \"out_day\": \"2651\",\n      \"in_hour\": \"32\",\n      \"out_hour\": \"62\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-01 07:48:00\",\n      \"end_timestamp\": \"2016-08-01 15:19:00\",\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": null,\n      \"employee\": {\n        \"id\": \"2744094\",\n        \"name\": \"Josephine P. Watson\"\n      },\n      \"in_time\": {\n        \"time\": \"7:48am\",\n        \"day\": \"Aug 1, 2016\",\n        \"timestamp\": \"2016-08-01 07:48:00\"\n      },\n      \"length\": {\n        \"hours\": 7,\n        \"mins\": 31,\n        \"total_hours\": \"7.52\"\n      },\n      \"out_time\": {\n        \"time\": \"3:19pm\",\n        \"day\": \"Aug 1, 2016\",\n        \"timestamp\": \"2016-08-01 15:19:00\"\n      },\n      \"current_length\": {\n        \"hours\": 31,\n        \"mins\": 58,\n        \"total_hours\": \"31.97\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63256275\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-01 07:48:00\",\n          \"clock_time\": \"46504362\",\n          \"data\": {\n            \"position\": \"1324361\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504240\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1324361\",\n        \"name\": \"Customer service\"\n      },\n      \"notes\": \"I&#039;m leaving earlier today.\",\n      \"created\": \"1470143357\",\n      \"in_timestamp\": \"1470128400\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"0\",\n      \"out_day\": \"0\",\n      \"in_hour\": \"45\",\n      \"out_hour\": \"0\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 11:00:00\",\n      \"end_timestamp\": null,\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": \"314238427\",\n      \"employee\": {\n        \"id\": \"2744097\",\n        \"name\": \"Sheri Downer\"\n      },\n      \"in_time\": {\n        \"time\": \"11:00am\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 11:00:00\"\n      },\n      \"length\": [],\n      \"out_time\": [],\n      \"current_length\": {\n        \"hours\": 4,\n        \"mins\": 46,\n        \"total_hours\": \"4.77\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63256130\",\n          \"type\": \"3\",\n          \"timestamp\": \"2016-08-02 11:00:00\",\n          \"clock_time\": \"46504240\",\n          \"data\": {\n            \"notes\": \"I&#039;m leaving earlier today.\"\n          }\n        },\n        {\n          \"id\": \"63256131\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 11:00:00\",\n          \"clock_time\": \"46504240\",\n          \"data\": {\n            \"position\": \"1324361\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504278\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1324358\",\n        \"name\": \"Barista\"\n      },\n      \"notes\": null,\n      \"created\": \"1470143378\",\n      \"in_timestamp\": \"1470118380\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"0\",\n      \"out_day\": \"0\",\n      \"in_hour\": \"34\",\n      \"out_hour\": \"0\",\n      \"in_location\": \"Website\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 08:13:00\",\n      \"end_timestamp\": null,\n      \"in_picture_url\": null,\n      \"out_picture_url\": null,\n      \"in_gps\": null,\n      \"out_gps\": null,\n      \"shift\": null,\n      \"employee\": {\n        \"id\": \"2744098\",\n        \"name\": \"Timothy Edison\"\n      },\n      \"in_time\": {\n        \"time\": \"8:13am\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 08:13:00\"\n      },\n      \"length\": [],\n      \"out_time\": [],\n      \"current_length\": {\n        \"hours\": 7,\n        \"mins\": 33,\n        \"total_hours\": \"7.56\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63256180\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 08:13:00\",\n          \"clock_time\": \"46504278\",\n          \"data\": {\n            \"position\": \"1324358\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"46504070\",\n      \"store\": \"251300\",\n      \"status\": \"0\",\n      \"schedule\": {\n        \"id\": \"1321634\",\n        \"name\": \"Manager\"\n      },\n      \"notes\": null,\n      \"created\": \"1470143263\",\n      \"in_timestamp\": \"1470143263\",\n      \"in_day\": \"2652\",\n      \"out_timestamp\": \"0\",\n      \"out_day\": \"0\",\n      \"in_hour\": \"61\",\n      \"out_hour\": \"0\",\n      \"in_location\": \"82.117.214.54\",\n      \"out_location\": \"Website\",\n      \"in_terminal\": \"0\",\n      \"out_terminal\": \"-98\",\n      \"approved_by\": \"0\",\n      \"approved_time\": \"0\",\n      \"approved_notes\": \"\",\n      \"in_picture\": null,\n      \"out_picture\": \"\",\n      \"screenshots\": null,\n      \"break_time\": \"0\",\n      \"start_timestamp\": \"2016-08-02 15:07:43\",\n      \"end_timestamp\": null,\n      \"in_picture_url\": \"\",\n      \"out_picture_url\": null,\n      \"in_gps\": \"{\\\"latitude\\\":\\\"\\\",\\\"longitude\\\":\\\"\\\",\\\"supported\\\":0}\",\n      \"out_gps\": null,\n      \"shift\": \"314237801\",\n      \"employee\": {\n        \"id\": \"2736727\",\n        \"name\": \"Brian Lane\"\n      },\n      \"in_time\": {\n        \"time\": \"3:07pm\",\n        \"day\": \"Aug 2, 2016\",\n        \"timestamp\": \"2016-08-02 15:07:43\"\n      },\n      \"length\": [],\n      \"out_time\": [],\n      \"current_length\": {\n        \"hours\": 0,\n        \"mins\": 39,\n        \"total_hours\": \"0.64\"\n      },\n      \"events\": [\n        {\n          \"id\": \"63255945\",\n          \"type\": \"6\",\n          \"timestamp\": \"2016-08-02 15:07:43\",\n          \"clock_time\": \"46504070\",\n          \"data\": {\n            \"position\": \"1321634\"\n          }\n        }\n      ]\n    }\n  ],\n  \"metadata\": [],\n  \"token\": \"xxxxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '46504175'
+                        store:
+                          type: string
+                          example: '251300'
+                        status:
+                          type: string
+                          example: '0'
+                        schedule:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '1321635'
+                            name:
+                              type: string
+                              example: Waiter
+                        notes: {}
+                        created:
+                          type: string
+                          example: '1470143318'
+                        in_timestamp:
+                          type: string
+                          example: '1470110700'
+                        in_day:
+                          type: string
+                          example: '2652'
+                        out_timestamp:
+                          type: string
+                          example: '1470141120'
+                        out_day:
+                          type: string
+                          example: '2652'
+                        in_hour:
+                          type: string
+                          example: '25'
+                        out_hour:
+                          type: string
+                          example: '59'
+                        in_location:
+                          type: string
+                          example: Website
+                        out_location:
+                          type: string
+                          example: Website
+                        in_terminal:
+                          type: string
+                          example: '0'
+                        out_terminal:
+                          type: string
+                          example: '-98'
+                        approved_by:
+                          type: string
+                          example: '0'
+                        approved_time:
+                          type: string
+                          example: '0'
+                        approved_notes:
+                          type: string
+                          example: ''
+                        in_picture: {}
+                        out_picture:
+                          type: string
+                          example: ''
+                        screenshots: {}
+                        break_time:
+                          type: string
+                          example: '0'
+                        start_timestamp:
+                          type: string
+                          example: '2016-08-02 06:05:00'
+                        end_timestamp:
+                          type: string
+                          example: '2016-08-02 14:32:00'
+                        in_picture_url: {}
+                        out_picture_url: {}
+                        in_gps: {}
+                        out_gps: {}
+                        shift: {}
+                        employee:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '2736727'
+                            name:
+                              type: string
+                              example: Brian Lane
+                        in_time:
+                          type: object
+                          properties:
+                            time:
+                              type: string
+                              example: 6:05am
+                            day:
+                              type: string
+                              example: Aug 2, 2016
+                            timestamp:
+                              type: string
+                              example: '2016-08-02 06:05:00'
+                        length:
+                          type: object
+                          properties:
+                            hours:
+                              type: integer
+                              example: 8
+                              default: 0
+                            mins:
+                              type: integer
+                              example: 27
+                              default: 0
+                            total_hours:
+                              type: string
+                              example: '8.45'
+                        out_time:
+                          type: object
+                          properties:
+                            time:
+                              type: string
+                              example: 2:32pm
+                            day:
+                              type: string
+                              example: Aug 2, 2016
+                            timestamp:
+                              type: string
+                              example: '2016-08-02 14:32:00'
+                        current_length:
+                          type: object
+                          properties:
+                            hours:
+                              type: integer
+                              example: 9
+                              default: 0
+                            mins:
+                              type: integer
+                              example: 41
+                              default: 0
+                            total_hours:
+                              type: string
+                              example: '9.69'
+                        events:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '63256051'
+                              type:
+                                type: string
+                                example: '6'
+                              timestamp:
+                                type: string
+                                example: '2016-08-02 06:05:00'
+                              clock_time:
+                                type: string
+                                example: '46504175'
+                              data:
+                                type: object
+                                properties:
+                                  position:
+                                    type: string
+                                    example: '1321635'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    post:
+      summary: POST Timeclock
+      description: '/timeclocks
+
+        Permission level: 5'
+      operationId: post-timeclocks
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - start_date
+              - start_time
+              - employee
+              properties:
+                start_date:
+                  type: string
+                  format: date
+                start_time:
+                  type: string
+                  format: date
+                employee:
+                  type: integer
+                  format: int32
+                schedule:
+                  type: integer
+                  format: int32
+                end_date:
+                  type: string
+                  format: date
+                end_time:
+                  type: string
+                  format: date
+                notes:
+                  type: string
+                tips:
+                  type: string
+                in_location:
+                  type: string
+                  description: IP address
+                out_location:
+                  type: string
+                  description: IP address
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": \"101664178\",\n        \"store\": \"343161\",\n        \"status\": \"0\",\n        \"schedule\": null,\n        \"notes\": \"note\",\n        \"created\": \"1545826494\",\n        \"in_timestamp\": \"1545804865\",\n        \"in_day\": \"3528\",\n        \"out_timestamp\": \"1545826465\",\n        \"out_day\": \"3528\",\n        \"in_hour\": \"30\",\n        \"out_hour\": \"54\",\n        \"in_location\": \"Website\",\n        \"out_location\": \"Website\",\n        \"in_terminal\": \"0\",\n        \"out_terminal\": \"-98\",\n        \"approved_by\": \"3999372\",\n        \"approved_time\": \"1545826494\",\n        \"approved_notes\": \"autoapproved\",\n        \"in_picture\": null,\n        \"out_picture\": \"\",\n        \"screenshots\": null,\n        \"break_time\": \"0\",\n        \"start_timestamp\": \"2018-12-26 07:14:25\",\n        \"end_timestamp\": \"2018-12-26 13:14:25\",\n        \"in_picture_url\": null,\n        \"out_picture_url\": null,\n        \"in_gps\": null,\n        \"out_gps\": null,\n        \"in_distance\": null,\n        \"out_distance\": null,\n        \"unique_id\": null,\n        \"created_at\": \"2018-12-26 13:14:54\",\n        \"updated_at\": \"2018-12-26 13:14:54\",\n        \"deleted_at\": null,\n        \"created_by\": null,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"shift\": null,\n        \"employee\": {\n            \"id\": \"3999372\",\n            \"name\": \"Alan Ford\"\n        },\n        \"in_time\": {\n            \"time\": \"07:14\",\n            \"day\": \"Dec 26, 2018\",\n            \"timestamp\": \"2018-12-26 07:14:25\"\n        },\n        \"start\": {\n            \"id\": 3528,\n            \"month\": 12,\n            \"day\": 26,\n            \"wday\": 3,\n            \"year\": 2018,\n            \"weekday\": \"Wed\",\n            \"mname\": \"Dec\",\n            \"week\": 52,\n            \"dayid\": 4,\n            \"timeid\": 30,\n            \"timeid_exact\": 29,\n            \"formatted\": \"Dec 26, 2018\",\n            \"iso8601\": \"2018-12-26T07:14:25+0100\",\n            \"time\": \"07:14\",\n            \"timestamp\": 1545804865,\n            \"hours\": 7,\n            \"minutes\": 14,\n            \"seconds\": 25,\n            \"date\": \"2018-12-26 07:14:25\",\n            \"day_of_year\": \"359\",\n            \"week_adjusted\": 52,\n            \"sp_wday\": 4\n        },\n        \"length\": {\n            \"hours\": 6,\n            \"mins\": 0,\n            \"total_hours\": \"6.00\"\n        },\n        \"out_time\": {\n            \"time\": \"13:14\",\n            \"day\": \"Dec 26, 2018\",\n            \"timestamp\": \"2018-12-26 13:14:25\"\n        },\n        \"end\": {\n            \"id\": 3528,\n            \"month\": 12,\n            \"day\": 26,\n            \"wday\": 3,\n            \"year\": 2018,\n            \"weekday\": \"Wed\",\n            \"mname\": \"Dec\",\n            \"week\": 52,\n            \"dayid\": 4,\n            \"timeid\": 54,\n            \"timeid_exact\": 53,\n            \"formatted\": \"Dec 26, 2018\",\n            \"iso8601\": \"2018-12-26T13:14:25+0100\",\n            \"time\": \"13:14\",\n            \"timestamp\": 1545826465,\n            \"hours\": 13,\n            \"minutes\": 14,\n            \"seconds\": 25,\n            \"date\": \"2018-12-26 13:14:25\",\n            \"day_of_year\": \"359\",\n            \"week_adjusted\": 52,\n            \"sp_wday\": 4\n        },\n        \"current_length\": {\n            \"hours\": 6,\n            \"mins\": 0,\n            \"total_hours\": \"6.01\"\n        },\n        \"events\": [\n            {\n                \"id\": \"146780033\",\n                \"type\": \"3\",\n                \"timestamp\": \"2018-12-26 13:14:25\",\n                \"clock_time\": \"101664178\",\n                \"data\": {\n                    \"notes\": \"note\"\n                }\n            }\n        ]\n    },\n    \"metadata\": [],\n    \"token\": \"e75a561fbf7b291d0058f505f5563e115d49bce9\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '101664178'
+                      store:
+                        type: string
+                        example: '343161'
+                      status:
+                        type: string
+                        example: '0'
+                      schedule: {}
+                      notes:
+                        type: string
+                        example: note
+                      created:
+                        type: string
+                        example: '1545826494'
+                      in_timestamp:
+                        type: string
+                        example: '1545804865'
+                      in_day:
+                        type: string
+                        example: '3528'
+                      out_timestamp:
+                        type: string
+                        example: '1545826465'
+                      out_day:
+                        type: string
+                        example: '3528'
+                      in_hour:
+                        type: string
+                        example: '30'
+                      out_hour:
+                        type: string
+                        example: '54'
+                      in_location:
+                        type: string
+                        example: Website
+                      out_location:
+                        type: string
+                        example: Website
+                      in_terminal:
+                        type: string
+                        example: '0'
+                      out_terminal:
+                        type: string
+                        example: '-98'
+                      approved_by:
+                        type: string
+                        example: '3999372'
+                      approved_time:
+                        type: string
+                        example: '1545826494'
+                      approved_notes:
+                        type: string
+                        example: autoapproved
+                      in_picture: {}
+                      out_picture:
+                        type: string
+                        example: ''
+                      screenshots: {}
+                      break_time:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2018-12-26 07:14:25'
+                      end_timestamp:
+                        type: string
+                        example: '2018-12-26 13:14:25'
+                      in_picture_url: {}
+                      out_picture_url: {}
+                      in_gps: {}
+                      out_gps: {}
+                      in_distance: {}
+                      out_distance: {}
+                      unique_id: {}
+                      created_at:
+                        type: string
+                        example: '2018-12-26 13:14:54'
+                      updated_at:
+                        type: string
+                        example: '2018-12-26 13:14:54'
+                      deleted_at: {}
+                      created_by: {}
+                      updated_by: {}
+                      deleted_by: {}
+                      shift: {}
+                      employee:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '3999372'
+                          name:
+                            type: string
+                            example: Alan Ford
+                      in_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: 07:14
+                          day:
+                            type: string
+                            example: Dec 26, 2018
+                          timestamp:
+                            type: string
+                            example: '2018-12-26 07:14:25'
+                      start:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3528
+                            default: 0
+                          month:
+                            type: integer
+                            example: 12
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2018
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Wed
+                          mname:
+                            type: string
+                            example: Dec
+                          week:
+                            type: integer
+                            example: 52
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 4
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 30
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 29
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Dec 26, 2018
+                          iso8601:
+                            type: string
+                            example: 2018-12-26T07:14:25+0100
+                          time:
+                            type: string
+                            example: 07:14
+                          timestamp:
+                            type: integer
+                            example: 1545804865
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 7
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 14
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 25
+                            default: 0
+                          date:
+                            type: string
+                            example: '2018-12-26 07:14:25'
+                          day_of_year:
+                            type: string
+                            example: '359'
+                          week_adjusted:
+                            type: integer
+                            example: 52
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                      length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 6
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 0
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '6.00'
+                      out_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: '13:14'
+                          day:
+                            type: string
+                            example: Dec 26, 2018
+                          timestamp:
+                            type: string
+                            example: '2018-12-26 13:14:25'
+                      end:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3528
+                            default: 0
+                          month:
+                            type: integer
+                            example: 12
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2018
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Wed
+                          mname:
+                            type: string
+                            example: Dec
+                          week:
+                            type: integer
+                            example: 52
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 4
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 54
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 53
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Dec 26, 2018
+                          iso8601:
+                            type: string
+                            example: 2018-12-26T13:14:25+0100
+                          time:
+                            type: string
+                            example: '13:14'
+                          timestamp:
+                            type: integer
+                            example: 1545826465
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 13
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 14
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 25
+                            default: 0
+                          date:
+                            type: string
+                            example: '2018-12-26 13:14:25'
+                          day_of_year:
+                            type: string
+                            example: '359'
+                          week_adjusted:
+                            type: integer
+                            example: 52
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                      current_length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 6
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 0
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '6.01'
+                      events:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '146780033'
+                            type:
+                              type: string
+                              example: '3'
+                            timestamp:
+                              type: string
+                              example: '2018-12-26 13:14:25'
+                            clock_time:
+                              type: string
+                              example: '101664178'
+                            data:
+                              type: object
+                              properties:
+                                notes:
+                                  type: string
+                                  example: note
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: e75a561fbf7b291d0058f505f5563e115d49bce9
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'start_date=2018-12-26
+
+            end_date=2018-12-26
+
+            start_time=07:14:25
+
+            end_time=13:14:25
+
+            employee=3999372
+
+            notes=note'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/event/{timeclock}:
+    get:
+      summary: GET Timeclock event
+      description: '/timeclocks/event/{timeclock}
+
+        Permission level: 5'
+      operationId: get-timeclock-event
+      parameters:
+      - name: timeclock
+        in: query
+        description: An ID of a timeclock for which we want to get all events.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": \"99359463\",\n            \"type\": \"3\",\n            \"timestamp\": \"2017-09-04 07:45:00\",\n            \"clock_time\": \"70111593\",\n            \"data\": {\n                \"notes\": \"Note 3a\"\n            }\n        },\n        {\n            \"id\": \"99359464\",\n            \"type\": \"1\",\n            \"timestamp\": \"2017-09-04 08:45:00\",\n            \"clock_time\": \"70111593\",\n            \"data\": null\n        },\n        {\n            \"id\": \"99359465\",\n            \"type\": \"2\",\n            \"timestamp\": \"2017-09-04 08:52:00\",\n            \"clock_time\": \"70111593\",\n            \"data\": {\n                \"breakin\": 99359464\n            }\n        },\n        {\n            \"id\": \"99359466\",\n            \"type\": \"0\",\n            \"timestamp\": \"2017-09-04 23:30:00\",\n            \"clock_time\": \"70111593\",\n            \"data\": {\n                \"editreason\": \"Forgot to clockin on time and wanted to correct that.\"\n            }\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '99359463'
+                        type:
+                          type: string
+                          example: '3'
+                        timestamp:
+                          type: string
+                          example: '2017-09-04 07:45:00'
+                        clock_time:
+                          type: string
+                          example: '70111593'
+                        data:
+                          type: object
+                          properties:
+                            notes:
+                              type: string
+                              example: Note 3a
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/event/70111593?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/event/{timeclock}?access_token=xxxxxxx:
+    post:
+      summary: POST Timeclock event
+      description: '/timeclocks/event/{timeclock}
+
+        Permission level: 5'
+      operationId: post-timeclock-event
+      parameters:
+      - name: timeclock
+        in: query
+        description: Time clock ID to which we want to add an event
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                type:
+                  type: string
+                  description: 'Accepted parameter value is of these constant strings: breakin, breakout, notes, location, position, tips'
+                timestamp:
+                  type: string
+                  description: Sets a custom date and time for this timeclock event. If not set, current time will be used. Should be in yyyy-MM-dd hh:mm:ss (24h) format.
+                  format: date
+                notes:
+                  type: string
+                  description: String variable holding a note. Used only with type=notes.
+                location:
+                  type: string
+                  description: String containing an ID or a name of a Remote Site. An ID is usually sent. Used only with type=location.
+                position:
+                  type: string
+                  description: String containing an ID or a name of a Position. An ID is usually sent. Used only with type=position.
+                tips:
+                  type: string
+                  description: If a setting "Enable Timeclock Tips" is enabled, employees can enter their tip amounts with this parameter. Used only with type=tips.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"event\": 100012192\n    },\n  \t\"metadata\": [],\n    \"token\": \"e64b900c0dd53053ca974de411849eac8e09fd70\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      event:
+                        type: integer
+                        example: 100012192
+                        default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: e64b900c0dd53053ca974de411849eac8e09fd70
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: type=breakin
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/event/70551877?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Timeclocks
+    put:
+      summary: PUT Timeclock event
+      description: '/timeclocks/event/{timeclock}
+
+        Permission level: 5'
+      operationId: put-timeclock-event
+      parameters:
+      - name: timeclock
+        in: query
+        description: Time clock ID to which we want to add an event
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                type:
+                  type: string
+                  description: 'Accepted parameter value is of these constant strings: breakin, breakout, notes, location, position, gps, tips, events'
+                timestamp:
+                  type: string
+                  description: Sets a custom date and time for this timeclock event. If not set, current time will be used. Should be in yyyy-MM-dd hh:mm:ss (24h) format.
+                  format: date
+                notes:
+                  type: string
+                  description: String variable holding a note. Used only with type=notes.
+                location:
+                  type: string
+                  description: String containing an ID or a name of a Remote Site. An ID is usually sent. Used only with type=location.
+                position:
+                  type: string
+                  description: String containing an ID or a name of a Position. An ID is usually sent. Used only with type=position.
+                tips:
+                  type: string
+                  description: If a setting "Enable Timeclock Tips" is enabled, employees can enter their tip amounts with this parameter. Used only with type=tips.
+                event:
+                  type: integer
+                  description: Id of event we want to update
+                  format: int32
+                data:
+                  type: string
+                  description: A JSON containing the data which is used when parameter type = events.
+                  format: json
+                gps:
+                  type: string
+                clocktime:
+                  type: string
+                  description: A JSON containing all data about parent timeclock. Used only when parameter type = events.
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"status\": \"Clock time updated.\",\n        \"events\": {\n            \"100022881\": {\n                \"id\": \"100022881\",\n                \"type\": \"3\",\n                \"timestamp\": \"2017-09-11 09:27:00\",\n                \"clock_time\": \"70558246\",\n                \"data\": {\n                    \"notes\": \"Added note\"\n                }\n            },\n            \"100022882\": {\n                \"id\": \"100022882\",\n                \"type\": \"6\",\n                \"timestamp\": \"2017-09-11 09:27:00\",\n                \"clock_time\": \"70558246\",\n                \"data\": {\n                    \"position\": 743314\n                }\n            },\n            \"100022883\": {\n                \"id\": \"100022883\",\n                \"type\": \"4\",\n                \"timestamp\": \"2017-09-11 09:27:00\",\n                \"clock_time\": \"70558246\",\n                \"data\": {\n                    \"location\": 358844\n                }\n            },\n            \"100023219\": {\n                \"id\": \"100023219\",\n                \"type\": \"1\",\n                \"timestamp\": \"2017-09-11 10:45:00\",\n                \"clock_time\": \"70558246\",\n                \"data\": null\n            },\n            \"100023567\": {\n                \"id\": \"100023567\",\n                \"type\": \"2\",\n                \"timestamp\": \"2017-09-11 11:00:00\",\n                \"clock_time\": \"70558246\",\n                \"data\": {\n                    \"breakin\": 100023219\n                }\n            }\n        }\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: Clock time updated.
+                      events:
+                        type: object
+                        properties:
+                          '100022881':
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '100022881'
+                              type:
+                                type: string
+                                example: '3'
+                              timestamp:
+                                type: string
+                                example: '2017-09-11 09:27:00'
+                              clock_time:
+                                type: string
+                                example: '70558246'
+                              data:
+                                type: object
+                                properties:
+                                  notes:
+                                    type: string
+                                    example: Added note
+                          '100022882':
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '100022882'
+                              type:
+                                type: string
+                                example: '6'
+                              timestamp:
+                                type: string
+                                example: '2017-09-11 09:27:00'
+                              clock_time:
+                                type: string
+                                example: '70558246'
+                              data:
+                                type: object
+                                properties:
+                                  position:
+                                    type: integer
+                                    example: 743314
+                                    default: 0
+                          '100022883':
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '100022883'
+                              type:
+                                type: string
+                                example: '4'
+                              timestamp:
+                                type: string
+                                example: '2017-09-11 09:27:00'
+                              clock_time:
+                                type: string
+                                example: '70558246'
+                              data:
+                                type: object
+                                properties:
+                                  location:
+                                    type: integer
+                                    example: 358844
+                                    default: 0
+                          '100023219':
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '100023219'
+                              type:
+                                type: string
+                                example: '1'
+                              timestamp:
+                                type: string
+                                example: '2017-09-11 10:45:00'
+                              clock_time:
+                                type: string
+                                example: '70558246'
+                              data: {}
+                          '100023567':
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '100023567'
+                              type:
+                                type: string
+                                example: '2'
+                              timestamp:
+                                type: string
+                                example: '2017-09-11 11:00:00'
+                              clock_time:
+                                type: string
+                                example: '70558246'
+                              data:
+                                type: object
+                                properties:
+                                  breakin:
+                                    type: integer
+                                    example: 100023219
+                                    default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/event/70551877?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    delete:
+      summary: DELETE Timeclock event
+      description: '/timeclocks/event/{timeclock}
+
+        Permission level: 5'
+      operationId: delete-timeclock-event
+      parameters:
+      - name: timeclock
+        in: query
+        description: A timeclock ID for which we want to delete events
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - type
+              - event
+              properties:
+                type:
+                  type: string
+                  description: 'Accepted parameter value is of these constant strings: delete, restore. Value "delete" is used for removing events from assigned time clock, and "restore" is used for restoring them if they are deleted.'
+                event:
+                  type: string
+                  description: A string containing a pipe ( | ) delimited list of events ids for removal or restoration.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"status\": \"Event removed.\"\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: Event removed.
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/event/101660899?access_token=xxxxxxx
+        - language: text
+          code: 'type=delete
+
+            event=146776216|146776213|146776210'
+          name: Body params
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Timeclocks
+  /timeclocks/locations:
+    get:
+      summary: GET Timeclock location
+      description: '/timeclocks/locations
+
+        Permission level: 7'
+      operationId: get-timeclock-location
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": \"101613\",\n            \"store\": \"343161\",\n            \"user\": \"3999339\",\n            \"name\": \"Terminal\",\n            \"description\": \"\",\n            \"status\": \"1\",\n            \"type\": \"1\",\n            \"ip\": \"82.117.214.54\"\n        },\n        {\n            \"id\": \"101639\",\n            \"store\": \"343161\",\n            \"user\": \"3999339\",\n            \"name\": \"IP\",\n            \"description\": \"\",\n            \"status\": \"1\",\n            \"type\": \"2\",\n            \"ip\": \"82.117.214.54\"\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '101613'
+                        store:
+                          type: string
+                          example: '343161'
+                        user:
+                          type: string
+                          example: '3999339'
+                        name:
+                          type: string
+                          example: Terminal
+                        description:
+                          type: string
+                          example: ''
+                        status:
+                          type: string
+                          example: '1'
+                        type:
+                          type: string
+                          example: '1'
+                        ip:
+                          type: string
+                          example: 82.117.214.54
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/locations?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    post:
+      summary: POST Timeclock location
+      description: '/timeclocks/locations
+
+        Permission level: 3'
+      operationId: post-timeclock-location
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                type:
+                  type: integer
+                  description: 'enum[1,2] 1: Computer, 2: IP address'
+                  format: int32
+                ip:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Location added\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Location added
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/locations?access_token=xxxxxxx
+        - language: text
+          code: 'name=Test Location
+
+            type=1'
+          name: BODY PARAMS
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Timeclocks
+  /timeclocks/locations/{id}:
+    delete:
+      summary: DELETE Timeclock location
+      description: '/timeclocks/locations/:id
+
+        Permission level: 3'
+      operationId: delete-timeclock-location
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: integer
+                  description: '1: Computer 2:IP address'
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Location removed.\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Location removed.
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/locations/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/status/{employee}/{details}:
+    get:
+      summary: GET Timeclock status
+      description: '/timeclocks/status/:employee/:details
+
+        Permission level: 5'
+      operationId: get-timeclock-status
+      parameters:
+      - name: employee
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      - name: details
+        in: path
+        description: enum[0, 1]
+        schema:
+          type: integer
+          format: int32
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": \"101662992\",\n        \"store\": \"343161\",\n        \"status\": \"0\",\n        \"schedule\": null,\n        \"notes\": null,\n        \"created\": \"1545825362\",\n        \"in_timestamp\": \"1545825361\",\n        \"in_day\": \"3528\",\n        \"out_timestamp\": \"0\",\n        \"out_day\": \"0\",\n        \"in_hour\": \"53\",\n        \"out_hour\": \"0\",\n        \"in_location\": \"109.245.227.181\",\n        \"out_location\": \"Website\",\n        \"in_terminal\": \"0\",\n        \"out_terminal\": \"-98\",\n        \"approved_by\": \"0\",\n        \"approved_time\": \"0\",\n        \"approved_notes\": \"\",\n        \"in_picture\": null,\n        \"out_picture\": \"\",\n        \"screenshots\": null,\n        \"break_time\": \"0\",\n        \"start_timestamp\": \"2018-12-26 12:56:01\",\n        \"end_timestamp\": null,\n        \"in_picture_url\": \"\",\n        \"out_picture_url\": null,\n        \"in_gps\": \"{\\\"latitude\\\":\\\"\\\",\\\"longitude\\\":\\\"\\\",\\\"supported\\\":0}\",\n        \"out_gps\": null,\n        \"in_distance\": null,\n        \"out_distance\": null,\n        \"unique_id\": null,\n        \"created_at\": \"2018-12-26 12:56:02\",\n        \"updated_at\": \"2018-12-26 12:56:02\",\n        \"deleted_at\": null,\n        \"created_by\": null,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"shift\": null,\n        \"employee\": {\n            \"id\": \"3999339\",\n            \"name\": \"Alan Ford\"\n        },\n        \"in_time\": {\n            \"time\": \"12:56\",\n            \"day\": \"Dec 26, 2018\",\n            \"timestamp\": \"2018-12-26 12:56:01\"\n        },\n        \"start\": {\n            \"id\": 3528,\n            \"month\": 12,\n            \"day\": 26,\n            \"wday\": 3,\n            \"year\": 2018,\n            \"weekday\": \"Wed\",\n            \"mname\": \"Dec\",\n            \"week\": 52,\n            \"dayid\": 4,\n            \"timeid\": 53,\n            \"timeid_exact\": 52,\n            \"formatted\": \"Dec 26, 2018\",\n            \"iso8601\": \"2018-12-26T12:56:01+0100\",\n            \"time\": \"12:56\",\n            \"timestamp\": 1545825361,\n            \"hours\": 12,\n            \"minutes\": 56,\n            \"seconds\": 1,\n            \"date\": \"2018-12-26 12:56:01\",\n            \"day_of_year\": \"359\",\n            \"week_adjusted\": 52,\n            \"sp_wday\": 4\n        },\n        \"length\": [],\n        \"out_time\": [],\n        \"end\": [],\n        \"current_length\": {\n            \"hours\": 0,\n            \"mins\": 1,\n            \"total_hours\": \"0.01\"\n        },\n        \"events\": []\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '101662992'
+                      store:
+                        type: string
+                        example: '343161'
+                      status:
+                        type: string
+                        example: '0'
+                      schedule: {}
+                      notes: {}
+                      created:
+                        type: string
+                        example: '1545825362'
+                      in_timestamp:
+                        type: string
+                        example: '1545825361'
+                      in_day:
+                        type: string
+                        example: '3528'
+                      out_timestamp:
+                        type: string
+                        example: '0'
+                      out_day:
+                        type: string
+                        example: '0'
+                      in_hour:
+                        type: string
+                        example: '53'
+                      out_hour:
+                        type: string
+                        example: '0'
+                      in_location:
+                        type: string
+                        example: 109.245.227.181
+                      out_location:
+                        type: string
+                        example: Website
+                      in_terminal:
+                        type: string
+                        example: '0'
+                      out_terminal:
+                        type: string
+                        example: '-98'
+                      approved_by:
+                        type: string
+                        example: '0'
+                      approved_time:
+                        type: string
+                        example: '0'
+                      approved_notes:
+                        type: string
+                        example: ''
+                      in_picture: {}
+                      out_picture:
+                        type: string
+                        example: ''
+                      screenshots: {}
+                      break_time:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2018-12-26 12:56:01'
+                      end_timestamp: {}
+                      in_picture_url:
+                        type: string
+                        example: ''
+                      out_picture_url: {}
+                      in_gps:
+                        type: string
+                        example: '{"latitude":"","longitude":"","supported":0}'
+                      out_gps: {}
+                      in_distance: {}
+                      out_distance: {}
+                      unique_id: {}
+                      created_at:
+                        type: string
+                        example: '2018-12-26 12:56:02'
+                      updated_at:
+                        type: string
+                        example: '2018-12-26 12:56:02'
+                      deleted_at: {}
+                      created_by: {}
+                      updated_by: {}
+                      deleted_by: {}
+                      shift: {}
+                      employee:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '3999339'
+                          name:
+                            type: string
+                            example: Alan Ford
+                      in_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: '12:56'
+                          day:
+                            type: string
+                            example: Dec 26, 2018
+                          timestamp:
+                            type: string
+                            example: '2018-12-26 12:56:01'
+                      start:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3528
+                            default: 0
+                          month:
+                            type: integer
+                            example: 12
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2018
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Wed
+                          mname:
+                            type: string
+                            example: Dec
+                          week:
+                            type: integer
+                            example: 52
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 4
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 53
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 52
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Dec 26, 2018
+                          iso8601:
+                            type: string
+                            example: 2018-12-26T12:56:01+0100
+                          time:
+                            type: string
+                            example: '12:56'
+                          timestamp:
+                            type: integer
+                            example: 1545825361
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 12
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 56
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 1
+                            default: 0
+                          date:
+                            type: string
+                            example: '2018-12-26 12:56:01'
+                          day_of_year:
+                            type: string
+                            example: '359'
+                          week_adjusted:
+                            type: integer
+                            example: 52
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                      length:
+                        type: array
+                      out_time:
+                        type: array
+                      end:
+                        type: array
+                      current_length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 0
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 1
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '0.01'
+                      events:
+                        type: array
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/status/3999339/1?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/terminal:
+    get:
+      summary: GET Timeclocks terminal
+      description: '/timeclocks/terminal
+
+        Permission level: 7'
+      operationId: get-timeclocks-terminal
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"45221\",\n      \"store\": \"251300\",\n      \"location\": \"62038\",\n      \"key\": \"34e4beb994c1a48c4511d2485d20a07f\",\n      \"name\": \"Zepter Office\",\n      \"pref_login\": \"1\",\n      \"pref_userid\": \"0\",\n      \"pref_username\": \"0\",\n      \"pref_password\": \"1\",\n      \"pref_userlist\": \"1\",\n      \"pref_webcam\": \"0\"\n    },\n    {\n      \"id\": \"45222\",\n      \"store\": \"251300\",\n      \"location\": \"62039\",\n      \"key\": \"e48e4e338b8293cd6caceaea3d76b61e\",\n      \"name\": \"IP based Terminal\",\n      \"pref_login\": \"1\",\n      \"pref_userid\": \"0\",\n      \"pref_username\": \"0\",\n      \"pref_password\": \"1\",\n      \"pref_userlist\": \"1\",\n      \"pref_webcam\": \"1\"\n    }\n  ],\n  \"metadata\": [],\n  \"token\": \"xxxxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '45221'
+                        store:
+                          type: string
+                          example: '251300'
+                        location:
+                          type: string
+                          example: '62038'
+                        key:
+                          type: string
+                          example: 34e4beb994c1a48c4511d2485d20a07f
+                        name:
+                          type: string
+                          example: Zepter Office
+                        pref_login:
+                          type: string
+                          example: '1'
+                        pref_userid:
+                          type: string
+                          example: '0'
+                        pref_username:
+                          type: string
+                          example: '0'
+                        pref_password:
+                          type: string
+                          example: '1'
+                        pref_userlist:
+                          type: string
+                          example: '1'
+                        pref_webcam:
+                          type: string
+                          example: '0'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/terminal?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    post:
+      summary: POST Timeclock terminal
+      description: '/timeclocks/terminal
+
+        Permission level: 3'
+      operationId: post-timeclock-terminal
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              - location
+              properties:
+                name:
+                  type: string
+                location:
+                  type: integer
+                  format: int32
+                pref_userlist:
+                  type: integer
+                  description: 'enum [1, 2, 3] -> 1: Show employees as select box; 2: Show as Gallery; 3: Show employees as search box;'
+                  format: int32
+                pref_login:
+                  type: integer
+                  description: 'enum [0, 1] -> 1: Require Full Employee Login; 0: Not requires'
+                  format: int32
+                pref_webcam:
+                  type: integer
+                  description: 'enum [0, 1] -> 1: Require Webcam; 0: Does not require Webcam'
+                  format: int32
+                pref_password:
+                  type: integer
+                  description: 'enum [0, 1] -> 1: Require Password; 0: Does not require Password'
+                  format: int32
+                returnObject:
+                  type: integer
+                  description: 'enum [0,1] -> 0: return message "Terminal created", 1: return created object'
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 45223,\n    \"store\": \"251300\",\n    \"location\": \"542311\",\n    \"key\": \"5652ae58ef163d6aad308ccc56013bdf\",\n    \"name\": \"3rd floor Terminal\",\n    \"pref_login\": null,\n    \"pref_userid\": null,\n    \"pref_username\": null,\n    \"pref_password\": \"1\",\n    \"pref_userlist\": null,\n    \"pref_webcam\": \"1\"\n  },\n  \"metadata\": [],\n  \"token\": \"xxxxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 45223
+                        default: 0
+                      store:
+                        type: string
+                        example: '251300'
+                      location:
+                        type: string
+                        example: '542311'
+                      key:
+                        type: string
+                        example: 5652ae58ef163d6aad308ccc56013bdf
+                      name:
+                        type: string
+                        example: 3rd floor Terminal
+                      pref_login: {}
+                      pref_userid: {}
+                      pref_username: {}
+                      pref_password:
+                        type: string
+                        example: '1'
+                      pref_userlist: {}
+                      pref_webcam:
+                        type: string
+                        example: '1'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'name=3rd floor Terminal
+
+            location=542311
+
+            pref_webcam=1
+
+            pref_password=1
+
+            returnObject=1'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/terminal?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/terminal/{id}:
+    get:
+      summary: GET Timeclock terminal
+      description: '/timeclocks/terminal/:id
+
+        Permission level: 7'
+      operationId: get-timeclock-terminal
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"45221\",\n    \"store\": \"251300\",\n    \"location\": \"62038\",\n    \"key\": \"34e4beb994c1a48c4511d2485d20a07f\",\n    \"name\": \"Zepter Office\",\n    \"pref_login\": \"1\",\n    \"pref_userid\": \"0\",\n    \"pref_username\": \"0\",\n    \"pref_password\": \"1\",\n    \"pref_userlist\": \"1\",\n    \"pref_webcam\": \"0\"\n  },\n  \"metadata\": [],\n  \"token\": \"xxxxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '45221'
+                      store:
+                        type: string
+                        example: '251300'
+                      location:
+                        type: string
+                        example: '62038'
+                      key:
+                        type: string
+                        example: 34e4beb994c1a48c4511d2485d20a07f
+                      name:
+                        type: string
+                        example: Zepter Office
+                      pref_login:
+                        type: string
+                        example: '1'
+                      pref_userid:
+                        type: string
+                        example: '0'
+                      pref_username:
+                        type: string
+                        example: '0'
+                      pref_password:
+                        type: string
+                        example: '1'
+                      pref_userlist:
+                        type: string
+                        example: '1'
+                      pref_webcam:
+                        type: string
+                        example: '0'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/terminal/45221?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    put:
+      summary: PUT Timeclock terminal
+      description: '/timeclocks/terminal/:id
+
+        Permission level: 3'
+      operationId: put-timeclock-terminal
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                returnObject:
+                  type: integer
+                  description: 'enum(0,1) -> 0: return message "Terminal URL Reset", 1: return updated object'
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": \"76569\",\n        \"store\": \"343161\",\n        \"location\": \"101639\",\n        \"key\": \"a451543f179f87b4f5938b380a655540\",\n        \"name\": \"without\",\n        \"pref_login\": \"1\",\n        \"pref_userid\": \"0\",\n        \"pref_username\": \"0\",\n        \"pref_password\": \"1\",\n        \"pref_userlist\": \"1\",\n        \"pref_webcam\": \"0\"\n    },\n    \"metadata\": [],\n    \"token\": \"e75a561fbf7b291d0058f505f5563e115d49bce9\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '76569'
+                      store:
+                        type: string
+                        example: '343161'
+                      location:
+                        type: string
+                        example: '101639'
+                      key:
+                        type: string
+                        example: a451543f179f87b4f5938b380a655540
+                      name:
+                        type: string
+                        example: without
+                      pref_login:
+                        type: string
+                        example: '1'
+                      pref_userid:
+                        type: string
+                        example: '0'
+                      pref_username:
+                        type: string
+                        example: '0'
+                      pref_password:
+                        type: string
+                        example: '1'
+                      pref_userlist:
+                        type: string
+                        example: '1'
+                      pref_webcam:
+                        type: string
+                        example: '0'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: e75a561fbf7b291d0058f505f5563e115d49bce9
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/terminal/76569?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    delete:
+      summary: DELETE Timeclock terminal
+      description: '/timeclocks/terminal/:id
+
+        Permission level: 3'
+      operationId: delete-timeclock-terminal
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Terminal deleted\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Terminal deleted
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/terminal/45224?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+  /timeclocks/{id}:
+    get:
+      summary: GET Timeclock
+      description: '/timeclocks/:id
+
+        Permission level: 5'
+      operationId: get-timeclock
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": \"101661706\",\n        \"store\": \"343161\",\n        \"status\": \"0\",\n        \"schedule\": {\n            \"id\": \"1849682\",\n            \"name\": \"Cook\"\n        },\n        \"notes\": \"poruka\",\n        \"created\": \"1545822424\",\n        \"in_timestamp\": \"1545811200\",\n        \"in_day\": \"3528\",\n        \"out_timestamp\": \"1545840000\",\n        \"out_day\": \"3528\",\n        \"in_hour\": \"37\",\n        \"out_hour\": \"69\",\n        \"in_location\": \"Website\",\n        \"out_location\": \"Website\",\n        \"in_terminal\": \"0\",\n        \"out_terminal\": \"-98\",\n        \"approved_by\": \"3999479\",\n        \"approved_time\": \"1545822424\",\n        \"approved_notes\": \"autoapproved\",\n        \"in_picture\": null,\n        \"out_picture\": \"\",\n        \"screenshots\": null,\n        \"break_time\": \"0\",\n        \"start_timestamp\": \"2018-12-26 09:00:00\",\n        \"end_timestamp\": \"2018-12-26 17:00:00\",\n        \"in_picture_url\": null,\n        \"out_picture_url\": null,\n        \"in_gps\": null,\n        \"out_gps\": null,\n        \"in_distance\": null,\n        \"out_distance\": null,\n        \"unique_id\": null,\n        \"created_at\": \"2018-12-26 12:07:04\",\n        \"updated_at\": \"2018-12-26 12:07:04\",\n        \"deleted_at\": null,\n        \"created_by\": null,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"shift\": null,\n        \"employee\": {\n            \"id\": \"3999479\",\n            \"name\": \"Alan Ford\"\n        },\n        \"in_time\": {\n            \"time\": \"09:00\",\n            \"day\": \"Dec 26, 2018\",\n            \"timestamp\": \"2018-12-26 09:00:00\"\n        },\n        \"start\": {\n            \"id\": 3528,\n            \"month\": 12,\n            \"day\": 26,\n            \"wday\": 3,\n            \"year\": 2018,\n            \"weekday\": \"Wed\",\n            \"mname\": \"Dec\",\n            \"week\": 52,\n            \"dayid\": 4,\n            \"timeid\": 37,\n            \"timeid_exact\": 37,\n            \"formatted\": \"Dec 26, 2018\",\n            \"iso8601\": \"2018-12-26T09:00:00+0100\",\n            \"time\": \"09:00\",\n            \"timestamp\": 1545811200,\n            \"hours\": 9,\n            \"minutes\": 0,\n            \"seconds\": 0,\n            \"date\": \"2018-12-26 09:00:00\",\n            \"day_of_year\": \"359\",\n            \"week_adjusted\": 52,\n            \"sp_wday\": 4\n        },\n        \"length\": {\n            \"hours\": 8,\n            \"mins\": 0,\n            \"total_hours\": \"8.00\"\n        },\n        \"out_time\": {\n            \"time\": \"17:00\",\n            \"day\": \"Dec 26, 2018\",\n            \"timestamp\": \"2018-12-26 17:00:00\"\n        },\n        \"end\": {\n            \"id\": 3528,\n            \"month\": 12,\n            \"day\": 26,\n            \"wday\": 3,\n            \"year\": 2018,\n            \"weekday\": \"Wed\",\n            \"mname\": \"Dec\",\n            \"week\": 52,\n            \"dayid\": 4,\n            \"timeid\": 69,\n            \"timeid_exact\": 69,\n            \"formatted\": \"Dec 26, 2018\",\n            \"iso8601\": \"2018-12-26T17:00:00+0100\",\n            \"time\": \"17:00\",\n            \"timestamp\": 1545840000,\n            \"hours\": 17,\n            \"minutes\": 0,\n            \"seconds\": 0,\n            \"date\": \"2018-12-26 17:00:00\",\n            \"day_of_year\": \"359\",\n            \"week_adjusted\": 52,\n            \"sp_wday\": 4\n        },\n        \"current_length\": {\n            \"hours\": 3,\n            \"mins\": 50,\n            \"total_hours\": \"3.83\"\n        },\n        \"events\": [\n            {\n                \"id\": \"146777244\",\n                \"type\": \"3\",\n                \"timestamp\": \"2018-12-26 09:00:00\",\n                \"clock_time\": \"101661706\",\n                \"data\": {\n                    \"notes\": \"note\"\n                }\n            },\n            {\n                \"id\": \"146777245\",\n                \"type\": \"6\",\n                \"timestamp\": \"2018-12-26 09:00:00\",\n                \"clock_time\": \"101661706\",\n                \"data\": {\n                    \"position\": 1849682\n                }\n            },\n            {\n                \"id\": \"146777246\",\n                \"type\": \"4\",\n                \"timestamp\": \"2018-12-26 09:00:00\",\n                \"clock_time\": \"101661706\",\n                \"data\": {\n                    \"location\": \"746680\"\n                }\n            },\n            {\n                \"id\": \"146777247\",\n                \"type\": \"8\",\n                \"timestamp\": \"2018-12-26 12:07:04\",\n                \"clock_time\": \"101661706\",\n                \"data\": {\n                    \"tips\": 15\n                }\n            }\n        ]\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '101661706'
+                      store:
+                        type: string
+                        example: '343161'
+                      status:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1849682'
+                          name:
+                            type: string
+                            example: Cook
+                      notes:
+                        type: string
+                        example: poruka
+                      created:
+                        type: string
+                        example: '1545822424'
+                      in_timestamp:
+                        type: string
+                        example: '1545811200'
+                      in_day:
+                        type: string
+                        example: '3528'
+                      out_timestamp:
+                        type: string
+                        example: '1545840000'
+                      out_day:
+                        type: string
+                        example: '3528'
+                      in_hour:
+                        type: string
+                        example: '37'
+                      out_hour:
+                        type: string
+                        example: '69'
+                      in_location:
+                        type: string
+                        example: Website
+                      out_location:
+                        type: string
+                        example: Website
+                      in_terminal:
+                        type: string
+                        example: '0'
+                      out_terminal:
+                        type: string
+                        example: '-98'
+                      approved_by:
+                        type: string
+                        example: '3999479'
+                      approved_time:
+                        type: string
+                        example: '1545822424'
+                      approved_notes:
+                        type: string
+                        example: autoapproved
+                      in_picture: {}
+                      out_picture:
+                        type: string
+                        example: ''
+                      screenshots: {}
+                      break_time:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2018-12-26 09:00:00'
+                      end_timestamp:
+                        type: string
+                        example: '2018-12-26 17:00:00'
+                      in_picture_url: {}
+                      out_picture_url: {}
+                      in_gps: {}
+                      out_gps: {}
+                      in_distance: {}
+                      out_distance: {}
+                      unique_id: {}
+                      created_at:
+                        type: string
+                        example: '2018-12-26 12:07:04'
+                      updated_at:
+                        type: string
+                        example: '2018-12-26 12:07:04'
+                      deleted_at: {}
+                      created_by: {}
+                      updated_by: {}
+                      deleted_by: {}
+                      shift: {}
+                      employee:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '3999479'
+                          name:
+                            type: string
+                            example: Alan Ford
+                      in_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: 09:00
+                          day:
+                            type: string
+                            example: Dec 26, 2018
+                          timestamp:
+                            type: string
+                            example: '2018-12-26 09:00:00'
+                      start:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3528
+                            default: 0
+                          month:
+                            type: integer
+                            example: 12
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2018
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Wed
+                          mname:
+                            type: string
+                            example: Dec
+                          week:
+                            type: integer
+                            example: 52
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 4
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 37
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 37
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Dec 26, 2018
+                          iso8601:
+                            type: string
+                            example: 2018-12-26T09:00:00+0100
+                          time:
+                            type: string
+                            example: 09:00
+                          timestamp:
+                            type: integer
+                            example: 1545811200
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 9
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2018-12-26 09:00:00'
+                          day_of_year:
+                            type: string
+                            example: '359'
+                          week_adjusted:
+                            type: integer
+                            example: 52
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                      length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 0
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '8.00'
+                      out_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: '17:00'
+                          day:
+                            type: string
+                            example: Dec 26, 2018
+                          timestamp:
+                            type: string
+                            example: '2018-12-26 17:00:00'
+                      end:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3528
+                            default: 0
+                          month:
+                            type: integer
+                            example: 12
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2018
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Wed
+                          mname:
+                            type: string
+                            example: Dec
+                          week:
+                            type: integer
+                            example: 52
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 4
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 69
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 69
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Dec 26, 2018
+                          iso8601:
+                            type: string
+                            example: 2018-12-26T17:00:00+0100
+                          time:
+                            type: string
+                            example: '17:00'
+                          timestamp:
+                            type: integer
+                            example: 1545840000
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 17
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2018-12-26 17:00:00'
+                          day_of_year:
+                            type: string
+                            example: '359'
+                          week_adjusted:
+                            type: integer
+                            example: 52
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                      current_length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 3
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 50
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '3.83'
+                      events:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '146777244'
+                            type:
+                              type: string
+                              example: '3'
+                            timestamp:
+                              type: string
+                              example: '2018-12-26 09:00:00'
+                            clock_time:
+                              type: string
+                              example: '101661706'
+                            data:
+                              type: object
+                              properties:
+                                notes:
+                                  type: string
+                                  example: note
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/46504479?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+    put:
+      summary: PUT Timeclock
+      description: '/timeclocks/:id
+
+        Permission level: 5'
+      operationId: put-timeclocks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                schedule:
+                  type: integer
+                  format: int32
+                employee:
+                  type: integer
+                  format: int32
+                start_time:
+                  type: string
+                  format: date
+                end_time:
+                  type: string
+                  format: date
+                notes:
+                  type: string
+                approved:
+                  type: integer
+                  description: 'enum[0,1] -> 0: Unapproved; 1: Approved'
+                  format: int32
+                tips:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"46504362\",\n    \"store\": \"251300\",\n    \"status\": \"0\",\n    \"schedule\": {\n      \"id\": \"1324361\",\n      \"name\": \"Customer service\"\n    },\n    \"notes\": \"I approved this timeclock\",\n    \"created\": \"1470143432\",\n    \"in_timestamp\": \"1470030480\",\n    \"in_day\": \"2651\",\n    \"out_timestamp\": \"1470057540\",\n    \"out_day\": \"2651\",\n    \"in_hour\": \"32\",\n    \"out_hour\": \"62\",\n    \"in_location\": \"Website\",\n    \"out_location\": \"Website\",\n    \"in_terminal\": \"0\",\n    \"out_terminal\": \"-98\",\n    \"approved_by\": \"2736727\",\n    \"approved_time\": \"1470146295\",\n    \"approved_notes\": \"\",\n    \"in_picture\": null,\n    \"out_picture\": \"\",\n    \"screenshots\": null,\n    \"break_time\": \"0\",\n    \"start_timestamp\": \"2016-08-01 07:48:00\",\n    \"end_timestamp\": \"2016-08-01 15:19:00\",\n    \"in_picture_url\": null,\n    \"out_picture_url\": null,\n    \"in_gps\": null,\n    \"out_gps\": null,\n    \"shift\": null,\n    \"employee\": {\n      \"id\": \"2744094\",\n      \"name\": \"Josephine P. Watson\"\n    },\n    \"in_time\": {\n      \"time\": \"7:48am\",\n      \"day\": \"Aug 1, 2016\",\n      \"timestamp\": \"2016-08-01 07:48:00\"\n    },\n    \"length\": {\n      \"hours\": 7,\n      \"mins\": 31,\n      \"total_hours\": \"7.52\"\n    },\n    \"out_time\": {\n      \"time\": \"3:19pm\",\n      \"day\": \"Aug 1, 2016\",\n      \"timestamp\": \"2016-08-01 15:19:00\"\n    },\n    \"current_length\": {\n      \"hours\": 32,\n      \"mins\": 10,\n      \"total_hours\": \"32.17\"\n    },\n    \"events\": [\n      {\n        \"id\": \"63256275\",\n        \"type\": \"6\",\n        \"timestamp\": \"2016-08-01 07:48:00\",\n        \"clock_time\": \"46504362\",\n        \"data\": {\n          \"position\": \"1324361\"\n        }\n      },\n      {\n        \"id\": \"63261564\",\n        \"type\": \"3\",\n        \"timestamp\": \"2016-08-01 15:19:00\",\n        \"clock_time\": \"46504362\",\n        \"data\": {\n          \"notes\": \"I approved this timeclock\"\n        }\n      }\n    ]\n  },\n  \"metadata\": [],\n  \"token\": \"xxxxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '46504362'
+                      store:
+                        type: string
+                        example: '251300'
+                      status:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1324361'
+                          name:
+                            type: string
+                            example: Customer service
+                      notes:
+                        type: string
+                        example: I approved this timeclock
+                      created:
+                        type: string
+                        example: '1470143432'
+                      in_timestamp:
+                        type: string
+                        example: '1470030480'
+                      in_day:
+                        type: string
+                        example: '2651'
+                      out_timestamp:
+                        type: string
+                        example: '1470057540'
+                      out_day:
+                        type: string
+                        example: '2651'
+                      in_hour:
+                        type: string
+                        example: '32'
+                      out_hour:
+                        type: string
+                        example: '62'
+                      in_location:
+                        type: string
+                        example: Website
+                      out_location:
+                        type: string
+                        example: Website
+                      in_terminal:
+                        type: string
+                        example: '0'
+                      out_terminal:
+                        type: string
+                        example: '-98'
+                      approved_by:
+                        type: string
+                        example: '2736727'
+                      approved_time:
+                        type: string
+                        example: '1470146295'
+                      approved_notes:
+                        type: string
+                        example: ''
+                      in_picture: {}
+                      out_picture:
+                        type: string
+                        example: ''
+                      screenshots: {}
+                      break_time:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2016-08-01 07:48:00'
+                      end_timestamp:
+                        type: string
+                        example: '2016-08-01 15:19:00'
+                      in_picture_url: {}
+                      out_picture_url: {}
+                      in_gps: {}
+                      out_gps: {}
+                      shift: {}
+                      employee:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '2744094'
+                          name:
+                            type: string
+                            example: Josephine P. Watson
+                      in_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: 7:48am
+                          day:
+                            type: string
+                            example: Aug 1, 2016
+                          timestamp:
+                            type: string
+                            example: '2016-08-01 07:48:00'
+                      length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 7
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 31
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '7.52'
+                      out_time:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                            example: 3:19pm
+                          day:
+                            type: string
+                            example: Aug 1, 2016
+                          timestamp:
+                            type: string
+                            example: '2016-08-01 15:19:00'
+                      current_length:
+                        type: object
+                        properties:
+                          hours:
+                            type: integer
+                            example: 32
+                            default: 0
+                          mins:
+                            type: integer
+                            example: 10
+                            default: 0
+                          total_hours:
+                            type: string
+                            example: '32.17'
+                      events:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '63256275'
+                            type:
+                              type: string
+                              example: '6'
+                            timestamp:
+                              type: string
+                              example: '2016-08-01 07:48:00'
+                            clock_time:
+                              type: string
+                              example: '46504362'
+                            data:
+                              type: object
+                              properties:
+                                position:
+                                  type: string
+                                  example: '1324361'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'approved=1
+
+            notes=I approved this timeclock'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/46504362?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Timeclocks
+    delete:
+      summary: DELETE Timeclock
+      description: '/timeclocks/:id
+
+        Permission level: 5'
+      operationId: delete-timeclock
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Clock time deleted.\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Clock time deleted.
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/timeclocks/46504116?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Timeclocks
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

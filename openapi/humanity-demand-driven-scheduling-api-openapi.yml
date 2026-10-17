@@ -1,0 +1,756 @@
+openapi: 3.2.0
+info:
+  title: Humanity Demand Driven Scheduling API
+  version: '2.0'
+  description: 'Operations tagged Demand Driven Scheduling across 2 of this provider''s published API definitions: humanity-default-openapi.yml, humanity-json-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Demand Driven Scheduling
+paths:
+  /demand_driven_scheduling/data-points:
+    get:
+      summary: GET Data Points
+      description: /demand_driven_scheduling/data-points
+      operationId: get-data-points
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: metric_id
+        in: query
+        description: Metric ID
+        schema:
+          type: integer
+          format: int32
+      - name: start
+        in: query
+        description: Start date to fetch Data Points.
+        schema:
+          type: string
+          format: date
+      - name: end
+        in: query
+        description: End date to fetch Data Points.
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 7,\n            \"metric_id\": 1,\n            \"value\": 7,\n            \"time_point\": \"2020-08-04T09:15:00-05:00\"\n        },\n        {\n            \"id\": 8,\n            \"metric_id\": 1,\n            \"value\": 13,\n            \"time_point\": \"2020-08-04T09:30:00-05:00\"\n        },\n        {\n            \"id\": 9,\n            \"metric_id\": 1,\n            \"value\": 7,\n            \"time_point\": \"2020-08-04T09:45:00-05:00\"\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 7
+                          default: 0
+                        metric_id:
+                          type: integer
+                          example: 1
+                          default: 0
+                        value:
+                          type: integer
+                          example: 7
+                          default: 0
+                        time_point:
+                          type: string
+                          example: '2020-08-04T09:15:00-05:00'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/data-points?access_token=xxxxxxxxxxxx&driver_id=7&start=2020-04-19 20:00:00&end=2020-04-20 22:15:00
+          name: HTTP example
+        - language: curl
+          code: curl --location --request GET 'https://www.humanity.com/api/v2/demand_driven_scheduling/data-points?access_token=xxxxxxxxxxxx&driver_id=7&start=2020-04-19 20:00:00&end=2020-04-20 22:15:00'
+          name: cURL example
+        samples-languages:
+        - http
+        - curl
+      tags:
+      - Demand Driven Scheduling
+    put:
+      summary: UPDATE Data Points
+      description: /demand_driven_scheduling/data-points
+      operationId: update-data-points
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                metric_id:
+                  type: integer
+                  description: Metric ID
+                  format: int32
+                data_points:
+                  type: string
+                  description: Data Points as Raw JSON Array
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"message\": \"Data Points successfully updated!\"\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}\n"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Data Points successfully updated!
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/data-points?access_token=xxxxxxxxxxxx
+          name: HTTP example
+        - language: text
+          code: Content-Type=application/x-www-form-urlencoded
+          name: HEADER params
+        - language: text
+          code: 'metric_id=7
+
+            data_points="[{\"time_point\": \"2020-04-20 20:00\",\"value\": 7}, {\"time_point\": \"2020-04-20 21:00\",\"value\": 6}]"'
+          name: BODY params
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Demand Driven Scheduling
+    post:
+      summary: CREATE Data Points
+      description: /demand_driven_scheduling/data-points
+      operationId: create-data-points
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metric_id:
+                  type: integer
+                  description: Metric ID
+                  format: int32
+                data_points:
+                  type: string
+                  description: Stringified Array of Objects
+            examples:
+              BODY params:
+                value:
+                  metric_id: 727
+                  data_points: '[{"time_point": "2022-01-06 08:00","value": 15}, {"time_point": "2022-01-06 08:15","value": 26}]'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"message\": \"Data Points successfully created!\"\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Data Points successfully created!
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/data-points?access_token=xxxxxxxxxxxx
+          name: HTTP example
+        - language: text
+          code: Content-Type=application/json
+          name: HEADER params
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Demand Driven Scheduling
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /demand_driven_scheduling/metric:
+    post:
+      summary: CREATE Metric
+      description: /demand_driven_scheduling/metric
+      operationId: create-driver
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Metric Name
+                increment:
+                  type: integer
+                  description: Increment - Can be 15 or 60
+                  format: int32
+                inherited_forecast_id:
+                  type: integer
+                  description: Forecast ID (Optional)
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"Metric Name\",\n        \"increment\": 60,\n        \"inherited_forecast_id\": 124\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 7
+                        default: 0
+                      name:
+                        type: string
+                        example: Metric Name
+                      increment:
+                        type: integer
+                        example: 60
+                        default: 0
+                      inherited_forecast_id:
+                        type: integer
+                        example: 124
+                        default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/metric?access_token=xxxxxxxxxxxx
+          name: HTTP example
+        - language: text
+          code: Content-Type=application/x-www-form-urlencoded
+          name: HEADER params
+        - language: text
+          code: 'name="Metric Name"
+
+            increment=60
+
+            inherited_forecast_id=124'
+          name: BODY params
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Demand Driven Scheduling
+    get:
+      summary: GET Metric
+      description: /demand_driven_scheduling/metric
+      operationId: get-driver
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: metric_id
+        in: query
+        description: Metric ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"Company Metric\",\n        \"increment\": 60,\n        \"inherited_forecast_id\": 26\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 7
+                        default: 0
+                      name:
+                        type: string
+                        example: Company Metric
+                      increment:
+                        type: integer
+                        example: 60
+                        default: 0
+                      inherited_forecast_id:
+                        type: integer
+                        example: 26
+                        default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/metric?access_token=xxxxxxxxxxxx&driver_id=7
+          name: HTTP example
+        - language: curl
+          code: curl --location --request GET 'https://www.humanity.com/api/v2/demand_driven_scheduling/metric?access_token=xxxxxxxxxxxx&driver_id=7'
+          name: cURL example
+        samples-languages:
+        - http
+        - curl
+      tags:
+      - Demand Driven Scheduling
+    delete:
+      summary: DELETE Metric
+      description: /demand_driven_scheduling/metric
+      operationId: delete-driver
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: metric_id
+        in: query
+        description: Metric ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        \"Metric has been removed!\"\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      example: Metric has been removed!
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/metric?access_token=xxxxxxxxxxxx&driver_id=7
+          name: HTTP example
+        - language: curl
+          code: curl --location --request GET 'https://www.humanity.com/api/v2/demand_driven_scheduling/metric?access_token=xxxxxxxxxxxx&driver_id=7'
+          name: cURL example
+        samples-languages:
+        - http
+        - curl
+      tags:
+      - Demand Driven Scheduling
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /demand_driven_scheduling/metrics:
+    get:
+      summary: GET Metrics from Company
+      description: /demand_driven_scheduling/metrics
+      operationId: get-drivers-from-company
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Response:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 5,\n            \"name\": \"Company Metric\",\n            \"increment\": 60,\n            \"inherited_forecast_id\": 26\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Company Metric 22\",\n            \"increment\": 15,\n            \"inherited_forecast_id\": null\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"b0aa41cfc438c9790fca2aedb8e7018e076d88d2\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 5
+                          default: 0
+                        name:
+                          type: string
+                          example: Company Metric
+                        increment:
+                          type: integer
+                          example: 60
+                          default: 0
+                        inherited_forecast_id:
+                          type: integer
+                          example: 26
+                          default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: b0aa41cfc438c9790fca2aedb8e7018e076d88d2
+                  error: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/demand_driven_scheduling/metrics?access_token=xxxxxxxxxxxx
+          name: HTTP example
+        - language: curl
+          code: curl --location --request GET 'https://www.humanity.com/api/v2/demand_driven_scheduling/metrics?access_token=xxxxxxxxxxxx'
+          name: cURL example
+        samples-languages:
+        - http
+        - curl
+      tags:
+      - Demand Driven Scheduling
+    servers:
+    - url: https://www.humanity.com/api/v2
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-refined-from:
+- humanity-default-openapi.yml
+- humanity-json-openapi.yml
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

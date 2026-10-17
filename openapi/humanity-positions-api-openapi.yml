@@ -1,0 +1,883 @@
+openapi: 3.2.0
+info:
+  title: default Positions API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Positions
+paths:
+  /positions:
+    get:
+      summary: GET Positions
+      description: '/positions
+
+        Permission level: 7'
+      operationId: get-positions
+      parameters:
+      - name: perms
+        in: query
+        description: 'enum[1] -> 1: Show perms'
+        schema:
+          type: integer
+          format: int32
+      - name: updated_at
+        in: query
+        description: DateTime in ISO8601 format. <br> Retrieves only positions that were updated <strong>after</strong> the date and time provided with this parameter.
+        schema:
+          type: string
+          format: date
+      - name: include_deleted
+        in: query
+        description: 'enum[0,1] -> 0: Do not Include deleted positions; 1: Include deleted positions. It has to be used in conjunction with ''updated_at'' parameter.'
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": 1321636,\n      \"name\": \"Desk Service\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 11,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-89ec2cc0b3e7ef6e44095846bd6d2e8e.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null\n    },\n    {\n      \"id\": 1321634,\n      \"name\": \"Manager\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 35,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-6d2b8705db43a1d8bbea824fea161b6e.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null\n    },\n    {\n      \"id\": 1321635,\n      \"name\": \"Waiter\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 10,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-45475a74c9611db9d25be71430ac64fa.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null\n    },\n    {\n      \"id\": 1324358,\n      \"name\": \"Barista\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 1,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-37733a1cb62de97f9ad4d35893e30cf0.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null,\n      \"location\": {\n        \"id\": 542311,\n        \"name\": \"Dream Coffee Shop 2\"\n      }\n    },\n    {\n      \"id\": 1324361,\n      \"name\": \"Customer service\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 25,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-5d7b3b4233e327aba088330a1a58e979.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null,\n      \"location\": {\n        \"id\": 542311,\n        \"name\": \"Dream Coffee Shop 2\"\n      }\n    },\n    {\n      \"id\": 1324363,\n      \"name\": \"Shop Manager\",\n      \"start_time\": {\n        \"id\": 1,\n        \"time\": \"12 am\"\n      },\n      \"end_time\": {\n        \"id\": 97,\n        \"time\": \"midnight\"\n      },\n      \"color\": 29,\n      \"ical\": \"https://www.humanity.shiftplanning.com/ical/-a52ba34da2ce034f9faa93f3ca05515b.ics?1470147114000\",\n      \"visible\": 1,\n      \"notify\": 1,\n      \"job_code\": null,\n      \"location\": {\n        \"id\": 542311,\n        \"name\": \"Dream Coffee Shop 2\"\n      }\n    }\n  ],\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1321636
+                          default: 0
+                        name:
+                          type: string
+                          example: Desk Service
+                        start_time:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                              default: 0
+                            time:
+                              type: string
+                              example: 12 am
+                        end_time:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 97
+                              default: 0
+                            time:
+                              type: string
+                              example: midnight
+                        color:
+                          type: integer
+                          example: 11
+                          default: 0
+                        ical:
+                          type: string
+                          example: https://www.humanity.shiftplanning.com/ical/-89ec2cc0b3e7ef6e44095846bd6d2e8e.ics?1470147114000
+                        visible:
+                          type: integer
+                          example: 1
+                          default: 0
+                        notify:
+                          type: integer
+                          example: 1
+                          default: 0
+                        job_code: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/positions?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Positions
+    post:
+      summary: POST Position
+      description: '/positions
+
+        Permission level: 3'
+      operationId: post-position
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                active:
+                  type: string
+                  description: 'enum [1, -1] ->  -1: Inactive; 1: Active'
+                start_time:
+                  type: string
+                  description: Start time
+                  format: date
+                end_time:
+                  type: string
+                  description: End time
+                  format: date
+                color:
+                  type: integer
+                  description: Color
+                  format: int32
+                location:
+                  type: integer
+                  description: Location id
+                  format: int32
+                visible:
+                  type: integer
+                  description: enum [0, 1]
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 1324481,\n    \"name\": \"Dishwasher\",\n    \"start_time\": {\n      \"id\": 1,\n      \"time\": \"12 am\"\n    },\n    \"end_time\": {\n      \"id\": 97,\n      \"time\": \"midnight\"\n    },\n    \"color\": 1,\n    \"ical\": \"https://www.humanity.shiftplanning.com/ical/-8bcb5fb6197445930ec0d7fc34cd5b3f.ics?1470147335000\",\n    \"visible\": 1,\n    \"notify\": 1,\n    \"job_code\": null,\n    \"location\": {\n      \"id\": 542312,\n      \"name\": \"Dream Coffee Takeaway\"\n    }\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1324481
+                        default: 0
+                      name:
+                        type: string
+                        example: Dishwasher
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                            default: 0
+                          time:
+                            type: string
+                            example: 12 am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 97
+                            default: 0
+                          time:
+                            type: string
+                            example: midnight
+                      color:
+                        type: integer
+                        example: 1
+                        default: 0
+                      ical:
+                        type: string
+                        example: https://www.humanity.shiftplanning.com/ical/-8bcb5fb6197445930ec0d7fc34cd5b3f.ics?1470147335000
+                      visible:
+                        type: integer
+                        example: 1
+                        default: 0
+                      notify:
+                        type: integer
+                        example: 1
+                        default: 0
+                      job_code: {}
+                      location:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 542312
+                            default: 0
+                          name:
+                            type: string
+                            example: Dream Coffee Takeaway
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/positions?access_token=xxxxxxx
+        - language: text
+          code: 'name=Dishwasher
+
+            active=1
+
+            location=542312'
+          name: BODY PARAMETERS
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Positions
+  /positions/{id}:
+    get:
+      summary: GET Position
+      description: '/positions/:id
+
+        Permission level: 7'
+      operationId: get-position
+      parameters:
+      - name: id
+        in: path
+        description: Position id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 1324361,\n    \"name\": \"Customer service\",\n    \"start_time\": {\n      \"id\": 1,\n      \"time\": \"12 am\"\n    },\n    \"end_time\": {\n      \"id\": 97,\n      \"time\": \"midnight\"\n    },\n    \"color\": 25,\n    \"ical\": \"https://www.humanity.shiftplanning.com/ical/-5d7b3b4233e327aba088330a1a58e979.ics?1470147186000\",\n    \"visible\": 1,\n    \"notify\": 1,\n    \"job_code\": null,\n    \"location\": {\n      \"id\": 542311,\n      \"name\": \"Dream Coffee Shop 2\"\n    }\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1324361
+                        default: 0
+                      name:
+                        type: string
+                        example: Customer service
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                            default: 0
+                          time:
+                            type: string
+                            example: 12 am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 97
+                            default: 0
+                          time:
+                            type: string
+                            example: midnight
+                      color:
+                        type: integer
+                        example: 25
+                        default: 0
+                      ical:
+                        type: string
+                        example: https://www.humanity.shiftplanning.com/ical/-5d7b3b4233e327aba088330a1a58e979.ics?1470147186000
+                      visible:
+                        type: integer
+                        example: 1
+                        default: 0
+                      notify:
+                        type: integer
+                        example: 1
+                        default: 0
+                      job_code: {}
+                      location:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 542311
+                            default: 0
+                          name:
+                            type: string
+                            example: Dream Coffee Shop 2
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/positions/1324361?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Positions
+    put:
+      summary: PUT Position
+      description: '/positions/:id
+
+        Permission level: 3'
+      operationId: put-position
+      parameters:
+      - name: id
+        in: path
+        description: Position id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                active:
+                  type: string
+                  description: 'enum [1, -1] ->  -1: Inactive; 1: Active'
+                job_code:
+                  type: string
+                name:
+                  type: string
+                start_time:
+                  type: string
+                  format: date
+                end_time:
+                  type: string
+                  format: date
+                color:
+                  type: integer
+                  format: int32
+                location:
+                  type: integer
+                  format: int32
+                visible:
+                  type: integer
+                  description: enum [0, 1]
+                  format: int32
+                skill_id:
+                  type: integer
+                  format: int32
+                unique_id:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 1321634,\n    \"name\": \"Store Manager\",\n    \"start_time\": {\n      \"id\": 1,\n      \"time\": \"12 am\"\n    },\n    \"end_time\": {\n      \"id\": 97,\n      \"time\": \"midnight\"\n    },\n    \"color\": 27,\n    \"ical\": \"https://www.humanity.shiftplanning.com/ical/-6d2b8705db43a1d8bbea824fea161b6e.ics?1470147562000\",\n    \"visible\": 1,\n    \"notify\": 1,\n    \"job_code\": null\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1321634
+                        default: 0
+                      name:
+                        type: string
+                        example: Store Manager
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                            default: 0
+                          time:
+                            type: string
+                            example: 12 am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 97
+                            default: 0
+                          time:
+                            type: string
+                            example: midnight
+                      color:
+                        type: integer
+                        example: 27
+                        default: 0
+                      ical:
+                        type: string
+                        example: https://www.humanity.shiftplanning.com/ical/-6d2b8705db43a1d8bbea824fea161b6e.ics?1470147562000
+                      visible:
+                        type: integer
+                        example: 1
+                        default: 0
+                      notify:
+                        type: integer
+                        example: 1
+                        default: 0
+                      job_code: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: 'name=Store Manager
+
+            active=1
+
+            color=27'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/positions/1321634?access_token=xxxxxxx
+        samples-languages:
+        - html
+        - http
+      tags:
+      - Positions
+    delete:
+      summary: DELETE Position
+      description: '/positions/:id
+
+        Permission level: 3'
+      operationId: delete-position
+      parameters:
+      - name: id
+        in: path
+        description: Position id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"\",\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/positions/1324481?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Positions
+  /positions/{schedule_id}/breakrules?access_token=xxxxxxx:
+    get:
+      summary: GET Position break rules
+      description: '/positions
+
+        Permission level: 7'
+      operationId: get-position-breakrules
+      parameters:
+      - name: schedule_id
+        in: query
+        description: Schedule/Position id
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": \"244648\",\n            \"store\": \"303579\",\n            \"schedule\": \"1614960\",\n            \"user\": \"3475050\",\n            \"min\": \"14400\",\n            \"max\": \"28800\",\n            \"break\": \"0\",\n            \"paid\": \"1\",\n            \"date\": \"1519744721\",\n            \"exact\": \"0\"\n        },\n        {\n            \"id\": \"244649\",\n            \"store\": \"303579\",\n            \"schedule\": \"1614960\",\n            \"user\": \"3475050\",\n            \"min\": \"19800\",\n            \"max\": \"25200\",\n            \"break\": \"0\",\n            \"paid\": \"1\",\n            \"date\": \"1519744738\",\n            \"exact\": \"0\"\n        }\n    ],\n    \"token\": \"xxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '244648'
+                        store:
+                          type: string
+                          example: '303579'
+                        schedule:
+                          type: string
+                          example: '1614960'
+                        user:
+                          type: string
+                          example: '3475050'
+                        min:
+                          type: string
+                          example: '14400'
+                        max:
+                          type: string
+                          example: '28800'
+                        break:
+                          type: string
+                          example: '0'
+                        paid:
+                          type: string
+                          example: '1'
+                        date:
+                          type: string
+                          example: '1519744721'
+                        exact:
+                          type: string
+                          example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/positions/1614960/breakrules?access_token=xxxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Positions
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

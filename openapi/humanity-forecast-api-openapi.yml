@@ -1,0 +1,2065 @@
+openapi: 3.2.0
+info:
+  title: default Forecast API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Forecast
+paths:
+  /forecast/copy/unique_id/{{unique_id_uid}}?access_token=xxxxxxx:
+    post:
+      summary: POST COPY Datapoints by datatype unique ID
+      description: 'Permission level: 5'
+      operationId: post-copy-datapoints-by-datatype-unique-id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Datatype unique ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - from_start
+              - from_end
+              - to_start
+              - to_end
+              properties:
+                from_start:
+                  type: string
+                  description: Start date of the datapoint that we want to copy
+                  format: date
+                from_end:
+                  type: string
+                  description: End date of the datapoint that we want to copy
+                  format: date
+                to_start:
+                  type: string
+                  description: Start date of the copied datatype
+                  format: date
+                to_end:
+                  type: string
+                  description: End date of the copied datatype
+                  format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 223,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-27 00:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"12:00am\"\n        },\n        {\n            \"id\": 224,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-27 02:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"2:00am\"\n        },\n        {\n            \"id\": 225,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 3,\n            \"period\": \"2017-09-27 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 226,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 4,\n            \"period\": \"2017-09-27 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 227,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 8,\n            \"period\": \"2017-09-27 10:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"10:00am\"\n        },\n        {\n            \"id\": 228,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-27 18:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"6:00pm\"\n        },\n        {\n            \"id\": 229,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-27 19:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"7:00pm\"\n        },\n        {\n            \"id\": 230,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-28 01:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"1:00am\"\n        },\n        {\n            \"id\": 231,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-28 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 232,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-28 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 233,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-28 15:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-24 20:44:01\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00pm\"\n        }\n    ],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 223
+                          default: 0
+                        company_id:
+                          type: integer
+                          example: 303579
+                          default: 0
+                        forecast_data_type_id:
+                          type: integer
+                          example: 29
+                          default: 0
+                        value:
+                          type: integer
+                          example: 1
+                          default: 0
+                        period:
+                          type: string
+                          example: '2017-09-27 00:00:00'
+                        created_by:
+                          type: string
+                          example: '3475050'
+                        updated_by: {}
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2017-09-24 20:44:01'
+                        updated_at: {}
+                        deleted_at: {}
+                        hour:
+                          type: string
+                          example: 12:00am
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'from_start=2017-09-24
+
+            from_end=17-09-25
+
+            to_start=017-09-27
+
+            to_end=017-09-28'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/copy/unique_id/555858?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Forecast
+  /forecast/copy/{datatype_id}?access_token=xxxxxxx:
+    post:
+      summary: POST COPY Datapoints
+      description: 'Permission level: 5'
+      operationId: post-copy-datapoints
+      parameters:
+      - name: datatype_id
+        in: query
+        description: Datatype ID
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - from_start
+              - from_end
+              - to_start
+              - to_end
+              properties:
+                from_start:
+                  type: string
+                  description: Start date of the datapoint that we want to copy
+                  format: date
+                from_end:
+                  type: string
+                  description: End date of the datapoint that we want to copy
+                  format: date
+                to_start:
+                  type: string
+                  description: Start date of the copied datatype
+                  format: date
+                to_end:
+                  type: string
+                  description: End date of the copied datatype
+                  format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 183,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-24 00:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"12:00am\"\n        },\n        {\n            \"id\": 184,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-24 02:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"2:00am\"\n        },\n        {\n            \"id\": 185,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 3,\n            \"period\": \"2017-09-24 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 186,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 4,\n            \"period\": \"2017-09-24 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 187,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-24 18:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"6:00pm\"\n        },\n        {\n            \"id\": 188,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-24 19:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"7:00pm\"\n        },\n        {\n            \"id\": 189,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-25 01:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"1:00am\"\n        },\n        {\n            \"id\": 190,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-25 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 191,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-25 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 192,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-25 15:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00pm\"\n        }\n    ],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 183
+                          default: 0
+                        company_id:
+                          type: integer
+                          example: 303579
+                          default: 0
+                        forecast_data_type_id:
+                          type: integer
+                          example: 29
+                          default: 0
+                        value:
+                          type: integer
+                          example: 1
+                          default: 0
+                        period:
+                          type: string
+                          example: '2017-09-24 00:00:00'
+                        created_by:
+                          type: string
+                          example: '3475050'
+                        updated_by: {}
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2017-09-18 08:19:04'
+                        updated_at: {}
+                        deleted_at: {}
+                        hour:
+                          type: string
+                          example: 12:00am
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'from_start=2017-09-17
+
+            from_end=2017-09-18
+
+            to_start=2017-09-24
+
+            to_end=2017-09-25'
+          name: BODY PARAMS
+        - language: http
+          code: '{{uri}}/api/v2/forecast/copy/29?access_token=xxxxxxx'
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Forecast
+  /forecast/datapoint/unique_id/{{unique_id_uid}}?access_token=xxxxxxx:
+    put:
+      summary: PUT Datapoint by the datatype unique id
+      description: 'Permission level: 5'
+      operationId: put-datapoint-by-the-datatype-unique-id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Datapoint  unique ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - value
+              - period
+              properties:
+                value:
+                  type: integer
+                  description: Updates the value of the datapoint
+                  format: int32
+                period:
+                  type: string
+                  description: The time of the datapoint that we want to update eg (2017-09-24 10:00:00)
+                  format: date-time
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 222,\n        \"company_id\": 303579,\n        \"forecast_data_type_id\": 29,\n        \"value\": 8,\n        \"period\": \"2017-09-24 10:00:00\",\n        \"created_by\": 3475050,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-24 20:37:05\",\n        \"updated_at\": null,\n        \"deleted_at\": null,\n        \"hour\": \"10:00am\"\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 222
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      forecast_data_type_id:
+                        type: integer
+                        example: 29
+                        default: 0
+                      value:
+                        type: integer
+                        example: 8
+                        default: 0
+                      period:
+                        type: string
+                        example: '2017-09-24 10:00:00'
+                      created_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-24 20:37:05'
+                      updated_at: {}
+                      deleted_at: {}
+                      hour:
+                        type: string
+                        example: 10:00am
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoint/unique_id/555858?access_token=xxxxxxx
+        - language: text
+          code: 'value=8
+
+            period=2017-09-24 10:00:00'
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+  /forecast/datapoint/{datapoint_id}?access_token=xxxxxxx:
+    get:
+      summary: GET Datapoint
+      description: 'Permission level: 5'
+      operationId: get-datapoint
+      parameters:
+      - name: datapoint_id
+        in: query
+        description: Datapoint ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 155,\n        \"company_id\": 303579,\n        \"forecast_data_type_id\": 29,\n        \"value\": 10,\n        \"period\": \"2017-09-10 14:00:00\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-13 09:42:06\",\n        \"updated_at\": null,\n        \"deleted_at\": null,\n        \"hour\": \"2:00pm\"\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 155
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      forecast_data_type_id:
+                        type: integer
+                        example: 29
+                        default: 0
+                      value:
+                        type: integer
+                        example: 10
+                        default: 0
+                      period:
+                        type: string
+                        example: '2017-09-10 14:00:00'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-13 09:42:06'
+                      updated_at: {}
+                      deleted_at: {}
+                      hour:
+                        type: string
+                        example: 2:00pm
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com//api/v2/forecast/datapoint/155?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+    put:
+      summary: PUT Datapoint
+      description: 'Permission level: 5'
+      operationId: put-datapoint
+      parameters:
+      - name: datapoint_id
+        in: query
+        description: Datapoint ID
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - value
+              properties:
+                value:
+                  type: integer
+                  description: Updates the value of the datapoint
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 155,\n        \"company_id\": 303579,\n        \"forecast_data_type_id\": 29,\n        \"value\": 177,\n        \"period\": \"2017-09-10 14:00:00\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": 3475050,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-13 09:42:06\",\n        \"updated_at\": \"2017-09-14 06:45:39\",\n        \"deleted_at\": null,\n        \"hour\": \"2:00pm\"\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 155
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      forecast_data_type_id:
+                        type: integer
+                        example: 29
+                        default: 0
+                      value:
+                        type: integer
+                        example: 177
+                        default: 0
+                      period:
+                        type: string
+                        example: '2017-09-10 14:00:00'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-13 09:42:06'
+                      updated_at:
+                        type: string
+                        example: '2017-09-14 06:45:39'
+                      deleted_at: {}
+                      hour:
+                        type: string
+                        example: 2:00pm
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoint/155?access_token=xxxxxxx
+        - language: text
+          code: value=177
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+    delete:
+      summary: DELETE Datapoint
+      description: 'Permission level: 5'
+      operationId: delete-datapoint
+      parameters:
+      - name: datapoint_id
+        in: query
+        description: Datapoint ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 201237,\n        \"company_id\": 302702,\n        \"forecast_data_type_id\": 2028,\n        \"value\": 9,\n        \"period\": \"2017-09-10 10:00:00\",\n        \"created_at\": \"2018-12-27 09:02:40\",\n        \"created_by\": \"3464383\",\n        \"updated_at\": null,\n        \"updated_by\": null,\n        \"deleted_by\": 3464383,\n        \"deleted_at\": \"2018-12-27 09:02:51\",\n        \"hour\": \"10:00am\"\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 201237
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 302702
+                        default: 0
+                      forecast_data_type_id:
+                        type: integer
+                        example: 2028
+                        default: 0
+                      value:
+                        type: integer
+                        example: 9
+                        default: 0
+                      period:
+                        type: string
+                        example: '2017-09-10 10:00:00'
+                      created_at:
+                        type: string
+                        example: '2018-12-27 09:02:40'
+                      created_by:
+                        type: string
+                        example: '3464383'
+                      updated_at: {}
+                      updated_by: {}
+                      deleted_by:
+                        type: integer
+                        example: 3464383
+                        default: 0
+                      deleted_at:
+                        type: string
+                        example: '2018-12-27 09:02:51'
+                      hour:
+                        type: string
+                        example: 10:00am
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoint/201237?access_token=xxxxxxx
+        - language: text
+          code: value=177
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+  /forecast/datapoint?access_token=xxxxxxx:
+    post:
+      summary: POST Datapoint
+      description: 'Permission level: 5'
+      operationId: post-datapoint
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - value
+              - data_type_id
+              - period
+              properties:
+                value:
+                  type: string
+                  description: Sets the name of the Forecast/Datatype
+                data_type_id:
+                  type: string
+                  description: Adds a description for this forecast/datatype
+                period:
+                  type: string
+                  description: Sets the unique id of the forecast/datatype
+                  format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 159,\n        \"company_id\": 303579,\n        \"forecast_data_type_id\": 32,\n        \"value\": 9,\n        \"period\": \"2017-09-10 10:00:00\",\n        \"created_by\": 3475050,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-13 10:25:16\",\n        \"updated_at\": null,\n        \"deleted_at\": null,\n        \"hour\": \"10:00am\"\n    },\n    \"token\": \"xxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 159
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      forecast_data_type_id:
+                        type: integer
+                        example: 32
+                        default: 0
+                      value:
+                        type: integer
+                        example: 9
+                        default: 0
+                      period:
+                        type: string
+                        example: '2017-09-10 10:00:00'
+                      created_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-13 10:25:16'
+                      updated_at: {}
+                      deleted_at: {}
+                      hour:
+                        type: string
+                        example: 10:00am
+                  token:
+                    type: string
+                    example: xxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'value=9
+
+            data_type_id=32
+
+            period=2017-09-10 10:00:00'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoint?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Forecast
+  /forecast/datapoints/unique_id/{{unique_id_uid}}?first_day={{2017-09-01}}&last_day={{2017-09-03}}&access_token=xxxxxxx:
+    get:
+      summary: GET Datapoint by datatype unique id
+      description: 'Permission level: 5'
+      operationId: get-datapoint-by-datapoints-unique-id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Datapoint unique ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: first_day
+        in: query
+        description: Start day of the datapoints that we need
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: last_day
+        in: query
+        description: End day of the datapoints that we need
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 183,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-24 00:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"12:00am\"\n        },\n        {\n            \"id\": 184,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-24 02:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"2:00am\"\n        },\n        {\n            \"id\": 185,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 3,\n            \"period\": \"2017-09-24 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 186,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 4,\n            \"period\": \"2017-09-24 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 187,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-24 18:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"6:00pm\"\n        },\n        {\n            \"id\": 188,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-24 19:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"7:00pm\"\n        },\n        {\n            \"id\": 189,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-25 01:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"1:00am\"\n        },\n        {\n            \"id\": 190,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-25 03:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00am\"\n        },\n        {\n            \"id\": 191,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-25 04:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00am\"\n        },\n        {\n            \"id\": 192,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-25 15:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-18 08:19:04\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00pm\"\n        }\n    ],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 183
+                          default: 0
+                        company_id:
+                          type: integer
+                          example: 303579
+                          default: 0
+                        forecast_data_type_id:
+                          type: integer
+                          example: 29
+                          default: 0
+                        value:
+                          type: integer
+                          example: 1
+                          default: 0
+                        period:
+                          type: string
+                          example: '2017-09-24 00:00:00'
+                        created_by:
+                          type: string
+                          example: '3475050'
+                        updated_by: {}
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2017-09-18 08:19:04'
+                        updated_at: {}
+                        deleted_at: {}
+                        hour:
+                          type: string
+                          example: 12:00am
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoints/unique_id/555858?first_day=2017-09-24&last_day=2017-09-25&access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datapoints/{datatype_id}?first_day={start_today}&last_day={end_future}&access_token=xxxxxxx:
+    get:
+      summary: GET Datapoints
+      description: 'Permission level: 5'
+      operationId: get-datapoints
+      parameters:
+      - name: datatype_id
+        in: query
+        description: Forecast(datatype) ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: first_day
+        in: query
+        description: First day for the given forecast to get the datapoints
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: last_day
+        in: query
+        description: Last day for the given forecast to get the datapoints
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 149,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 2,\n            \"period\": \"2017-09-10 08:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"8:00am\"\n        },\n        {\n            \"id\": 150,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 3,\n            \"period\": \"2017-09-10 09:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"9:00am\"\n        },\n        {\n            \"id\": 151,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 4,\n            \"period\": \"2017-09-10 10:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"10:00am\"\n        },\n        {\n            \"id\": 152,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-10 11:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"11:00am\"\n        },\n        {\n            \"id\": 153,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 6,\n            \"period\": \"2017-09-10 12:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"12:00pm\"\n        },\n        {\n            \"id\": 156,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 9,\n            \"period\": \"2017-09-10 13:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"1:00pm\"\n        },\n        {\n            \"id\": 155,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 10,\n            \"period\": \"2017-09-10 14:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"2:00pm\"\n        },\n        {\n            \"id\": 154,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 11,\n            \"period\": \"2017-09-10 15:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"3:00pm\"\n        },\n        {\n            \"id\": 157,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 5,\n            \"period\": \"2017-09-10 16:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"4:00pm\"\n        },\n        {\n            \"id\": 158,\n            \"company_id\": 303579,\n            \"forecast_data_type_id\": 29,\n            \"value\": 1,\n            \"period\": \"2017-09-10 17:00:00\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-13 09:42:06\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"hour\": \"5:00pm\"\n        }\n    ],\n    \"token\": \"xxxxxxx\",\n    \"error\": null"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoints/29?first_day=2017-09-01&last_day=2017-09-25&access_token=xxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datapoints?access_token=xxxxxxxxxxx:
+    post:
+      summary: CREATE Datapoints
+      description: 'Permission level: 5'
+      operationId: create-datapoints
+      parameters:
+      - name: data
+        in: query
+        description: '[{"key":"data","value":"[{\"value\":\"9\",\"data_type_id\":\"29\",\"period\":\"2018-02-02 10:00:00\"}]","type":"text","enabled":true}]'
+        schema:
+          type: string
+          format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": true,\n    \"token\": \"xxxxxxxxxxxxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: boolean
+                    example: true
+                    default: true
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datapoints?access_token=xxxxxxxxx
+        - language: text
+          code: data:[{"value":"9","data_type_id":"32","period":"2018-02-05 11:00:00"},{"value":"10","data_type_id":"32","period":"2018-02-05 12:00:00"}]
+          name: Body Params
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+  /forecast/datatype/unique_id/{unique_id_uid}?access_token=xxxxxxx:
+    delete:
+      summary: DELETE Forecast(Datatype) by unique_id
+      description: 'Permission level: 5'
+      operationId: delete-forecastdatatype-by-unique_id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Unique ID of the data type that needs to be deleted (Unique ID is the ID that we can set in the app or through API)
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 28,\n        \"unique_id\": \"25\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - Test\",\n        \"description\": \"how many customers per day visits our store\",\n        \"rules\": [\n            {\n                \"threshold\": \"0\",\n                \"need_number\": \"2\",\n                \"need_product\": \"1614960\",\n                \"source_number\": \"5\"\n            }\n        ],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": \"3475050\",\n        \"deleted_by\": 3475050,\n        \"created_at\": \"2017-09-12 12:35:11\",\n        \"updated_at\": \"2017-09-12 12:38:12\",\n        \"deleted_at\": \"2017-09-13 09:16:59\"\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 28
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '25'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - Test
+                      description:
+                        type: string
+                        example: how many customers per day visits our store
+                      rules:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            threshold:
+                              type: string
+                              example: '0'
+                            need_number:
+                              type: string
+                              example: '2'
+                            need_product:
+                              type: string
+                              example: '1614960'
+                            source_number:
+                              type: string
+                              example: '5'
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by:
+                        type: string
+                        example: '3475050'
+                      deleted_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      created_at:
+                        type: string
+                        example: '2017-09-12 12:35:11'
+                      updated_at:
+                        type: string
+                        example: '2017-09-12 12:38:12'
+                      deleted_at:
+                        type: string
+                        example: '2017-09-13 09:16:59'
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatype/unique_id/25?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datatype/unique_id/{{unique_id_uid}}?access_token=xxxxxxx:
+    get:
+      summary: GET Forecast(Datatype) by unique_id
+      description: 'Permission level: 5'
+      operationId: get-forecastdatatype-by-unique_id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Datatype unique id
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 32,\n        \"unique_id\": \"222\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - Test 3\",\n        \"description\": \"\",\n        \"rules\": [],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": \"3475050\",\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-12 13:36:59\",\n        \"updated_at\": \"2017-09-13 09:40:28\",\n        \"deleted_at\": null\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 32
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '222'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - Test 3
+                      description:
+                        type: string
+                        example: ''
+                      rules:
+                        type: array
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by:
+                        type: string
+                        example: '3475050'
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-12 13:36:59'
+                      updated_at:
+                        type: string
+                        example: '2017-09-13 09:40:28'
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatype/unique_id/222?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+    put:
+      summary: PUT Forecast(Datatypes) by unique ID
+      description: 'Permission level: 5'
+      operationId: put-forecastdatatypes-by-unique-id
+      parameters:
+      - name: unique_id_uid
+        in: query
+        description: Datatype unique ID which we want to update
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: Updates the name of datatype
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 32,\n        \"unique_id\": \"222\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - TEST 17\",\n        \"description\": \"\",\n        \"rules\": [],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": 3475050,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-12 13:36:59\",\n        \"updated_at\": \"2017-09-24 20:05:44\",\n        \"deleted_at\": null\n    },\n    \"token\": \"xxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 32
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '222'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - TEST 17
+                      description:
+                        type: string
+                        example: ''
+                      rules:
+                        type: array
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-12 13:36:59'
+                      updated_at:
+                        type: string
+                        example: '2017-09-24 20:05:44'
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatype/unique_id/147?access_token=xxxxxxx
+        - language: text
+          code: name=Forecast - TEST 17
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+  /forecast/datatypes/?access_token=xxxxxxx:
+    get:
+      summary: GET Forecast(Datatypes)
+      description: 'Permission level: 5'
+      operationId: get-forecast-datatypes
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 28,\n            \"unique_id\": \"25\",\n            \"company_id\": 303579,\n            \"name\": \"Forecast - Test\",\n            \"description\": \"how many customers per day visits our store\",\n            \"rules\": [\n                {\n                    \"threshold\": \"0\",\n                    \"need_number\": \"2\",\n                    \"need_product\": \"1614960\",\n                    \"source_number\": \"5\"\n                }\n            ],\n            \"api_locked\": \"0\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": \"3475050\",\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-12 12:35:11\",\n            \"updated_at\": \"2017-09-12 12:38:12\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": 29,\n            \"unique_id\": \"15\",\n            \"company_id\": 303579,\n            \"name\": \"Forecast - Test 2\",\n            \"description\": \"Calls per hour\",\n            \"rules\": [\n                {\n                    \"threshold\": \"1\",\n                    \"need_number\": \"3\",\n                    \"need_product\": \"1614962\",\n                    \"source_number\": \"50\"\n                }\n            ],\n            \"api_locked\": \"0\",\n            \"created_by\": \"3475050\",\n            \"updated_by\": null,\n            \"deleted_by\": null,\n            \"created_at\": \"2017-09-12 13:05:33\",\n            \"updated_at\": null,\n            \"deleted_at\": null\n        }\n    ],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 28
+                          default: 0
+                        unique_id:
+                          type: string
+                          example: '25'
+                        company_id:
+                          type: integer
+                          example: 303579
+                          default: 0
+                        name:
+                          type: string
+                          example: Forecast - Test
+                        description:
+                          type: string
+                          example: how many customers per day visits our store
+                        rules:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              threshold:
+                                type: string
+                                example: '0'
+                              need_number:
+                                type: string
+                                example: '2'
+                              need_product:
+                                type: string
+                                example: '1614960'
+                              source_number:
+                                type: string
+                                example: '5'
+                        api_locked:
+                          type: string
+                          example: '0'
+                        created_by:
+                          type: string
+                          example: '3475050'
+                        updated_by:
+                          type: string
+                          example: '3475050'
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2017-09-12 12:35:11'
+                        updated_at:
+                          type: string
+                          example: '2017-09-12 12:38:12'
+                        deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatypes/?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datatypes/{datatype_id}?access_token=xxxxxx:
+    put:
+      summary: PUT Forecast(Datatypes) by id
+      description: 'Permission level: 5'
+      operationId: put-forecastdatatypes
+      parameters:
+      - name: datatype_id
+        in: query
+        description: Datatype ID which we want to update
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: Updates the name of datatype
+                unique_id:
+                  type: integer
+                  description: Updates the unique_id
+                  format: int32
+                rules:
+                  type: string
+                  description: 'Updates the rules. Example: [{"source_number":"5","need_number":"2","need_product":"1744823","threshold":"0"}]'
+                  format: json
+                api_locked:
+                  type: integer
+                  description: Updates the api_locked param that can be set to 1 or 0
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 29,\n        \"unique_id\": \"555858\",\n        \"company_id\": 303579,\n        \"name\": \"Forcast - PUT\",\n        \"description\": \"Calls per hour\",\n        \"rules\": [\n            {\n                \"source_number\": \"15\",\n                \"need_number\": \"5\",\n                \"need_product\": \"1614960\",\n                \"threshold\": \"2\"\n            }\n        ],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": 3475050,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-12 13:05:33\",\n        \"updated_at\": \"2017-09-13 10:01:08\",\n        \"deleted_at\": null\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 29
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '555858'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forcast - PUT
+                      description:
+                        type: string
+                        example: Calls per hour
+                      rules:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            source_number:
+                              type: string
+                              example: '15'
+                            need_number:
+                              type: string
+                              example: '5'
+                            need_product:
+                              type: string
+                              example: '1614960'
+                            threshold:
+                              type: string
+                              example: '2'
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-12 13:05:33'
+                      updated_at:
+                        type: string
+                        example: '2017-09-13 10:01:08'
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatypes/29?access_token=xxxxxxx
+        - language: text
+          code: 'name=Forcast - PUT
+
+            unique_id=555858
+
+            api_locked=0
+
+            rules=[{"source_number":"15","need_number":"5","need_product":"1614960","threshold":"2"}]'
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Forecast
+  /forecast/datatypes/{datatype_id}?access_token=xxxxxxx:
+    delete:
+      summary: DELETE Forecast(Datatype)
+      description: 'Permission level: 5'
+      operationId: delete-forecastdatatypes
+      parameters:
+      - name: datatype_id
+        in: query
+        description: Datatype ID which needs to be deleted
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 43,\n        \"unique_id\": \"12345\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - Test 4\",\n        \"description\": \"Calls per hour\",\n        \"rules\": [\n            {\n                \"threshold\": \"0\",\n                \"need_number\": \"2\",\n                \"need_product\": \"1614960\",\n                \"source_number\": \"5\"\n            }\n        ],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": null,\n        \"deleted_by\": 3475050,\n        \"created_at\": \"2017-09-12 14:20:24\",\n        \"updated_at\": null,\n        \"deleted_at\": \"2017-09-13 09:03:28\"\n    },\n    \"token\": \"27d132950f709271eab980935924bd6bb6204ba1\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 43
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '12345'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - Test 4
+                      description:
+                        type: string
+                        example: Calls per hour
+                      rules:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            threshold:
+                              type: string
+                              example: '0'
+                            need_number:
+                              type: string
+                              example: '2'
+                            need_product:
+                              type: string
+                              example: '1614960'
+                            source_number:
+                              type: string
+                              example: '5'
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by: {}
+                      deleted_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      created_at:
+                        type: string
+                        example: '2017-09-12 14:20:24'
+                      updated_at: {}
+                      deleted_at:
+                        type: string
+                        example: '2017-09-13 09:03:28'
+                  token:
+                    type: string
+                    example: 27d132950f709271eab980935924bd6bb6204ba1
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatypes/43?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datatypes/{datatype_id}?access_token=xxxxxxxx:
+    get:
+      summary: GET Forecast(Datatype) by ID
+      description: 'Permission level: 5'
+      operationId: get-forecastdatatype
+      parameters:
+      - name: datatype_id
+        in: query
+        description: Datatype ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 32,\n        \"unique_id\": \"\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - Test 3\",\n        \"description\": \"\",\n        \"rules\": [],\n        \"api_locked\": \"0\",\n        \"created_by\": \"3475050\",\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-12 13:36:59\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 32
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: ''
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - Test 3
+                      description:
+                        type: string
+                        example: ''
+                      rules:
+                        type: array
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: string
+                        example: '3475050'
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-12 13:36:59'
+                      updated_at: {}
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatypes/32?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Forecast
+  /forecast/datatypes?access_token=xxxxxxx:
+    post:
+      summary: POST Forecast(Datatype)
+      description: 'Permission level: 5'
+      operationId: post-forecastdatatypes
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: Sets the name of the Forecast/Datatype
+                description:
+                  type: string
+                  description: Adds a description for this forecast/datatype
+                unique_id:
+                  type: integer
+                  description: Sets the unique id of the forecast/datatype
+                  format: int32
+                rules:
+                  type: string
+                  description: Sets the rules for this forecast/datatype
+                  format: json
+                api_locked:
+                  type: integer
+                  description: Can be only 0 or 1, if set to 1 datatype can not be changed or deleted from the application, only via API.
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 43,\n        \"unique_id\": \"12345\",\n        \"company_id\": 303579,\n        \"name\": \"Forecast - Test 4\",\n        \"description\": \"Calls per hour\",\n        \"rules\": [\n            {\n                \"source_number\": \"5\",\n                \"need_number\": \"2\",\n                \"need_product\": \"1614960\",\n                \"threshold\": \"0\"\n            }\n        ],\n        \"api_locked\": \"0\",\n        \"created_by\": 3475050,\n        \"updated_by\": null,\n        \"deleted_by\": null,\n        \"created_at\": \"2017-09-12 14:20:24\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n    },\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 43
+                        default: 0
+                      unique_id:
+                        type: string
+                        example: '12345'
+                      company_id:
+                        type: integer
+                        example: 303579
+                        default: 0
+                      name:
+                        type: string
+                        example: Forecast - Test 4
+                      description:
+                        type: string
+                        example: Calls per hour
+                      rules:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            source_number:
+                              type: string
+                              example: '5'
+                            need_number:
+                              type: string
+                              example: '2'
+                            need_product:
+                              type: string
+                              example: '1614960'
+                            threshold:
+                              type: string
+                              example: '0'
+                      api_locked:
+                        type: string
+                        example: '0'
+                      created_by:
+                        type: integer
+                        example: 3475050
+                        default: 0
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-09-12 14:20:24'
+                      updated_at: {}
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: 'name=Forecast - Test 4
+
+            description=Calls per hour
+
+            unique_id=12345
+
+            rules=[{"source_number":"5","need_number":"2","need_product":"1614960","threshold":"0"}]
+
+            api_locked=0'
+          name: BODY PARAMS
+        - language: http
+          code: https://www.humanity.com/api/v2/forecast/datatypes?access_token=xxxxxxx
+        samples-languages:
+        - text
+        - http
+      tags:
+      - Forecast
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

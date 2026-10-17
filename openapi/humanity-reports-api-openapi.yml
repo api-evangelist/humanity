@@ -1,0 +1,1364 @@
+openapi: 3.2.0
+info:
+  title: default Reports API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Reports
+paths:
+  /reports/custom:
+    get:
+      summary: GET Custom Report
+      description: '/reports/custom
+
+        Permission level: 3'
+      operationId: get-custom-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: type
+        in: query
+        description: enum[timesheets, confirmedtimesheets, shifts, confirmedshifts, openshifts]
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: 'The fields we want to have in the response.<br>The list depends on the selected parameter **type**.<br>For **timesheets**: ''employee'', ''eid'', ''user'', ''location'', ''schedule_id'', ''schedule_name'', ''start_day'', ''end_day'', ''start_time'', ''end_time'', ''total_time'', ''notes''<br>For **confirmedtimesheets**: ''employee'', ''eid'', ''user'', ''location'', ''schedule_id'', ''schedule_name'', ''start_day'', ''end_day'', ''start_time'', ''end_time'', ''total_time'', ''rate'', ''ratecard'', ''special'', ''overtime'', ''cost'', ''notes''<br>For **shifts**: ''employee'', ''eid'', ''user'', ''location'', ''schedule_id'', ''schedule_name'', ''start_day'', ''end_day'', ''start_time'', ''end_time'', ''total_time'', ''title'', ''notes''<br>For **confirmedshifts**: ''employee'', ''eid'', ''user'', ''location'', ''schedule_id'', ''schedule_name'', ''start_day'', ''end_day'', ''start_time'', ''end_time'', ''total_time'', ''title'', ''notes''<br>For **openshifts**: ''employees'', ''slots'', ''location'', ''schedule_id'', ''schedule_name'', ''start_day'', ''end_day'', ''start_time'', ''end_time'', ''total_time'', ''title'', ''notes'', ''published'''
+        required: true
+        schema:
+          type: string
+      - name: schedule
+        in: query
+        description: Array of Position (schedule) IDs (eg. 1639285,743314,743310) as comma-separated integer values
+        schema:
+          type: string
+      - name: employee
+        in: query
+        description: Array of Employee IDs (eg. 1417022,4513152,2479828) as comma-separated integer values
+        schema:
+          type: string
+      - name: location
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: deduct_breaks
+        in: query
+        description: Can be either 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: remote_site
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: options
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":\"1\",\n   \"data\":[\n      {\n         \"employee\":\"Alan\"\n      },\n      {\n         \"employee\":\"Bond\"\n      },\n      {\n         \"employee\":\"Brian\"\n      },\n      {\n         \"employee\":\"Peter\"\n      },\n      {\n         \"employee\":\"stewie \"\n      }\n   ],\n   \"token\":\"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: '1'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee:
+                          type: string
+                          example: Alan
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/custom?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+  /reports/daily_peak_hours:
+    get:
+      summary: GET Daily Peak Hours Report
+      description: '/reports/daily_peak_hours
+
+        Permission level: 3'
+      operationId: get-daily-peak-hours-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: location
+        in: query
+        schema:
+          type: string
+      - name: schedule
+        in: query
+        description: Array of schedule ids (eg."234,563,770")
+        schema:
+          type: string
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: remote_site
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: exclude_disabled_emp
+        in: query
+        description: enum[-1,1]
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"2835\": {\n      \"locations\": {        \n        \"1\": {\n          \"861\": {\n            \"schedule_name\": \"Live Chat &amp; Tickets\",\n            \"chunks\": {\n              \"0\": 60,\n              \"1\": 60,\n              \"2\": 60,\n              \"3\": 60,\n              \"4\": 60,\n              \"5\": 60,\n              \"21\": 60,\n              \"22\": 60,\n              \"23\": 60\n            },\n            \"total\": 9\n          },\n          \"75764\": {\n            \"schedule_name\": \"Setups\",\n            \"chunks\": [],\n            \"total\": 0\n          }\n      },\n      \"total\": 9\n    }\n  },\n  \"token\": \"xxx\",\n  \"error\": null\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/daily_peak_hours?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+  /reports/employee:
+    get:
+      summary: GET Employee Report
+      description: '/reports/employee
+
+        Permission level: 5'
+      operationId: get-employee-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: type
+        in: query
+        description: enum[attendance, vacations, availability, unavailability, hourly-availability, vacation-summary]
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: schedule
+        in: query
+        schema:
+          type: string
+      - name: employee
+        in: query
+        schema:
+          type: string
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: remote_site
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: leave_type
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":{\n      \"statuses\":{\n         \"1\":\"All Day\",\n         \"2\":\"Available\",\n         \"3\":\"On Vacation\",\n         \"4\":\"Not Available\"\n      },\n      \"dates\":[\n         {\n            \"id\":1326,\n            \"date\":{\n               \"id\":1326,\n               \"month\":12,\n               \"day\":15,\n               \"wday\":6,\n               \"year\":2012,\n               \"weekday\":\"Sat\",\n               \"mname\":\"Dec\",\n               \"week\":51,\n               \"dayid\":7,\n               \"timeid\":1,\n               \"formatted\":\"Dec 15, 2012\",\n               \"time\":\"00:00\",\n               \"timestamp\":1355526000,\n               \"hours\":0,\n               \"minutes\":0,\n               \"seconds\":0,\n               \"date\":\"2012-12-15 00:00:00\",\n               \"day_of_year\":\"349\",\n               \"sp_wday\":7\n            },\n            \"formatted\":\"Dec 15, 2012\"\n         },\n         {\n            \"id\":1327,\n            \"date\":{\n               \"id\":1327,\n               \"month\":12,\n               \"day\":16,\n               \"wday\":0,\n               \"year\":2012,\n               \"weekday\":\"Sun\",\n               \"mname\":\"Dec\",\n               \"week\":51,\n               \"dayid\":1,\n               \"timeid\":1,\n               \"formatted\":\"Dec 16, 2012\",\n               \"time\":\"00:00\",\n               \"timestamp\":1355612400,\n               \"hours\":0,\n               \"minutes\":0,\n               \"seconds\":0,\n               \"date\":\"2012-12-16 00:00:00\",\n               \"day_of_year\":\"350\",\n               \"sp_wday\":1\n            },\n            \"formatted\":\"Dec 16, 2012\"\n         }\n      ],\n      \"users\":[\n      ]\n   },\n   \"token\":\"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      statuses:
+                        type: object
+                        properties:
+                          '1':
+                            type: string
+                            example: All Day
+                          '2':
+                            type: string
+                            example: Available
+                          '3':
+                            type: string
+                            example: On Vacation
+                          '4':
+                            type: string
+                            example: Not Available
+                      dates:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1326
+                              default: 0
+                            date:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1326
+                                  default: 0
+                                month:
+                                  type: integer
+                                  example: 12
+                                  default: 0
+                                day:
+                                  type: integer
+                                  example: 15
+                                  default: 0
+                                wday:
+                                  type: integer
+                                  example: 6
+                                  default: 0
+                                year:
+                                  type: integer
+                                  example: 2012
+                                  default: 0
+                                weekday:
+                                  type: string
+                                  example: Sat
+                                mname:
+                                  type: string
+                                  example: Dec
+                                week:
+                                  type: integer
+                                  example: 51
+                                  default: 0
+                                dayid:
+                                  type: integer
+                                  example: 7
+                                  default: 0
+                                timeid:
+                                  type: integer
+                                  example: 1
+                                  default: 0
+                                formatted:
+                                  type: string
+                                  example: Dec 15, 2012
+                                time:
+                                  type: string
+                                  example: 00:00
+                                timestamp:
+                                  type: integer
+                                  example: 1355526000
+                                  default: 0
+                                hours:
+                                  type: integer
+                                  example: 0
+                                  default: 0
+                                minutes:
+                                  type: integer
+                                  example: 0
+                                  default: 0
+                                seconds:
+                                  type: integer
+                                  example: 0
+                                  default: 0
+                                date:
+                                  type: string
+                                  example: '2012-12-15 00:00:00'
+                                day_of_year:
+                                  type: string
+                                  example: '349'
+                                sp_wday:
+                                  type: integer
+                                  example: 7
+                                  default: 0
+                            formatted:
+                              type: string
+                              example: Dec 15, 2012
+                      users:
+                        type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/employee?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+  /reports/schedule:
+    get:
+      summary: GET Schedule Report
+      description: '/reports/schedule
+
+        Permission level: 5'
+      operationId: get-schedule-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: type
+        in: query
+        description: enum[schedule_summary, shift_confirmed, crib_sheet, shift_exchanges, open_shifts, position_summary, shift_acknowledgement]
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: schedule
+        in: query
+        description: Array of schedule ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: employee
+        in: query
+        description: Array of employees ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: with_statuses
+        in: query
+        description: 'null : without statuses, isset: with statuses'
+        schema:
+          type: integer
+          format: int32
+      - name: options
+        in: query
+        description: '1: order by name'
+        schema:
+          type: integer
+          format: int32
+      - name: deductbreaks
+        in: query
+        description: min value 1
+        schema:
+          type: integer
+          format: int32
+      - name: remote_site
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: include_emp_per_pos
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: acknowledgement_status
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":{\n      \"82185\":{\n         \"id\":\"82185\",\n         \"series\":\"82015\",\n         \"created\":\"1311728514\",\n         \"published\":\"1339668653\",\n         \"edited\":\"1311728514\",\n         \"deleted\":\"0\",\n         \"recurs\":\"1\",\n         \"recur_rule\":\"2\",\n         \"schedule\":\"866\",\n         \"store\":\"11\",\n         \"type\":\"1\",\n         \"needed\":\"1\",\n         \"have\":\"0\",\n         \"working\":\"0\",\n         \"user\":\"2\",\n         \"start_date\":{\n            \"id\":\"1116\",\n            \"month\":\"5\",\n            \"day\":\"19\",\n            \"year\":\"2012\",\n            \"weekday\":\"Sat\",\n            \"mname\":\"May\",\n            \"week\":\"20\",\n            \"dayid\":7,\n            \"formatted\":\"May 19, 2012\"\n         },\n         \"end_date\":{\n            \"id\":\"1116\",\n            \"month\":\"5\",\n            \"day\":\"19\",\n            \"year\":\"2012\",\n            \"weekday\":\"Sat\",\n            \"mname\":\"May\",\n            \"week\":\"20\",\n            \"dayid\":7,\n            \"formatted\":\"May 19, 2012\"\n         },\n         \"start\":\"11 am\",\n         \"end\":\"5 pm\",\n         \"length\":\"0\",\n         \"title\":\"\",\n         \"location\":\"0\",\n         \"notes\":\"\",\n         \"confirmed\":\"0\",\n         \"schedule_name\":\"Development\",\n         \"schedule_color\":\"657050\",\n         \"employee\":[\n            null\n         ]\n      },\n      \"93829\":{\n         \"id\":\"93829\",\n         \"series\":\"0\",\n         \"created\":\"1337631224\",\n         \"published\":\"1339668653\",\n         \"edited\":\"1337631231\",\n         \"deleted\":\"0\",\n         \"recurs\":\"0\",\n         \"recur_rule\":\"0\",\n         \"schedule\":\"32410\",\n         \"store\":\"11\",\n         \"type\":\"1\",\n         \"needed\":\"3\",\n         \"have\":\"0\",\n         \"working\":\"0\",\n         \"user\":\"5148\",\n         \"start_date\":{\n            \"id\":\"1117\",\n            \"month\":\"5\",\n            \"day\":\"20\",\n            \"year\":\"2012\",\n            \"weekday\":\"Sun\",\n            \"mname\":\"May\",\n            \"week\":\"20\",\n            \"dayid\":1,\n            \"formatted\":\"May 20, 2012\"\n         },\n         \"end_date\":{\n            \"id\":\"1117\",\n            \"month\":\"5\",\n            \"day\":\"20\",\n            \"year\":\"2012\",\n            \"weekday\":\"Sun\",\n            \"mname\":\"May\",\n            \"week\":\"20\",\n            \"dayid\":1,\n            \"formatted\":\"May 20, 2012\"\n         },\n         \"start\":\"8 am\",\n         \"end\":\"4 pm\",\n         \"length\":\"0\",\n         \"title\":\"\",\n         \"location\":\"0\",\n         \"notes\":\"\",\n         \"confirmed\":\"0\",\n         \"schedule_name\":\"Cash\",\n         \"schedule_color\":\"570026\",\n         \"employee\":[\n            null\n         ]\n      }\n   },\n   \"token\":\"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '82185':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '82185'
+                          series:
+                            type: string
+                            example: '82015'
+                          created:
+                            type: string
+                            example: '1311728514'
+                          published:
+                            type: string
+                            example: '1339668653'
+                          edited:
+                            type: string
+                            example: '1311728514'
+                          deleted:
+                            type: string
+                            example: '0'
+                          recurs:
+                            type: string
+                            example: '1'
+                          recur_rule:
+                            type: string
+                            example: '2'
+                          schedule:
+                            type: string
+                            example: '866'
+                          store:
+                            type: string
+                            example: '11'
+                          type:
+                            type: string
+                            example: '1'
+                          needed:
+                            type: string
+                            example: '1'
+                          have:
+                            type: string
+                            example: '0'
+                          working:
+                            type: string
+                            example: '0'
+                          user:
+                            type: string
+                            example: '2'
+                          start_date:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '1116'
+                              month:
+                                type: string
+                                example: '5'
+                              day:
+                                type: string
+                                example: '19'
+                              year:
+                                type: string
+                                example: '2012'
+                              weekday:
+                                type: string
+                                example: Sat
+                              mname:
+                                type: string
+                                example: May
+                              week:
+                                type: string
+                                example: '20'
+                              dayid:
+                                type: integer
+                                example: 7
+                                default: 0
+                              formatted:
+                                type: string
+                                example: May 19, 2012
+                          end_date:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '1116'
+                              month:
+                                type: string
+                                example: '5'
+                              day:
+                                type: string
+                                example: '19'
+                              year:
+                                type: string
+                                example: '2012'
+                              weekday:
+                                type: string
+                                example: Sat
+                              mname:
+                                type: string
+                                example: May
+                              week:
+                                type: string
+                                example: '20'
+                              dayid:
+                                type: integer
+                                example: 7
+                                default: 0
+                              formatted:
+                                type: string
+                                example: May 19, 2012
+                          start:
+                            type: string
+                            example: 11 am
+                          end:
+                            type: string
+                            example: 5 pm
+                          length:
+                            type: string
+                            example: '0'
+                          title:
+                            type: string
+                            example: ''
+                          location:
+                            type: string
+                            example: '0'
+                          notes:
+                            type: string
+                            example: ''
+                          confirmed:
+                            type: string
+                            example: '0'
+                          schedule_name:
+                            type: string
+                            example: Development
+                          schedule_color:
+                            type: string
+                            example: '657050'
+                          employee:
+                            type: array
+                            items: {}
+                      '93829':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '93829'
+                          series:
+                            type: string
+                            example: '0'
+                          created:
+                            type: string
+                            example: '1337631224'
+                          published:
+                            type: string
+                            example: '1339668653'
+                          edited:
+                            type: string
+                            example: '1337631231'
+                          deleted:
+                            type: string
+                            example: '0'
+                          recurs:
+                            type: string
+                            example: '0'
+                          recur_rule:
+                            type: string
+                            example: '0'
+                          schedule:
+                            type: string
+                            example: '32410'
+                          store:
+                            type: string
+                            example: '11'
+                          type:
+                            type: string
+                            example: '1'
+                          needed:
+                            type: string
+                            example: '3'
+                          have:
+                            type: string
+                            example: '0'
+                          working:
+                            type: string
+                            example: '0'
+                          user:
+                            type: string
+                            example: '5148'
+                          start_date:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '1117'
+                              month:
+                                type: string
+                                example: '5'
+                              day:
+                                type: string
+                                example: '20'
+                              year:
+                                type: string
+                                example: '2012'
+                              weekday:
+                                type: string
+                                example: Sun
+                              mname:
+                                type: string
+                                example: May
+                              week:
+                                type: string
+                                example: '20'
+                              dayid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: May 20, 2012
+                          end_date:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '1117'
+                              month:
+                                type: string
+                                example: '5'
+                              day:
+                                type: string
+                                example: '20'
+                              year:
+                                type: string
+                                example: '2012'
+                              weekday:
+                                type: string
+                                example: Sun
+                              mname:
+                                type: string
+                                example: May
+                              week:
+                                type: string
+                                example: '20'
+                              dayid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: May 20, 2012
+                          start:
+                            type: string
+                            example: 8 am
+                          end:
+                            type: string
+                            example: 4 pm
+                          length:
+                            type: string
+                            example: '0'
+                          title:
+                            type: string
+                            example: ''
+                          location:
+                            type: string
+                            example: '0'
+                          notes:
+                            type: string
+                            example: ''
+                          confirmed:
+                            type: string
+                            example: '0'
+                          schedule_name:
+                            type: string
+                            example: Cash
+                          schedule_color:
+                            type: string
+                            example: '570026'
+                          employee:
+                            type: array
+                            items: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/schedule?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+  /reports/timesheets:
+    get:
+      summary: GET Timesheets Report
+      description: '/reports/timesheets
+
+        Permission level: 5'
+      operationId: get-timesheets-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: type
+        in: query
+        description: enum[timesheets_summary, timesheets_attendance, timesheets_late_summary]
+        required: true
+        schema:
+          type: string
+      - name: deductbreaks
+        in: query
+        description: 'null or 0 : Do not deduct breaks, 1: Deduct breaks'
+        schema:
+          type: integer
+          format: int32
+      - name: location
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: schedule
+        in: query
+        description: Array of schedule ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: employee
+        in: query
+        description: Array of employees ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: remote_site
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: approval_status
+        in: query
+        description: -1 - All timesheets  1 - Approved timesheets 2 - Unapproved timesheets
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":\"1\",\n   \"data\":{\n      \"id\":\"1376\",\n      \"name\":\"John Smith\",\n      \"shifts\":\"0\",\n      \"hours_scheduled\":\"0\",\n      \"hours_clocked\":\"0\",\n      \"late\":\"0\",\n      \"absent\":\"0\",\n      \"karma\":\"0\",\n      \"percent\":\"0\"\n   },\n   \"token\":\"xxxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: '1'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '1376'
+                      name:
+                        type: string
+                        example: John Smith
+                      shifts:
+                        type: string
+                        example: '0'
+                      hours_scheduled:
+                        type: string
+                        example: '0'
+                      hours_clocked:
+                        type: string
+                        example: '0'
+                      late:
+                        type: string
+                        example: '0'
+                      absent:
+                        type: string
+                        example: '0'
+                      karma:
+                        type: string
+                        example: '0'
+                      percent:
+                        type: string
+                        example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/timesheets?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+  /reports/wu_daily_report:
+    get:
+      summary: GET Workunits Daily Report
+      description: '/reports/wu_daily_report
+
+        Permission level: 5'
+      operationId: get-workunits-daily-report
+      parameters:
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: employee
+        in: query
+        schema:
+          type: string
+      - name: schedule
+        in: query
+        schema:
+          type: string
+      - name: task
+        in: query
+        schema:
+          type: string
+      - name: location
+        in: query
+        schema:
+          type: string
+      - name: task_state
+        in: query
+        schema:
+          type: string
+      - name: workunit
+        in: query
+        description: Work Unit id - retrieve report only for this work unit
+        schema:
+          type: string
+      - name: remote_site
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"token\": \"xxxxxxx\",\n    \"data\": {\n        \"wu_names\": {\"605692\": {\n            \"108\": \"Cards\",\n            \"107\": \"Staples\"\n        }},\n        \"data\": {\"605692\": {\n            \"86941866\": {\"878708\": {\n                \"start\": \"8:00am\",\n                \"cost\": \"37.5\",\n                \"worked_units\": {\n                    \"108\": \"10\",\n                    \"107\": \"55\"\n                },\n                \"end\": \"4:00pm\",\n                \"employee_id\": \"878708\",\n                \"position\": \"Student\",\n                \"employee\": \"John Doe\",\n                \"location\": \"WorkShop\",\n                \"employee_eid\": null\n            }},\n            \"1412838000878708\": {\"878708\": {\n                \"start\": \"N/A\",\n                \"cost\": \"2.5\",\n                \"worked_units\": {\n                    \"108\": 0,\n                    \"107\": \"5\"\n                },\n                \"end\": \"N/A\",\n                \"employee_id\": \"878708\",\n                \"position\": \"Student\",\n                \"employee\": \"John Doe\",\n                \"location\": \"WorkShop\",\n                \"employee_eid\": null\n            }},\n            \"86941886\": {\"878708\": {\n                \"start\": \"7:00pm\",\n                \"cost\": 10,\n                \"worked_units\": {\n                    \"108\": \"10\",\n                    \"107\": 0\n                },\n                \"end\": \"10:00pm\",\n                \"employee_id\": \"878708\",\n                \"position\": \"Student\",\n                \"employee\": \"John Doe\",\n                \"location\": \"WorkShop\",\n                \"employee_eid\": null\n            }}\n        }}\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  data:
+                    type: object
+                    properties:
+                      wu_names:
+                        type: object
+                        properties:
+                          '605692':
+                            type: object
+                            properties:
+                              '107':
+                                type: string
+                                example: Staples
+                              '108':
+                                type: string
+                                example: Cards
+                      data:
+                        type: object
+                        properties:
+                          '605692':
+                            type: object
+                            properties:
+                              '86941866':
+                                type: object
+                                properties:
+                                  '878708':
+                                    type: object
+                                    properties:
+                                      start:
+                                        type: string
+                                        example: 8:00am
+                                      cost:
+                                        type: string
+                                        example: '37.5'
+                                      worked_units:
+                                        type: object
+                                        properties:
+                                          '107':
+                                            type: string
+                                            example: '55'
+                                          '108':
+                                            type: string
+                                            example: '10'
+                                      end:
+                                        type: string
+                                        example: 4:00pm
+                                      employee_id:
+                                        type: string
+                                        example: '878708'
+                                      position:
+                                        type: string
+                                        example: Student
+                                      employee:
+                                        type: string
+                                        example: John Doe
+                                      location:
+                                        type: string
+                                        example: WorkShop
+                                      employee_eid: {}
+                              '86941886':
+                                type: object
+                                properties:
+                                  '878708':
+                                    type: object
+                                    properties:
+                                      start:
+                                        type: string
+                                        example: 7:00pm
+                                      cost:
+                                        type: integer
+                                        example: 10
+                                        default: 0
+                                      worked_units:
+                                        type: object
+                                        properties:
+                                          '107':
+                                            type: integer
+                                            example: 0
+                                            default: 0
+                                          '108':
+                                            type: string
+                                            example: '10'
+                                      end:
+                                        type: string
+                                        example: 10:00pm
+                                      employee_id:
+                                        type: string
+                                        example: '878708'
+                                      position:
+                                        type: string
+                                        example: Student
+                                      employee:
+                                        type: string
+                                        example: John Doe
+                                      location:
+                                        type: string
+                                        example: WorkShop
+                                      employee_eid: {}
+                              '1412838000878708':
+                                type: object
+                                properties:
+                                  '878708':
+                                    type: object
+                                    properties:
+                                      start:
+                                        type: string
+                                        example: N/A
+                                      cost:
+                                        type: string
+                                        example: '2.5'
+                                      worked_units:
+                                        type: object
+                                        properties:
+                                          '107':
+                                            type: string
+                                            example: '5'
+                                          '108':
+                                            type: integer
+                                            example: 0
+                                            default: 0
+                                      end:
+                                        type: string
+                                        example: N/A
+                                      employee_id:
+                                        type: string
+                                        example: '878708'
+                                      position:
+                                        type: string
+                                        example: Student
+                                      employee:
+                                        type: string
+                                        example: John Doe
+                                      location:
+                                        type: string
+                                        example: WorkShop
+                                      employee_eid: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/reports/wu_daily_report?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Reports
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

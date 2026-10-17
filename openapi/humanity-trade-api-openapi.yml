@@ -1,0 +1,575 @@
+openapi: 3.2.0
+info:
+  title: default Trade API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Trade
+paths:
+  /trade/{id}:
+    get:
+      summary: GET Trade
+      description: '/trades/:id
+
+        Permission level: 5'
+      operationId: get-trade
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: with_conflicts
+        in: path
+        schema:
+          type: boolean
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":[\n      {\n         \"id\":\"238\",\n         \"status\":\"0\",\n         \"user\":\"5144\",\n         \"shift\":\"94220\",\n         \"store\":\"11\",\n         \"reference\":null,\n         \"reason\":\"No big reason\",\n         \"date\":\"1339498178\",\n         \"confirm_before\":\"0\",\n         \"confirm_after\":\"0\",\n         \"trade_to\":\"0\",\n         \"shift_start_date\":{\n            \"id\":\"1150\",\n            \"month\":\"6\",\n            \"day\":\"22\",\n            \"year\":\"2012\",\n            \"weekday\":\"Fri\",\n            \"mname\":\"Jun\",\n            \"week\":\"25\",\n            \"dayid\":6,\n            \"formatted\":\"Jun 22, 2012\"\n         }\n      }\n   ],\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '238'
+                        status:
+                          type: string
+                          example: '0'
+                        user:
+                          type: string
+                          example: '5144'
+                        shift:
+                          type: string
+                          example: '94220'
+                        store:
+                          type: string
+                          example: '11'
+                        reference: {}
+                        reason:
+                          type: string
+                          example: No big reason
+                        date:
+                          type: string
+                          example: '1339498178'
+                        confirm_before:
+                          type: string
+                          example: '0'
+                        confirm_after:
+                          type: string
+                          example: '0'
+                        trade_to:
+                          type: string
+                          example: '0'
+                        shift_start_date:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '1150'
+                            month:
+                              type: string
+                              example: '6'
+                            day:
+                              type: string
+                              example: '22'
+                            year:
+                              type: string
+                              example: '2012'
+                            weekday:
+                              type: string
+                              example: Fri
+                            mname:
+                              type: string
+                              example: Jun
+                            week:
+                              type: string
+                              example: '25'
+                            dayid:
+                              type: integer
+                              example: 6
+                              default: 0
+                            formatted:
+                              type: string
+                              example: Jun 22, 2012
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trade/238?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trade
+  /trade/{mode}:
+    get:
+      summary: GET Trades
+      description: '/trades
+
+        Permission level: 5'
+      operationId: get-trades
+      parameters:
+      - name: mode
+        in: path
+        description: enum[manage,requested,available]
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":[\n      {\n         \"id\":\"238\",\n         \"status\":\"0\",\n         \"user\":\"5144\",\n         \"shift\":\"94220\",\n         \"store\":\"11\",\n         \"reference\":null,\n         \"reason\":\"No big reason\",\n         \"date\":\"1339498178\",\n         \"confirm_before\":\"0\",\n         \"confirm_after\":\"0\",\n         \"trade_to\":\"0\",\n         \"shift_start_date\":{\n            \"id\":\"1150\",\n            \"month\":\"6\",\n            \"day\":\"22\",\n            \"year\":\"2012\",\n            \"weekday\":\"Fri\",\n            \"mname\":\"Jun\",\n            \"week\":\"25\",\n            \"dayid\":6,\n            \"formatted\":\"Jun 22, 2012\"\n         },\n         \"shift_start\":\"33\",\n         \"shift_end\":\"73\",\n         \"shift_schedule\":\"33499\",\n         \"schedule_name\":\"Budget 1\",\n         \"user_name\":\"Andy\",\n         \"requested\":{\n            \"id\":\"1140\",\n            \"month\":\"6\",\n            \"day\":\"12\",\n            \"year\":\"2012\",\n            \"weekday\":\"Tue\",\n            \"mname\":\"Jun\",\n            \"week\":\"24\",\n            \"dayid\":3,\n            \"formatted\":\"Jun 12, 2012\"\n         },\n         \"shift_start_time\":\"8 am\",\n         \"shift_end_time\":\"6 pm\",\n         \"traders\":{\n            \"count\":2,\n            \"data\":[\n               {\n                  \"id\":\"2297\",\n                  \"trade_id\":\"238\",\n                  \"shift\":\"94220\",\n                  \"user\":\"5145\",\n                  \"confirmed\":\"0\",\n                  \"approved\":\"0\",\n                  \"sms\":\"0\",\n                  \"email\":\"0\",\n                  \"online\":\"0\",\n                  \"user_name\":\"Bond\"\n               },\n               {\n                  \"id\":\"2298\",\n                  \"trade_id\":\"238\",\n                  \"shift\":\"94220\",\n                  \"user\":\"5245\",\n                  \"confirmed\":\"0\",\n                  \"approved\":\"0\",\n                  \"sms\":\"0\",\n                  \"email\":\"0\",\n                  \"online\":\"0\",\n                  \"user_name\":\"Ian Graham\"\n               }\n            ]\n         }\n      }\n   ],\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '238'
+                        status:
+                          type: string
+                          example: '0'
+                        user:
+                          type: string
+                          example: '5144'
+                        shift:
+                          type: string
+                          example: '94220'
+                        store:
+                          type: string
+                          example: '11'
+                        reference: {}
+                        reason:
+                          type: string
+                          example: No big reason
+                        date:
+                          type: string
+                          example: '1339498178'
+                        confirm_before:
+                          type: string
+                          example: '0'
+                        confirm_after:
+                          type: string
+                          example: '0'
+                        trade_to:
+                          type: string
+                          example: '0'
+                        shift_start_date:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '1150'
+                            month:
+                              type: string
+                              example: '6'
+                            day:
+                              type: string
+                              example: '22'
+                            year:
+                              type: string
+                              example: '2012'
+                            weekday:
+                              type: string
+                              example: Fri
+                            mname:
+                              type: string
+                              example: Jun
+                            week:
+                              type: string
+                              example: '25'
+                            dayid:
+                              type: integer
+                              example: 6
+                              default: 0
+                            formatted:
+                              type: string
+                              example: Jun 22, 2012
+                        shift_start:
+                          type: string
+                          example: '33'
+                        shift_end:
+                          type: string
+                          example: '73'
+                        shift_schedule:
+                          type: string
+                          example: '33499'
+                        schedule_name:
+                          type: string
+                          example: Budget 1
+                        user_name:
+                          type: string
+                          example: Andy
+                        requested:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '1140'
+                            month:
+                              type: string
+                              example: '6'
+                            day:
+                              type: string
+                              example: '12'
+                            year:
+                              type: string
+                              example: '2012'
+                            weekday:
+                              type: string
+                              example: Tue
+                            mname:
+                              type: string
+                              example: Jun
+                            week:
+                              type: string
+                              example: '24'
+                            dayid:
+                              type: integer
+                              example: 3
+                              default: 0
+                            formatted:
+                              type: string
+                              example: Jun 12, 2012
+                        shift_start_time:
+                          type: string
+                          example: 8 am
+                        shift_end_time:
+                          type: string
+                          example: 6 pm
+                        traders:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                              example: 2
+                              default: 0
+                            data:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '2297'
+                                  trade_id:
+                                    type: string
+                                    example: '238'
+                                  shift:
+                                    type: string
+                                    example: '94220'
+                                  user:
+                                    type: string
+                                    example: '5145'
+                                  confirmed:
+                                    type: string
+                                    example: '0'
+                                  approved:
+                                    type: string
+                                    example: '0'
+                                  sms:
+                                    type: string
+                                    example: '0'
+                                  email:
+                                    type: string
+                                    example: '0'
+                                  online:
+                                    type: string
+                                    example: '0'
+                                  user_name:
+                                    type: string
+                                    example: Bond
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trade/manage?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trade
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

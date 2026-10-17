@@ -1,0 +1,2017 @@
+openapi: 3.2.0
+info:
+  title: default Company API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Company
+paths:
+  /company/business?access_token=xxxxxxxxxx:
+    get:
+      summary: GET Business
+      description: '/company/business
+
+        Permission level: 5'
+      operationId: get-business
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": \"303579\",\n        \"franchise\": \"303579\",\n        \"status\": \"1\",\n        \"agent\": \"2969465\",\n        \"hunter\": null,\n        \"salessupport\": null,\n        \"level\": \"1\",\n        \"price\": \"105\",\n        \"price_back\": \"0\",\n        \"absplit\": \" \",\n        \"abversion\": \"0\",\n        \"comticket\": \"454941\",\n        \"timezone\": \"-05:00,0\",\n        \"created\": \"1499693156\",\n        \"deleted\": \"0\",\n        \"created_day\": \"2994\",\n        \"name\": \"\\t\\t\\t\\t\\t\\t    Alex incs\",\n        \"domain\": \"alexinc1\",\n        \"nemployees\": \"16\",\n        \"billing_employees\": \"1\",\n        \"logo\": \"1519922147\",\n        \"address\": \"Mekenzijeva 21 \",\n        \"country\": \"189\",\n        \"state\": \"00\",\n        \"city\": \"Belgrade\",\n        \"phone_number\": \"+381000000000\",\n        \"fax_number\": \"\",\n        \"user\": \"3475050\",\n        \"start_day\": \"1\",\n        \"end_day\": \"7\",\n        \"start_time\": \"33\",\n        \"end_time\": \"85\",\n        \"24hr\": \"0\",\n        \"overtime\": \"40\",\n        \"industry\": \"21\",\n        \"pref_admin_past_edit\": \"0\",\n        \"pref_book_days_off\": \"1\",\n        \"pref_book_days_off_adv\": \"-1\",\n        \"pref_book_days_off_max\": \"3\",\n        \"pref_confirm_trade_before\": \"1\",\n        \"pref_confirm_trade_after\": \"1\",\n        \"pref_sms\": \"1\",\n        \"pref_email\": \"1\",\n        \"pref_email_force\": 0,\n        \"pref_pm\": \"1\",\n        \"pref_visible_staff\": \"1\",\n        \"pref_visible_staff_details\": \"1\",\n        \"pref_visible_coworkers\": \"1\",\n        \"pref_trade_shifts\": \"1\",\n        \"pref_same_day_trades\": \"1\",\n        \"pref_coworkers_contacts\": \"1\",\n        \"pref_future_avail\": \"1\",\n        \"pref_weekly_avail\": \"1\",\n        \"pref_approve_availability\": \"1\",\n        \"pref_visible_overview\": \"1\",\n        \"pref_visible_own\": \"1\",\n        \"pref_timeout\": \"1800\",\n        \"pref_message_wall_on\": \"1\",\n        \"pref_message_wall_emp\": 0,\n        \"pref_message_wall_comments\": \"1\",\n        \"pref_message_wall_uploads\": \"1\",\n        \"pref_on_now\": \"1\",\n        \"pref_shift_confirm\": \"1\",\n        \"pref_shift_drop\": 0,\n        \"pref_shift_autoconfirm\": 0,\n        \"pref_timeclock\": \"1\",\n        \"pref_tc_terminal_lock\": 0,\n        \"pref_tc_round_to\": \"15\",\n        \"pref_tc_round_to_in\": \"5\",\n        \"pref_tc_round_to_out\": \"5\",\n        \"pref_tc_clock_in_timeframe\": \"-1\",\n        \"pref_tc_autoclockout\": \"9\",\n        \"pref_tc_webcam\": 0,\n        \"pref_tc_empl_import\": \"1\",\n        \"pref_tc_empl_addtime\": \"1\",\n        \"pref_tc_require_pos\": 0,\n        \"pref_tc_require_notes\": 0,\n        \"pref_24hr\": \"1\",\n        \"pref_date\": \"d-m-Y\",\n        \"pref_startday\": \"2\",\n        \"pref_week_adjust\": \"-26\",\n        \"pref_currency\": \"1\",\n        \"pref_viewadvance\": \"-1\",\n        \"pref_mintimebshifts\": \"0\",\n        \"pref_draft\": \"1\",\n        \"pref_reports\": \"1\",\n        \"pref_edit_profile\": 0,\n        \"pref_login_google\": \"1\",\n        \"pref_login_facebook\": 0,\n        \"pref_login_splogo\": 0,\n        \"pref_login_twitter\": \"1\",\n        \"pref_login_openid\": \"0\",\n        \"pref_scosting\": \"3\",\n        \"pref_training\": \"1\",\n        \"pref_availability_timeframe\": \"28\",\n        \"pref_alt_w_overtime_calc\": 0,\n        \"settings\": \"{\\\"pref_timeclock\\\":\\\"1\\\",\\\"pref_enable_break_button\\\":\\\"1\\\",\\\"pref_leave_enabled\\\":\\\"1\\\",\\\"pref_book_days_off\\\":\\\"1\\\",\\\"pref_book_days_off_adv\\\":\\\"-1\\\",\\\"pref_training\\\":\\\"1\\\",\\\"pref_visible_staff\\\":\\\"1\\\",\\\"pref_visible_staff_details\\\":\\\"1\\\",\\\"pref_on_now\\\":\\\"1\\\",\\\"pref_shift_confirm\\\":\\\"1\\\",\\\"pref_confirm_trade_after\\\":\\\"1\\\",\\\"pref_swap_shifts\\\":\\\"1\\\",\\\"pref_tc_clock_in_timeframe\\\":\\\"-1\\\",\\\"pref_tc_clock_in_after_timeframe\\\":\\\"-1\\\",\\\"pref_tc_clock_out_timeframe\\\":\\\"-1\\\",\\\"pref_tc_clock_out_after_timeframe\\\":\\\"-1\\\",\\\"pref_vacation_weekdays\\\":\\\"[\\\\\\\"6\\\\\\\"]\\\",\\\"country\\\":\\\"189\\\",\\\"timezone_id\\\":\\\"152\\\",\\\"language\\\":\\\"en_US\\\",\\\"pref_date\\\":\\\"d-m-Y\\\",\\\"pref_24hr\\\":\\\"1\\\",\\\"pref_week_adjust\\\":\\\"-26\\\",\\\"pref_restrict_referrals\\\":0,\\\"pref_email\\\":\\\"1\\\",\\\"pref_sms\\\":\\\"1\\\",\\\"pref_email_force\\\":0,\\\"pref_birthday\\\":\\\"1\\\",\\\"pref_birthday_card\\\":\\\"1\\\",\\\"pref_training_to_pdf\\\":0,\\\"pref_employee_nameformat\\\":\\\"F L\\\",\\\"pref_reports\\\":\\\"1\\\",\\\"pref_edit_profile\\\":0,\\\"pref_staff_visible_eid\\\":0,\\\"pref_allow_req_acc\\\":0,\\\"security_question\\\":\\\"njjnnjjnjnjnjn\\\",\\\"security_answer\\\":\\\"\\\",\\\"pref_employee_files\\\":0,\\\"show_upcoming_birthdays\\\":\\\"1\\\",\\\"allow_schedulers_to_create_delete_users\\\":\\\"1\\\",\\\"allow_multiple_filters_in_reports\\\":0,\\\"pref_send_email_via_emailclient\\\":\\\"1\\\",\\\"pref_only_managers_can_change_staff_password\\\":0,\\\"pref_message_wall_on\\\":\\\"1\\\",\\\"pref_message_wall_emp\\\":0,\\\"pref_message_wall_comments\\\":\\\"1\\\",\\\"pref_messaging_module\\\":\\\"1\\\",\\\"pref_pm\\\":\\\"1\\\",\\\"pref_pm_reply\\\":\\\"1\\\",\\\"pref_ping\\\":\\\"1\\\",\\\"pref_login_facebook\\\":0,\\\"pref_login_splogo\\\":0,\\\"autologout\\\":\\\"0\\\",\\\"password_expire\\\":\\\"0\\\",\\\"sort_location\\\":0,\\\"pref_show_location_in_shift\\\":\\\"1\\\",\\\"pref_show_overnight_shifts\\\":\\\"1\\\",\\\"pref_startday\\\":\\\"2\\\",\\\"pref_draft\\\":\\\"1\\\",\\\"pref_tasks\\\":\\\"1\\\",\\\"pref_24h_shift\\\":0,\\\"pref_schedule_notes\\\":\\\"1\\\",\\\"pref_schedule_notes_permissions\\\":\\\"3\\\",\\\"do_not_initiate_conflicts\\\":0,\\\"pref_show_pending_leaves_on_schedule\\\":0,\\\"pref_see_shift_notes_perm\\\":\\\"7\\\",\\\"pref_viewadvance\\\":\\\"-1\\\",\\\"pref_scosting\\\":\\\"3\\\",\\\"pref_visible_overview\\\":\\\"1\\\",\\\"pref_visible_own\\\":\\\"1\\\",\\\"max_days_row\\\":\\\"5\\\",\\\"pref_show_midnight\\\":0,\\\"pref_oncall_manage\\\":0,\\\"pref_employee_see_vacations\\\":\\\"1\\\",\\\"pref_sched_show_skill\\\":0,\\\"pref_task_modal\\\":\\\"\\\",\\\"pref_trade_shifts\\\":\\\"1\\\",\\\"pref_same_day_trades\\\":\\\"1\\\",\\\"pref_dont_show_overlapping_shifts_in_trades\\\":\\\"1\\\",\\\"pref_disable_shift_trade_between_positions\\\":0,\\\"pref_confirm_trade_before\\\":\\\"1\\\",\\\"pref_shift_acknowledgement\\\":\\\"1\\\",\\\"pref_shift_acknowledgement_notify\\\":\\\"12\\\",\\\"pref_visible_coworkers\\\":\\\"1\\\",\\\"pref_shift_drop\\\":0,\\\"pref_shift_autoconfirm\\\":0,\\\"pref_open_overtime\\\":\\\"1\\\",\\\"pref_mintimebshifts\\\":\\\"0\\\",\\\"pref_min_disregard\\\":0,\\\"pref_work_units\\\":\\\"1\\\",\\\"pref_work_units_employees\\\":\\\"1\\\",\\\"pref_schedulers_workunit_autoapproved\\\":0,\\\"pref_employees_workunit_autoapproved\\\":0,\\\"pref_wu_emp_can_see_report\\\":\\\"1\\\",\\\"pref_tc_webcam\\\":0,\\\"pref_tc_webcam_mobile\\\":0,\\\"pref_webcam_resolution\\\":\\\"320\\\",\\\"pref_tc_gps\\\":\\\"1\\\",\\\"pref_tc_unavailable_gps\\\":0,\\\"pref_tc_address\\\":0,\\\"pref_pre_time_clock\\\":0,\\\"pref_mandatory_pre_time_clock\\\":0,\\\"pref_restrict_empl_clockinout\\\":0,\\\"pref_tc_terminal_lock\\\":0,\\\"pref_tc_require_pos\\\":0,\\\"pref_tc_require_remote_site\\\":0,\\\"pref_tc_require_notes\\\":0,\\\"pref_tc_autoclockout\\\":\\\"9\\\",\\\"pref_tc_tips\\\":0,\\\"pref_timeclock_show_scheduled_details\\\":\\\"1\\\",\\\"pref_timeclock_show_breaks_mts\\\":0,\\\"pref_restrict_overlapping_timesheets\\\":0,\\\"pref_tc_round_to\\\":\\\"15\\\",\\\"pref_tc_round_to_in\\\":\\\"5\\\",\\\"pref_tc_round_to_in_direction\\\":\\\"1\\\",\\\"pref_tc_round_to_out\\\":\\\"5\\\",\\\"pref_tc_round_to_out_direction\\\":\\\"-1\\\",\\\"pref_tc_empl_import\\\":\\\"1\\\",\\\"pref_tc_empl_addtime\\\":\\\"1\\\",\\\"pref_tc_empl_edittime\\\":\\\"1\\\",\\\"pref_tc_prevent_empl_edittime_approved\\\":0,\\\"pref_tc_prevent_empl_addclock_x_days\\\":\\\"0\\\",\\\"show_timesheet_notes\\\":0,\\\"pref_mandatory_notes\\\":0,\\\"pref_emp_can_edit_tc_without_providing_reason\\\":0,\\\"pref_admin_clockin_reminder_schedulers\\\":\\\"[]\\\",\\\"pref_admin_clockin_reminder_managers\\\":\\\"[]\\\",\\\"pref_admin_clockout_reminder_schedulers\\\":\\\"[]\\\",\\\"pref_admin_clockout_reminder_managers\\\":\\\"[]\\\",\\\"pref_weekly_avail\\\":\\\"1\\\",\\\"pref_future_avail\\\":\\\"1\\\",\\\"pref_approve_availability\\\":\\\"1\\\",\\\"pref_sched_can_approve_availability\\\":\\\"1\\\",\\\"pref_availability_timeframe\\\":\\\"28\\\",\\\"pref_vacation_show_deleted\\\":0,\\\"pref_vac_req_only_schedulers\\\":0,\\\"pref_sched_can_approve_past_vacations\\\":0,\\\"pref_book_days_off_max\\\":\\\"3\\\",\\\"pref_vacation_max_days\\\":\\\"20\\\",\\\"pref_employee_delete_vacations\\\":\\\"1\\\",\\\"overtime_module\\\":\\\"default\\\",\\\"pref_cot_order15\\\":0,\\\"daily_overtime\\\":\\\"8\\\",\\\"overtime\\\":\\\"40\\\",\\\"monthly_overtime\\\":\\\"-2\\\",\\\"pref_request_deduct_breaks\\\":0,\\\"pref_payroll_reports\\\":0,\\\"rate_of_pay\\\":\\\"\\\",\\\"pref_alt_w_overtime_calc\\\":0,\\\"pref_overtime_per_position\\\":0,\\\"pref_approve_overtime\\\":0,\\\"pref_allow_scheduler_to_see_wages\\\":0,\\\"pref_allow_scheduler_to_see_budget\\\":0,\\\"pref_allow_scheduler_to_edit_budget\\\":0,\\\"allow_schedulers_payroll_report\\\":0,\\\"num_of_decimals\\\":\\\"2\\\",\\\"export_provider\\\":\\\"18\\\",\\\"pref_currency\\\":\\\"1\\\",\\\"company_code\\\":\\\"\\\",\\\"batch_id\\\":\\\"\\\",\\\"fixed_batch_id\\\":\\\"1\\\",\\\"regular_hour_code\\\":\\\"123\\\",\\\"special_hour_code\\\":\\\"AAA\\\",\\\"overtime_hour_code\\\":\\\"1111\\\",\\\"export_payrate\\\":\\\"1\\\",\\\"export_amount\\\":\\\"1\\\",\\\"company_name\\\":\\\"\\\",\\\"company_created_time\\\":\\\"\\\",\\\"qb_position_to_item\\\":0,\\\"payroll\\\":{\\\"company_code\\\":\\\"\\\",\\\"batch_id\\\":\\\"\\\",\\\"fixed_batch_id\\\":1,\\\"regular_hour_code\\\":\\\"123\\\",\\\"special_hour_code\\\":\\\"AAA\\\",\\\"overtime_hour_code\\\":\\\"1111\\\",\\\"company_name\\\":\\\"\\\",\\\"company_created_time\\\":\\\"\\\",\\\"export_provider\\\":\\\"18\\\",\\\"rate_of_pay\\\":\\\"\\\",\\\"export_payrate\\\":\\\"1\\\",\\\"qb_position_to_item\\\":null,\\\"export_amount\\\":\\\"1\\\",\\\"tax_frequency\\\":\\\"\\\"},\\\"groupforce\\\":{\\\"overtime_module\\\":1,\\\"daily_overtime\\\":1,\\\"overtime\\\":1,\\\"pref_request_deduct_breaks\\\":1,\\\"pref_payroll_reports\\\":1},\\\"pref_include_ghost_shifts\\\":\\\"0\\\",\\\"geofencing_distance\\\":null,\\\"tax_frequency\\\":\\\"\\\"}\",\n        \"notes\": \"\",\n        \"created_by\": \"0\",\n        \"new_employee_note\": \"\",\n        \"personal_welcome_sent\": \"0\",\n        \"ical\": \"7ed659924dbecf689b8f8d2847b6a225\",\n        \"trial\": \"205\",\n        \"trial_expiration\": \"2018-01-31\",\n        \"nonprofit\": \"0\",\n        \"casestudy\": \"0\",\n        \"paid_until\": \"0\",\n        \"paid_until_date\": null,\n        \"next_payment_date\": null,\n        \"groupbilling\": \"0\",\n        \"setup\": \"0\",\n        \"aw_keyword\": \" \",\n        \"campaign\": \" \",\n        \"affiliate\": \" \",\n        \"promo\": \" \",\n        \"saml_enabled\": \"0\",\n        \"saml_allow_login\": \"0\",\n        \"saml_login_url\": \"\",\n        \"saml_logout_url\": \"\",\n        \"saml_certificate\": \"\",\n        \"saml_fingerprint\": \"\",\n        \"language\": \"en_US\",\n        \"daily_overtime\": \"8\",\n        \"pref_min_disregard\": 0,\n        \"max_days_row\": \"5\",\n        \"pref_tc_screenshot\": \"0\",\n        \"group_platform_settings\": \"\",\n        \"pref_vacation_max_days\": \"20\",\n        \"sort_location\": 0,\n        \"pref_training_to_pdf\": 0,\n        \"pref_pre_time_clock\": 0,\n        \"pref_mandatory_pre_time_clock\": 0,\n        \"pref_user_confirm\": \"0\",\n        \"pref_request_deduct_breaks\": 0,\n        \"timezone_id\": \"152\",\n        \"pref_enable_break_button\": \"1\",\n        \"pref_ping\": \"1\",\n        \"pref_open_overtime\": \"1\",\n        \"pref_show_location_in_shift\": \"1\",\n        \"pref_swap_shifts\": \"1\",\n        \"monthly_overtime\": \"-2\",\n        \"health\": \"88\",\n        \"pref_show_midnight\": 0,\n        \"pref_overtime_per_position\": 0,\n        \"pref_approve_overtime\": 0,\n        \"pref_birthday\": \"1\",\n        \"pref_birthday_card\": \"1\",\n        \"pref_birthday_reminder\": \"1\",\n        \"logo_url\": \"{\\\"large\\\":\\\"logos\\\\/303579-5a982be3b3213.jpg\\\",\\\"small\\\":\\\"logos\\\\/sm_303579-5a982be3b3213.jpg\\\",\\\"full\\\":\\\"logos\\\\/full_303579-5a982be3b3213.jpg\\\",\\\"large_url\\\":\\\"https:\\\\/\\\\/s3.amazonaws.com\\\\/uf.shiftplanning.com\\\\/logos%2F303579-5a982be3b3213.jpg\\\",\\\"small_url\\\":\\\"https:\\\\/\\\\/s3.amazonaws.com\\\\/uf.shiftplanning.com\\\\/logos%2Fsm_303579-5a982be3b3213.jpg\\\",\\\"full_url\\\":\\\"https:\\\\/\\\\/s3.amazonaws.com\\\\/uf.shiftplanning.com\\\\/logos%2Ffull_303579-5a982be3b3213.jpg\\\"}\",\n        \"pref_tc_clock_out_timeframe\": \"-1\",\n        \"pref_tc_empl_edittime\": \"1\",\n        \"background_url\": null,\n        \"pref_allow_req_acc\": 0,\n        \"security_question\": \"njjnnjjnjnjnjn\",\n        \"security_answer\": \"\",\n        \"pref_employee_nameformat\": \"F L\",\n        \"background\": \"0\",\n        \"pref_tc_gps\": \"1\",\n        \"pref_oncall_manage\": 0,\n        \"pref_referrals\": \"0\",\n        \"custombilling\": \"0\",\n        \"master\": \"303579\",\n        \"parent\": \"0\",\n        \"is_parent\": \"1\",\n        \"extra_setup\": null,\n        \"saml_cache\": null,\n        \"error_trial\": \"0\",\n        \"is_humanity\": null,\n        \"pref_dont_show_overlapping_shifts_in_trades\": \"1\",\n        \"pref_tc_timeframe_notify\": \"0\",\n        \"leadspecialist\": \"0\",\n        \"newsletter_receive_type\": \"0\",\n        \"shiftplanning_plus\": \"0\",\n        \"had_wrong_timezone\": \"0\",\n        \"aw_source\": \" \",\n        \"aw_medium\": \" \",\n        \"aw_campaign\": \" \",\n        \"aw_adgroup\": \" \",\n        \"aw_content\": \" \",\n        \"aw_term\": \" \",\n        \"company_id\": \"0\",\n        \"contact_id\": \"0\",\n        \"ambassador\": \" \",\n        \"ambassador_payed\": \"0\",\n        \"store_id\": null,\n        \"intercom_id\": \"596380cd6b3638d9f65ab12a\",\n        \"pref_shift_acknowledgement\": \"1\",\n        \"pref_shift_acknowledgement_notify\": \"12\",\n        \"partner\": \" \",\n        \"downgrade\": \"0\",\n        \"sign_up_url_without_params\": \"https://www.humanity.com/\",\n        \"sign_up_url_with_params\": \"https://www.humanity.com/\",\n        \"teamtools_id\": \"596381c9dab5b5ab12491d59\",\n        \"onboarding\": \"\",\n        \"unique_id\": null,\n        \"use_parent_logo\": false,\n        \"pref_leave_enabled\": \"1\",\n        \"pref_tc_clock_in_after_timeframe\": \"-1\",\n        \"pref_tc_clock_out_after_timeframe\": \"-1\",\n        \"pref_vacation_weekdays\": [\n            \"6\"\n        ],\n        \"pref_restrict_referrals\": 0,\n        \"pref_staff_visible_eid\": 0,\n        \"pref_employee_files\": 0,\n        \"show_upcoming_birthdays\": \"1\",\n        \"allow_schedulers_to_create_delete_users\": \"1\",\n        \"allow_multiple_filters_in_reports\": 0,\n        \"pref_send_email_via_emailclient\": \"1\",\n        \"pref_only_managers_can_change_staff_password\": 0,\n        \"pref_messaging_module\": \"1\",\n        \"pref_pm_reply\": \"1\",\n        \"autologout\": \"0\",\n        \"password_expire\": \"0\",\n        \"pref_show_overnight_shifts\": \"1\",\n        \"pref_tasks\": \"1\",\n        \"pref_24h_shift\": 0,\n        \"pref_schedule_notes\": \"1\",\n        \"pref_schedule_notes_permissions\": \"3\",\n        \"do_not_initiate_conflicts\": 0,\n        \"pref_show_pending_leaves_on_schedule\": 0,\n        \"pref_see_shift_notes_perm\": \"7\",\n        \"pref_employee_see_vacations\": \"1\",\n        \"pref_sched_show_skill\": 0,\n        \"pref_task_modal\": \"\",\n        \"pref_disable_shift_trade_between_positions\": 0,\n        \"pref_work_units\": \"1\",\n        \"pref_work_units_employees\": \"1\",\n        \"pref_schedulers_workunit_autoapproved\": 0,\n        \"pref_employees_workunit_autoapproved\": 0,\n        \"pref_wu_emp_can_see_report\": \"1\",\n        \"pref_tc_webcam_mobile\": 0,\n        \"pref_webcam_resolution\": \"320\",\n        \"pref_tc_unavailable_gps\": 0,\n        \"pref_tc_address\": 0,\n        \"pref_restrict_empl_clockinout\": 0,\n        \"pref_tc_require_remote_site\": 0,\n        \"pref_tc_tips\": 0,\n        \"pref_timeclock_show_scheduled_details\": \"1\",\n        \"pref_timeclock_show_breaks_mts\": 0,\n        \"pref_restrict_overlapping_timesheets\": 0,\n        \"pref_tc_round_to_in_direction\": \"1\",\n        \"pref_tc_round_to_out_direction\": \"-1\",\n        \"pref_tc_prevent_empl_edittime_approved\": 0,\n        \"pref_tc_prevent_empl_addclock_x_days\": \"0\",\n        \"show_timesheet_notes\": 0,\n        \"pref_mandatory_notes\": 0,\n        \"pref_emp_can_edit_tc_without_providing_reason\": 0,\n        \"pref_admin_clockin_reminder_schedulers\": \"[]\",\n        \"pref_admin_clockin_reminder_managers\": \"[]\",\n        \"pref_admin_clockout_reminder_schedulers\": \"[]\",\n        \"pref_admin_clockout_reminder_managers\": \"[]\",\n        \"pref_sched_can_approve_availability\": \"1\",\n        \"pref_vacation_show_deleted\": 0,\n        \"pref_vac_req_only_schedulers\": 0,\n        \"pref_sched_can_approve_past_vacations\": 0,\n        \"pref_employee_delete_vacations\": \"1\",\n        \"overtime_module\": \"default\",\n        \"pref_cot_order15\": 0,\n        \"pref_payroll_reports\": 0,\n        \"rate_of_pay\": \"\",\n        \"pref_allow_scheduler_to_see_wages\": 0,\n        \"pref_allow_scheduler_to_see_budget\": 0,\n        \"pref_allow_scheduler_to_edit_budget\": 0,\n        \"allow_schedulers_payroll_report\": 0,\n        \"num_of_decimals\": \"2\",\n        \"export_provider\": \"18\",\n        \"company_code\": \"\",\n        \"batch_id\": \"\",\n        \"fixed_batch_id\": \"1\",\n        \"regular_hour_code\": \"123\",\n        \"special_hour_code\": \"AAA\",\n        \"overtime_hour_code\": \"1111\",\n        \"export_payrate\": \"1\",\n        \"export_amount\": \"1\",\n        \"company_name\": \"\",\n        \"company_created_time\": \"\",\n        \"qb_position_to_item\": 0,\n        \"payroll\": {\n            \"company_code\": \"\",\n            \"batch_id\": \"\",\n            \"fixed_batch_id\": 1,\n            \"regular_hour_code\": \"123\",\n            \"special_hour_code\": \"AAA\",\n            \"overtime_hour_code\": \"1111\",\n            \"company_name\": \"\",\n            \"company_created_time\": \"\",\n            \"export_provider\": \"18\",\n            \"rate_of_pay\": \"\",\n            \"export_payrate\": \"1\",\n            \"qb_position_to_item\": null,\n            \"export_amount\": \"1\",\n            \"tax_frequency\": \"\"\n        },\n        \"groupforce\": {\n            \"overtime_module\": 1,\n            \"daily_overtime\": 1,\n            \"overtime\": 1,\n            \"pref_request_deduct_breaks\": 1,\n            \"pref_payroll_reports\": 1\n        },\n        \"pref_include_ghost_shifts\": \"0\",\n        \"geofencing_distance\": null,\n        \"tax_frequency\": \"\"\n    },\n    \"token\": \"xxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '303579'
+                      franchise:
+                        type: string
+                        example: '303579'
+                      status:
+                        type: string
+                        example: '1'
+                      agent:
+                        type: string
+                        example: '2969465'
+                      hunter: {}
+                      salessupport: {}
+                      level:
+                        type: string
+                        example: '1'
+                      price:
+                        type: string
+                        example: '105'
+                      price_back:
+                        type: string
+                        example: '0'
+                      absplit:
+                        type: string
+                        example: ' '
+                      abversion:
+                        type: string
+                        example: '0'
+                      comticket:
+                        type: string
+                        example: '454941'
+                      timezone:
+                        type: string
+                        example: -05:00,0
+                      created:
+                        type: string
+                        example: '1499693156'
+                      deleted:
+                        type: string
+                        example: '0'
+                      created_day:
+                        type: string
+                        example: '2994'
+                      name:
+                        type: string
+                        example: "\t\t\t\t\t\t    Alex incs"
+                      domain:
+                        type: string
+                        example: alexinc1
+                      nemployees:
+                        type: string
+                        example: '16'
+                      billing_employees:
+                        type: string
+                        example: '1'
+                      logo:
+                        type: string
+                        example: '1519922147'
+                      address:
+                        type: string
+                        example: 'Mekenzijeva 21 '
+                      country:
+                        type: string
+                        example: '189'
+                      state:
+                        type: string
+                        example: '00'
+                      city:
+                        type: string
+                        example: Belgrade
+                      phone_number:
+                        type: string
+                        example: '+381000000000'
+                      fax_number:
+                        type: string
+                        example: ''
+                      user:
+                        type: string
+                        example: '3475050'
+                      start_day:
+                        type: string
+                        example: '1'
+                      end_day:
+                        type: string
+                        example: '7'
+                      start_time:
+                        type: string
+                        example: '33'
+                      end_time:
+                        type: string
+                        example: '85'
+                      24hr:
+                        type: string
+                        example: '0'
+                      overtime:
+                        type: string
+                        example: '40'
+                      industry:
+                        type: string
+                        example: '21'
+                      pref_admin_past_edit:
+                        type: string
+                        example: '0'
+                      pref_book_days_off:
+                        type: string
+                        example: '1'
+                      pref_book_days_off_adv:
+                        type: string
+                        example: '-1'
+                      pref_book_days_off_max:
+                        type: string
+                        example: '3'
+                      pref_confirm_trade_before:
+                        type: string
+                        example: '1'
+                      pref_confirm_trade_after:
+                        type: string
+                        example: '1'
+                      pref_sms:
+                        type: string
+                        example: '1'
+                      pref_email:
+                        type: string
+                        example: '1'
+                      pref_email_force:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_pm:
+                        type: string
+                        example: '1'
+                      pref_visible_staff:
+                        type: string
+                        example: '1'
+                      pref_visible_staff_details:
+                        type: string
+                        example: '1'
+                      pref_visible_coworkers:
+                        type: string
+                        example: '1'
+                      pref_trade_shifts:
+                        type: string
+                        example: '1'
+                      pref_same_day_trades:
+                        type: string
+                        example: '1'
+                      pref_coworkers_contacts:
+                        type: string
+                        example: '1'
+                      pref_future_avail:
+                        type: string
+                        example: '1'
+                      pref_weekly_avail:
+                        type: string
+                        example: '1'
+                      pref_approve_availability:
+                        type: string
+                        example: '1'
+                      pref_visible_overview:
+                        type: string
+                        example: '1'
+                      pref_visible_own:
+                        type: string
+                        example: '1'
+                      pref_timeout:
+                        type: string
+                        example: '1800'
+                      pref_message_wall_on:
+                        type: string
+                        example: '1'
+                      pref_message_wall_emp:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_message_wall_comments:
+                        type: string
+                        example: '1'
+                      pref_message_wall_uploads:
+                        type: string
+                        example: '1'
+                      pref_on_now:
+                        type: string
+                        example: '1'
+                      pref_shift_confirm:
+                        type: string
+                        example: '1'
+                      pref_shift_drop:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_shift_autoconfirm:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_timeclock:
+                        type: string
+                        example: '1'
+                      pref_tc_terminal_lock:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_round_to:
+                        type: string
+                        example: '15'
+                      pref_tc_round_to_in:
+                        type: string
+                        example: '5'
+                      pref_tc_round_to_out:
+                        type: string
+                        example: '5'
+                      pref_tc_clock_in_timeframe:
+                        type: string
+                        example: '-1'
+                      pref_tc_autoclockout:
+                        type: string
+                        example: '9'
+                      pref_tc_webcam:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_empl_import:
+                        type: string
+                        example: '1'
+                      pref_tc_empl_addtime:
+                        type: string
+                        example: '1'
+                      pref_tc_require_pos:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_require_notes:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_24hr:
+                        type: string
+                        example: '1'
+                      pref_date:
+                        type: string
+                        example: d-m-Y
+                      pref_startday:
+                        type: string
+                        example: '2'
+                      pref_week_adjust:
+                        type: string
+                        example: '-26'
+                      pref_currency:
+                        type: string
+                        example: '1'
+                      pref_viewadvance:
+                        type: string
+                        example: '-1'
+                      pref_mintimebshifts:
+                        type: string
+                        example: '0'
+                      pref_draft:
+                        type: string
+                        example: '1'
+                      pref_reports:
+                        type: string
+                        example: '1'
+                      pref_edit_profile:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_login_google:
+                        type: string
+                        example: '1'
+                      pref_login_facebook:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_login_splogo:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_login_twitter:
+                        type: string
+                        example: '1'
+                      pref_login_openid:
+                        type: string
+                        example: '0'
+                      pref_scosting:
+                        type: string
+                        example: '3'
+                      pref_training:
+                        type: string
+                        example: '1'
+                      pref_availability_timeframe:
+                        type: string
+                        example: '28'
+                      pref_alt_w_overtime_calc:
+                        type: integer
+                        example: 0
+                        default: 0
+                      settings:
+                        type: string
+                        example: '{"pref_timeclock":"1","pref_enable_break_button":"1","pref_leave_enabled":"1","pref_book_days_off":"1","pref_book_days_off_adv":"-1","pref_training":"1","pref_visible_staff":"1","pref_visible_staff_details":"1","pref_on_now":"1","pref_shift_confirm":"1","pref_confirm_trade_after":"1","pref_swap_shifts":"1","pref_tc_clock_in_timeframe":"-1","pref_tc_clock_in_after_timeframe":"-1","pref_tc_clock_out_timeframe":"-1","pref_tc_clock_out_after_timeframe":"-1","pref_vacation_weekdays":"[\"6\"]","country":"189","timezone_id":"152","language":"en_US","pref_date":"d-m-Y","pref_24hr":"1","pref_week_adjust":"-26","pref_restrict_referrals":0,"pref_email":"1","pref_sms":"1","pref_email_force":0,"pref_birthday":"1","pref_birthday_card":"1","pref_training_to_pdf":0,"pref_employee_nameformat":"F L","pref_reports":"1","pref_edit_profile":0,"pref_staff_visible_eid":0,"pref_allow_req_acc":0,"security_question":"njjnnjjnjnjnjn","security_answer":"","pref_employee_files":0,"show_upcoming_birthdays":"1","allow_schedulers_to_create_delete_users":"1","allow_multiple_filters_in_reports":0,"pref_send_email_via_emailclient":"1","pref_only_managers_can_change_staff_password":0,"pref_message_wall_on":"1","pref_message_wall_emp":0,"pref_message_wall_comments":"1","pref_messaging_module":"1","pref_pm":"1","pref_pm_reply":"1","pref_ping":"1","pref_login_facebook":0,"pref_login_splogo":0,"autologout":"0","password_expire":"0","sort_location":0,"pref_show_location_in_shift":"1","pref_show_overnight_shifts":"1","pref_startday":"2","pref_draft":"1","pref_tasks":"1","pref_24h_shift":0,"pref_schedule_notes":"1","pref_schedule_notes_permissions":"3","do_not_initiate_conflicts":0,"pref_show_pending_leaves_on_schedule":0,"pref_see_shift_notes_perm":"7","pref_viewadvance":"-1","pref_scosting":"3","pref_visible_overview":"1","pref_visible_own":"1","max_days_row":"5","pref_show_midnight":0,"pref_oncall_manage":0,"pref_employee_see_vacations":"1","pref_sched_show_skill":0,"pref_task_modal":"","pref_trade_shifts":"1","pref_same_day_trades":"1","pref_dont_show_overlapping_shifts_in_trades":"1","pref_disable_shift_trade_between_positions":0,"pref_confirm_trade_before":"1","pref_shift_acknowledgement":"1","pref_shift_acknowledgement_notify":"12","pref_visible_coworkers":"1","pref_shift_drop":0,"pref_shift_autoconfirm":0,"pref_open_overtime":"1","pref_mintimebshifts":"0","pref_min_disregard":0,"pref_work_units":"1","pref_work_units_employees":"1","pref_schedulers_workunit_autoapproved":0,"pref_employees_workunit_autoapproved":0,"pref_wu_emp_can_see_report":"1","pref_tc_webcam":0,"pref_tc_webcam_mobile":0,"pref_webcam_resolution":"320","pref_tc_gps":"1","pref_tc_unavailable_gps":0,"pref_tc_address":0,"pref_pre_time_clock":0,"pref_mandatory_pre_time_clock":0,"pref_restrict_empl_clockinout":0,"pref_tc_terminal_lock":0,"pref_tc_require_pos":0,"pref_tc_require_remote_site":0,"pref_tc_require_notes":0,"pref_tc_autoclockout":"9","pref_tc_tips":0,"pref_timeclock_show_scheduled_details":"1","pref_timeclock_show_breaks_mts":0,"pref_restrict_overlapping_timesheets":0,"pref_tc_round_to":"15","pref_tc_round_to_in":"5","pref_tc_round_to_in_direction":"1","pref_tc_round_to_out":"5","pref_tc_round_to_out_direction":"-1","pref_tc_empl_import":"1","pref_tc_empl_addtime":"1","pref_tc_empl_edittime":"1","pref_tc_prevent_empl_edittime_approved":0,"pref_tc_prevent_empl_addclock_x_days":"0","show_timesheet_notes":0,"pref_mandatory_notes":0,"pref_emp_can_edit_tc_without_providing_reason":0,"pref_admin_clockin_reminder_schedulers":"[]","pref_admin_clockin_reminder_managers":"[]","pref_admin_clockout_reminder_schedulers":"[]","pref_admin_clockout_reminder_managers":"[]","pref_weekly_avail":"1","pref_future_avail":"1","pref_approve_availability":"1","pref_sched_can_approve_availability":"1","pref_availability_timeframe":"28","pref_vacation_show_deleted":0,"pref_vac_req_only_schedulers":0,"pref_sched_can_approve_past_vacations":0,"pref_book_days_off_max":"3","pref_vacation_max_days":"20","pref_employee_delete_vacations":"1","overtime_module":"default","pref_cot_order15":0,"daily_overtime":"8","overtime":"40","monthly_overtime":"-2","pref_request_deduct_breaks":0,"pref_payroll_reports":0,"rate_of_pay":"","pref_alt_w_overtime_calc":0,"pref_overtime_per_position":0,"pref_approve_overtime":0,"pref_allow_scheduler_to_see_wages":0,"pref_allow_scheduler_to_see_budget":0,"pref_allow_scheduler_to_edit_budget":0,"allow_schedulers_payroll_report":0,"num_of_decimals":"2","export_provider":"18","pref_currency":"1","company_code":"","batch_id":"","fixed_batch_id":"1","regular_hour_code":"123","special_hour_code":"AAA","overtime_hour_code":"1111","export_payrate":"1","export_amount":"1","company_name":"","company_created_time":"","qb_position_to_item":0,"payroll":{"company_code":"","batch_id":"","fixed_batch_id":1,"regular_hour_code":"123","special_hour_code":"AAA","overtime_hour_code":"1111","company_name":"","company_created_time":"","export_provider":"18","rate_of_pay":"","export_payrate":"1","qb_position_to_item":null,"export_amount":"1","tax_frequency":""},"groupforce":{"overtime_module":1,"daily_overtime":1,"overtime":1,"pref_request_deduct_breaks":1,"pref_payroll_reports":1},"pref_include_ghost_shifts":"0","geofencing_distance":null,"tax_frequency":""}'
+                      notes:
+                        type: string
+                        example: ''
+                      created_by:
+                        type: string
+                        example: '0'
+                      new_employee_note:
+                        type: string
+                        example: ''
+                      personal_welcome_sent:
+                        type: string
+                        example: '0'
+                      ical:
+                        type: string
+                        example: 7ed659924dbecf689b8f8d2847b6a225
+                      trial:
+                        type: string
+                        example: '205'
+                      trial_expiration:
+                        type: string
+                        example: '2018-01-31'
+                      nonprofit:
+                        type: string
+                        example: '0'
+                      casestudy:
+                        type: string
+                        example: '0'
+                      paid_until:
+                        type: string
+                        example: '0'
+                      paid_until_date: {}
+                      next_payment_date: {}
+                      groupbilling:
+                        type: string
+                        example: '0'
+                      setup:
+                        type: string
+                        example: '0'
+                      aw_keyword:
+                        type: string
+                        example: ' '
+                      campaign:
+                        type: string
+                        example: ' '
+                      affiliate:
+                        type: string
+                        example: ' '
+                      promo:
+                        type: string
+                        example: ' '
+                      saml_enabled:
+                        type: string
+                        example: '0'
+                      saml_allow_login:
+                        type: string
+                        example: '0'
+                      saml_login_url:
+                        type: string
+                        example: ''
+                      saml_logout_url:
+                        type: string
+                        example: ''
+                      saml_certificate:
+                        type: string
+                        example: ''
+                      saml_fingerprint:
+                        type: string
+                        example: ''
+                      language:
+                        type: string
+                        example: en_US
+                      daily_overtime:
+                        type: string
+                        example: '8'
+                      pref_min_disregard:
+                        type: integer
+                        example: 0
+                        default: 0
+                      max_days_row:
+                        type: string
+                        example: '5'
+                      pref_tc_screenshot:
+                        type: string
+                        example: '0'
+                      group_platform_settings:
+                        type: string
+                        example: ''
+                      pref_vacation_max_days:
+                        type: string
+                        example: '20'
+                      sort_location:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_training_to_pdf:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_pre_time_clock:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_mandatory_pre_time_clock:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_user_confirm:
+                        type: string
+                        example: '0'
+                      pref_request_deduct_breaks:
+                        type: integer
+                        example: 0
+                        default: 0
+                      timezone_id:
+                        type: string
+                        example: '152'
+                      pref_enable_break_button:
+                        type: string
+                        example: '1'
+                      pref_ping:
+                        type: string
+                        example: '1'
+                      pref_open_overtime:
+                        type: string
+                        example: '1'
+                      pref_show_location_in_shift:
+                        type: string
+                        example: '1'
+                      pref_swap_shifts:
+                        type: string
+                        example: '1'
+                      monthly_overtime:
+                        type: string
+                        example: '-2'
+                      health:
+                        type: string
+                        example: '88'
+                      pref_show_midnight:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_overtime_per_position:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_approve_overtime:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_birthday:
+                        type: string
+                        example: '1'
+                      pref_birthday_card:
+                        type: string
+                        example: '1'
+                      pref_birthday_reminder:
+                        type: string
+                        example: '1'
+                      logo_url:
+                        type: string
+                        example: '{"large":"logos\/303579-5a982be3b3213.jpg","small":"logos\/sm_303579-5a982be3b3213.jpg","full":"logos\/full_303579-5a982be3b3213.jpg","large_url":"https:\/\/s3.amazonaws.com\/uf.shiftplanning.com\/logos%2F303579-5a982be3b3213.jpg","small_url":"https:\/\/s3.amazonaws.com\/uf.shiftplanning.com\/logos%2Fsm_303579-5a982be3b3213.jpg","full_url":"https:\/\/s3.amazonaws.com\/uf.shiftplanning.com\/logos%2Ffull_303579-5a982be3b3213.jpg"}'
+                      pref_tc_clock_out_timeframe:
+                        type: string
+                        example: '-1'
+                      pref_tc_empl_edittime:
+                        type: string
+                        example: '1'
+                      background_url: {}
+                      pref_allow_req_acc:
+                        type: integer
+                        example: 0
+                        default: 0
+                      security_question:
+                        type: string
+                        example: njjnnjjnjnjnjn
+                      security_answer:
+                        type: string
+                        example: ''
+                      pref_employee_nameformat:
+                        type: string
+                        example: F L
+                      background:
+                        type: string
+                        example: '0'
+                      pref_tc_gps:
+                        type: string
+                        example: '1'
+                      pref_oncall_manage:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_referrals:
+                        type: string
+                        example: '0'
+                      custombilling:
+                        type: string
+                        example: '0'
+                      master:
+                        type: string
+                        example: '303579'
+                      parent:
+                        type: string
+                        example: '0'
+                      is_parent:
+                        type: string
+                        example: '1'
+                      extra_setup: {}
+                      saml_cache: {}
+                      error_trial:
+                        type: string
+                        example: '0'
+                      is_humanity: {}
+                      pref_dont_show_overlapping_shifts_in_trades:
+                        type: string
+                        example: '1'
+                      pref_tc_timeframe_notify:
+                        type: string
+                        example: '0'
+                      leadspecialist:
+                        type: string
+                        example: '0'
+                      newsletter_receive_type:
+                        type: string
+                        example: '0'
+                      shiftplanning_plus:
+                        type: string
+                        example: '0'
+                      had_wrong_timezone:
+                        type: string
+                        example: '0'
+                      aw_source:
+                        type: string
+                        example: ' '
+                      aw_medium:
+                        type: string
+                        example: ' '
+                      aw_campaign:
+                        type: string
+                        example: ' '
+                      aw_adgroup:
+                        type: string
+                        example: ' '
+                      aw_content:
+                        type: string
+                        example: ' '
+                      aw_term:
+                        type: string
+                        example: ' '
+                      company_id:
+                        type: string
+                        example: '0'
+                      contact_id:
+                        type: string
+                        example: '0'
+                      ambassador:
+                        type: string
+                        example: ' '
+                      ambassador_payed:
+                        type: string
+                        example: '0'
+                      store_id: {}
+                      intercom_id:
+                        type: string
+                        example: 596380cd6b3638d9f65ab12a
+                      pref_shift_acknowledgement:
+                        type: string
+                        example: '1'
+                      pref_shift_acknowledgement_notify:
+                        type: string
+                        example: '12'
+                      partner:
+                        type: string
+                        example: ' '
+                      downgrade:
+                        type: string
+                        example: '0'
+                      sign_up_url_without_params:
+                        type: string
+                        example: https://www.humanity.com/
+                      sign_up_url_with_params:
+                        type: string
+                        example: https://www.humanity.com/
+                      teamtools_id:
+                        type: string
+                        example: 596381c9dab5b5ab12491d59
+                      onboarding:
+                        type: string
+                        example: ''
+                      unique_id: {}
+                      use_parent_logo:
+                        type: boolean
+                        example: false
+                        default: true
+                      pref_leave_enabled:
+                        type: string
+                        example: '1'
+                      pref_tc_clock_in_after_timeframe:
+                        type: string
+                        example: '-1'
+                      pref_tc_clock_out_after_timeframe:
+                        type: string
+                        example: '-1'
+                      pref_vacation_weekdays:
+                        type: array
+                        items:
+                          type: string
+                          example: '6'
+                      pref_restrict_referrals:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_staff_visible_eid:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_employee_files:
+                        type: integer
+                        example: 0
+                        default: 0
+                      show_upcoming_birthdays:
+                        type: string
+                        example: '1'
+                      allow_schedulers_to_create_delete_users:
+                        type: string
+                        example: '1'
+                      allow_multiple_filters_in_reports:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_send_email_via_emailclient:
+                        type: string
+                        example: '1'
+                      pref_only_managers_can_change_staff_password:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_messaging_module:
+                        type: string
+                        example: '1'
+                      pref_pm_reply:
+                        type: string
+                        example: '1'
+                      autologout:
+                        type: string
+                        example: '0'
+                      password_expire:
+                        type: string
+                        example: '0'
+                      pref_show_overnight_shifts:
+                        type: string
+                        example: '1'
+                      pref_tasks:
+                        type: string
+                        example: '1'
+                      pref_24h_shift:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_schedule_notes:
+                        type: string
+                        example: '1'
+                      pref_schedule_notes_permissions:
+                        type: string
+                        example: '3'
+                      do_not_initiate_conflicts:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_show_pending_leaves_on_schedule:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_see_shift_notes_perm:
+                        type: string
+                        example: '7'
+                      pref_employee_see_vacations:
+                        type: string
+                        example: '1'
+                      pref_sched_show_skill:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_task_modal:
+                        type: string
+                        example: ''
+                      pref_disable_shift_trade_between_positions:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_work_units:
+                        type: string
+                        example: '1'
+                      pref_work_units_employees:
+                        type: string
+                        example: '1'
+                      pref_schedulers_workunit_autoapproved:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_employees_workunit_autoapproved:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_wu_emp_can_see_report:
+                        type: string
+                        example: '1'
+                      pref_tc_webcam_mobile:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_webcam_resolution:
+                        type: string
+                        example: '320'
+                      pref_tc_unavailable_gps:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_address:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_restrict_empl_clockinout:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_require_remote_site:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_tips:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_timeclock_show_scheduled_details:
+                        type: string
+                        example: '1'
+                      pref_timeclock_show_breaks_mts:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_restrict_overlapping_timesheets:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_round_to_in_direction:
+                        type: string
+                        example: '1'
+                      pref_tc_round_to_out_direction:
+                        type: string
+                        example: '-1'
+                      pref_tc_prevent_empl_edittime_approved:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_tc_prevent_empl_addclock_x_days:
+                        type: string
+                        example: '0'
+                      show_timesheet_notes:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_mandatory_notes:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_emp_can_edit_tc_without_providing_reason:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_admin_clockin_reminder_schedulers:
+                        type: string
+                        example: '[]'
+                      pref_admin_clockin_reminder_managers:
+                        type: string
+                        example: '[]'
+                      pref_admin_clockout_reminder_schedulers:
+                        type: string
+                        example: '[]'
+                      pref_admin_clockout_reminder_managers:
+                        type: string
+                        example: '[]'
+                      pref_sched_can_approve_availability:
+                        type: string
+                        example: '1'
+                      pref_vacation_show_deleted:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_vac_req_only_schedulers:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_sched_can_approve_past_vacations:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_employee_delete_vacations:
+                        type: string
+                        example: '1'
+                      overtime_module:
+                        type: string
+                        example: default
+                      pref_cot_order15:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_payroll_reports:
+                        type: integer
+                        example: 0
+                        default: 0
+                      rate_of_pay:
+                        type: string
+                        example: ''
+                      pref_allow_scheduler_to_see_wages:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_allow_scheduler_to_see_budget:
+                        type: integer
+                        example: 0
+                        default: 0
+                      pref_allow_scheduler_to_edit_budget:
+                        type: integer
+                        example: 0
+                        default: 0
+                      allow_schedulers_payroll_report:
+                        type: integer
+                        example: 0
+                        default: 0
+                      num_of_decimals:
+                        type: string
+                        example: '2'
+                      export_provider:
+                        type: string
+                        example: '18'
+                      company_code:
+                        type: string
+                        example: ''
+                      batch_id:
+                        type: string
+                        example: ''
+                      fixed_batch_id:
+                        type: string
+                        example: '1'
+                      regular_hour_code:
+                        type: string
+                        example: '123'
+                      special_hour_code:
+                        type: string
+                        example: AAA
+                      overtime_hour_code:
+                        type: string
+                        example: '1111'
+                      export_payrate:
+                        type: string
+                        example: '1'
+                      export_amount:
+                        type: string
+                        example: '1'
+                      company_name:
+                        type: string
+                        example: ''
+                      company_created_time:
+                        type: string
+                        example: ''
+                      qb_position_to_item:
+                        type: integer
+                        example: 0
+                        default: 0
+                      payroll:
+                        type: object
+                        properties:
+                          company_code:
+                            type: string
+                            example: ''
+                          batch_id:
+                            type: string
+                            example: ''
+                          fixed_batch_id:
+                            type: integer
+                            example: 1
+                            default: 0
+                          regular_hour_code:
+                            type: string
+                            example: '123'
+                          special_hour_code:
+                            type: string
+                            example: AAA
+                          overtime_hour_code:
+                            type: string
+                            example: '1111'
+                          company_name:
+                            type: string
+                            example: ''
+                          company_created_time:
+                            type: string
+                            example: ''
+                          export_provider:
+                            type: string
+                            example: '18'
+                          rate_of_pay:
+                            type: string
+                            example: ''
+                          export_payrate:
+                            type: string
+                            example: '1'
+                          qb_position_to_item: {}
+                          export_amount:
+                            type: string
+                            example: '1'
+                          tax_frequency:
+                            type: string
+                            example: ''
+                      groupforce:
+                        type: object
+                        properties:
+                          overtime_module:
+                            type: integer
+                            example: 1
+                            default: 0
+                          daily_overtime:
+                            type: integer
+                            example: 1
+                            default: 0
+                          overtime:
+                            type: integer
+                            example: 1
+                            default: 0
+                          pref_request_deduct_breaks:
+                            type: integer
+                            example: 1
+                            default: 0
+                          pref_payroll_reports:
+                            type: integer
+                            example: 1
+                            default: 0
+                      pref_include_ghost_shifts:
+                        type: string
+                        example: '0'
+                      geofencing_distance: {}
+                      tax_frequency:
+                        type: string
+                        example: ''
+                  token:
+                    type: string
+                    example: xxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com//api/v2/company/business?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Company
+  /company/group_perms?access_token=xxxxxx:
+    get:
+      summary: PUT Group permissions
+      description: '/company/group_perms
+
+        Permission level: 5'
+      operationId: put-group-permissions
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                group_perms:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"user\": \"3475050\",\n            \"read\": 1,\n            \"write\": 1,\n            \"can_add_account\": 1,\n            \"can_access_account\": 1,\n            \"updated\": null,\n            \"id\": \"3475050\",\n            \"name\": \"Alex George\"\n        }\n    ],\n    \"token\": \"xxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user:
+                          type: string
+                          example: '3475050'
+                        read:
+                          type: integer
+                          example: 1
+                          default: 0
+                        write:
+                          type: integer
+                          example: 1
+                          default: 0
+                        can_add_account:
+                          type: integer
+                          example: 1
+                          default: 0
+                        can_access_account:
+                          type: integer
+                          example: 1
+                          default: 0
+                        updated: {}
+                        id:
+                          type: string
+                          example: '3475050'
+                        name:
+                          type: string
+                          example: Alex George
+                  token:
+                    type: string
+                    example: xxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com//api/v2/company/group_perms?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Company
+  /company/number_of_requests?access_token=xxxxxxxxxx:
+    get:
+      summary: GET Number of requests
+      description: '/company/number_of_requests
+
+        Permission level: 5'
+      operationId: get-number-of-requests
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"total\": 13,\n        \"vacation\": 3,\n        \"shift_available\": 0,\n        \"trade_available\": 0,\n        \"shift_approval\": 10,\n        \"shift_request_waiting\": 0,\n        \"trade_approval\": 0,\n        \"weekly_avail\": 0,\n        \"future_avail\": 0,\n        \"staff_requested\": 0,\n        \"unacknowledged_shifts\": \"8\",\n        \"work_units\": 0\n    },\n    \"token\": \"xxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 13
+                        default: 0
+                      vacation:
+                        type: integer
+                        example: 3
+                        default: 0
+                      shift_available:
+                        type: integer
+                        example: 0
+                        default: 0
+                      trade_available:
+                        type: integer
+                        example: 0
+                        default: 0
+                      shift_approval:
+                        type: integer
+                        example: 10
+                        default: 0
+                      shift_request_waiting:
+                        type: integer
+                        example: 0
+                        default: 0
+                      trade_approval:
+                        type: integer
+                        example: 0
+                        default: 0
+                      weekly_avail:
+                        type: integer
+                        example: 0
+                        default: 0
+                      future_avail:
+                        type: integer
+                        example: 0
+                        default: 0
+                      staff_requested:
+                        type: integer
+                        example: 0
+                        default: 0
+                      unacknowledged_shifts:
+                        type: string
+                        example: '8'
+                      work_units:
+                        type: integer
+                        example: 0
+                        default: 0
+                  token:
+                    type: string
+                    example: xxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com//api/v2/company/number_of_requests?access_token=xxxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Company
+  /company/settings:
+    get:
+      summary: GET Company Settings
+      description: '/companies/:id/settings
+
+        Permission level: 7'
+      operationId: get-company-settings
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"admin_past_edit\": \"0\",\n    \"edit_profile\": \"1\",\n    \"reports\": \"1\",\n    \"book_days_off\": \"1\",\n    \"book_days_off_adv\": \"-1\",\n    \"book_days_off_max\": \"30\",\n    \"confirm_trade_before\": \"0\",\n    \"confirm_trade_after\": \"1\",\n    \"sms\": \"1\",\n    \"email\": \"1\",\n    \"pm\": \"1\",\n    \"visible_staff\": \"1\",\n    \"visible_staff_details\": \"1\",\n    \"visible_coworkers\": \"0\",\n    \"trade_shifts\": \"1\",\n    \"coworkers_contacts\": \"0\",\n    \"future_avail\": \"1\",\n    \"weekly_avail\": \"1\",\n    \"visible_overview\": \"1\",\n    \"visible_own\": \"1\",\n    \"timeout\": \"0\",\n    \"message_wall_on\": \"1\",\n    \"message_wall_emp\": \"1\",\n    \"message_wall_comments\": \"1\",\n    \"message_wall_uploads\": \"0\",\n    \"on_now\": \"1\",\n    \"shift_confirm\": \"1\",\n    \"shift_drop\": \"1\",\n    \"shift_autoconfirm\": \"0\",\n    \"timeclock\": \"1\",\n    \"tc_terminal_lock\": \"0\",\n    \"tc_round_to\": \"-1\",\n    \"tc_round_to_in\": \"-1\",\n    \"tc_round_to_out\": \"-1\",\n    \"tc_clock_in_timeframe\": \"-1\",\n    \"tc_autoclockout\": \"18.0\",\n    \"tc_webcam\": \"0\",\n    \"tc_empl_import\": \"1\",\n    \"tc_empl_addtime\": \"0\",\n    \"24hr\": \"1\",\n    \"draft\": \"1\",\n    \"date\": \"M j, Y\",\n    \"startday\": \"2\",\n    \"currency\": \"1\",\n    \"viewadvance\": \"-1\",\n    \"login_splogo\": \"0\",\n    \"scosting\": \"1\",\n    \"start_day\": \"1\",\n    \"end_day\": \"7\",\n    \"start_time\": \"33\",\n    \"end_time\": \"85\",\n    \"overtime\": \"45\",\n    \"timezone\": \"-05:00,0\",\n    \"availability_timeframe\": \"0\",\n    \"alt_w_overtime_calc\": \"0\",\n    \"birthday\": null,\n    \"birthday_card\": \"1\",\n    \"oncall_manage\": \"1\",\n    \"allow_req_acc\": \"0\",\n    \"security_question\": \"who is our mascot\",\n    \"security_answer\": \"wizard\",\n    \"messaging_system\": \"1\",\n    \"tc_empl_edittime\": \"0\"\n  },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      admin_past_edit:
+                        type: string
+                        example: '0'
+                      edit_profile:
+                        type: string
+                        example: '1'
+                      reports:
+                        type: string
+                        example: '1'
+                      book_days_off:
+                        type: string
+                        example: '1'
+                      book_days_off_adv:
+                        type: string
+                        example: '-1'
+                      book_days_off_max:
+                        type: string
+                        example: '30'
+                      confirm_trade_before:
+                        type: string
+                        example: '0'
+                      confirm_trade_after:
+                        type: string
+                        example: '1'
+                      sms:
+                        type: string
+                        example: '1'
+                      email:
+                        type: string
+                        example: '1'
+                      pm:
+                        type: string
+                        example: '1'
+                      visible_staff:
+                        type: string
+                        example: '1'
+                      visible_staff_details:
+                        type: string
+                        example: '1'
+                      visible_coworkers:
+                        type: string
+                        example: '0'
+                      trade_shifts:
+                        type: string
+                        example: '1'
+                      coworkers_contacts:
+                        type: string
+                        example: '0'
+                      future_avail:
+                        type: string
+                        example: '1'
+                      weekly_avail:
+                        type: string
+                        example: '1'
+                      visible_overview:
+                        type: string
+                        example: '1'
+                      visible_own:
+                        type: string
+                        example: '1'
+                      timeout:
+                        type: string
+                        example: '0'
+                      message_wall_on:
+                        type: string
+                        example: '1'
+                      message_wall_emp:
+                        type: string
+                        example: '1'
+                      message_wall_comments:
+                        type: string
+                        example: '1'
+                      message_wall_uploads:
+                        type: string
+                        example: '0'
+                      on_now:
+                        type: string
+                        example: '1'
+                      shift_confirm:
+                        type: string
+                        example: '1'
+                      shift_drop:
+                        type: string
+                        example: '1'
+                      shift_autoconfirm:
+                        type: string
+                        example: '0'
+                      timeclock:
+                        type: string
+                        example: '1'
+                      tc_terminal_lock:
+                        type: string
+                        example: '0'
+                      tc_round_to:
+                        type: string
+                        example: '-1'
+                      tc_round_to_in:
+                        type: string
+                        example: '-1'
+                      tc_round_to_out:
+                        type: string
+                        example: '-1'
+                      tc_clock_in_timeframe:
+                        type: string
+                        example: '-1'
+                      tc_autoclockout:
+                        type: string
+                        example: '18.0'
+                      tc_webcam:
+                        type: string
+                        example: '0'
+                      tc_empl_import:
+                        type: string
+                        example: '1'
+                      tc_empl_addtime:
+                        type: string
+                        example: '0'
+                      24hr:
+                        type: string
+                        example: '1'
+                      draft:
+                        type: string
+                        example: '1'
+                      date:
+                        type: string
+                        example: M j, Y
+                      startday:
+                        type: string
+                        example: '2'
+                      currency:
+                        type: string
+                        example: '1'
+                      viewadvance:
+                        type: string
+                        example: '-1'
+                      login_splogo:
+                        type: string
+                        example: '0'
+                      scosting:
+                        type: string
+                        example: '1'
+                      start_day:
+                        type: string
+                        example: '1'
+                      end_day:
+                        type: string
+                        example: '7'
+                      start_time:
+                        type: string
+                        example: '33'
+                      end_time:
+                        type: string
+                        example: '85'
+                      overtime:
+                        type: string
+                        example: '45'
+                      timezone:
+                        type: string
+                        example: -05:00,0
+                      availability_timeframe:
+                        type: string
+                        example: '0'
+                      alt_w_overtime_calc:
+                        type: string
+                        example: '0'
+                      birthday: {}
+                      birthday_card:
+                        type: string
+                        example: '1'
+                      oncall_manage:
+                        type: string
+                        example: '1'
+                      allow_req_acc:
+                        type: string
+                        example: '0'
+                      security_question:
+                        type: string
+                        example: who is our mascot
+                      security_answer:
+                        type: string
+                        example: wizard
+                      messaging_system:
+                        type: string
+                        example: '1'
+                      tc_empl_edittime:
+                        type: string
+                        example: '0'
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/company/settings?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Company
+    put:
+      summary: PUT Company Settings
+      description: '/companies/:id/settings
+
+        Permission level: 2'
+      operationId: put-company-settings
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                admin_past_edit:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                book_days_off:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                book_days_off_adv:
+                  type: integer
+                  description: number of days
+                  format: int32
+                confirm_trade_after:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                confirm_trade_before:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                coworkers_contacts:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                email:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                future_avail:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                message_wall_comments:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                message_wall_emp:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                message_wall_on:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                on_now:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                overtime:
+                  type: integer
+                  description: Daily overtime - max number of hours
+                  format: int32
+                pm:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                pref_allow_req_acc:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                pref_alt_w_overtime_calc:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                pref_availability_timeframe:
+                  type: integer
+                  description: AvailabilityChangeRequests are effective **0 – Immediatly  *1 – after one day  *2 – after two days *7 – after one week**
+                  format: int32
+                pref_birthday:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                pref_birthday_card:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                pref_birthday_reminder:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                shift_confirm:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                sms:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                tc_autoclockout:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                tc_clock_in_timeframe:
+                  type: integer
+                  format: int32
+                tc_round_to:
+                  type: integer
+                  format: int32
+                tc_terminal_lock:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                tc_webcam:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                timeclock:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                trade_shifts:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                visible_coworkers:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                visible_overview:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                visible_own:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                visible_staff:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                visible_staff_details:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                weekly_avail:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"admin_past_edit\": \"0\",\n    \"edit_profile\": \"1\",\n    \"reports\": \"1\",\n    \"book_days_off\": \"1\",\n    \"book_days_off_adv\": \"-1\",\n    \"book_days_off_max\": \"30\",\n    \"confirm_trade_before\": \"0\",\n    \"confirm_trade_after\": \"1\",\n    \"sms\": \"1\",\n    \"email\": \"1\",\n    \"pm\": \"1\",\n    \"visible_staff\": \"1\",\n    \"visible_staff_details\": \"1\",\n    \"visible_coworkers\": \"0\",\n    \"trade_shifts\": \"1\",\n    \"coworkers_contacts\": \"0\",\n    \"future_avail\": \"1\",\n    \"weekly_avail\": \"1\",\n    \"visible_overview\": \"1\",\n    \"visible_own\": \"1\",\n    \"timeout\": \"0\",\n    \"message_wall_on\": \"1\",\n    \"message_wall_emp\": \"1\",\n    \"message_wall_comments\": \"1\",\n    \"message_wall_uploads\": \"0\",\n    \"on_now\": \"1\",\n    \"shift_confirm\": \"1\",\n    \"shift_drop\": \"1\",\n    \"shift_autoconfirm\": \"0\",\n    \"timeclock\": \"1\",\n    \"tc_terminal_lock\": \"0\",\n    \"tc_round_to\": \"-1\",\n    \"tc_round_to_in\": \"-1\",\n    \"tc_round_to_out\": \"-1\",\n    \"tc_clock_in_timeframe\": \"-1\",\n    \"tc_autoclockout\": \"18.0\",\n    \"tc_webcam\": \"0\",\n    \"tc_empl_import\": \"1\",\n    \"tc_empl_addtime\": \"0\",\n    \"24hr\": \"1\",\n    \"draft\": \"1\",\n    \"date\": \"M j, Y\",\n    \"startday\": \"2\",\n    \"currency\": \"1\",\n    \"viewadvance\": \"-1\",\n    \"login_splogo\": \"0\",\n    \"scosting\": \"1\",\n    \"start_day\": \"1\",\n    \"end_day\": \"7\",\n    \"start_time\": \"33\",\n    \"end_time\": \"85\",\n    \"overtime\": \"45\",\n    \"timezone\": \"-05:00,0\",\n    \"availability_timeframe\": \"0\",\n    \"alt_w_overtime_calc\": \"0\",\n    \"birthday\": null,\n    \"birthday_card\": \"1\",\n    \"oncall_manage\": \"1\",\n    \"allow_req_acc\": \"0\",\n    \"security_question\": \"who is our mascot\",\n    \"security_answer\": \"wizard\",\n    \"settings\": \"{\\\"emailsig_redirect_url\\\":\\\"\\\",\\\"pref_vacation_weekdays\\\":\\\"[\\\"0\\\",\\\"6\\\"]\\\",\\\"pref_tc_clock_in_after_timeframe\\\":\\\"-1\\\",\\\"pref_tc_clock_out_after_timeframe\\\":\\\"-1\\\",\\\"country\\\":\\\"227\\\",\\\"timezone_id\\\":\\\"314\\\",\\\"language\\\":\\\"en_US\\\",\\\"pref_date\\\":\\\"M j, Y\\\",\\\"pref_24hr\\\":\\\"1\\\",\\\"pref_week_adjust\\\":\\\"0\\\",\\\"pref_restrict_referrals\\\":0,\\\"pref_email\\\":\\\"1\\\",\\\"pref_sms\\\":\\\"1\\\",\\\"pref_email_force\\\":0,\\\"pref_birthday\\\":0,\\\"pref_birthday_card\\\":\\\"1\\\",\\\"sort_location\\\":0,\\\"pref_show_location_in_shift\\\":\\\"1\\\",\\\"pref_show_overnight_shifts\\\":\\\"1\\\",\\\"pref_startday\\\":\\\"2\\\",\\\"pref_draft\\\":\\\"1\\\",\\\"pref_shift_confirm\\\":\\\"1\\\",\\\"pref_viewadvance\\\":\\\"-1\\\",\\\"pref_scosting\\\":\\\"1\\\",\\\"pref_trade_shifts\\\":\\\"1\\\",\\\"pref_swap_shifts\\\":\\\"1\\\",\\\"pref_same_day_trades\\\":0,\\\"pref_dont_show_overlapping_shifts_in_trades\\\":0,\\\"pref_disable_shift_trade_between_positions\\\":0,\\\"pref_confirm_trade_before\\\":0,\\\"pref_confirm_trade_after\\\":\\\"1\\\",\\\"pref_visible_overview\\\":\\\"1\\\",\\\"pref_visible_own\\\":\\\"1\\\",\\\"pref_visible_coworkers\\\":0,\\\"pref_shift_drop\\\":\\\"1\\\",\\\"pref_shift_autoconfirm\\\":0,\\\"pref_open_overtime\\\":0,\\\"pref_mintimebshifts\\\":\\\"24\\\",\\\"pref_min_disregard\\\":0,\\\"max_days_row\\\":\\\"30\\\",\\\"pref_show_midnight\\\":\\\"1\\\",\\\"pref_oncall_manage\\\":\\\"1\\\",\\\"pref_employee_see_vacations\\\":\\\"1\\\",\\\"pref_sched_show_skill\\\":\\\"1\\\",\\\"pref_work_units\\\":0,\\\"pref_work_units_employees\\\":0,\\\"pref_schedulers_workunit_autoapproved\\\":0,\\\"pref_wu_emp_can_see_report\\\":0,\\\"pref_tasks\\\":\\\"1\\\",\\\"pref_24h_shift\\\":0,\\\"pref_schedule_notes\\\":\\\"1\\\",\\\"pref_schedule_notes_permissions\\\":\\\"7\\\",\\\"do_not_initiate_conflicts\\\":0,\\\"pref_shift_acknowledgement\\\":0,\\\"pref_shift_acknowledgement_notify\\\":\\\"1\\\",\\\"pref_show_pending_leaves_on_schedule\\\":\\\"1\\\",\\\"pref_see_shift_notes_perm\\\":\\\"7\\\",\\\"pref_task_modal\\\":\\\"0\\\",\\\"pref_employee_nameformat\\\":\\\"F L\\\",\\\"pref_training\\\":\\\"1\\\",\\\"pref_training_to_pdf\\\":0,\\\"pref_reports\\\":\\\"1\\\",\\\"pref_payroll_reports\\\":\\\"1\\\",\\\"pref_edit_profile\\\":\\\"1\\\",\\\"pref_visible_staff\\\":\\\"1\\\",\\\"pref_visible_staff_details\\\":\\\"1\\\",\\\"pref_staff_visible_eid\\\":0,\\\"pref_on_now\\\":\\\"1\\\",\\\"pref_allow_req_acc\\\":0,\\\"security_question\\\":\\\"who is our mascot\\\",\\\"security_answer\\\":\\\"wizard\\\",\\\"pref_employee_files\\\":\\\"1\\\",\\\"show_upcoming_birthdays\\\":\\\"1\\\",\\\"allow_schedulers_to_create_delete_users\\\":\\\"1\\\",\\\"pref_send_email_via_emailclient\\\":0,\\\"pref_timeclock\\\":\\\"1\\\",\\\"pref_tc_webcam\\\":0,\\\"pref_tc_webcam_mobile\\\":0,\\\"pref_webcam_resolution\\\":\\\"320\\\",\\\"pref_tc_gps\\\":\\\"1\\\",\\\"pref_tc_unavailable_gps\\\":\\\"1\\\",\\\"pref_tc_address\\\":\\\"1\\\",\\\"pref_pre_time_clock\\\":0,\\\"pref_mandatory_pre_time_clock\\\":0,\\\"pref_tc_empl_import\\\":\\\"1\\\",\\\"pref_tc_empl_addtime\\\":0,\\\"pref_tc_empl_edittime\\\":0,\\\"pref_tc_prevent_empl_edittime_approved\\\":0,\\\"pref_tc_prevent_empl_addclock_x_days\\\":\\\"0\\\",\\\"pref_tc_terminal_lock\\\":0,\\\"pref_tc_require_pos\\\":\\\"1\\\",\\\"pref_tc_require_remote_site\\\":0,\\\"pref_tc_require_notes\\\":0,\\\"pref_tc_round_to\\\":\\\"-1\\\",\\\"pref_tc_round_to_in\\\":\\\"-1\\\",\\\"pref_tc_round_to_in_direction\\\":\\\"1\\\",\\\"pref_tc_round_to_out\\\":\\\"-1\\\",\\\"pref_tc_round_to_out_direction\\\":\\\"1\\\",\\\"pref_tc_clock_in_timeframe\\\":\\\"-1\\\",\\\"pref_tc_clock_out_timeframe\\\":\\\"-1\\\",\\\"pref_enable_break_button\\\":\\\"1\\\",\\\"pref_admin_clockin_reminder_schedulers\\\":\\\"[\\\"15\\\"]\\\",\\\"pref_admin_clockin_reminder_managers\\\":\\\"[\\\"15\\\"]\\\",\\\"pref_admin_clockout_reminder_schedulers\\\":\\\"[]\\\",\\\"pref_admin_clockout_reminder_managers\\\":\\\"[]\\\",\\\"pref_tc_timeframe_notify\\\":null,\\\"pref_tc_autoclockout\\\":\\\"18\\\",\\\"pref_restrict_overlapping_timesheets\\\":0,\\\"show_timesheet_notes\\\":\\\"1\\\",\\\"pref_mandatory_notes\\\":0,\\\"pref_emp_can_edit_tc_without_providing_reason\\\":\\\"1\\\",\\\"pref_tc_tips\\\":\\\"1\\\",\\\"pref_timeclock_show_scheduled_details\\\":\\\"1\\\",\\\"pref_tc_screenshot\\\":0,\\\"pref_tc_screen_freq\\\":\\\"3\\\",\\\"pref_tc_screen_quality\\\":\\\"10\\\",\\\"pref_tc_screen_schedules\\\":null,\\\"pref_weekly_avail\\\":\\\"1\\\",\\\"pref_vacation_show_deleted\\\":0,\\\"pref_future_avail\\\":\\\"1\\\",\\\"pref_approve_availability\\\":\\\"1\\\",\\\"pref_sched_can_approve_past_vacations\\\":\\\"1\\\",\\\"pref_vac_req_only_schedulers\\\":0,\\\"pref_sched_can_approve_availability\\\":\\\"1\\\",\\\"pref_book_days_off\\\":\\\"1\\\",\\\"pref_book_days_off_adv\\\":\\\"-1\\\",\\\"pref_book_days_off_max\\\":\\\"30\\\",\\\"pref_vacation_max_days\\\":25,\\\"pref_availability_timeframe\\\":\\\"0\\\",\\\"pref_employee_delete_vacations\\\":\\\"1\\\",\\\"overtime_module\\\":\\\"default\\\",\\\"pref_cot_order15\\\":0,\\\"daily_overtime\\\":\\\"24\\\",\\\"overtime\\\":\\\"45\\\",\\\"monthly_overtime\\\":\\\"-2\\\",\\\"pref_request_deduct_breaks\\\":0,\\\"pref_currency\\\":\\\"1\\\",\\\"export_provider\\\":\\\"1\\\",\\\"company_code\\\":\\\"1111\\\",\\\"batch_id\\\":\\\"999\\\",\\\"fixed_batch_id\\\":\\\"1\\\",\\\"regular_hour_code\\\":\\\"101\\\",\\\"special_hour_code\\\":\\\"201\\\",\\\"overtime_hour_code\\\":\\\"301\\\",\\\"export_payrate\\\":0,\\\"company_name\\\":\\\"Shiftplanning\\\",\\\"company_created_time\\\":\\\"2016-04-14\\\",\\\"rate_of_pay\\\":\\\"\\\",\\\"pref_alt_w_overtime_calc\\\":0,\\\"pref_overtime_per_position\\\":0,\\\"pref_approve_overtime\\\":0,\\\"pref_allow_scheduler_to_see_wages\\\":0,\\\"pref_allow_scheduler_to_see_budget\\\":0,\\\"pref_allow_scheduler_to_edit_budget\\\":0,\\\"allow_schedulers_payroll_report\\\":0,\\\"num_of_decimals\\\":\\\"2\\\",\\\"pref_message_wall_on\\\":\\\"1\\\",\\\"pref_message_wall_emp\\\":\\\"1\\\",\\\"pref_message_wall_comments\\\":\\\"1\\\",\\\"pref_messaging_system\\\":\\\"1\\\",\\\"pref_pm\\\":\\\"1\\\",\\\"pref_ping\\\":\\\"1\\\",\\\"pref_login_google\\\":0,\\\"pref_login_facebook\\\":0,\\\"pref_login_twitter\\\":0,\\\"pref_login_openid\\\":0,\\\"pref_login_splogo\\\":0,\\\"autologout\\\":\\\"0\\\",\\\"password_expire\\\":\\\"0\\\",\\\"groupforce\\\":[],\\\"payroll\\\":{\\\"company_code\\\":\\\"1111\\\",\\\"batch_id\\\":\\\"999\\\",\\\"fixed_batch_id\\\":1,\\\"regular_hour_code\\\":\\\"101\\\",\\\"special_hour_code\\\":\\\"201\\\",\\\"overtime_hour_code\\\":\\\"301\\\",\\\"company_name\\\":\\\"Shiftplanning\\\",\\\"company_created_time\\\":\\\"2016-04-14\\\",\\\"export_provider\\\":\\\"1\\\",\\\"autologout\\\":\\\"0\\\",\\\"rate_of_pay\\\":\\\"\\\",\\\"export_payrate\\\":null,\\\"qb_position_to_item\\\":null,\\\"export_amount\\\":null},\\\"allow_multiple_filters_in_reports\\\":0,\\\"pref_only_managers_can_change_staff_password\\\":0,\\\"pref_employees_workunit_autoapproved\\\":0,\\\"pref_restrict_empl_clockinout\\\":0,\\\"pref_timeclock_show_breaks_mts\\\":\\\"1\\\",\\\"qb_position_to_item\\\":0,\\\"pref_messaging_module\\\":\\\"1\\\",\\\"pref_pm_reply\\\":\\\"1\\\",\\\"pref_leave_enabled\\\":\\\"1\\\",\\\"pref_integrations\\\":0,\\\"export_amount\\\":0}\"\n  },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      admin_past_edit:
+                        type: string
+                        example: '0'
+                      edit_profile:
+                        type: string
+                        example: '1'
+                      reports:
+                        type: string
+                        example: '1'
+                      book_days_off:
+                        type: string
+                        example: '1'
+                      book_days_off_adv:
+                        type: string
+                        example: '-1'
+                      book_days_off_max:
+                        type: string
+                        example: '30'
+                      confirm_trade_before:
+                        type: string
+                        example: '0'
+                      confirm_trade_after:
+                        type: string
+                        example: '1'
+                      sms:
+                        type: string
+                        example: '1'
+                      email:
+                        type: string
+                        example: '1'
+                      pm:
+                        type: string
+                        example: '1'
+                      visible_staff:
+                        type: string
+                        example: '1'
+                      visible_staff_details:
+                        type: string
+                        example: '1'
+                      visible_coworkers:
+                        type: string
+                        example: '0'
+                      trade_shifts:
+                        type: string
+                        example: '1'
+                      coworkers_contacts:
+                        type: string
+                        example: '0'
+                      future_avail:
+                        type: string
+                        example: '1'
+                      weekly_avail:
+                        type: string
+                        example: '1'
+                      visible_overview:
+                        type: string
+                        example: '1'
+                      visible_own:
+                        type: string
+                        example: '1'
+                      timeout:
+                        type: string
+                        example: '0'
+                      message_wall_on:
+                        type: string
+                        example: '1'
+                      message_wall_emp:
+                        type: string
+                        example: '1'
+                      message_wall_comments:
+                        type: string
+                        example: '1'
+                      message_wall_uploads:
+                        type: string
+                        example: '0'
+                      on_now:
+                        type: string
+                        example: '1'
+                      shift_confirm:
+                        type: string
+                        example: '1'
+                      shift_drop:
+                        type: string
+                        example: '1'
+                      shift_autoconfirm:
+                        type: string
+                        example: '0'
+                      timeclock:
+                        type: string
+                        example: '1'
+                      tc_terminal_lock:
+                        type: string
+                        example: '0'
+                      tc_round_to:
+                        type: string
+                        example: '-1'
+                      tc_round_to_in:
+                        type: string
+                        example: '-1'
+                      tc_round_to_out:
+                        type: string
+                        example: '-1'
+                      tc_clock_in_timeframe:
+                        type: string
+                        example: '-1'
+                      tc_autoclockout:
+                        type: string
+                        example: '18.0'
+                      tc_webcam:
+                        type: string
+                        example: '0'
+                      tc_empl_import:
+                        type: string
+                        example: '1'
+                      tc_empl_addtime:
+                        type: string
+                        example: '0'
+                      24hr:
+                        type: string
+                        example: '1'
+                      draft:
+                        type: string
+                        example: '1'
+                      date:
+                        type: string
+                        example: M j, Y
+                      startday:
+                        type: string
+                        example: '2'
+                      currency:
+                        type: string
+                        example: '1'
+                      viewadvance:
+                        type: string
+                        example: '-1'
+                      login_splogo:
+                        type: string
+                        example: '0'
+                      scosting:
+                        type: string
+                        example: '1'
+                      start_day:
+                        type: string
+                        example: '1'
+                      end_day:
+                        type: string
+                        example: '7'
+                      start_time:
+                        type: string
+                        example: '33'
+                      end_time:
+                        type: string
+                        example: '85'
+                      overtime:
+                        type: string
+                        example: '45'
+                      timezone:
+                        type: string
+                        example: -05:00,0
+                      availability_timeframe:
+                        type: string
+                        example: '0'
+                      alt_w_overtime_calc:
+                        type: string
+                        example: '0'
+                      birthday: {}
+                      birthday_card:
+                        type: string
+                        example: '1'
+                      oncall_manage:
+                        type: string
+                        example: '1'
+                      allow_req_acc:
+                        type: string
+                        example: '0'
+                      security_question:
+                        type: string
+                        example: who is our mascot
+                      security_answer:
+                        type: string
+                        example: wizard
+                      settings:
+                        type: string
+                        example: '{"emailsig_redirect_url":"","pref_vacation_weekdays":"["0","6"]","pref_tc_clock_in_after_timeframe":"-1","pref_tc_clock_out_after_timeframe":"-1","country":"227","timezone_id":"314","language":"en_US","pref_date":"M j, Y","pref_24hr":"1","pref_week_adjust":"0","pref_restrict_referrals":0,"pref_email":"1","pref_sms":"1","pref_email_force":0,"pref_birthday":0,"pref_birthday_card":"1","sort_location":0,"pref_show_location_in_shift":"1","pref_show_overnight_shifts":"1","pref_startday":"2","pref_draft":"1","pref_shift_confirm":"1","pref_viewadvance":"-1","pref_scosting":"1","pref_trade_shifts":"1","pref_swap_shifts":"1","pref_same_day_trades":0,"pref_dont_show_overlapping_shifts_in_trades":0,"pref_disable_shift_trade_between_positions":0,"pref_confirm_trade_before":0,"pref_confirm_trade_after":"1","pref_visible_overview":"1","pref_visible_own":"1","pref_visible_coworkers":0,"pref_shift_drop":"1","pref_shift_autoconfirm":0,"pref_open_overtime":0,"pref_mintimebshifts":"24","pref_min_disregard":0,"max_days_row":"30","pref_show_midnight":"1","pref_oncall_manage":"1","pref_employee_see_vacations":"1","pref_sched_show_skill":"1","pref_work_units":0,"pref_work_units_employees":0,"pref_schedulers_workunit_autoapproved":0,"pref_wu_emp_can_see_report":0,"pref_tasks":"1","pref_24h_shift":0,"pref_schedule_notes":"1","pref_schedule_notes_permissions":"7","do_not_initiate_conflicts":0,"pref_shift_acknowledgement":0,"pref_shift_acknowledgement_notify":"1","pref_show_pending_leaves_on_schedule":"1","pref_see_shift_notes_perm":"7","pref_task_modal":"0","pref_employee_nameformat":"F L","pref_training":"1","pref_training_to_pdf":0,"pref_reports":"1","pref_payroll_reports":"1","pref_edit_profile":"1","pref_visible_staff":"1","pref_visible_staff_details":"1","pref_staff_visible_eid":0,"pref_on_now":"1","pref_allow_req_acc":0,"security_question":"who is our mascot","security_answer":"wizard","pref_employee_files":"1","show_upcoming_birthdays":"1","allow_schedulers_to_create_delete_users":"1","pref_send_email_via_emailclient":0,"pref_timeclock":"1","pref_tc_webcam":0,"pref_tc_webcam_mobile":0,"pref_webcam_resolution":"320","pref_tc_gps":"1","pref_tc_unavailable_gps":"1","pref_tc_address":"1","pref_pre_time_clock":0,"pref_mandatory_pre_time_clock":0,"pref_tc_empl_import":"1","pref_tc_empl_addtime":0,"pref_tc_empl_edittime":0,"pref_tc_prevent_empl_edittime_approved":0,"pref_tc_prevent_empl_addclock_x_days":"0","pref_tc_terminal_lock":0,"pref_tc_require_pos":"1","pref_tc_require_remote_site":0,"pref_tc_require_notes":0,"pref_tc_round_to":"-1","pref_tc_round_to_in":"-1","pref_tc_round_to_in_direction":"1","pref_tc_round_to_out":"-1","pref_tc_round_to_out_direction":"1","pref_tc_clock_in_timeframe":"-1","pref_tc_clock_out_timeframe":"-1","pref_enable_break_button":"1","pref_admin_clockin_reminder_schedulers":"["15"]","pref_admin_clockin_reminder_managers":"["15"]","pref_admin_clockout_reminder_schedulers":"[]","pref_admin_clockout_reminder_managers":"[]","pref_tc_timeframe_notify":null,"pref_tc_autoclockout":"18","pref_restrict_overlapping_timesheets":0,"show_timesheet_notes":"1","pref_mandatory_notes":0,"pref_emp_can_edit_tc_without_providing_reason":"1","pref_tc_tips":"1","pref_timeclock_show_scheduled_details":"1","pref_tc_screenshot":0,"pref_tc_screen_freq":"3","pref_tc_screen_quality":"10","pref_tc_screen_schedules":null,"pref_weekly_avail":"1","pref_vacation_show_deleted":0,"pref_future_avail":"1","pref_approve_availability":"1","pref_sched_can_approve_past_vacations":"1","pref_vac_req_only_schedulers":0,"pref_sched_can_approve_availability":"1","pref_book_days_off":"1","pref_book_days_off_adv":"-1","pref_book_days_off_max":"30","pref_vacation_max_days":25,"pref_availability_timeframe":"0","pref_employee_delete_vacations":"1","overtime_module":"default","pref_cot_order15":0,"daily_overtime":"24","overtime":"45","monthly_overtime":"-2","pref_request_deduct_breaks":0,"pref_currency":"1","export_provider":"1","company_code":"1111","batch_id":"999","fixed_batch_id":"1","regular_hour_code":"101","special_hour_code":"201","overtime_hour_code":"301","export_payrate":0,"company_name":"Shiftplanning","company_created_time":"2016-04-14","rate_of_pay":"","pref_alt_w_overtime_calc":0,"pref_overtime_per_position":0,"pref_approve_overtime":0,"pref_allow_scheduler_to_see_wages":0,"pref_allow_scheduler_to_see_budget":0,"pref_allow_scheduler_to_edit_budget":0,"allow_schedulers_payroll_report":0,"num_of_decimals":"2","pref_message_wall_on":"1","pref_message_wall_emp":"1","pref_message_wall_comments":"1","pref_messaging_system":"1","pref_pm":"1","pref_ping":"1","pref_login_google":0,"pref_login_facebook":0,"pref_login_twitter":0,"pref_login_openid":0,"pref_login_splogo":0,"autologout":"0","password_expire":"0","groupforce":[],"payroll":{"company_code":"1111","batch_id":"999","fixed_batch_id":1,"regular_hour_code":"101","special_hour_code":"201","overtime_hour_code":"301","company_name":"Shiftplanning","company_created_time":"2016-04-14","export_provider":"1","autologout":"0","rate_of_pay":"","export_payrate":null,"qb_position_to_item":null,"export_amount":null},"allow_multiple_filters_in_reports":0,"pref_only_managers_can_change_staff_password":0,"pref_employees_workunit_autoapproved":0,"pref_restrict_empl_clockinout":0,"pref_timeclock_show_breaks_mts":"1","qb_position_to_item":0,"pref_messaging_module":"1","pref_pm_reply":"1","pref_leave_enabled":"1","pref_integrations":0,"export_amount":0}'
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/company/settings?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Company
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

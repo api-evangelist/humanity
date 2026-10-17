@@ -1,0 +1,599 @@
+openapi: 3.2.0
+info:
+  title: default Companies API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Companies
+paths:
+  /companies:
+    get:
+      summary: GET Companies
+      description: '/companies
+
+        Permission level: 3'
+      operationId: get-companies
+      parameters:
+      - name: detailed
+        in: query
+        description: 'enum[0,1] -> 0: Not detailed; 1: Detailed'
+        schema:
+          type: integer
+          format: int32
+      - name: detailed_staff
+        in: query
+        description: 'enum[0,1] -> 0: Not detailed; 1: Detailed'
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"251300\",\n      \"name\": \"Public API Test\",\n      \"parent\": null,\n      \"is_parent\": \"0\"\n    }\n  ],\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '251300'
+                        name:
+                          type: string
+                          example: Public API Test
+                        parent: {}
+                        is_parent:
+                          type: string
+                          example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/companies?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Companies
+  /companies/{id}:
+    get:
+      summary: GET Company
+      description: '/companies/:id
+
+        Permission level: 3'
+      operationId: get-company
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"251300\",\n    \"name\": \"Dream Coffee Shop 1\",\n    \"domain\": \"publicapitest\",\n    \"created\": \"1469803042\",\n    \"language\": \"en_US\",\n    \"master\": \"0\",\n    \"parent\": null,\n    \"is_parent\": \"0\",\n    \"franchise\": \"0\",\n    \"settings\": {\n      \"admin_past_edit\": \"0\",\n      \"book_days_off\": \"1\",\n      \"book_days_off_adv\": \"-1\",\n      \"book_days_off_max\": \"0\",\n      \"confirm_trade_before\": \"1\",\n      \"confirm_trade_after\": \"0\",\n      \"sms\": \"1\",\n      \"email\": \"1\",\n      \"pm\": \"1\",\n      \"visible_staff\": \"1\",\n      \"visible_staff_details\": \"1\",\n      \"visible_coworkers\": \"1\",\n      \"trade_shifts\": \"1\",\n      \"coworkers_contacts\": \"1\",\n      \"future_avail\": \"1\",\n      \"weekly_avail\": \"1\",\n      \"visible_overview\": \"0\",\n      \"visible_own\": \"1\",\n      \"timeout\": \"1800\",\n      \"message_wall_on\": \"1\",\n      \"message_wall_emp\": \"0\",\n      \"message_wall_comments\": \"1\",\n      \"message_wall_uploads\": \"1\",\n      \"on_now\": \"1\",\n      \"shift_confirm\": \"0\",\n      \"shift_drop\": \"0\",\n      \"shift_autoconfirm\": \"0\",\n      \"timeclock\": \"1\",\n      \"tc_terminal_lock\": \"0\",\n      \"tc_round_to\": \"15\",\n      \"tc_round_to_in\": \"0\",\n      \"tc_round_to_out\": \"0\",\n      \"tc_clock_in_timeframe\": \"-1\",\n      \"tc_clock_out_timeframe\": \"-1\",\n      \"tc_autoclockout\": \"0.0\",\n      \"tc_webcam\": \"0\",\n      \"tc_empl_import\": \"1\",\n      \"tc_empl_addtime\": \"1\",\n      \"tc_empl_edittime\": \"0\",\n      \"24hr\": \"0\",\n      \"draft\": \"1\",\n      \"date\": \"M j, Y\",\n      \"startday\": \"1\",\n      \"currency\": \"1\",\n      \"viewadvance\": \"0\",\n      \"login_splogo\": \"1\",\n      \"scosting\": \"3\",\n      \"start_day\": \"1\",\n      \"end_day\": \"7\",\n      \"start_time\": \"33\",\n      \"end_time\": \"85\",\n      \"overtime\": \"40\",\n      \"timezone\": \"-05:00,0\"\n    },\n    \"admin\": {\n      \"id\": \"2736727\",\n      \"name\": \"Brian Lane\",\n      \"email\": \"milos.tomic+pubapitest@shiftplanning.com\"\n    },\n    \"staff\": [\n      {\n        \"id\": \"2736727\",\n        \"name\": \"Brian Lane\"\n      },\n      {\n        \"id\": \"2744092\",\n        \"name\": \"Derrick Arnold\"\n      },\n      {\n        \"id\": \"2744093\",\n        \"name\": \"Frederick Braxton\"\n      },\n      {\n        \"id\": \"2744094\",\n        \"name\": \"Josephine P. Watson\"\n      },\n      {\n        \"id\": \"2744095\",\n        \"name\": \"Kian Simonette\"\n      },\n      {\n        \"id\": \"2744096\",\n        \"name\": \"Michael Rivas\"\n      },\n      {\n        \"id\": \"2744097\",\n        \"name\": \"Sheri Downer\"\n      },\n      {\n        \"id\": \"2744098\",\n        \"name\": \"Timothy Edison\"\n      }\n    ],\n    \"locations\": {\n      \"542311\": \"Dream Coffee Shop 2\"\n    },\n    \"positions\": [\n      {\n        \"id\": \"1321636\",\n        \"name\": \"Desk Service\",\n        \"l_name\": null,\n        \"l_id\": null\n      },\n      {\n        \"id\": \"1321634\",\n        \"name\": \"Manager\",\n        \"l_name\": null,\n        \"l_id\": null\n      },\n      {\n        \"id\": \"1321635\",\n        \"name\": \"Waiter\",\n        \"l_name\": null,\n        \"l_id\": null\n      },\n      {\n        \"id\": \"1324358\",\n        \"name\": \"Barista\",\n        \"l_name\": \"Dream Coffee Shop 2\",\n        \"l_id\": \"542311\"\n      },\n      {\n        \"id\": \"1324361\",\n        \"name\": \"Customer service\",\n        \"l_name\": \"Dream Coffee Shop 2\",\n        \"l_id\": \"542311\"\n      },\n      {\n        \"id\": \"1324363\",\n        \"name\": \"Shop Manager\",\n        \"l_name\": \"Dream Coffee Shop 2\",\n        \"l_id\": \"542311\"\n      }\n    ]\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '251300'
+                      name:
+                        type: string
+                        example: Dream Coffee Shop 1
+                      domain:
+                        type: string
+                        example: publicapitest
+                      created:
+                        type: string
+                        example: '1469803042'
+                      language:
+                        type: string
+                        example: en_US
+                      master:
+                        type: string
+                        example: '0'
+                      parent: {}
+                      is_parent:
+                        type: string
+                        example: '0'
+                      franchise:
+                        type: string
+                        example: '0'
+                      settings:
+                        type: object
+                        properties:
+                          admin_past_edit:
+                            type: string
+                            example: '0'
+                          book_days_off:
+                            type: string
+                            example: '1'
+                          book_days_off_adv:
+                            type: string
+                            example: '-1'
+                          book_days_off_max:
+                            type: string
+                            example: '0'
+                          confirm_trade_before:
+                            type: string
+                            example: '1'
+                          confirm_trade_after:
+                            type: string
+                            example: '0'
+                          sms:
+                            type: string
+                            example: '1'
+                          email:
+                            type: string
+                            example: '1'
+                          pm:
+                            type: string
+                            example: '1'
+                          visible_staff:
+                            type: string
+                            example: '1'
+                          visible_staff_details:
+                            type: string
+                            example: '1'
+                          visible_coworkers:
+                            type: string
+                            example: '1'
+                          trade_shifts:
+                            type: string
+                            example: '1'
+                          coworkers_contacts:
+                            type: string
+                            example: '1'
+                          future_avail:
+                            type: string
+                            example: '1'
+                          weekly_avail:
+                            type: string
+                            example: '1'
+                          visible_overview:
+                            type: string
+                            example: '0'
+                          visible_own:
+                            type: string
+                            example: '1'
+                          timeout:
+                            type: string
+                            example: '1800'
+                          message_wall_on:
+                            type: string
+                            example: '1'
+                          message_wall_emp:
+                            type: string
+                            example: '0'
+                          message_wall_comments:
+                            type: string
+                            example: '1'
+                          message_wall_uploads:
+                            type: string
+                            example: '1'
+                          on_now:
+                            type: string
+                            example: '1'
+                          shift_confirm:
+                            type: string
+                            example: '0'
+                          shift_drop:
+                            type: string
+                            example: '0'
+                          shift_autoconfirm:
+                            type: string
+                            example: '0'
+                          timeclock:
+                            type: string
+                            example: '1'
+                          tc_terminal_lock:
+                            type: string
+                            example: '0'
+                          tc_round_to:
+                            type: string
+                            example: '15'
+                          tc_round_to_in:
+                            type: string
+                            example: '0'
+                          tc_round_to_out:
+                            type: string
+                            example: '0'
+                          tc_clock_in_timeframe:
+                            type: string
+                            example: '-1'
+                          tc_clock_out_timeframe:
+                            type: string
+                            example: '-1'
+                          tc_autoclockout:
+                            type: string
+                            example: '0.0'
+                          tc_webcam:
+                            type: string
+                            example: '0'
+                          tc_empl_import:
+                            type: string
+                            example: '1'
+                          tc_empl_addtime:
+                            type: string
+                            example: '1'
+                          tc_empl_edittime:
+                            type: string
+                            example: '0'
+                          24hr:
+                            type: string
+                            example: '0'
+                          draft:
+                            type: string
+                            example: '1'
+                          date:
+                            type: string
+                            example: M j, Y
+                          startday:
+                            type: string
+                            example: '1'
+                          currency:
+                            type: string
+                            example: '1'
+                          viewadvance:
+                            type: string
+                            example: '0'
+                          login_splogo:
+                            type: string
+                            example: '1'
+                          scosting:
+                            type: string
+                            example: '3'
+                          start_day:
+                            type: string
+                            example: '1'
+                          end_day:
+                            type: string
+                            example: '7'
+                          start_time:
+                            type: string
+                            example: '33'
+                          end_time:
+                            type: string
+                            example: '85'
+                          overtime:
+                            type: string
+                            example: '40'
+                          timezone:
+                            type: string
+                            example: -05:00,0
+                      admin:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '2736727'
+                          name:
+                            type: string
+                            example: Brian Lane
+                          email:
+                            type: string
+                            example: milos.tomic+pubapitest@shiftplanning.com
+                      staff:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '2736727'
+                            name:
+                              type: string
+                              example: Brian Lane
+                      locations:
+                        type: object
+                        properties:
+                          '542311':
+                            type: string
+                            example: Dream Coffee Shop 2
+                      positions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '1321636'
+                            name:
+                              type: string
+                              example: Desk Service
+                            l_name: {}
+                            l_id: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/companies/251300?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Companies
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

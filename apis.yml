@@ -140,9 +140,11 @@ common:
 
 apis:
 - name: Humanity HVII Public API
-  description: The Humanity HVII Public API is a REST API for workforce management — employees, positions, locations, shifts, shift swaps and
-    trades, timeclocks, leaves, messages, training, tasks (master/shift/employee), skills, custom fields, and payroll/schedule/timesheet reports.
-    Authentication is OAuth2 (authorization-code / password grant); access tokens are passed as a Bearer token or an access_token query parameter.
+  description: >-
+    The Humanity HVII Public API is a REST API for workforce management — employees, positions, locations,
+    shifts, shift swaps and trades, timeclocks, leaves, messages, training, tasks (master/shift/employee),
+    skills, custom fields, and payroll/schedule/timesheet reports. Authentication is OAuth2 (authorization-code
+    / password grant); access tokens are passed as a Bearer token or an access_token query parameter.
     Versions v1.0 and v2.0 are available.
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
@@ -173,33 +175,385 @@ apis:
     url: llms/humanity-llms.txt
   - type: X-MCPServerCandidate
     url: mcp/humanity-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
-      API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
-      the artifact-type surfaces with a server that does not exist.'
+    note: >-
+      Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+      — a tool list derived from the published API contracts, not an existing server. The scorer already
+      read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+      surfaces with a server that does not exist.
   - type: Conformance
     url: conformance/humanity-conformance.yml
   aid: humanity:humanity-hvii-public-api
-- aid: humanity:humanity-default
-  name: Humanity Default Openapi.Yml API
-  description: The Default Openapi.Yml API from Humanity — 135 operation(s) for default openapi.yml.
+- aid: humanity:humanity-availabilities-api
+  name: Humanity Availabilities API
+  description: The Availabilities API from Humanity — 1 operation(s) for availabilities.
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
-  - Default Openapi.Yml
+  - Availabilities
   properties:
   - type: OpenAPI
-    url: openapi/humanity-default-openapi.yml
-- aid: humanity:humanity-json
-  name: Humanity Json Openapi.Yml API
-  description: The Json Openapi.Yml API from Humanity — 2 operation(s) for json openapi.yml.
+    url: openapi/humanity-availabilities-api-openapi.yml
+- aid: humanity:humanity-breakrules-api
+  name: Humanity Breakrules API
+  description: The Breakrules API from Humanity — 2 operation(s) for breakrules.
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
-  - Json Openapi.Yml
+  - Breakrules
   properties:
   - type: OpenAPI
-    url: openapi/humanity-json-openapi.yml
-
+    url: openapi/humanity-breakrules-api-openapi.yml
+- aid: humanity:humanity-companies-api
+  name: Humanity Companies API
+  description: The Companies API from Humanity — 2 operation(s) for companies.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-companies-api-openapi.yml
+- aid: humanity:humanity-company-api
+  name: Humanity Company API
+  description: The Company API from Humanity — 4 operation(s) for company.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-company-api-openapi.yml
+- aid: humanity:humanity-customfields-api
+  name: Humanity Customfields API
+  description: The Customfields API from Humanity — 2 operation(s) for customfields.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Customfields
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-customfields-api-openapi.yml
+- aid: humanity:humanity-dashboard-api
+  name: Humanity Dashboard API
+  description: The Dashboard API from Humanity — 1 operation(s) for dashboard.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-dashboard-api-openapi.yml
+- aid: humanity:humanity-default-api
+  name: Humanity Default API
+  description: The Default API from Humanity — 1 operation(s) for default.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Default
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-default-api-openapi.yml
+- aid: humanity:humanity-demand-driven-scheduling-api
+  name: Humanity Demand Driven Scheduling API
+  description: >-
+    The Demand Driven Scheduling API from Humanity — 3 operation(s) for demand driven scheduling.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Demand Driven Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-demand-driven-scheduling-api-openapi.yml
+- aid: humanity:humanity-employee-id-api
+  name: Humanity Employee Id API
+  description: The Employee Id API from Humanity — 1 operation(s) for employee id.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Employee Id
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-employee-id-api-openapi.yml
+- aid: humanity:humanity-employee-tasks-api
+  name: Humanity Employee Tasks API
+  description: The Employee Tasks API from Humanity — 1 operation(s) for employee tasks.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Employee Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-employee-tasks-api-openapi.yml
+- aid: humanity:humanity-employees-api
+  name: Humanity Employees API
+  description: The Employees API from Humanity — 25 operation(s) for employees.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-employees-api-openapi.yml
+- aid: humanity:humanity-forecast-api
+  name: Humanity Forecast API
+  description: The Forecast API from Humanity — 15 operation(s) for forecast.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Forecast
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-forecast-api-openapi.yml
+- aid: humanity:humanity-groupaccounts-api
+  name: Humanity Groupaccounts API
+  description: The Groupaccounts API from Humanity — 1 operation(s) for groupaccounts.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Groupaccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-groupaccounts-api-openapi.yml
+- aid: humanity:humanity-labour-forecasting-api
+  name: Humanity Labour Forecasting API
+  description: The Labour Forecasting API from Humanity — 1 operation(s) for labour forecasting.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Labour Forecasting
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-labour-forecasting-api-openapi.yml
+- aid: humanity:humanity-leave-types-api
+  name: Humanity Leave Types API
+  description: The Leave Types API from Humanity — 3 operation(s) for leave types.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Leave Types
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-leave-types-api-openapi.yml
+- aid: humanity:humanity-leaves-api
+  name: Humanity Leaves API
+  description: The Leaves API from Humanity — 4 operation(s) for leaves.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Leaves
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-leaves-api-openapi.yml
+- aid: humanity:humanity-locations-api
+  name: Humanity Locations API
+  description: The Locations API from Humanity — 2 operation(s) for locations.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-locations-api-openapi.yml
+- aid: humanity:humanity-master-tasks-api
+  name: Humanity Master Tasks API
+  description: The Master Tasks API from Humanity — 1 operation(s) for master tasks.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Master Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-master-tasks-api-openapi.yml
+- aid: humanity:humanity-me-api
+  name: Humanity Me API
+  description: The Me API from Humanity — 1 operation(s) for me.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-me-api-openapi.yml
+- aid: humanity:humanity-messages-api
+  name: Humanity Messages API
+  description: The Messages API from Humanity — 6 operation(s) for messages.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-messages-api-openapi.yml
+- aid: humanity:humanity-new-endpoint-1-api
+  name: Humanity New Endpoint 1 API
+  description: The New Endpoint 1 API from Humanity — 1 operation(s) for new endpoint 1.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - New Endpoint 1
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-new-endpoint-1-api-openapi.yml
+- aid: humanity:humanity-new-endpoint-api
+  name: Humanity New Endpoint API
+  description: The New Endpoint API from Humanity — 1 operation(s) for new endpoint.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - New Endpoint
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-new-endpoint-api-openapi.yml
+- aid: humanity:humanity-notes-api
+  name: Humanity Notes API
+  description: The Notes API from Humanity — 2 operation(s) for notes.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-notes-api-openapi.yml
+- aid: humanity:humanity-payroll-api
+  name: Humanity Payroll API
+  description: The Payroll API from Humanity — 3 operation(s) for payroll.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Payroll
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-payroll-api-openapi.yml
+- aid: humanity:humanity-positions-api
+  name: Humanity Positions API
+  description: The Positions API from Humanity — 3 operation(s) for positions.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-positions-api-openapi.yml
+- aid: humanity:humanity-preclockins-api
+  name: Humanity Preclockins API
+  description: The Preclockins API from Humanity — 1 operation(s) for preclockins.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Preclockins
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-preclockins-api-openapi.yml
+- aid: humanity:humanity-reports-api
+  name: Humanity Reports API
+  description: The Reports API from Humanity — 6 operation(s) for reports.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-reports-api-openapi.yml
+- aid: humanity:humanity-sales-api
+  name: Humanity Sales API
+  description: The Sales API from Humanity — 1 operation(s) for sales.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-sales-api-openapi.yml
+- aid: humanity:humanity-shifts-api
+  name: Humanity Shifts API
+  description: The Shifts API from Humanity — 8 operation(s) for shifts.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Shifts
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-shifts-api-openapi.yml
+- aid: humanity:humanity-skills-api
+  name: Humanity Skills API
+  description: The Skills API from Humanity — 3 operation(s) for skills.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Skills
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-skills-api-openapi.yml
+- aid: humanity:humanity-swap-api
+  name: Humanity Swap API
+  description: The Swap API from Humanity — 1 operation(s) for swap.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Swap
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-swap-api-openapi.yml
+- aid: humanity:humanity-terminal-api
+  name: Humanity Terminal API
+  description: The Terminal API from Humanity — 3 operation(s) for terminal.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Terminal
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-terminal-api-openapi.yml
+- aid: humanity:humanity-timeclock-api
+  name: Humanity Timeclock API
+  description: The Timeclock API from Humanity — 4 operation(s) for timeclock.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Timeclock
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-timeclock-api-openapi.yml
+- aid: humanity:humanity-timeclocks-api
+  name: Humanity Timeclocks API
+  description: The Timeclocks API from Humanity — 9 operation(s) for timeclocks.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Timeclocks
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-timeclocks-api-openapi.yml
+- aid: humanity:humanity-trade-api
+  name: Humanity Trade API
+  description: The Trade API from Humanity — 2 operation(s) for trade.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Trade
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-trade-api-openapi.yml
+- aid: humanity:humanity-trades-api
+  name: Humanity Trades API
+  description: The Trades API from Humanity — 2 operation(s) for trades.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-trades-api-openapi.yml
+- aid: humanity:humanity-trainings-api
+  name: Humanity Trainings API
+  description: The Trainings API from Humanity — 9 operation(s) for trainings.
+  humanURL: https://platform.humanity.com/
+  baseURL: https://www.humanity.com/api/v2/
+  tags:
+  - Trainings
+  properties:
+  - type: OpenAPI
+    url: openapi/humanity-trainings-api-openapi.yml
 x-enrichment:
   date: '2026-07-19'
   status: backfilled

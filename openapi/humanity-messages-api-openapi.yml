@@ -1,0 +1,1937 @@
+openapi: 3.2.0
+info:
+  title: default Messages API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Messages
+paths:
+  /messages:
+    get:
+      summary: GET Messages
+      description: '/messages
+
+        Permission level: 5'
+      operationId: get-messages
+      parameters:
+      - name: mode
+        in: query
+        description: 'Mode (enum[inbox,outbox])  **inbox: Recived messages - outbox: Sent messages**'
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Sets the limit for the number of returned messages
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Message id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"4055810\": {\n            \"id\": 4055810,\n            \"conversation\": 4055810,\n            \"sender\": 3842511,\n            \"sent\": 1522830003,\n            \"deleted\": 0,\n            \"subject\": \"Hello\",\n            \"message\": \"Hello World\",\n            \"grouped\": 0,\n            \"receivers\": {\n                \"schedules\": [],\n                \"individuals\": [\n                    \"3842510\"\n                ]\n            },\n            \"read\": 0\n        },\n        \"4055811\": {\n            \"id\": 4055811,\n            \"conversation\": 4055811,\n            \"sender\": 3842511,\n            \"sent\": 1522830308,\n            \"deleted\": 0,\n            \"subject\": \"Shift pickup\",\n            \"message\": \"Good morning Chuck, let me know if there is a shift available for pick up.\\n\\nThanks\",\n            \"grouped\": 0,\n            \"receivers\": {\n                \"schedules\": [],\n                \"individuals\": [\n                    \"3842510\"\n                ]\n            },\n            \"read\": 0\n        }\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '4055810':
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4055810
+                            default: 0
+                          conversation:
+                            type: integer
+                            example: 4055810
+                            default: 0
+                          sender:
+                            type: integer
+                            example: 3842511
+                            default: 0
+                          sent:
+                            type: integer
+                            example: 1522830003
+                            default: 0
+                          deleted:
+                            type: integer
+                            example: 0
+                            default: 0
+                          subject:
+                            type: string
+                            example: Hello
+                          message:
+                            type: string
+                            example: Hello World
+                          grouped:
+                            type: integer
+                            example: 0
+                            default: 0
+                          receivers:
+                            type: object
+                            properties:
+                              schedules:
+                                type: array
+                              individuals:
+                                type: array
+                                items:
+                                  type: string
+                                  example: '3842510'
+                          read:
+                            type: integer
+                            example: 0
+                            default: 0
+                      '4055811':
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4055811
+                            default: 0
+                          conversation:
+                            type: integer
+                            example: 4055811
+                            default: 0
+                          sender:
+                            type: integer
+                            example: 3842511
+                            default: 0
+                          sent:
+                            type: integer
+                            example: 1522830308
+                            default: 0
+                          deleted:
+                            type: integer
+                            example: 0
+                            default: 0
+                          subject:
+                            type: string
+                            example: Shift pickup
+                          message:
+                            type: string
+                            example: 'Good morning Chuck, let me know if there is a shift available for pick up.
+
+
+                              Thanks'
+                          grouped:
+                            type: integer
+                            example: 0
+                            default: 0
+                          receivers:
+                            type: object
+                            properties:
+                              schedules:
+                                type: array
+                              individuals:
+                                type: array
+                                items:
+                                  type: string
+                                  example: '3842510'
+                          read:
+                            type: integer
+                            example: 0
+                            default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages?access_token=xxxxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    post:
+      summary: POST Message
+      description: '/messages
+
+        Permission level: 5'
+      operationId: post-message
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - subject
+              - message
+              - individual_receivers
+              - group_receivers
+              properties:
+                subject:
+                  type: string
+                message:
+                  type: string
+                individual_receivers:
+                  type: integer
+                  description: Id of the receiver
+                  format: int32
+                group_receivers:
+                  type: string
+                  description: Position id
+                conversation:
+                  type: integer
+                  description: Conversation id - this parameter is used for replying the messages
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 4055815,\n        \"conversation\": 4055815,\n        \"sender\": \"3842510\",\n        \"sent\": \"Apr 4, 2018 10:50am\",\n        \"deleted\": null,\n        \"subject\": \"Hello Sir\",\n        \"message\": \"<p>And one more thing</p>\",\n        \"grouped\": 0,\n        \"receivers\": \"{\\\"schedules\\\":[],\\\"individuals\\\":[\\\"3842511\\\"]}\",\n        \"read\": null\n    },\n    \"metadata\": [],\n    \"token\": \"4988a1bb9f57ab1b964c8df681e376c45beb0cb7\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 4055815
+                        default: 0
+                      conversation:
+                        type: integer
+                        example: 4055815
+                        default: 0
+                      sender:
+                        type: string
+                        example: '3842510'
+                      sent:
+                        type: string
+                        example: Apr 4, 2018 10:50am
+                      deleted: {}
+                      subject:
+                        type: string
+                        example: Hello Sir
+                      message:
+                        type: string
+                        example: <p>And one more thing</p>
+                      grouped:
+                        type: integer
+                        example: 0
+                        default: 0
+                      receivers:
+                        type: string
+                        example: '{"schedules":[],"individuals":["3842511"]}'
+                      read: {}
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: 4988a1bb9f57ab1b964c8df681e376c45beb0cb7
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    delete:
+      summary: DELETE Message
+      description: '/messages/:id
+
+        Permission level: 5'
+      operationId: delete-message
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - messages
+              - mode
+              properties:
+                messages:
+                  type: integer
+                  description: Message id's
+                  format: int32
+                mode:
+                  type: string
+                  description: inbox, sentbox
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": 1,\n    \"metadata\": [],\n    \"token\": \"xxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: integer
+                    example: 1
+                    default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/119302?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+  /messages/notices:
+    get:
+      summary: GET Notices
+      description: '/notices
+
+        Permission level: 5'
+      operationId: get-notices
+      parameters:
+      - name: current
+        in: query
+        description: enum[1]
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"279\": {\n            \"id\": \"279\",\n            \"franchise\": \"343161\",\n            \"date_sent\": \"2018-12-20 10:59:43\",\n            \"subject\": \"Notice Subject\",\n            \"message\": \"Notice Message\",\n            \"groups\": [\n                \"3\",\n                \"2\",\n                \"6\",\n                \"7\"\n            ],\n            \"start_timestamp\": \"2018-12-22 00:00:00\",\n            \"end_timestamp\": \"2018-12-23 00:00:00\",\n            \"last_edited\": \"2018-12-20 12:45:44\",\n            \"edited_by\": \"3999339\",\n            \"from\": \"3999339\",\n            \"visible_name\": \"0\",\n            \"name\": \"Alan Ford\",\n            \"start\": {\n                \"id\": 3524,\n                \"month\": 12,\n                \"day\": 22,\n                \"wday\": 6,\n                \"year\": 2018,\n                \"weekday\": \"Sat\",\n                \"mname\": \"Dec\",\n                \"week\": 51,\n                \"dayid\": 7,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 22, 2018\",\n                \"iso8601\": \"2018-12-22T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1545433200,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-22 00:00:00\",\n                \"day_of_year\": \"355\",\n                \"week_adjusted\": 51,\n                \"sp_wday\": 7\n            },\n            \"end\": {\n                \"id\": 3525,\n                \"month\": 12,\n                \"day\": 23,\n                \"wday\": 0,\n                \"year\": 2018,\n                \"weekday\": \"Sun\",\n                \"mname\": \"Dec\",\n                \"week\": 51,\n                \"dayid\": 1,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 23, 2018\",\n                \"iso8601\": \"2018-12-23T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1545519600,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-23 00:00:00\",\n                \"day_of_year\": \"356\",\n                \"week_adjusted\": 51,\n                \"sp_wday\": 1\n            }\n        },\n        \"285\": {\n            \"id\": \"285\",\n            \"franchise\": \"343161\",\n            \"date_sent\": \"2018-12-25 12:08:49\",\n            \"subject\": \"Test Notice\",\n            \"message\": \"Test\",\n            \"groups\": [\n                \"5\",\n                \"4\"\n            ],\n            \"start_timestamp\": \"2018-12-25 00:00:00\",\n            \"end_timestamp\": \"2018-12-31 00:00:00\",\n            \"last_edited\": null,\n            \"edited_by\": null,\n            \"from\": \"3999339\",\n            \"visible_name\": \"0\",\n            \"name\": \"Alan Ford\",\n            \"start\": {\n                \"id\": 3527,\n                \"month\": 12,\n                \"day\": 25,\n                \"wday\": 2,\n                \"year\": 2018,\n                \"weekday\": \"Tue\",\n                \"mname\": \"Dec\",\n                \"week\": 52,\n                \"dayid\": 3,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 25, 2018\",\n                \"iso8601\": \"2018-12-25T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1545692400,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-25 00:00:00\",\n                \"day_of_year\": \"358\",\n                \"week_adjusted\": 52,\n                \"sp_wday\": 3\n            },\n            \"end\": {\n                \"id\": 3533,\n                \"month\": 12,\n                \"day\": 31,\n                \"wday\": 1,\n                \"year\": 2018,\n                \"weekday\": \"Mon\",\n                \"mname\": \"Dec\",\n                \"week\": 1,\n                \"dayid\": 2,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 31, 2018\",\n                \"iso8601\": \"2018-12-31T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1546210800,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-31 00:00:00\",\n                \"day_of_year\": \"364\",\n                \"week_adjusted\": 1,\n                \"sp_wday\": 2\n            }\n        }\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '279':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '279'
+                          franchise:
+                            type: string
+                            example: '343161'
+                          date_sent:
+                            type: string
+                            example: '2018-12-20 10:59:43'
+                          subject:
+                            type: string
+                            example: Notice Subject
+                          message:
+                            type: string
+                            example: Notice Message
+                          groups:
+                            type: array
+                            items:
+                              type: string
+                              example: '3'
+                          start_timestamp:
+                            type: string
+                            example: '2018-12-22 00:00:00'
+                          end_timestamp:
+                            type: string
+                            example: '2018-12-23 00:00:00'
+                          last_edited:
+                            type: string
+                            example: '2018-12-20 12:45:44'
+                          edited_by:
+                            type: string
+                            example: '3999339'
+                          from:
+                            type: string
+                            example: '3999339'
+                          visible_name:
+                            type: string
+                            example: '0'
+                          name:
+                            type: string
+                            example: Alan Ford
+                          start:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3524
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 22
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 6
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Sat
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 51
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 7
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 22, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-22T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1545433200
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-22 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '355'
+                              week_adjusted:
+                                type: integer
+                                example: 51
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 7
+                                default: 0
+                          end:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3525
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 23
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 0
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Sun
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 51
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 23, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-23T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1545519600
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-23 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '356'
+                              week_adjusted:
+                                type: integer
+                                example: 51
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 1
+                                default: 0
+                      '285':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '285'
+                          franchise:
+                            type: string
+                            example: '343161'
+                          date_sent:
+                            type: string
+                            example: '2018-12-25 12:08:49'
+                          subject:
+                            type: string
+                            example: Test Notice
+                          message:
+                            type: string
+                            example: Test
+                          groups:
+                            type: array
+                            items:
+                              type: string
+                              example: '5'
+                          start_timestamp:
+                            type: string
+                            example: '2018-12-25 00:00:00'
+                          end_timestamp:
+                            type: string
+                            example: '2018-12-31 00:00:00'
+                          last_edited: {}
+                          edited_by: {}
+                          from:
+                            type: string
+                            example: '3999339'
+                          visible_name:
+                            type: string
+                            example: '0'
+                          name:
+                            type: string
+                            example: Alan Ford
+                          start:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3527
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 25
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 2
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Tue
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 52
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 3
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 25, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-25T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1545692400
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-25 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '358'
+                              week_adjusted:
+                                type: integer
+                                example: 52
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 3
+                                default: 0
+                          end:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3533
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 31
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 1
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Mon
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 1
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 2
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 31, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-31T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1546210800
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-31 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '364'
+                              week_adjusted:
+                                type: integer
+                                example: 1
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 2
+                                default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/notices?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    post:
+      summary: POST Notice
+      description: '/notices
+
+        Permission level: 2'
+      operationId: post-nottice
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - subject
+              - message
+              properties:
+                groups:
+                  type: string
+                  description: coma sepparated list of group ids (2-Manager,3-Supervisor,4-Scheduler,5-Employee,6-Accountant,7-Schedule viewer)
+                subject:
+                  type: string
+                message:
+                  type: string
+                start_timestamp:
+                  type: string
+                end_timestamp:
+                  type: string
+                visible_name:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Notice Created\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Notice Created
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/notices?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+  /messages/notices/{id}:
+    get:
+      summary: GET Notice
+      description: '/notices/:id
+
+        Permission level: 5'
+      operationId: get-nottice
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"279\": {\n            \"id\": \"279\",\n            \"franchise\": \"343161\",\n            \"date_sent\": \"2018-12-20 10:59:43\",\n            \"subject\": \"Notice Subject\",\n            \"message\": \"Notice Message\",\n            \"groups\": [\n                \"3\",\n                \"2\",\n                \"6\",\n                \"7\"\n            ],\n            \"start_timestamp\": {\n                \"id\": 3524,\n                \"month\": 12,\n                \"day\": 22,\n                \"wday\": 6,\n                \"year\": 2018,\n                \"weekday\": \"Sat\",\n                \"mname\": \"Dec\",\n                \"week\": 51,\n                \"dayid\": 7,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 22, 2018\",\n                \"iso8601\": \"2018-12-22T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1545433200,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-22 00:00:00\",\n                \"day_of_year\": \"355\",\n                \"week_adjusted\": 51,\n                \"sp_wday\": 7\n            },\n            \"end_timestamp\": {\n                \"id\": 3533,\n                \"month\": 12,\n                \"day\": 31,\n                \"wday\": 1,\n                \"year\": 2018,\n                \"weekday\": \"Mon\",\n                \"mname\": \"Dec\",\n                \"week\": 1,\n                \"dayid\": 2,\n                \"timeid\": 1,\n                \"timeid_exact\": 1,\n                \"formatted\": \"Dec 31, 2018\",\n                \"iso8601\": \"2018-12-31T00:00:00+0100\",\n                \"time\": \"00:00\",\n                \"timestamp\": 1546210800,\n                \"hours\": 0,\n                \"minutes\": 0,\n                \"seconds\": 0,\n                \"date\": \"2018-12-31 00:00:00\",\n                \"day_of_year\": \"364\",\n                \"week_adjusted\": 1,\n                \"sp_wday\": 2\n            },\n            \"last_edited\": \"2018-12-25 12:13:04\",\n            \"edited_by\": \"3999339\",\n            \"from\": \"3999339\",\n            \"visible_name\": \"0\"\n        }\n    },\n    \"metadata\": [],\n    \"token\": \"88cb171117e7c7d506e52530a03790ceec7cc2e1\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '279':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '279'
+                          franchise:
+                            type: string
+                            example: '343161'
+                          date_sent:
+                            type: string
+                            example: '2018-12-20 10:59:43'
+                          subject:
+                            type: string
+                            example: Notice Subject
+                          message:
+                            type: string
+                            example: Notice Message
+                          groups:
+                            type: array
+                            items:
+                              type: string
+                              example: '3'
+                          start_timestamp:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3524
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 22
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 6
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Sat
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 51
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 7
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 22, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-22T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1545433200
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-22 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '355'
+                              week_adjusted:
+                                type: integer
+                                example: 51
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 7
+                                default: 0
+                          end_timestamp:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3533
+                                default: 0
+                              month:
+                                type: integer
+                                example: 12
+                                default: 0
+                              day:
+                                type: integer
+                                example: 31
+                                default: 0
+                              wday:
+                                type: integer
+                                example: 1
+                                default: 0
+                              year:
+                                type: integer
+                                example: 2018
+                                default: 0
+                              weekday:
+                                type: string
+                                example: Mon
+                              mname:
+                                type: string
+                                example: Dec
+                              week:
+                                type: integer
+                                example: 1
+                                default: 0
+                              dayid:
+                                type: integer
+                                example: 2
+                                default: 0
+                              timeid:
+                                type: integer
+                                example: 1
+                                default: 0
+                              timeid_exact:
+                                type: integer
+                                example: 1
+                                default: 0
+                              formatted:
+                                type: string
+                                example: Dec 31, 2018
+                              iso8601:
+                                type: string
+                                example: 2018-12-31T00:00:00+0100
+                              time:
+                                type: string
+                                example: 00:00
+                              timestamp:
+                                type: integer
+                                example: 1546210800
+                                default: 0
+                              hours:
+                                type: integer
+                                example: 0
+                                default: 0
+                              minutes:
+                                type: integer
+                                example: 0
+                                default: 0
+                              seconds:
+                                type: integer
+                                example: 0
+                                default: 0
+                              date:
+                                type: string
+                                example: '2018-12-31 00:00:00'
+                              day_of_year:
+                                type: string
+                                example: '364'
+                              week_adjusted:
+                                type: integer
+                                example: 1
+                                default: 0
+                              sp_wday:
+                                type: integer
+                                example: 2
+                                default: 0
+                          last_edited:
+                            type: string
+                            example: '2018-12-25 12:13:04'
+                          edited_by:
+                            type: string
+                            example: '3999339'
+                          from:
+                            type: string
+                            example: '3999339'
+                          visible_name:
+                            type: string
+                            example: '0'
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: 88cb171117e7c7d506e52530a03790ceec7cc2e1
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/notices/279?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    put:
+      summary: PUT Notice
+      description: '/notices/:id
+
+        Permission level: 2'
+      operationId: put-nottice
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                groups:
+                  type: string
+                  description: coma sepparated list of group ids (2-Manager,3-Supervisor,4-Scheduler,5-Employee,6-Accountant,7-Schedule viewer)
+                subject:
+                  type: string
+                message:
+                  type: string
+                start_timestamp:
+                  type: string
+                end_timestamp:
+                  type: string
+                visible_name:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Notice Updated\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Notice Updated
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/notices/123?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    delete:
+      summary: DELETE Notice
+      description: '/notices/:id
+
+        Permission level: 3'
+      operationId: delete-nottice
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": \"Notice Deleted\",\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Notice Deleted
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/notices/123?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+  /messages/wall:
+    get:
+      summary: GET Wall Messages
+      description: '/wall
+
+        Permission level: 5'
+      operationId: get-wall-messages
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":[\n      {\n         \"id\":\"171\",\n         \"user\":{\n            \"id\":\"12\",\n            \"name\":\"Alan Ford\"\n         },\n         \"date\":\"1337627278\",\n         \"sticky\":\"0\",\n         \"title\":\"Testing\",\n         \"post\":\"Hello\",\n         \"title_formatted\":\"Testing\",\n         \"post_formatted\":\"Hello\"\n      },\n      {\n         \"id\":\"168\",\n         \"user\":{\n            \"id\":\"5147\",\n            \"name\":\"Bob Rock\"\n         },\n         \"date\":\"1337342896\",\n         \"sticky\":\"0\",\n         \"title\":\"Hi\",\n         \"post\":\"Vihiiiiiiiiii :*\",\n         \"title_formatted\":\"Hi\",\n         \"post_formatted\":\"Vihiiiiiiiiii :*\"\n      },\n      {\n         \"id\":\"167\",\n         \"user\":{\n            \"id\":\"4910\",\n            \"name\":\"No 1\"\n         },\n         \"date\":\"1337341670\",\n         \"sticky\":\"0\",\n         \"title\":\"No avatar\",\n         \"post\":\"test\",\n         \"title_formatted\":\"No avatar\",\n         \"post_formatted\":\"test\",\n         \"comments\":[\n            {\n               \"id\":\"217\",\n               \"user\":{\n                  \"id\":\"2\",\n                  \"name\":\"Alan Ford\"\n               },\n               \"date\":\"1337342655\",\n               \"comment\":\"bla\",\n               \"comment_formatted\":\"bla\"\n            },\n            {\n               \"id\":\"218\",\n               \"user\":{\n                  \"id\":\"5147\",\n                  \"name\":\"Bob Rock\"\n               },\n               \"date\":\"1337348928\",\n               \"comment\":\"asdf\",\n               \"comment_formatted\":\"asdf\"\n            }\n         ]\n      }\n   ],\n   \"metadata\": [],\n   \"token\": \"xxxxxxx\",\n   \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '171'
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '12'
+                            name:
+                              type: string
+                              example: Alan Ford
+                        date:
+                          type: string
+                          example: '1337627278'
+                        sticky:
+                          type: string
+                          example: '0'
+                        title:
+                          type: string
+                          example: Testing
+                        post:
+                          type: string
+                          example: Hello
+                        title_formatted:
+                          type: string
+                          example: Testing
+                        post_formatted:
+                          type: string
+                          example: Hello
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/wall?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    post:
+      summary: POST Wall Message
+      description: '/wall
+
+        Permission level: 5'
+      operationId: post-wall-message
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - post
+              properties:
+                post:
+                  type: string
+                title:
+                  type: string
+                id:
+                  type: integer
+                  format: int32
+                sticky:
+                  type: integer
+                  description: 'enum[0,1] 0: Message is not sticky 1: Message is sticky'
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [],\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/wall?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+  /messages/wall/{id}:
+    delete:
+      summary: DELETE Wall Message
+      description: '/wall/:id
+
+        Permission level: 5'
+      operationId: delete-wall-message
+      parameters:
+      - name: id
+        in: path
+        description: id of message or comment
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - delete
+              properties:
+                delete:
+                  type: string
+                  description: enum[comment,message]
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [],\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/wall/904941?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+    put:
+      summary: PUT Wall Message
+      description: '/wall/:id
+
+        Permission level: 5'
+      operationId: put-wall-message
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - sticky
+              properties:
+                sticky:
+                  type: integer
+                  description: 'enum[0,1] 0: Message is not sticky 1: Message is sticky'
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"id\": 1375271,\n            \"company_id\": 343161,\n            \"user_id\": 3999339,\n            \"date\": \"1545670393\",\n            \"sticky\": \"0\",\n            \"title\": \"123456\",\n            \"post\": \"1368352\",\n            \"deleted\": \"0\",\n            \"deleted_by\": 0\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1375271
+                          default: 0
+                        company_id:
+                          type: integer
+                          example: 343161
+                          default: 0
+                        user_id:
+                          type: integer
+                          example: 3999339
+                          default: 0
+                        date:
+                          type: string
+                          example: '1545670393'
+                        sticky:
+                          type: string
+                          example: '0'
+                        title:
+                          type: string
+                          example: '123456'
+                        post:
+                          type: string
+                          example: '1368352'
+                        deleted:
+                          type: string
+                          example: '0'
+                        deleted_by:
+                          type: integer
+                          example: 0
+                          default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: text
+          code: https://www.humanity.com/api/v2/messages/wall/1375271?access_token=xxxxxxx
+        samples-languages:
+        - text
+      tags:
+      - Messages
+  /messages/{id}:
+    get:
+      summary: GET Message
+      description: '/messages/:id
+
+        Permission level: 5'
+      operationId: get-message
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"id\": 4055810,\n        \"conversation\": 4055810,\n        \"sender\": 3842511,\n        \"sent\": 1522830003,\n        \"deleted\": 0,\n        \"subject\": \"Hello\",\n        \"message\": \"Hello World\",\n        \"grouped\": 0,\n        \"receivers\": \"{\\\"schedules\\\":[],\\\"individuals\\\":[\\\"3842510\\\"]}\",\n        \"read\": 0\n    },\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 4055810
+                        default: 0
+                      conversation:
+                        type: integer
+                        example: 4055810
+                        default: 0
+                      sender:
+                        type: integer
+                        example: 3842511
+                        default: 0
+                      sent:
+                        type: integer
+                        example: 1522830003
+                        default: 0
+                      deleted:
+                        type: integer
+                        example: 0
+                        default: 0
+                      subject:
+                        type: string
+                        example: Hello
+                      message:
+                        type: string
+                        example: Hello World
+                      grouped:
+                        type: integer
+                        example: 0
+                        default: 0
+                      receivers:
+                        type: string
+                        example: '{"schedules":[],"individuals":["3842510"]}'
+                      read:
+                        type: integer
+                        example: 0
+                        default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/messages/4055810?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Messages
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

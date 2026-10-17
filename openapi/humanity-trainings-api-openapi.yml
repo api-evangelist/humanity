@@ -1,0 +1,1580 @@
+openapi: 3.2.0
+info:
+  title: default Trainings API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Trainings
+paths:
+  /trainings/modules:
+    get:
+      summary: GET Training Modules
+      description: '/trainings/modules
+
+        Permission level: 5'
+      operationId: get-training-modules
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"64822\": {\n            \"id\": \"64822\",\n            \"store\": \"303579\",\n            \"title\": \"Training test1\",\n            \"section\": \"22026\",\n            \"tutorial\": \"0\",\n            \"contents\": null,\n            \"video\": \"\",\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1501143557\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1520243005\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": \"\",\n            \"threshold\": \"0\",\n            \"synced\": \"0\",\n            \"global\": \"0\"\n        },\n        \"66296\": {\n            \"id\": \"66296\",\n            \"store\": \"303579\",\n            \"title\": \"Training test2\",\n            \"section\": \"22584\",\n            \"tutorial\": null,\n            \"contents\": null,\n            \"video\": null,\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1504526524\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"0\",\n            \"updated_by\": \"0\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": null,\n            \"threshold\": \"0\",\n            \"synced\": \"1\",\n            \"global\": \"0\"\n        },\n        \"66640\": {\n            \"id\": \"66640\",\n            \"store\": \"303579\",\n            \"title\": \"Training test3\",\n            \"section\": \"22695\",\n            \"tutorial\": \"0\",\n            \"contents\": \"asd\",\n            \"video\": \"\",\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1505138229\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1512570208\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": \"\",\n            \"threshold\": \"0\",\n            \"synced\": \"0\",\n            \"global\": \"0\"\n        },\n        \"69613\": {\n            \"id\": \"69613\",\n            \"store\": \"303579\",\n            \"title\": \"Training test3\",\n            \"section\": \"22695\",\n            \"tutorial\": \"0\",\n            \"contents\": null,\n            \"video\": \"\",\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1511193341\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1521633493\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"1\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": \"\",\n            \"threshold\": \"0\",\n            \"synced\": \"0\",\n            \"global\": \"0\"\n        },\n        \"74145\": {\n            \"id\": \"74145\",\n            \"store\": \"303579\",\n            \"title\": \"Training test5\",\n            \"section\": \"22584\",\n            \"tutorial\": null,\n            \"contents\": null,\n            \"video\": null,\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1520243445\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"0\",\n            \"updated_by\": \"0\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": null,\n            \"threshold\": \"0\",\n            \"synced\": \"1\",\n            \"global\": \"0\"\n        },\n        \"74146\": {\n            \"id\": \"74146\",\n            \"store\": \"303579\",\n            \"title\": \"Training test6\",\n            \"section\": \"22026\",\n            \"tutorial\": \"0\",\n            \"contents\": \"Hello world\",\n            \"video\": \"\",\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1520248654\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1520249039\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"1\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"1\",\n            \"iframe\": \"\",\n            \"threshold\": \"0\",\n            \"synced\": \"0\",\n            \"global\": \"0\"\n        },\n        \n    },\n    \"token\": \"80f278ff0ae93d51649e856e9266a96e939c7c97\",\n    \"error\": null\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    post:
+      summary: POST Training Modules
+      description: '/trainings/modules
+
+        Permission level: 3'
+      operationId: post-training-modules
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - title
+              properties:
+                title:
+                  type: string
+                contents:
+                  type: string
+                video:
+                  type: string
+                  description: Youtube id (varchar)
+                iframe:
+                  type: string
+                mintime:
+                  type: integer
+                  format: int32
+                section:
+                  type: integer
+                  format: int32
+                tutorial:
+                  type: integer
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"75424\": {\n            \"id\": \"75424\",\n            \"store\": \"303579\",\n            \"title\": \"New training\",\n            \"section\": null,\n            \"tutorial\": null,\n            \"contents\": null,\n            \"video\": null,\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1522846351\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"0\",\n            \"updated_by\": \"0\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": null,\n            \"threshold\": \"0\"\n        }\n    },\n    \"token\": \"xxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '75424':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '75424'
+                          store:
+                            type: string
+                            example: '303579'
+                          title:
+                            type: string
+                            example: New training
+                          section: {}
+                          tutorial: {}
+                          contents: {}
+                          video: {}
+                          mintime: {}
+                          deleted:
+                            type: string
+                            example: '0'
+                          deleted_by:
+                            type: string
+                            example: '0'
+                          created:
+                            type: string
+                            example: '1522846351'
+                          created_by:
+                            type: string
+                            example: '3475050'
+                          updated:
+                            type: string
+                            example: '0'
+                          updated_by:
+                            type: string
+                            example: '0'
+                          child_edit:
+                            type: string
+                            example: '1'
+                          orig_cm_id:
+                            type: string
+                            example: '0'
+                          order:
+                            type: string
+                            example: '0'
+                          duedate:
+                            type: string
+                            example: '0'
+                          est_time: {}
+                          digital_signature:
+                            type: string
+                            example: '0'
+                          comment_type:
+                            type: string
+                            example: '0'
+                          can_see_comment:
+                            type: string
+                            example: '5'
+                          download_pdf:
+                            type: string
+                            example: '-1'
+                          iframe: {}
+                          threshold:
+                            type: string
+                            example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    put:
+      summary: PUT Training Module
+      description: '/trainings/modules
+
+        Permission level: 3'
+      operationId: put-training-module
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - module_id
+              properties:
+                module_id:
+                  type: string
+                  description: Module id
+                title:
+                  type: string
+                duedate:
+                  type: string
+                  format: date
+                est_time:
+                  type: string
+                  format: date
+                section:
+                  type: integer
+                  format: int32
+                child_edit:
+                  type: integer
+                  format: int32
+                tutorial:
+                  type: integer
+                  format: int32
+                mintime:
+                  type: integer
+                  format: int32
+                contents:
+                  type: string
+                video:
+                  type: string
+                addgrouop:
+                  type: integer
+                  description: position id
+                  format: int32
+                removegroup:
+                  type: integer
+                  format: int32
+                add_group:
+                  type: integer
+                  description: user group enum[2,3,4,5,6,7]
+                  format: int32
+                remove_grouop:
+                  type: integer
+                  format: int32
+                add_skill:
+                  type: integer
+                  format: int32
+                remove_skill:
+                  type: integer
+                  format: int32
+                add_user_training:
+                  type: integer
+                  format: int32
+                addlocation:
+                  type: integer
+                  format: int32
+                removelocation:
+                  type: integer
+                  format: int32
+                reset:
+                  type: integer
+                  format: int32
+                silent:
+                  type: integer
+                  format: int32
+                comment_type:
+                  type: integer
+                  format: int32
+                can_see_comment:
+                  type: integer
+                  format: int32
+                digital_signature:
+                  type: integer
+                  format: int32
+                download_pdf:
+                  type: integer
+                  format: int32
+                questions:
+                  type: string
+                  description: Array
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"75424\": {\n            \"id\": \"75424\",\n            \"store\": \"303579\",\n            \"title\": \"New training\",\n            \"section\": null,\n            \"tutorial\": null,\n            \"contents\": null,\n            \"video\": null,\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1522846351\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1522846474\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": null,\n            \"threshold\": \"0\"\n        }\n    },\n    \"token\": \"xxxxxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '75424':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '75424'
+                          store:
+                            type: string
+                            example: '303579'
+                          title:
+                            type: string
+                            example: New training
+                          section: {}
+                          tutorial: {}
+                          contents: {}
+                          video: {}
+                          mintime: {}
+                          deleted:
+                            type: string
+                            example: '0'
+                          deleted_by:
+                            type: string
+                            example: '0'
+                          created:
+                            type: string
+                            example: '1522846351'
+                          created_by:
+                            type: string
+                            example: '3475050'
+                          updated:
+                            type: string
+                            example: '1522846474'
+                          updated_by:
+                            type: string
+                            example: '3475050'
+                          child_edit:
+                            type: string
+                            example: '1'
+                          orig_cm_id:
+                            type: string
+                            example: '0'
+                          order:
+                            type: string
+                            example: '0'
+                          duedate:
+                            type: string
+                            example: '0'
+                          est_time: {}
+                          digital_signature:
+                            type: string
+                            example: '0'
+                          comment_type:
+                            type: string
+                            example: '0'
+                          can_see_comment:
+                            type: string
+                            example: '5'
+                          download_pdf:
+                            type: string
+                            example: '-1'
+                          iframe: {}
+                          threshold:
+                            type: string
+                            example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/modules/{id}:
+    get:
+      summary: GET Training Module
+      description: '/trainings/modules/:id
+
+        Permission level: 5'
+      operationId: get-training-module
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: store
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"64822\": {\n            \"id\": \"64822\",\n            \"store\": \"303579\",\n            \"title\": \"Training Test1\",\n            \"section\": \"22026\",\n            \"tutorial\": \"0\",\n            \"contents\": null,\n            \"video\": \"\",\n            \"mintime\": null,\n            \"deleted\": \"0\",\n            \"deleted_by\": \"0\",\n            \"created\": \"1501143557\",\n            \"created_by\": \"3475050\",\n            \"updated\": \"1520243005\",\n            \"updated_by\": \"3475050\",\n            \"child_edit\": \"1\",\n            \"orig_cm_id\": \"0\",\n            \"order\": \"0\",\n            \"duedate\": \"0\",\n            \"est_time\": null,\n            \"digital_signature\": \"0\",\n            \"comment_type\": \"0\",\n            \"can_see_comment\": \"5\",\n            \"download_pdf\": \"-1\",\n            \"iframe\": \"\",\n            \"threshold\": \"0\",\n            \"synced\": \"0\",\n            \"global\": \"0\"\n        }\n    },\n    \"token\": \"xxxxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      '64822':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '64822'
+                          store:
+                            type: string
+                            example: '303579'
+                          title:
+                            type: string
+                            example: Training Test1
+                          section:
+                            type: string
+                            example: '22026'
+                          tutorial:
+                            type: string
+                            example: '0'
+                          contents: {}
+                          video:
+                            type: string
+                            example: ''
+                          mintime: {}
+                          deleted:
+                            type: string
+                            example: '0'
+                          deleted_by:
+                            type: string
+                            example: '0'
+                          created:
+                            type: string
+                            example: '1501143557'
+                          created_by:
+                            type: string
+                            example: '3475050'
+                          updated:
+                            type: string
+                            example: '1520243005'
+                          updated_by:
+                            type: string
+                            example: '3475050'
+                          child_edit:
+                            type: string
+                            example: '1'
+                          orig_cm_id:
+                            type: string
+                            example: '0'
+                          order:
+                            type: string
+                            example: '0'
+                          duedate:
+                            type: string
+                            example: '0'
+                          est_time: {}
+                          digital_signature:
+                            type: string
+                            example: '0'
+                          comment_type:
+                            type: string
+                            example: '0'
+                          can_see_comment:
+                            type: string
+                            example: '5'
+                          download_pdf:
+                            type: string
+                            example: '-1'
+                          iframe:
+                            type: string
+                            example: ''
+                          threshold:
+                            type: string
+                            example: '0'
+                          synced:
+                            type: string
+                            example: '0'
+                          global:
+                            type: string
+                            example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    delete:
+      summary: DELETE Training Module
+      description: '/trainings/modules/:id
+
+        Permission level: 3'
+      operationId: delete-training-module
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"\",\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/modules/{id}/complete:
+    put:
+      summary: PUT Training Module Complete
+      description: '/trainings/modules/:id/complete
+
+        Permission level: 5'
+      operationId: put-training-module-complete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                signature:
+                  type: string
+                digital:
+                  type: integer
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":true,\n   \"token\":\"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: boolean
+                    example: true
+                    default: true
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123/complete?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/modules/{module_id}/comments:
+    get:
+      summary: GET Training Module Comments
+      description: '/trainings/modules/:module_id/comments
+
+        Permission level: 5'
+      operationId: get-training-module-comments
+      parameters:
+      - name: module_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: type
+        in: query
+        description: 'enum[1,2] 1: Comments, 2: Homework'
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"202845\",\n      \"store\": \"11\",\n      \"user\": \"2\",\n      \"type\": \"1\",\n      \"text\": \"test comment\",\n      \"file\": null,\n      \"status\": \"0\",\n      \"module\": \"40367\",\n      \"created\": \"1486385043\",\n      \"updated\": \"0\",\n      \"ip_address\": \"\",\n      \"name\": \"Test Employee\",\n      \"avatar\": \"1346472359\",\n      \"avatar_url\": \"{\\\"large\\\":\\\"avatars\\\\/2-5431661e25804.jpg\\\",\\\"small\\\":\\\"avatars\\\\/sm_2-5431661e25804.jpg\\\",\\\"bigger\\\":\\\"avatars\\\\/la_2-5431661e25804.jpg\\\",\\\"full\\\":\\\"avatars\\\\/full_2-5431661e25804.jpg\\\",\\\"profile\\\":\\\"avatars\\\\/profile_2-5431661e25804.jpg\\\",\\\"forum\\\":\\\"avatars\\\\/forum_2-5431661e25804.jpg\\\",\\\"signature\\\":\\\"avatars\\\\/signature_2.jpg\\\"}\"\n    }\n  ],\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '202845'
+                        store:
+                          type: string
+                          example: '11'
+                        user:
+                          type: string
+                          example: '2'
+                        type:
+                          type: string
+                          example: '1'
+                        text:
+                          type: string
+                          example: test comment
+                        file: {}
+                        status:
+                          type: string
+                          example: '0'
+                        module:
+                          type: string
+                          example: '40367'
+                        created:
+                          type: string
+                          example: '1486385043'
+                        updated:
+                          type: string
+                          example: '0'
+                        ip_address:
+                          type: string
+                          example: ''
+                        name:
+                          type: string
+                          example: Test Employee
+                        avatar:
+                          type: string
+                          example: '1346472359'
+                        avatar_url:
+                          type: string
+                          example: '{"large":"avatars\/2-5431661e25804.jpg","small":"avatars\/sm_2-5431661e25804.jpg","bigger":"avatars\/la_2-5431661e25804.jpg","full":"avatars\/full_2-5431661e25804.jpg","profile":"avatars\/profile_2-5431661e25804.jpg","forum":"avatars\/forum_2-5431661e25804.jpg","signature":"avatars\/signature_2.jpg"}'
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123/comments?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    put:
+      summary: PUT Training Module Comments
+      description: '/trainings/modules/:module_id/comments
+
+        Permission level: 5'
+      operationId: put-training-module-comments
+      parameters:
+      - name: module_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                type:
+                  type: integer
+                  description: 'enum[1,2]1: Comments, 2: Homework'
+                  format: int32
+                comment_id:
+                  type: integer
+                  format: int32
+                status:
+                  type: integer
+                  description: 'enum[1,2] 1: Accepted comment, 2: Rejected comment'
+                  format: int32
+                text:
+                  type: string
+                user:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": true,\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: boolean
+                    example: true
+                    default: true
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123/comments?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/modules/{module_id}/digital_signature:
+    get:
+      summary: GET Training Module Signature
+      description: '/trainings/modules/:module_id/digital_signature
+
+        Permission level: 5'
+      operationId: get-training-module-signature
+      parameters:
+      - name: module_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":[\n      {\n         \"id\":\"2066\",\n         \"store\":\"131\",\n         \"user\":\"5401\",\n         \"type\":\"3\",\n         \"text\":\"Testemployee3\",\n         \"file\":null,\n         \"status\":\"0\",\n         \"module\":\"2066\",\n         \"created\":\"1343329141\",\n         \"updated\":\"0\",\n         \"ip_address\":\"xxx.xxx.xxx.xxx\",\n         \"name\":\"15538985195241\",\n         \"avatar\":\"0\"\n      }\n   ],\n   \"token\":\"xxxxxxx\",\n   \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '2066'
+                        store:
+                          type: string
+                          example: '131'
+                        user:
+                          type: string
+                          example: '5401'
+                        type:
+                          type: string
+                          example: '3'
+                        text:
+                          type: string
+                          example: Testemployee3
+                        file: {}
+                        status:
+                          type: string
+                          example: '0'
+                        module:
+                          type: string
+                          example: '2066'
+                        created:
+                          type: string
+                          example: '1343329141'
+                        updated:
+                          type: string
+                          example: '0'
+                        ip_address:
+                          type: string
+                          example: xxx.xxx.xxx.xxx
+                        name:
+                          type: string
+                          example: '15538985195241'
+                        avatar:
+                          type: string
+                          example: '0'
+                  token:
+                    type: string
+                    example: xxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/modules/123/digital_signature?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/progress:
+    get:
+      summary: GET Training Progress
+      description: '/trainings/progress
+
+        Permission level: 5'
+      operationId: get-training-progress
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"2\": {\n      \"id\": 2,\n      \"name\": \"Ryan Fyfe\",\n      \"avatar\": \"1346472359\",\n      \"avatar_url\": \"{\\\"large\\\":\\\"avatars\\\\/2-5431661e25804.jpg\\\",\\\"small\\\":\\\"avatars\\\\/sm_2-5431661e25804.jpg\\\",\\\"bigger\\\":\\\"avatars\\\\/la_2-5431661e25804.jpg\\\",\\\"full\\\":\\\"avatars\\\\/full_2-5431661e25804.jpg\\\",\\\"profile\\\":\\\"avatars\\\\/profile_2-5431661e25804.jpg\\\",\\\"forum\\\":\\\"avatars\\\\/forum_2-5431661e25804.jpg\\\",\\\"signature\\\":\\\"avatars\\\\/signature_2.jpg\\\"}\",\n      \"total\": 1,\n      \"completed\": 1\n    },\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/progress?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/sections:
+    get:
+      summary: GET Training Sections
+      description: '/trainings/progress
+
+        Permission level: 5'
+      operationId: get-training-sections
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"store\": \"11\",\n      \"title\": \"Welcome\",\n      \"created\": \"1334812094\",\n      \"created_by\": \"2\",\n      \"deleted\": \"0\",\n      \"deleted_by\": \"0\",\n      \"order\": \"0\",\n      \"synced\": \"0\",\n      \"synced_by\": null,\n      \"global\": \"0\"\n    },\n    {\n      \"id\": \"4477\",\n      \"store\": \"11\",\n      \"title\": \"Sales 101\",\n      \"created\": \"1377004599\",\n      \"created_by\": \"2\",\n      \"deleted\": \"0\",\n      \"deleted_by\": \"0\",\n      \"order\": \"1\",\n      \"synced\": \"1\",\n      \"synced_by\": \"21621\",\n      \"global\": \"0\"\n    }\n  ],\n  \"token\": \"xxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        store:
+                          type: string
+                          example: '11'
+                        title:
+                          type: string
+                          example: Welcome
+                        created:
+                          type: string
+                          example: '1334812094'
+                        created_by:
+                          type: string
+                          example: '2'
+                        deleted:
+                          type: string
+                          example: '0'
+                        deleted_by:
+                          type: string
+                          example: '0'
+                        order:
+                          type: string
+                          example: '0'
+                        synced:
+                          type: string
+                          example: '0'
+                        synced_by: {}
+                        global:
+                          type: string
+                          example: '0'
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    post:
+      summary: POST Training Section
+      description: '/trainings/progress
+
+        Permission level: 3'
+      operationId: post-training-section
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - title
+              properties:
+                title:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"\",\n  \"token\": \"xxxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  token:
+                    type: string
+                    example: xxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/sections/{id}:
+    get:
+      summary: GET Training Section
+      description: '/trainings/progress/:id
+
+        Permission level: 5'
+      operationId: get-training-section
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"4477\",\n    \"store\": \"11\",\n    \"title\": \"Sales 101\",\n    \"created\": \"1377004599\",\n    \"created_by\": \"2\",\n    \"deleted\": \"0\",\n    \"deleted_by\": \"0\",\n    \"order\": \"1\",\n    \"synced\": \"1\",\n    \"synced_by\": \"21621\",\n    \"global\": \"0\"\n  },\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '4477'
+                      store:
+                        type: string
+                        example: '11'
+                      title:
+                        type: string
+                        example: Sales 101
+                      created:
+                        type: string
+                        example: '1377004599'
+                      created_by:
+                        type: string
+                        example: '2'
+                      deleted:
+                        type: string
+                        example: '0'
+                      deleted_by:
+                        type: string
+                        example: '0'
+                      order:
+                        type: string
+                        example: '1'
+                      synced:
+                        type: string
+                        example: '1'
+                      synced_by:
+                        type: string
+                        example: '21621'
+                      global:
+                        type: string
+                        example: '0'
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections/4477?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    put:
+      summary: PUT Training Section
+      description: '/trainings/progress/:id
+
+        Permission level: 3'
+      operationId: put-training-section
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                global:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"\",\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+    delete:
+      summary: DELETE Training Section
+      description: '/trainings/progress/:id
+
+        Permission level: 3'
+      operationId: delete-training-section
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"Section Deleted\",\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Section Deleted
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections/123?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+  /trainings/sections/{id}/sync:
+    put:
+      summary: PUT Training Section Sync
+      description: '/trainings/progress/:id/sync
+
+        Permission level: 3'
+      operationId: put-training-section-sync
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"Section is synced\",\n  \"token\": \"xxxx\",\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Section is synced
+                  token:
+                    type: string
+                    example: xxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/trainings/sections/123/sync?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Trainings
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

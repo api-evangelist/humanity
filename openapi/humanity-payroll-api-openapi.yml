@@ -1,0 +1,854 @@
+openapi: 3.2.0
+info:
+  title: default Payroll API
+  version: '2.0'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Payroll
+paths:
+  /payroll/ratecards:
+    get:
+      summary: GET Ratecards
+      description: '/payroll/ratecards
+
+        Permission Level: 5'
+      operationId: get-billing-packages
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"store_id\": \"11\",\n      \"name\": \"Ratecard1\",\n      \"is_default\": \"0\",\n      \"is_stack_enabled\": \"1\",\n      \"rules\": \"[]\",\n      \"created_by\": \"2\",\n      \"updated_by\": null,\n      \"deleted_by\": null,\n      \"created_at\": \"2016-10-25 12:49:10\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"2\",\n      \"store_id\": \"11\",\n      \"name\": \"Ratecard2\",\n      \"is_default\": \"0\",\n      \"is_stack_enabled\": \"1\",\n      \"rules\": \"[]\",\n      \"created_by\": \"2\",\n      \"updated_by\": \"2\",\n      \"deleted_by\": null,\n      \"created_at\": \"2016-10-31 10:17:03\",\n      \"updated_at\": \"2016-11-07 06:06:02\",\n      \"deleted_at\": null\n    }\n  ],\n  \"token\": \"xxxxxxxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '1'
+                        store_id:
+                          type: string
+                          example: '11'
+                        name:
+                          type: string
+                          example: Ratecard1
+                        is_default:
+                          type: string
+                          example: '0'
+                        is_stack_enabled:
+                          type: string
+                          example: '1'
+                        rules:
+                          type: string
+                          example: '[]'
+                        created_by:
+                          type: string
+                          example: '2'
+                        updated_by: {}
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2016-10-25 12:49:10'
+                        updated_at: {}
+                        deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/payroll/ratecards?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Payroll
+    post:
+      summary: POST Ratecard
+      description: '/payroll/ratecards
+
+        Permission Level: 3'
+      operationId: get-ratecards
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                stack_overtime:
+                  type: boolean
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 2,\n    \"company_id\": 11,\n    \"name\": \"test ratecard\",\n    \"is_default\": false,\n    \"is_stack_enabled\": false,\n    \"rules\": [],\n    \"created_by\": 2,\n    \"updated_by\": null,\n    \"deleted_by\": null,\n    \"created_at\": \"2017-01-26 12:25:55\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n  },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 11
+                        default: 0
+                      name:
+                        type: string
+                        example: test ratecard
+                      is_default:
+                        type: boolean
+                        example: false
+                        default: true
+                      is_stack_enabled:
+                        type: boolean
+                        example: false
+                        default: true
+                      rules:
+                        type: array
+                      created_by:
+                        type: integer
+                        example: 2
+                        default: 0
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-01-26 12:25:55'
+                      updated_at: {}
+                      deleted_at: {}
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/payroll/ratecards?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Payroll
+  /payroll/ratecards/{id}:
+    get:
+      summary: GET Ratecard
+      description: '/payroll/ratecards/:id
+
+        Permission Level: 5'
+      operationId: get-ratecard
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+          format: int32
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 1,\n    \"store_id\": 11,\n    \"name\": \"Ratecard1\",\n    \"is_default\": false,\n    \"is_stack_enabled\": true,\n    \"rules\": [],\n    \"created_by\": \"2\",\n    \"updated_by\": null,\n    \"deleted_by\": null,\n    \"created_at\": \"2016-10-25 12:49:10\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n  },\n  \"token\": \"xxxxxxxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                        default: 0
+                      store_id:
+                        type: integer
+                        example: 11
+                        default: 0
+                      name:
+                        type: string
+                        example: Ratecard1
+                      is_default:
+                        type: boolean
+                        example: false
+                        default: true
+                      is_stack_enabled:
+                        type: boolean
+                        example: true
+                        default: true
+                      rules:
+                        type: array
+                      created_by:
+                        type: string
+                        example: '2'
+                      updated_by: {}
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2016-10-25 12:49:10'
+                      updated_at: {}
+                      deleted_at: {}
+                  token:
+                    type: string
+                    example: xxxxxxxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/payroll/ratecards/1?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Payroll
+    put:
+      summary: PUT Ratecard
+      description: '/payroll/ratecards/:id
+
+        Permission Level: 3'
+      operationId: put-ratecards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                def:
+                  type: boolean
+                  description: Default ratecard
+                rates:
+                  type: string
+                  description: Update rates
+                overtime:
+                  type: integer
+                  description: Overtime
+                  format: int32
+                day_limit:
+                  type: string
+                  description: enum[CREATE,UPDATE,DELETE]
+                day_limit_id:
+                  type: integer
+                  description: Day limit id
+                  format: int32
+                day_limit_minimum:
+                  type: integer
+                  description: Day limit minimum
+                  format: int32
+                day_limit_rate:
+                  type: integer
+                  description: Day limit rate
+                  format: int32
+                pay_code:
+                  type: string
+                  description: Pay code
+                stack_overtime:
+                  type: boolean
+                  description: Stack overtime
+                override_payroll:
+                  type: boolean
+                  description: Override payroll
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 1,\n    \"company_id\": 11,\n    \"name\": \"test ratecard1\",\n    \"is_default\": false,\n    \"is_stack_enabled\": false,\n    \"rules\": [],\n    \"created_by\": \"2\",\n    \"updated_by\": 2,\n    \"deleted_by\": null,\n    \"created_at\": \"2017-01-26 11:28:11\",\n    \"updated_at\": \"2017-01-26 07:32:37\",\n    \"deleted_at\": null\n  },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 11
+                        default: 0
+                      name:
+                        type: string
+                        example: test ratecard1
+                      is_default:
+                        type: boolean
+                        example: false
+                        default: true
+                      is_stack_enabled:
+                        type: boolean
+                        example: false
+                        default: true
+                      rules:
+                        type: array
+                      created_by:
+                        type: string
+                        example: '2'
+                      updated_by:
+                        type: integer
+                        example: 2
+                        default: 0
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2017-01-26 11:28:11'
+                      updated_at:
+                        type: string
+                        example: '2017-01-26 07:32:37'
+                      deleted_at: {}
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/payroll/ratecards/1?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Payroll
+    delete:
+      summary: DELETE Ratecard
+      description: '/payroll/ratecards/:id
+
+        Permission Level: 2'
+      operationId: delete-ratecards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 3,\n    \"company_id\": 11,\n    \"name\": \"test ratecard2\",\n    \"is_default\": false,\n    \"is_stack_enabled\": false,\n    \"rules\": [],\n    \"created_by\": \"2\",\n    \"updated_by\": null,\n    \"deleted_by\": 2,\n    \"created_at\": \"2017-01-26 12:28:36\",\n    \"updated_at\": null,\n    \"deleted_at\": \"2017-01-26 07:51:34\"\n  },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                        default: 0
+                      company_id:
+                        type: integer
+                        example: 11
+                        default: 0
+                      name:
+                        type: string
+                        example: test ratecard2
+                      is_default:
+                        type: boolean
+                        example: false
+                        default: true
+                      is_stack_enabled:
+                        type: boolean
+                        example: false
+                        default: true
+                      rules:
+                        type: array
+                      created_by:
+                        type: string
+                        example: '2'
+                      updated_by: {}
+                      deleted_by:
+                        type: integer
+                        example: 2
+                        default: 0
+                      created_at:
+                        type: string
+                        example: '2017-01-26 12:28:36'
+                      updated_at: {}
+                      deleted_at:
+                        type: string
+                        example: '2017-01-26 07:51:34'
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/payroll/ratecards/3?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Payroll
+  /payroll/report?access_token=xxxxxxx:
+    get:
+      summary: GET Payroll report
+      description: '/payroll/report
+
+        Permission level: 5'
+      operationId: get-payroll-report
+      parameters:
+      - name: start_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: type
+        in: query
+        description: enum[scheduledhours, confirmedhours, timesheets,]
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: schedule
+        in: query
+        description: Array of schedule ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: employee
+        in: query
+        description: Array of employees ids (eg. "234,563,770")
+        schema:
+          type: string
+      - name: skill
+        in: query
+        schema:
+          type: string
+      - name: options
+        in: query
+        description: '1: order by name'
+        schema:
+          type: integer
+          format: int32
+      - name: deduct_breaks
+        in: query
+        description: min value 1
+        schema:
+          type: integer
+          format: int32
+      - name: remote_site
+        in: query
+        description: remote site id
+        schema:
+          type: integer
+          format: int32
+      - name: group_results
+        in: query
+        description: '0: Don''t group 1: Group by employee 2: Group by employee 3: Group by position'
+        schema:
+          type: integer
+          format: int32
+      - name: show_empty
+        in: query
+        description: Can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: split_overnight
+        in: query
+        description: Can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: include_unapproved_ts
+        in: query
+        description: Can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: include_remote_sites
+        in: query
+        description: Can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: terminal_location
+        in: query
+        description: Terminal location id
+        schema:
+          type: integer
+          format: int32
+      - name: show_only_mine
+        in: query
+        description: '1: retrieves report for authenticated user'
+        schema:
+          type: integer
+          format: int32
+      - name: show_break_times
+        in: query
+        description: can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      - name: include_ntoes
+        in: query
+        description: Can be 0 or 1
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": {\n        \"0\": {\n            \"userid\": \"3475064\",\n            \"employee\": \"Dave Murray\",\n            \"eid\": \"\",\n            \"date\": {\n                \"id\": 3170,\n                \"timestamp\": 1514869200,\n                \"month\": 1,\n                \"day\": 2,\n                \"year\": 2018,\n                \"week\": 1,\n                \"dayid\": 3,\n                \"weekday\": \"Tue\",\n                \"mname\": \"Jan\",\n                \"formatted\": \"Jan 2, 2018\"\n            },\n            \"out_date\": {\n                \"id\": 3170,\n                \"timestamp\": 1514869200,\n                \"month\": 1,\n                \"day\": 2,\n                \"year\": 2018,\n                \"week\": 1,\n                \"dayid\": 3,\n                \"weekday\": \"Tue\",\n                \"mname\": \"Jan\",\n                \"formatted\": \"Jan 2, 2018\"\n            },\n            \"start_time\": \"01:00\",\n            \"end_time\": \"09:00\",\n            \"hours\": {\n                \"regular\": 8,\n                \"special\": 0,\n                \"overtime\": 0,\n                \"d_overtime\": 0,\n                \"total\": 8,\n                \"cost\": 0,\n                \"breaks\": 0,\n                \"rate\": \"\",\n                \"position\": {\n                    \"id\": \"1614960\",\n                    \"active\": \"1\",\n                    \"notify\": \"1\",\n                    \"store\": \"303579\",\n                    \"user\": \"3475050\",\n                    \"name\": \"Supervisor\",\n                    \"start\": \"0\",\n                    \"end\": \"0\",\n                    \"location\": \"0\",\n                    \"color\": \"25\",\n                    \"ical\": \"534861a381743f1548d08f1669c3eb62\",\n                    \"visible\": \"1\",\n                    \"job_code\": null,\n                    \"unique_id\": null,\n                    \"skill_id\": null\n                },\n                \"ratecard\": {\n                    \"id\": 265933,\n                    \"name\": \"Default Card\",\n                    \"pay_code\": null,\n                    \"override_payroll\": \"0\"\n                },\n                \"location\": {\n                    \"id\": \"\",\n                    \"name\": \"\"\n                },\n                \"remote_site\": \"\",\n                \"base_wage\": \"\",\n                \"weekly_by_rate\": [],\n                \"daily_by_rate\": [],\n                \"special_by_rate\": []\n            },\n            \"overnight\": false,\n            \"clock\": \"456511406\",\n            \"shift_title\": \"\",\n            \"in_location_name\": \"\",\n            \"out_location_name\": \"\"\n        },\n        \"1\": {\n            \"userid\": \"3475064\",\n            \"employee\": \"Dave Murray\",\n            \"eid\": \"\",\n            \"date\": {\n                \"id\": 3171,\n                \"timestamp\": 1514955600,\n                \"month\": 1,\n                \"day\": 3,\n                \"year\": 2018,\n                \"week\": 1,\n                \"dayid\": 4,\n                \"weekday\": \"Wed\",\n                \"mname\": \"Jan\",\n                \"formatted\": \"Jan 3, 2018\"\n            },\n            \"out_date\": {\n                \"id\": 3171,\n                \"timestamp\": 1514955600,\n                \"month\": 1,\n                \"day\": 3,\n                \"year\": 2018,\n                \"week\": 1,\n                \"dayid\": 4,\n                \"weekday\": \"Wed\",\n                \"mname\": \"Jan\",\n                \"formatted\": \"Jan 3, 2018\"\n            },\n            \"start_time\": \"01:00\",\n            \"end_time\": \"08:00\",\n            \"hours\": {\n                \"regular\": 7,\n                \"special\": 0,\n                \"overtime\": 0,\n                \"d_overtime\": 0,\n                \"total\": 7,\n                \"cost\": 0,\n                \"breaks\": 0,\n                \"rate\": \"\",\n                \"position\": {\n                    \"id\": \"1614960\",\n                    \"active\": \"1\",\n                    \"notify\": \"1\",\n                    \"store\": \"303579\",\n                    \"user\": \"3475050\",\n                    \"name\": \"Supervisor\",\n                    \"start\": \"0\",\n                    \"end\": \"0\",\n                    \"location\": \"0\",\n                    \"color\": \"25\",\n                    \"ical\": \"534861a381743f1548d08f1669c3eb62\",\n                    \"visible\": \"1\",\n                    \"job_code\": null,\n                    \"unique_id\": null,\n                    \"skill_id\": null\n                },\n                \"ratecard\": {\n                    \"id\": 265933,\n                    \"name\": \"Default Card\",\n                    \"pay_code\": null,\n                    \"override_payroll\": \"0\"\n                },\n                \"location\": {\n                    \"id\": \"\",\n                    \"name\": \"\"\n                },\n                \"remote_site\": \"\",\n                \"base_wage\": \"\",\n                \"weekly_by_rate\": [],\n                \"daily_by_rate\": [],\n                \"special_by_rate\": []\n            },\n            \"overnight\": false,\n            \"clock\": \"457201295\",\n            \"shift_title\": \"\",\n            \"in_location_name\": \"\",\n            \"out_location_name\": \"\"\n        }"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/payroll/report?access_token=sssssss&type=scheduledhours&start_date=2018-01-01&end_date=2018-01-04&employee=3475064
+        samples-languages:
+        - http
+      tags:
+      - Payroll
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0

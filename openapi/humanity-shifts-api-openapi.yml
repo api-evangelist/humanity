@@ -1,0 +1,3879 @@
+openapi: 3.2.0
+info:
+  title: Humanity Shifts API
+  version: '2.0'
+  description: 'Operations tagged Shifts across 2 of this provider''s published API definitions: humanity-default-openapi.yml, humanity-json-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://www.humanity.com/api/v2
+security:
+- sec0: []
+tags:
+- name: Shifts
+paths:
+  /shifts:
+    get:
+      summary: GET Shifts
+      description: '/shifts
+
+        Permission level: 7'
+      operationId: get-shifts
+      parameters:
+      - name: overnight
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: start_limit
+        in: query
+        description: 'Works only with mode : Open, it behaves like offset in this case.'
+        schema:
+          type: integer
+          format: int32
+      - name: end_limit
+        in: query
+        description: 'Works only with mode : Open, it behaves like limit in a combination with start_limit parameter'
+        schema:
+          type: integer
+          format: int32
+      - name: start_date
+        in: query
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        schema:
+          type: string
+      - name: mode
+        in: query
+        description: 'Can be one of the following: overview, location, schedule, incomplete, employees, employee, open, openapproval, confirm, onnow, late, upcoming, recent, multiple.<br> If mode is not set, it defaults to ''employee''.'
+        schema:
+          type: string
+      - name: schedule
+        in: query
+        description: 'Works only with modes: confirm, location, schedule, employees, where it acts as a position filter. Accepts a string with comma-separated Position IDs'
+        schema:
+          type: string
+      - name: location
+        in: query
+        description: 'Works only with modes: confirm, employees, where it acts as a location filter. Accepts an integer which represents a Location ID'
+        schema:
+          type: integer
+          format: int32
+      - name: employees
+        in: query
+        description: 'Works with modes: confirm, employees, where it accepts a string with comma-separated Employee IDs.<br>With modes upcoming, recent, or employee, it accepts only one Employee ID. In all cases it behaves like a filter by employee(s).'
+        schema:
+          type: string
+      - name: detailed
+        in: query
+        description: If set to 1, the response will have additional information regarding employees, their conflicts, availability to work, count of shifts in a series if they are part of a series.<br>It's recommended not to use this parameter if not needed because it will make request noticeably slower.
+        schema:
+          type: integer
+          format: int32
+      - name: budget
+        in: query
+        description: 'Works with all modes except for "multiple". Accepted values: 0 or 1. If set to 1, the response will have extra information about budget data entered for the date range between provided start_date and end_date'
+        schema:
+          type: integer
+          format: int32
+      - name: vacation
+        in: query
+        description: '[0, 1]'
+        schema:
+          type: integer
+          format: int32
+      - name: filter_by_site
+        in: query
+        schema:
+          type: string
+      - name: filter_by_employee
+        in: query
+        schema:
+          type: string
+      - name: filter_by_skill
+        in: query
+        schema:
+          type: string
+      - name: filled
+        in: query
+        description: '[0, 1]'
+        schema:
+          type: integer
+          format: int32
+      - name: include_ghost_shifts
+        in: query
+        description: Works only with modes location and schedule. If set to true, the response will include shifts of employees which are assigned to positions listed with the parameter "schedule" or all positions under a location provided with the parameter "location".
+        schema:
+          type: boolean
+      - in: query
+        name: fields[shift]
+        schema:
+          type: string
+        description: "Use this parameter to return only specific fields in the response, reducing payload size. Pass the resource type in brackets and a comma-separated list of the fields you want included.\n\nExample: \nhttps://www.humanity.com/api/v2/shifts?mode=overview&start_date=2026-02-01&end_date=2026-03-01&fields[shift]=employees,schedule,schedule_name,start_timestamp,end_timestamp"
+        required: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": [\n    {\n      \"id\": \"321823010\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1324363\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2676,\n        \"month\": 8,\n        \"day\": 26,\n        \"wday\": 5,\n        \"year\": 2016,\n        \"weekday\": \"Fri\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 6,\n        \"timeid\": 45,\n        \"timeid_exact\": 45,\n        \"formatted\": \"Aug 26, 2016\",\n        \"time\": \"11:00am\",\n        \"timestamp\": 1472202000,\n        \"hours\": 11,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-26 11:00:00\",\n        \"day_of_year\": \"238\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 6\n      },\n      \"end_date\": {\n        \"id\": 2676,\n        \"month\": 8,\n        \"day\": 26,\n        \"wday\": 5,\n        \"year\": 2016,\n        \"weekday\": \"Fri\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 6,\n        \"timeid\": 73,\n        \"timeid_exact\": 73,\n        \"formatted\": \"Aug 26, 2016\",\n        \"time\": \"6:00pm\",\n        \"timestamp\": 1472227200,\n        \"hours\": 18,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-26 18:00:00\",\n        \"day_of_year\": \"238\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 6\n      },\n      \"length\": 7,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-26 11:00:00\",\n      \"end_timestamp\": \"2016-08-26 18:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Shop Manager\",\n      \"schedule_color\": \"29\",\n      \"schedule_location_id\": \"542311\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 7,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 45,\n        \"time\": \"11:00am\"\n      },\n      \"end_time\": {\n        \"id\": 73,\n        \"time\": \"6:00pm\"\n      },\n      \"paidtime\": 7,\n      \"employees\": [\n        {\n          \"id\": \"2744096\",\n          \"avatar\": \"0\",\n          \"name\": \"Michael Rivas\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    },\n    {\n      \"id\": \"321823011\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1321635\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2676,\n        \"month\": 8,\n        \"day\": 26,\n        \"wday\": 5,\n        \"year\": 2016,\n        \"weekday\": \"Fri\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 6,\n        \"timeid\": 61,\n        \"timeid_exact\": 61,\n        \"formatted\": \"Aug 26, 2016\",\n        \"time\": \"3:00pm\",\n        \"timestamp\": 1472216400,\n        \"hours\": 15,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-26 15:00:00\",\n        \"day_of_year\": \"238\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 6\n      },\n      \"end_date\": {\n        \"id\": 2676,\n        \"month\": 8,\n        \"day\": 26,\n        \"wday\": 5,\n        \"year\": 2016,\n        \"weekday\": \"Fri\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 6,\n        \"timeid\": 93,\n        \"timeid_exact\": 93,\n        \"formatted\": \"Aug 26, 2016\",\n        \"time\": \"11:00pm\",\n        \"timestamp\": 1472245200,\n        \"hours\": 23,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-26 23:00:00\",\n        \"day_of_year\": \"238\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 6\n      },\n      \"length\": 8,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-26 15:00:00\",\n      \"end_timestamp\": \"2016-08-26 23:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Waiter\",\n      \"schedule_color\": \"10\",\n      \"schedule_location_id\": \"0\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 8,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 61,\n        \"time\": \"3:00pm\"\n      },\n      \"end_time\": {\n        \"id\": 93,\n        \"time\": \"11:00pm\"\n      },\n      \"paidtime\": 8,\n      \"employees\": [\n        {\n          \"id\": \"2744098\",\n          \"avatar\": \"0\",\n          \"name\": \"Timothy Edison\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    },\n    {\n      \"id\": \"321823012\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1324358\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 25,\n        \"timeid_exact\": 25,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"6:00am\",\n        \"timestamp\": 1472270400,\n        \"hours\": 6,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 06:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"end_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 69,\n        \"timeid_exact\": 69,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"5:00pm\",\n        \"timestamp\": 1472310000,\n        \"hours\": 17,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 17:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"length\": 11,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-27 06:00:00\",\n      \"end_timestamp\": \"2016-08-27 17:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Barista\",\n      \"schedule_color\": \"1\",\n      \"schedule_location_id\": \"542311\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 11,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 25,\n        \"time\": \"6:00am\"\n      },\n      \"end_time\": {\n        \"id\": 69,\n        \"time\": \"5:00pm\"\n      },\n      \"paidtime\": 11,\n      \"employees\": [\n        {\n          \"id\": \"2744095\",\n          \"avatar\": \"0\",\n          \"name\": \"Kian Simonette\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    },\n    {\n      \"id\": \"321823013\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1324361\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 33,\n        \"timeid_exact\": 33,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"8:00am\",\n        \"timestamp\": 1472277600,\n        \"hours\": 8,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 08:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"end_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 65,\n        \"timeid_exact\": 65,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"4:00pm\",\n        \"timestamp\": 1472306400,\n        \"hours\": 16,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 16:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"length\": 8,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-27 08:00:00\",\n      \"end_timestamp\": \"2016-08-27 16:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Customer service\",\n      \"schedule_color\": \"25\",\n      \"schedule_location_id\": \"542311\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 8,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 33,\n        \"time\": \"8:00am\"\n      },\n      \"end_time\": {\n        \"id\": 65,\n        \"time\": \"4:00pm\"\n      },\n      \"paidtime\": 8,\n      \"employees\": [\n        {\n          \"id\": \"2744097\",\n          \"avatar\": \"0\",\n          \"name\": \"Sheri Downer\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    },\n    {\n      \"id\": \"321823014\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1321636\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 61,\n        \"timeid_exact\": 61,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"3:00pm\",\n        \"timestamp\": 1472302800,\n        \"hours\": 15,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 15:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"end_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 93,\n        \"timeid_exact\": 93,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"11:00pm\",\n        \"timestamp\": 1472331600,\n        \"hours\": 23,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 23:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"length\": 8,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-27 15:00:00\",\n      \"end_timestamp\": \"2016-08-27 23:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Desk Service\",\n      \"schedule_color\": \"11\",\n      \"schedule_location_id\": \"0\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 8,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 61,\n        \"time\": \"3:00pm\"\n      },\n      \"end_time\": {\n        \"id\": 93,\n        \"time\": \"11:00pm\"\n      },\n      \"paidtime\": 8,\n      \"employees\": [\n        {\n          \"id\": \"2744092\",\n          \"avatar\": \"0\",\n          \"name\": \"Derrick Arnold\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    },\n    {\n      \"id\": \"321823015\",\n      \"created\": \"1472128649\",\n      \"published\": \"1472128658\",\n      \"edited\": \"1472128649\",\n      \"deleted\": \"0\",\n      \"schedule\": \"1321635\",\n      \"type\": \"0\",\n      \"needed\": \"0\",\n      \"working\": \"1\",\n      \"user\": \"2736727\",\n      \"start_date\": {\n        \"id\": 2677,\n        \"month\": 8,\n        \"day\": 27,\n        \"wday\": 6,\n        \"year\": 2016,\n        \"weekday\": \"Sat\",\n        \"mname\": \"Aug\",\n        \"week\": 34,\n        \"dayid\": 7,\n        \"timeid\": 73,\n        \"timeid_exact\": 73,\n        \"formatted\": \"Aug 27, 2016\",\n        \"time\": \"6:00pm\",\n        \"timestamp\": 1472313600,\n        \"hours\": 18,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-27 18:00:00\",\n        \"day_of_year\": \"239\",\n        \"week_adjusted\": 34,\n        \"sp_wday\": 7\n      },\n      \"end_date\": {\n        \"id\": 2678,\n        \"month\": 8,\n        \"day\": 28,\n        \"wday\": 0,\n        \"year\": 2016,\n        \"weekday\": \"Sun\",\n        \"mname\": \"Aug\",\n        \"week\": 35,\n        \"dayid\": 1,\n        \"timeid\": 25,\n        \"timeid_exact\": 25,\n        \"formatted\": \"Aug 28, 2016\",\n        \"time\": \"6:00am\",\n        \"timestamp\": 1472356800,\n        \"hours\": 6,\n        \"minutes\": 0,\n        \"seconds\": 0,\n        \"date\": \"2016-08-28 06:00:00\",\n        \"day_of_year\": \"240\",\n        \"week_adjusted\": 35,\n        \"sp_wday\": 1\n      },\n      \"length\": 12,\n      \"title\": \"\",\n      \"location\": \"0\",\n      \"notes\": \"\",\n      \"confirmed\": \"0\",\n      \"ref\": \"0\",\n      \"start_timestamp\": \"2016-08-27 18:00:00\",\n      \"end_timestamp\": \"2016-08-28 06:00:00\",\n      \"traded\": \"0\",\n      \"confirmed_start_timestamp\": null,\n      \"confirmed_end_timestamp\": null,\n      \"absent\": \"0\",\n      \"perms\": \"2\",\n      \"schedule_name\": \"Waiter\",\n      \"schedule_color\": \"10\",\n      \"schedule_location_id\": \"0\",\n      \"cost\": {\n        \"staff\": 1,\n        \"hours\": 12,\n        \"dollars\": 0\n      },\n      \"start_time\": {\n        \"id\": 73,\n        \"time\": \"6:00pm\"\n      },\n      \"end_time\": {\n        \"id\": 25,\n        \"time\": \"6:00am\"\n      },\n      \"paidtime\": 12,\n      \"employees\": [\n        {\n          \"id\": \"2744093\",\n          \"avatar\": \"0\",\n          \"name\": \"Frederick Braxton\",\n          \"status\": \"1\",\n          \"wage\": \"\",\n          \"notified_day\": \"0\",\n          \"notified_hour\": \"0\",\n          \"last_active\": \"0\",\n          \"rate\": \"\",\n          \"ratecard\": \"0\",\n          \"absent\": \"0\",\n          \"cost\": 0,\n          \"confirmed_start\": null,\n          \"confirmed_end\": null\n        }\n      ],\n      \"trades\": null\n    }\n  ],\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '321823010'
+                        created:
+                          type: string
+                          example: '1472128649'
+                        published:
+                          type: string
+                          example: '1472128658'
+                        edited:
+                          type: string
+                          example: '1472128649'
+                        deleted:
+                          type: string
+                          example: '0'
+                        schedule:
+                          type: string
+                          example: '1324363'
+                        type:
+                          type: string
+                          example: '0'
+                        needed:
+                          type: string
+                          example: '0'
+                        working:
+                          type: string
+                          example: '1'
+                        user:
+                          type: string
+                          example: '2736727'
+                        start_date:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2676
+                              default: 0
+                            month:
+                              type: integer
+                              example: 8
+                              default: 0
+                            day:
+                              type: integer
+                              example: 26
+                              default: 0
+                            wday:
+                              type: integer
+                              example: 5
+                              default: 0
+                            year:
+                              type: integer
+                              example: 2016
+                              default: 0
+                            weekday:
+                              type: string
+                              example: Fri
+                            mname:
+                              type: string
+                              example: Aug
+                            week:
+                              type: integer
+                              example: 34
+                              default: 0
+                            dayid:
+                              type: integer
+                              example: 6
+                              default: 0
+                            timeid:
+                              type: integer
+                              example: 45
+                              default: 0
+                            timeid_exact:
+                              type: integer
+                              example: 45
+                              default: 0
+                            formatted:
+                              type: string
+                              example: Aug 26, 2016
+                            time:
+                              type: string
+                              example: 11:00am
+                            timestamp:
+                              type: integer
+                              example: 1472202000
+                              default: 0
+                            hours:
+                              type: integer
+                              example: 11
+                              default: 0
+                            minutes:
+                              type: integer
+                              example: 0
+                              default: 0
+                            seconds:
+                              type: integer
+                              example: 0
+                              default: 0
+                            date:
+                              type: string
+                              example: '2016-08-26 11:00:00'
+                            day_of_year:
+                              type: string
+                              example: '238'
+                            week_adjusted:
+                              type: integer
+                              example: 34
+                              default: 0
+                            sp_wday:
+                              type: integer
+                              example: 6
+                              default: 0
+                        end_date:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2676
+                              default: 0
+                            month:
+                              type: integer
+                              example: 8
+                              default: 0
+                            day:
+                              type: integer
+                              example: 26
+                              default: 0
+                            wday:
+                              type: integer
+                              example: 5
+                              default: 0
+                            year:
+                              type: integer
+                              example: 2016
+                              default: 0
+                            weekday:
+                              type: string
+                              example: Fri
+                            mname:
+                              type: string
+                              example: Aug
+                            week:
+                              type: integer
+                              example: 34
+                              default: 0
+                            dayid:
+                              type: integer
+                              example: 6
+                              default: 0
+                            timeid:
+                              type: integer
+                              example: 73
+                              default: 0
+                            timeid_exact:
+                              type: integer
+                              example: 73
+                              default: 0
+                            formatted:
+                              type: string
+                              example: Aug 26, 2016
+                            time:
+                              type: string
+                              example: 6:00pm
+                            timestamp:
+                              type: integer
+                              example: 1472227200
+                              default: 0
+                            hours:
+                              type: integer
+                              example: 18
+                              default: 0
+                            minutes:
+                              type: integer
+                              example: 0
+                              default: 0
+                            seconds:
+                              type: integer
+                              example: 0
+                              default: 0
+                            date:
+                              type: string
+                              example: '2016-08-26 18:00:00'
+                            day_of_year:
+                              type: string
+                              example: '238'
+                            week_adjusted:
+                              type: integer
+                              example: 34
+                              default: 0
+                            sp_wday:
+                              type: integer
+                              example: 6
+                              default: 0
+                        length:
+                          type: integer
+                          example: 7
+                          default: 0
+                        title:
+                          type: string
+                          example: ''
+                        location:
+                          type: string
+                          example: '0'
+                        notes:
+                          type: string
+                          example: ''
+                        confirmed:
+                          type: string
+                          example: '0'
+                        ref:
+                          type: string
+                          example: '0'
+                        start_timestamp:
+                          type: string
+                          example: '2016-08-26 11:00:00'
+                        end_timestamp:
+                          type: string
+                          example: '2016-08-26 18:00:00'
+                        traded:
+                          type: string
+                          example: '0'
+                        confirmed_start_timestamp: {}
+                        confirmed_end_timestamp: {}
+                        absent:
+                          type: string
+                          example: '0'
+                        perms:
+                          type: string
+                          example: '2'
+                        schedule_name:
+                          type: string
+                          example: Shop Manager
+                        schedule_color:
+                          type: string
+                          example: '29'
+                        schedule_location_id:
+                          type: string
+                          example: '542311'
+                        cost:
+                          type: object
+                          properties:
+                            staff:
+                              type: integer
+                              example: 1
+                              default: 0
+                            hours:
+                              type: integer
+                              example: 7
+                              default: 0
+                            dollars:
+                              type: integer
+                              example: 0
+                              default: 0
+                        start_time:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 45
+                              default: 0
+                            time:
+                              type: string
+                              example: 11:00am
+                        end_time:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 73
+                              default: 0
+                            time:
+                              type: string
+                              example: 6:00pm
+                        paidtime:
+                          type: integer
+                          example: 7
+                          default: 0
+                        employees:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '2744096'
+                              avatar:
+                                type: string
+                                example: '0'
+                              name:
+                                type: string
+                                example: Michael Rivas
+                              status:
+                                type: string
+                                example: '1'
+                              wage:
+                                type: string
+                                example: ''
+                              notified_day:
+                                type: string
+                                example: '0'
+                              notified_hour:
+                                type: string
+                                example: '0'
+                              last_active:
+                                type: string
+                                example: '0'
+                              rate:
+                                type: string
+                                example: ''
+                              ratecard:
+                                type: string
+                                example: '0'
+                              absent:
+                                type: string
+                                example: '0'
+                              cost:
+                                type: integer
+                                example: 0
+                                default: 0
+                              confirmed_start: {}
+                              confirmed_end: {}
+                        trades: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    post:
+      summary: POST Shift
+      description: '/shifts
+
+        Permission level: 3'
+      operationId: post-shift
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - start_time
+              - end_time
+              - start_date
+              - end_date
+              - schedule
+              properties:
+                start_time:
+                  type: string
+                end_time:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                schedule:
+                  type: integer
+                  format: int32
+                employee_id:
+                  type: string
+                  description: A comma-separated employee IDs which will be assigned to a shift
+                type:
+                  type: integer
+                  description: 0 -> Standard, 1 -> Open
+                  format: int32
+                needed:
+                  type: integer
+                  format: int32
+                notes:
+                  type: string
+                title:
+                  type: string
+                confirmed:
+                  type: string
+                  description: 0 -> Not Confirmed; 1 -> Confirmed
+                location:
+                  type: integer
+                  description: Remote Location id
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": 321867317,\n    \"created\": 1472136865,\n    \"published\": 0,\n    \"edited\": 1472136865,\n    \"deleted\": 0,\n    \"schedule\": 1321635,\n    \"type\": 0,\n    \"needed\": 0,\n    \"working\": 1,\n    \"user\": 2736727,\n    \"start_date\": {\n      \"id\": 2675,\n      \"month\": 8,\n      \"day\": 25,\n      \"wday\": 4,\n      \"year\": 2016,\n      \"weekday\": \"Thu\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 5,\n      \"timeid\": 37,\n      \"timeid_exact\": 37,\n      \"formatted\": \"Aug 25, 2016\",\n      \"time\": \"9:00am\",\n      \"timestamp\": 1472108400,\n      \"hours\": 9,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-25 09:00:00\",\n      \"day_of_year\": \"237\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 5\n    },\n    \"end_date\": {\n      \"id\": 2675,\n      \"month\": 8,\n      \"day\": 25,\n      \"wday\": 4,\n      \"year\": 2016,\n      \"weekday\": \"Thu\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 5,\n      \"timeid\": 69,\n      \"timeid_exact\": 69,\n      \"formatted\": \"Aug 25, 2016\",\n      \"time\": \"5:00pm\",\n      \"timestamp\": 1472137200,\n      \"hours\": 17,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-25 17:00:00\",\n      \"day_of_year\": \"237\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 5\n    },\n    \"length\": 8,\n    \"title\": \"\",\n    \"location\": 0,\n    \"notes\": \"\",\n    \"confirmed\": 0,\n    \"ref\": 0,\n    \"start_timestamp\": \"2016-08-25 09:00:00\",\n    \"end_timestamp\": \"2016-08-25 17:00:00\",\n    \"perms\": \"2\",\n    \"paidtime\": 8,\n    \"start_time\": {\n      \"id\": 37,\n      \"time\": \"9:00am\"\n    },\n    \"end_time\": {\n      \"id\": 69,\n      \"time\": \"5:00pm\"\n    },\n    \"schedule_name\": \"Waiter\",\n    \"schedule_color\": 10,\n    \"employees\": [\n      {\n        \"id\": \"2744092\",\n        \"name\": \"Derrick Arnold\",\n        \"avatar\": \"0\",\n        \"status\": \"1\",\n        \"wage\": \"\",\n        \"last_active\": \"0\",\n        \"rate\": \"\",\n        \"ratecard\": \"0\",\n        \"present\": null,\n        \"cost\": 0\n      }\n    ],\n    \"employeesOnCall\": null,\n    \"cost\": {\n      \"staff\": 1,\n      \"hours\": 8,\n      \"dollars\": 0\n    },\n    \"repeats\": 0,\n    \"staff\": {\n      \"scheduled\": [\n        [\n          \"2744092\",\n          \"48.00\"\n        ]\n      ],\n      \"vacation\": [],\n      \"unavail\": [],\n      \"overlap\": [\n        [\n          2744097,\n          \"40.00\"\n        ],\n        [\n          2736727,\n          \"40.00\"\n        ]\n      ],\n      \"mintime\": [],\n      \"sameday\": [],\n      \"available\": [\n        [\n          2744098,\n          \"32.00\"\n        ]\n      ],\n      \"overtime\": [\n        [\n          2744093,\n          \"30.00\"\n        ]\n      ],\n      \"oncall\": []\n    },\n    \"break\": 8,\n    \"conflicts\": null,\n    \"conflicts_types\": null,\n    \"conflict_types\": null,\n    \"requests\": null,\n    \"trades\": null\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 321867317
+                        default: 0
+                      created:
+                        type: integer
+                        example: 1472136865
+                        default: 0
+                      published:
+                        type: integer
+                        example: 0
+                        default: 0
+                      edited:
+                        type: integer
+                        example: 1472136865
+                        default: 0
+                      deleted:
+                        type: integer
+                        example: 0
+                        default: 0
+                      schedule:
+                        type: integer
+                        example: 1321635
+                        default: 0
+                      type:
+                        type: integer
+                        example: 0
+                        default: 0
+                      needed:
+                        type: integer
+                        example: 0
+                        default: 0
+                      working:
+                        type: integer
+                        example: 1
+                        default: 0
+                      user:
+                        type: integer
+                        example: 2736727
+                        default: 0
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2675
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 25
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Thu
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 5
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 37
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 37
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 25, 2016
+                          time:
+                            type: string
+                            example: 9:00am
+                          timestamp:
+                            type: integer
+                            example: 1472108400
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 9
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-25 09:00:00'
+                          day_of_year:
+                            type: string
+                            example: '237'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 5
+                            default: 0
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2675
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 25
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 4
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Thu
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 5
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 69
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 69
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 25, 2016
+                          time:
+                            type: string
+                            example: 5:00pm
+                          timestamp:
+                            type: integer
+                            example: 1472137200
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 17
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-25 17:00:00'
+                          day_of_year:
+                            type: string
+                            example: '237'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 5
+                            default: 0
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: integer
+                        example: 0
+                        default: 0
+                      notes:
+                        type: string
+                        example: ''
+                      confirmed:
+                        type: integer
+                        example: 0
+                        default: 0
+                      ref:
+                        type: integer
+                        example: 0
+                        default: 0
+                      start_timestamp:
+                        type: string
+                        example: '2016-08-25 09:00:00'
+                      end_timestamp:
+                        type: string
+                        example: '2016-08-25 17:00:00'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: integer
+                        example: 8
+                        default: 0
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 37
+                            default: 0
+                          time:
+                            type: string
+                            example: 9:00am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 69
+                            default: 0
+                          time:
+                            type: string
+                            example: 5:00pm
+                      schedule_name:
+                        type: string
+                        example: Waiter
+                      schedule_color:
+                        type: integer
+                        example: 10
+                        default: 0
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '2744092'
+                            name:
+                              type: string
+                              example: Derrick Arnold
+                            avatar:
+                              type: string
+                              example: '0'
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: ''
+                            last_active:
+                              type: string
+                              example: '0'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            present: {}
+                            cost:
+                              type: integer
+                              example: 0
+                              default: 0
+                      employeesOnCall: {}
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 0
+                            default: 0
+                      repeats:
+                        type: integer
+                        example: 0
+                        default: 0
+                      staff:
+                        type: object
+                        properties:
+                          scheduled:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: string
+                                example: '2744092'
+                          vacation:
+                            type: array
+                          unavail:
+                            type: array
+                          overlap:
+                            type: array
+                            items:
+                              type: array
+                          mintime:
+                            type: array
+                          sameday:
+                            type: array
+                          available:
+                            type: array
+                            items:
+                              type: array
+                          overtime:
+                            type: array
+                            items:
+                              type: array
+                          oncall:
+                            type: array
+                      break:
+                        type: integer
+                        example: 8
+                        default: 0
+                      conflicts: {}
+                      conflicts_types: {}
+                      conflict_types: {}
+                      requests: {}
+                      trades: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts?access_token=xxxxxxx
+        - language: text
+          code: 'start_time=9:00am
+
+            end_time=5:00pm
+
+            start_date=2016-08-25
+
+            end_date=2016-08-25
+
+            schedule=1321635
+
+            employee_id=2744092'
+          name: BODY PARAMS
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/clear:
+    get:
+      summary: GET Clear
+      description: '/shifts/clear
+
+        Permission level: 5'
+      operationId: get-clear
+      parameters:
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: schedule
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: shifts
+        in: query
+        description: 'Array of shifts ids (eg: "458,547,1001")'
+        schema:
+          type: string
+      - name: restore
+        in: query
+        description: 'enum[0,1] 0: Clear shift, 1: Restore shift'
+        schema:
+          type: integer
+          format: int32
+      - name: restoredate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":\"43 shifts cleared.\",\n   \"error\":null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: 43 shifts cleared.
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/clear?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/publish:
+    get:
+      summary: GET Publish
+      description: '/shifts/publish
+
+        Permission level: 5'
+      operationId: get-publish
+      parameters:
+      - name: shifts
+        in: query
+        description: 'String containing an array of comma separated shift IDs (eg: "458,547,1001")'
+        required: true
+        schema:
+          type: string
+      - name: notify
+        in: query
+        description: 'enum[0,1,2] 0: Do not notify, 1: Notify employees, 2: Send notifications to employees & managers'
+        schema:
+          type: integer
+          format: int32
+      - name: message
+        in: query
+        schema:
+          type: string
+      - name: location
+        in: query
+        description: location id
+        schema:
+          type: integer
+          format: int32
+      - name: positions
+        in: query
+        description: 'String containing an array of comma separated position IDs (eg: "458,547,1001")'
+        schema:
+          type: string
+      - name: dont_delete_acknowledgements
+        in: query
+        description: enum[0,1]
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":\"1. shift published & 0 republished.\",\n   \"token\":\"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: 1. shift published & 0 republished.
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/publish?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/{id}:
+    get:
+      summary: GET Shift
+      description: '/shifts/:id
+
+        Permission level: 7'
+      operationId: get-shift
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: detailed
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: do_not_initiate_conflicts
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"321822992\",\n    \"created\": \"1472128649\",\n    \"published\": \"1472128658\",\n    \"edited\": \"1472128649\",\n    \"deleted\": \"0\",\n    \"schedule\": \"1321634\",\n    \"type\": \"0\",\n    \"needed\": \"0\",\n    \"working\": \"1\",\n    \"user\": \"2736727\",\n    \"start_date\": {\n      \"id\": 2673,\n      \"month\": 8,\n      \"day\": 23,\n      \"wday\": 2,\n      \"year\": 2016,\n      \"weekday\": \"Tue\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 3,\n      \"timeid\": 37,\n      \"timeid_exact\": 37,\n      \"formatted\": \"Aug 23, 2016\",\n      \"time\": \"9:00am\",\n      \"timestamp\": 1471935600,\n      \"hours\": 9,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-23 09:00:00\",\n      \"day_of_year\": \"235\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 3\n    },\n    \"end_date\": {\n      \"id\": 2673,\n      \"month\": 8,\n      \"day\": 23,\n      \"wday\": 2,\n      \"year\": 2016,\n      \"weekday\": \"Tue\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 3,\n      \"timeid\": 69,\n      \"timeid_exact\": 69,\n      \"formatted\": \"Aug 23, 2016\",\n      \"time\": \"5:00pm\",\n      \"timestamp\": 1471964400,\n      \"hours\": 17,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-23 17:00:00\",\n      \"day_of_year\": \"235\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 3\n    },\n    \"length\": 8,\n    \"title\": \"\",\n    \"location\": \"0\",\n    \"notes\": \"\",\n    \"confirmed\": \"0\",\n    \"ref\": \"0\",\n    \"start_timestamp\": \"2016-08-23 09:00:00\",\n    \"end_timestamp\": \"2016-08-23 17:00:00\",\n    \"perms\": \"2\",\n    \"paidtime\": 8,\n    \"start_time\": {\n      \"id\": 37,\n      \"time\": \"9:00am\"\n    },\n    \"end_time\": {\n      \"id\": 69,\n      \"time\": \"5:00pm\"\n    },\n    \"schedule_name\": \"Store Manager\",\n    \"schedule_color\": 27,\n    \"employees\": [\n      {\n        \"id\": \"2736727\",\n        \"name\": \"Brian Lane\",\n        \"avatar\": \"0\",\n        \"status\": \"1\",\n        \"wage\": \"\",\n        \"last_active\": \"1472134719\",\n        \"rate\": \"\",\n        \"ratecard\": \"0\",\n        \"present\": \"0\",\n        \"cost\": 0\n      }\n    ],\n    \"employeesOnCall\": null,\n    \"cost\": {\n      \"staff\": 1,\n      \"hours\": 8,\n      \"dollars\": 0\n    },\n    \"repeats\": \"0\",\n    \"staff\": null,\n    \"break\": null,\n    \"conflicts\": null,\n    \"conflicts_types\": null,\n    \"conflict_types\": null\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '321822992'
+                      created:
+                        type: string
+                        example: '1472128649'
+                      published:
+                        type: string
+                        example: '1472128658'
+                      edited:
+                        type: string
+                        example: '1472128649'
+                      deleted:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: string
+                        example: '1321634'
+                      type:
+                        type: string
+                        example: '0'
+                      needed:
+                        type: string
+                        example: '0'
+                      working:
+                        type: string
+                        example: '1'
+                      user:
+                        type: string
+                        example: '2736727'
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2673
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 23
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 2
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 37
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 37
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 23, 2016
+                          time:
+                            type: string
+                            example: 9:00am
+                          timestamp:
+                            type: integer
+                            example: 1471935600
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 9
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-23 09:00:00'
+                          day_of_year:
+                            type: string
+                            example: '235'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2673
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 23
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 2
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 69
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 69
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 23, 2016
+                          time:
+                            type: string
+                            example: 5:00pm
+                          timestamp:
+                            type: integer
+                            example: 1471964400
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 17
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-23 17:00:00'
+                          day_of_year:
+                            type: string
+                            example: '235'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 3
+                            default: 0
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: string
+                        example: '0'
+                      notes:
+                        type: string
+                        example: ''
+                      confirmed:
+                        type: string
+                        example: '0'
+                      ref:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2016-08-23 09:00:00'
+                      end_timestamp:
+                        type: string
+                        example: '2016-08-23 17:00:00'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: integer
+                        example: 8
+                        default: 0
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 37
+                            default: 0
+                          time:
+                            type: string
+                            example: 9:00am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 69
+                            default: 0
+                          time:
+                            type: string
+                            example: 5:00pm
+                      schedule_name:
+                        type: string
+                        example: Store Manager
+                      schedule_color:
+                        type: integer
+                        example: 27
+                        default: 0
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '2736727'
+                            name:
+                              type: string
+                              example: Brian Lane
+                            avatar:
+                              type: string
+                              example: '0'
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: ''
+                            last_active:
+                              type: string
+                              example: '1472134719'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            present:
+                              type: string
+                              example: '0'
+                            cost:
+                              type: integer
+                              example: 0
+                              default: 0
+                      employeesOnCall: {}
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 0
+                            default: 0
+                      repeats:
+                        type: string
+                        example: '0'
+                      staff: {}
+                      break: {}
+                      conflicts: {}
+                      conflicts_types: {}
+                      conflict_types: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/321822992?access_token=xxxxxxx
+          name: HTTP
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    put:
+      summary: PUT Shift
+      description: '/shifts:id
+
+        Permission level: 5'
+      operationId: put-shift
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                trade_accept:
+                  type: integer
+                  format: int32
+                approve_overtime:
+                  type: integer
+                  format: int32
+                employee_id:
+                  type: string
+                  description: This parameter works only in conjunction with parameter <b>copy_to</b>, when we want to copy a shift and add one employee to the copied shift.
+                schedule:
+                  type: string
+                type:
+                  type: integer
+                  description: 0 -> Standard; 1 -> Open
+                  format: int32
+                needed:
+                  type: integer
+                  format: int32
+                start_time:
+                  type: string
+                end_time:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                notes:
+                  type: string
+                title:
+                  type: string
+                confirmed:
+                  type: integer
+                  description: 0 -> Not Confirmed; 1 -> Confirmed
+                  format: int32
+                add:
+                  type: string
+                  description: A comma-separated employee IDs which will be assigned to a shift. <br>Full employee name can be sent as well, but in that case only one employee can be assigned.
+                remove:
+                  type: string
+                  description: A comma-separated employee IDs which will be removed from a shift.
+                detailed:
+                  type: string
+                location:
+                  type: integer
+                  description: Remote Location id
+                  format: int32
+                force:
+                  type: integer
+                  description: 0 -> Do not force adding staff; 1 -> Force adding staff
+                  format: int32
+                repeat:
+                  type: integer
+                  description: '0 : Default <br> 90 : Every ‘n’ Day/Week <br> 91 : ‘n’ On, ‘n’ Off <br> 99 : Custom Cycle <br> 1 : Daily <br> 7 : Weekly <br> 13 : Monthly (same date) <br> 3 : Mon - Thu <br> 2 : Mon - Fri <br> 4 : Mon - Sat <br> 15 : Tue - Sat <br> 9 : Sat - Sun <br> 10 : Mon, Wed, Fri <br> 11 : Tues, Thur <br> 19 : Fri - Tues'
+                  format: int32
+                repeat_until:
+                  type: string
+                  description: Repeat until date
+                  format: date
+                repeat_staff:
+                  type: integer
+                  description: 1 -> With Time Only; 2 -> With employees
+                  format: int32
+                repeat_custom:
+                  type: string
+                  description: Custom repeat cycle (eg. SSSOOOO) S-Shift, O-Day off)
+                repeat_cycle:
+                  type: string
+                  description: enum[day,week]
+                repeat_cycle_on:
+                  type: string
+                  description: 0 -> Repeat cycle on, 1 -> Repeat cycle off
+                repeat_cycle_step:
+                  type: integer
+                  description: 'Cycle step: Every n days/weeks.'
+                  format: int32
+                update_series:
+                  type: string
+                  description: 1 -> Make all future shifts the same as this one; 2 -> Make all shifts in the series the same as this one; 3 -> Revert this shift to original
+                update_staff:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                update_time:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                update_type:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                update_notes:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                update_schedule:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                update_tasks:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                copy_to:
+                  type: string
+                  description: Copy to date
+                restore:
+                  type: integer
+                  description: enum[0, 1]
+                  format: int32
+                addOnCall:
+                  type: integer
+                  format: int32
+                removeOnCall:
+                  type: integer
+                  format: int32
+                do_not_initiate_conflicts:
+                  type: integer
+                  format: int32
+                skill_requirement:
+                  type: integer
+                  description: Skill ID
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": {\n    \"id\": \"321823002\",\n    \"created\": \"1472128649\",\n    \"published\": \"1472128658\",\n    \"edited\": 1472221925,\n    \"deleted\": \"0\",\n    \"schedule\": \"1321636\",\n    \"type\": \"0\",\n    \"needed\": \"0\",\n    \"working\": 1,\n    \"user\": \"2736727\",\n    \"start_date\": {\n      \"id\": 2676,\n      \"month\": 8,\n      \"day\": 26,\n      \"wday\": 5,\n      \"year\": 2016,\n      \"weekday\": \"Fri\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 6,\n      \"timeid\": 37,\n      \"timeid_exact\": 37,\n      \"formatted\": \"Aug 26, 2016\",\n      \"time\": \"9:00am\",\n      \"timestamp\": 1472194800,\n      \"hours\": 9,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-26 09:00:00\",\n      \"day_of_year\": \"238\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 6\n    },\n    \"end_date\": {\n      \"id\": 2676,\n      \"month\": 8,\n      \"day\": 26,\n      \"wday\": 5,\n      \"year\": 2016,\n      \"weekday\": \"Fri\",\n      \"mname\": \"Aug\",\n      \"week\": 34,\n      \"dayid\": 6,\n      \"timeid\": 69,\n      \"timeid_exact\": 69,\n      \"formatted\": \"Aug 26, 2016\",\n      \"time\": \"5:00pm\",\n      \"timestamp\": 1472223600,\n      \"hours\": 17,\n      \"minutes\": 0,\n      \"seconds\": 0,\n      \"date\": \"2016-08-26 17:00:00\",\n      \"day_of_year\": \"238\",\n      \"week_adjusted\": 34,\n      \"sp_wday\": 6\n    },\n    \"length\": 8,\n    \"title\": \"\",\n    \"location\": \"0\",\n    \"notes\": \"Changed Notes\",\n    \"confirmed\": 0,\n    \"ref\": \"0\",\n    \"start_timestamp\": \"2016-08-26 09:00:00\",\n    \"end_timestamp\": \"2016-08-26 17:00:00\",\n    \"perms\": \"2\",\n    \"paidtime\": 8,\n    \"start_time\": {\n      \"id\": 37,\n      \"time\": \"9:00am\"\n    },\n    \"end_time\": {\n      \"id\": 69,\n      \"time\": \"5:00pm\"\n    },\n    \"schedule_name\": \"Desk Service\",\n    \"schedule_color\": 11,\n    \"employees\": [\n      {\n        \"id\": \"2744092\",\n        \"name\": \"Derrick Arnold\",\n        \"avatar\": \"0\",\n        \"status\": \"1\",\n        \"wage\": \"\",\n        \"last_active\": \"0\",\n        \"rate\": \"\",\n        \"ratecard\": \"0\",\n        \"present\": \"0\",\n        \"cost\": 0\n      }\n    ],\n    \"employeesOnCall\": null,\n    \"cost\": {\n      \"staff\": 1,\n      \"hours\": 8,\n      \"dollars\": 0\n    },\n    \"repeats\": \"0\",\n    \"staff\": {\n      \"scheduled\": [\n        [\n          \"2744092\",\n          \"48.00\"\n        ]\n      ],\n      \"vacation\": [],\n      \"unavail\": [],\n      \"overlap\": [],\n      \"mintime\": [],\n      \"sameday\": [],\n      \"available\": [],\n      \"overtime\": [\n        [\n          2736727,\n          \"40.00\"\n        ]\n      ],\n      \"oncall\": []\n    },\n    \"break\": 8,\n    \"conflicts\": null,\n    \"conflicts_types\": null,\n    \"conflict_types\": null,\n    \"requests\": null,\n    \"trades\": null\n  },\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '321823002'
+                      created:
+                        type: string
+                        example: '1472128649'
+                      published:
+                        type: string
+                        example: '1472128658'
+                      edited:
+                        type: integer
+                        example: 1472221925
+                        default: 0
+                      deleted:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: string
+                        example: '1321636'
+                      type:
+                        type: string
+                        example: '0'
+                      needed:
+                        type: string
+                        example: '0'
+                      working:
+                        type: integer
+                        example: 1
+                        default: 0
+                      user:
+                        type: string
+                        example: '2736727'
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2676
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 5
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Fri
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 6
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 37
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 37
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 26, 2016
+                          time:
+                            type: string
+                            example: 9:00am
+                          timestamp:
+                            type: integer
+                            example: 1472194800
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 9
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-26 09:00:00'
+                          day_of_year:
+                            type: string
+                            example: '238'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 6
+                            default: 0
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2676
+                            default: 0
+                          month:
+                            type: integer
+                            example: 8
+                            default: 0
+                          day:
+                            type: integer
+                            example: 26
+                            default: 0
+                          wday:
+                            type: integer
+                            example: 5
+                            default: 0
+                          year:
+                            type: integer
+                            example: 2016
+                            default: 0
+                          weekday:
+                            type: string
+                            example: Fri
+                          mname:
+                            type: string
+                            example: Aug
+                          week:
+                            type: integer
+                            example: 34
+                            default: 0
+                          dayid:
+                            type: integer
+                            example: 6
+                            default: 0
+                          timeid:
+                            type: integer
+                            example: 69
+                            default: 0
+                          timeid_exact:
+                            type: integer
+                            example: 69
+                            default: 0
+                          formatted:
+                            type: string
+                            example: Aug 26, 2016
+                          time:
+                            type: string
+                            example: 5:00pm
+                          timestamp:
+                            type: integer
+                            example: 1472223600
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 17
+                            default: 0
+                          minutes:
+                            type: integer
+                            example: 0
+                            default: 0
+                          seconds:
+                            type: integer
+                            example: 0
+                            default: 0
+                          date:
+                            type: string
+                            example: '2016-08-26 17:00:00'
+                          day_of_year:
+                            type: string
+                            example: '238'
+                          week_adjusted:
+                            type: integer
+                            example: 34
+                            default: 0
+                          sp_wday:
+                            type: integer
+                            example: 6
+                            default: 0
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: string
+                        example: '0'
+                      notes:
+                        type: string
+                        example: Changed Notes
+                      confirmed:
+                        type: integer
+                        example: 0
+                        default: 0
+                      ref:
+                        type: string
+                        example: '0'
+                      start_timestamp:
+                        type: string
+                        example: '2016-08-26 09:00:00'
+                      end_timestamp:
+                        type: string
+                        example: '2016-08-26 17:00:00'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: integer
+                        example: 8
+                        default: 0
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 37
+                            default: 0
+                          time:
+                            type: string
+                            example: 9:00am
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 69
+                            default: 0
+                          time:
+                            type: string
+                            example: 5:00pm
+                      schedule_name:
+                        type: string
+                        example: Desk Service
+                      schedule_color:
+                        type: integer
+                        example: 11
+                        default: 0
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '2744092'
+                            name:
+                              type: string
+                              example: Derrick Arnold
+                            avatar:
+                              type: string
+                              example: '0'
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: ''
+                            last_active:
+                              type: string
+                              example: '0'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            present:
+                              type: string
+                              example: '0'
+                            cost:
+                              type: integer
+                              example: 0
+                              default: 0
+                      employeesOnCall: {}
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 0
+                            default: 0
+                      repeats:
+                        type: string
+                        example: '0'
+                      staff:
+                        type: object
+                        properties:
+                          scheduled:
+                            type: array
+                            items:
+                              type: array
+                              items:
+                                type: string
+                                example: '2744092'
+                          vacation:
+                            type: array
+                          unavail:
+                            type: array
+                          overlap:
+                            type: array
+                          mintime:
+                            type: array
+                          sameday:
+                            type: array
+                          available:
+                            type: array
+                          overtime:
+                            type: array
+                            items:
+                              type: array
+                          oncall:
+                            type: array
+                      break:
+                        type: integer
+                        example: 8
+                        default: 0
+                      conflicts: {}
+                      conflicts_types: {}
+                      conflict_types: {}
+                      requests: {}
+                      trades: {}
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/321823002?access_token=xxxxxxx
+        - language: text
+          code: 'start_date=2016-08-26
+
+            end_date=2016-08-26
+
+            start_time=9:00am
+
+            end_time=5:00pm
+
+            notes=Changed Notes'
+          name: BODY PARAMS
+        samples-languages:
+        - http
+        - text
+      tags:
+      - Shifts
+    delete:
+      summary: DELETE Shift
+      description: '/shifts/:id
+
+        Permission level: 3'
+      operationId: delete-shift
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                rule:
+                  type: string
+                  description: enum[all, following]
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 1,\n  \"data\": \"Shift Removed\",\n  \"token\": \"xxxxxxx\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: Shift Removed
+                  token:
+                    type: string
+                    example: xxxxxxx
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/321867317?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/{id}/approve:
+    get:
+      summary: GET Shift Approve
+      description: '/shifts/:id/approve
+
+        Permission level: 3'
+      operationId: get-shifts-approve
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":{\n      \"id\":\"94147\",\n      \"created\":\"1338293250\",\n      \"published\":\"1338345621\",\n      \"edited\":\"1338293250\",\n      \"deleted\":\"0\",\n      \"schedule\":\"32409\",\n      \"type\":\"0\",\n      \"needed\":\"0\",\n      \"working\":\"1\",\n      \"user\":\"2\",\n      \"start_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"end_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"length\":8,\n      \"title\":\"\",\n      \"location\":\"0\",\n      \"notes\":\"\",\n      \"confirmed\":\"0\",\n      \"perms\":\"2\",\n      \"paidtime\":\"8\",\n      \"start_time\":{\n         \"id\":\"33\",\n         \"time\":\"08:00\"\n      },\n      \"end_time\":{\n         \"id\":\"65\",\n         \"time\":\"16:00\"\n      },\n      \"schedule_name\":\"Break Cover\",\n      \"employees\":[\n         {\n            \"id\":\"3820\",\n            \"name\":\"Aly\",\n            \"status\":\"1\",\n            \"wage\":\"10\",\n            \"notified_day\":\"0\",\n            \"notified_hour\":\"0\",\n            \"last_active\":\"1338389744\",\n            \"rate\":\"\",\n            \"ratecard\":\"0\",\n            \"cost\":\"80.00\"\n         }\n      ],\n      \"cost\":{\n         \"staff\":1,\n         \"hours\":8,\n         \"dollars\":80\n      },\n      \"repeats\":\"0\",\n      \"staff\":{\n         \"scheduled\":[\n            {\n               \"3820\":\"18.00\"\n            }\n         ],\n         \"available\":[\n            {\n               \"4910\":\"10.00\"\n            },\n            {\n               \"5215\":\"10.00\"\n            },\n            {\n               \"1063\":\"0.00\"\n            },\n            {\n               \"5412\":\"0.00\"\n            },\n            {\n               \"5216\":\"0.00\"\n            }\n         ],\n         \"sameday\":null,\n         \"mintime\":null,\n         \"overlap\":[\n            {\n               \"5141\":\"14.00\"\n            }\n         ],\n         \"unavail\":null,\n         \"vacation\":[\n            {\n               \"5019\":\"0.00\"\n            },\n            {\n               \"4944\":\"0.00\"\n            }\n         ],\n         \"overtime\":null\n      },\n      \"break\":8,\n      \"conflicts\":false\n   },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '94147'
+                      created:
+                        type: string
+                        example: '1338293250'
+                      published:
+                        type: string
+                        example: '1338345621'
+                      edited:
+                        type: string
+                        example: '1338293250'
+                      deleted:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: string
+                        example: '32409'
+                      type:
+                        type: string
+                        example: '0'
+                      needed:
+                        type: string
+                        example: '0'
+                      working:
+                        type: string
+                        example: '1'
+                      user:
+                        type: string
+                        example: '2'
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: string
+                        example: '0'
+                      notes:
+                        type: string
+                        example: ''
+                      confirmed:
+                        type: string
+                        example: '0'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: string
+                        example: '8'
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '33'
+                          time:
+                            type: string
+                            example: 08:00
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '65'
+                          time:
+                            type: string
+                            example: '16:00'
+                      schedule_name:
+                        type: string
+                        example: Break Cover
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '3820'
+                            name:
+                              type: string
+                              example: Aly
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: '10'
+                            notified_day:
+                              type: string
+                              example: '0'
+                            notified_hour:
+                              type: string
+                              example: '0'
+                            last_active:
+                              type: string
+                              example: '1338389744'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            cost:
+                              type: string
+                              example: '80.00'
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 80
+                            default: 0
+                      repeats:
+                        type: string
+                        example: '0'
+                      staff:
+                        type: object
+                        properties:
+                          scheduled:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '3820':
+                                  type: string
+                                  example: '18.00'
+                          available:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '4910':
+                                  type: string
+                                  example: '10.00'
+                          sameday: {}
+                          mintime: {}
+                          overlap:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5141':
+                                  type: string
+                                  example: '14.00'
+                          unavail: {}
+                          vacation:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5019':
+                                  type: string
+                                  example: '0.00'
+                          overtime: {}
+                      break:
+                        type: integer
+                        example: 8
+                        default: 0
+                      conflicts:
+                        type: boolean
+                        example: false
+                        default: true
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/shifts/94147/approve?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Shifts
+    post:
+      summary: POST Shift Approve
+      description: '/shifts/:id/approve
+
+        Permission level: 3'
+      operationId: post-shifts-approve
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                employee:
+                  type: integer
+                  description: Employee id
+                  format: int32
+                absent:
+                  type: string
+                  description: enum (0, 1)
+                start_time:
+                  type: string
+                  description: Start time
+                end_time:
+                  type: string
+                  description: End time
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":{\n      \"id\":\"94147\",\n      \"created\":\"1338293250\",\n      \"published\":\"1338345621\",\n      \"edited\":\"1338293250\",\n      \"deleted\":\"0\",\n      \"schedule\":\"32409\",\n      \"type\":\"0\",\n      \"needed\":\"0\",\n      \"working\":\"1\",\n      \"user\":\"2\",\n      \"start_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"end_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"length\":8,\n      \"title\":\"\",\n      \"location\":\"0\",\n      \"notes\":\"\",\n      \"confirmed\":\"0\",\n      \"perms\":\"2\",\n      \"paidtime\":\"8\",\n      \"start_time\":{\n         \"id\":\"33\",\n         \"time\":\"08:00\"\n      },\n      \"end_time\":{\n         \"id\":\"65\",\n         \"time\":\"16:00\"\n      },\n      \"schedule_name\":\"Break Cover\",\n      \"employees\":[\n         {\n            \"id\":\"3820\",\n            \"name\":\"Aly\",\n            \"status\":\"1\",\n            \"wage\":\"10\",\n            \"notified_day\":\"0\",\n            \"notified_hour\":\"0\",\n            \"last_active\":\"1338389744\",\n            \"rate\":\"\",\n            \"ratecard\":\"0\",\n            \"cost\":\"80.00\"\n         }\n      ],\n      \"cost\":{\n         \"staff\":1,\n         \"hours\":8,\n         \"dollars\":80\n      },\n      \"repeats\":\"0\",\n      \"staff\":{\n         \"scheduled\":[\n            {\n               \"3820\":\"18.00\"\n            }\n         ],\n         \"available\":[\n            {\n               \"4910\":\"10.00\"\n            },\n            {\n               \"5215\":\"10.00\"\n            },\n            {\n               \"1063\":\"0.00\"\n            },\n            {\n               \"5412\":\"0.00\"\n            },\n            {\n               \"5216\":\"0.00\"\n            }\n         ],\n         \"sameday\":null,\n         \"mintime\":null,\n         \"overlap\":[\n            {\n               \"5141\":\"14.00\"\n            }\n         ],\n         \"unavail\":null,\n         \"vacation\":[\n            {\n               \"5019\":\"0.00\"\n            },\n            {\n               \"4944\":\"0.00\"\n            }\n         ],\n         \"overtime\":null\n      },\n      \"break\":8,\n      \"conflicts\":false\n   },\n  \"error\": null\n}\n"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '94147'
+                      created:
+                        type: string
+                        example: '1338293250'
+                      published:
+                        type: string
+                        example: '1338345621'
+                      edited:
+                        type: string
+                        example: '1338293250'
+                      deleted:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: string
+                        example: '32409'
+                      type:
+                        type: string
+                        example: '0'
+                      needed:
+                        type: string
+                        example: '0'
+                      working:
+                        type: string
+                        example: '1'
+                      user:
+                        type: string
+                        example: '2'
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: string
+                        example: '0'
+                      notes:
+                        type: string
+                        example: ''
+                      confirmed:
+                        type: string
+                        example: '0'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: string
+                        example: '8'
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '33'
+                          time:
+                            type: string
+                            example: 08:00
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '65'
+                          time:
+                            type: string
+                            example: '16:00'
+                      schedule_name:
+                        type: string
+                        example: Break Cover
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '3820'
+                            name:
+                              type: string
+                              example: Aly
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: '10'
+                            notified_day:
+                              type: string
+                              example: '0'
+                            notified_hour:
+                              type: string
+                              example: '0'
+                            last_active:
+                              type: string
+                              example: '1338389744'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            cost:
+                              type: string
+                              example: '80.00'
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 80
+                            default: 0
+                      repeats:
+                        type: string
+                        example: '0'
+                      staff:
+                        type: object
+                        properties:
+                          scheduled:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '3820':
+                                  type: string
+                                  example: '18.00'
+                          available:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '4910':
+                                  type: string
+                                  example: '10.00'
+                          sameday: {}
+                          mintime: {}
+                          overlap:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5141':
+                                  type: string
+                                  example: '14.00'
+                          unavail: {}
+                          vacation:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5019':
+                                  type: string
+                                  example: '0.00'
+                          overtime: {}
+                      break:
+                        type: integer
+                        example: 8
+                        default: 0
+                      conflicts:
+                        type: boolean
+                        example: false
+                        default: true
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/shifts/94417/approve?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Shifts
+    put:
+      summary: PUT Shift Approve
+      description: '/shifts/:id/approve
+
+        Permission level: 3'
+      operationId: put-shifts-approve
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                employee:
+                  type: integer
+                  format: int32
+                absent:
+                  type: integer
+                  description: enum[0,1]
+                  format: int32
+                start_time:
+                  type: string
+                  description: (time)
+                end_time:
+                  type: string
+                  description: (time)
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"status\":1,\n   \"data\":{\n      \"id\":\"94147\",\n      \"created\":\"1338293250\",\n      \"published\":\"1338345621\",\n      \"edited\":\"1338293250\",\n      \"deleted\":\"0\",\n      \"schedule\":\"32409\",\n      \"type\":\"0\",\n      \"needed\":\"0\",\n      \"working\":\"1\",\n      \"user\":\"2\",\n      \"start_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"end_date\":{\n         \"id\":\"1126\",\n         \"month\":\"5\",\n         \"day\":\"29\",\n         \"year\":\"2012\",\n         \"weekday\":\"Tue\",\n         \"mname\":\"May\",\n         \"week\":\"22\",\n         \"dayid\":3,\n         \"formatted\":\"May 29, 2012\"\n      },\n      \"length\":8,\n      \"title\":\"\",\n      \"location\":\"0\",\n      \"notes\":\"\",\n      \"confirmed\":\"0\",\n      \"perms\":\"2\",\n      \"paidtime\":\"8\",\n      \"start_time\":{\n         \"id\":\"33\",\n         \"time\":\"08:00\"\n      },\n      \"end_time\":{\n         \"id\":\"65\",\n         \"time\":\"16:00\"\n      },\n      \"schedule_name\":\"Break Cover\",\n      \"employees\":[\n         {\n            \"id\":\"3820\",\n            \"name\":\"Aly\",\n            \"status\":\"1\",\n            \"wage\":\"10\",\n            \"notified_day\":\"0\",\n            \"notified_hour\":\"0\",\n            \"last_active\":\"1338389744\",\n            \"rate\":\"\",\n            \"ratecard\":\"0\",\n            \"cost\":\"80.00\"\n         }\n      ],\n      \"cost\":{\n         \"staff\":1,\n         \"hours\":8,\n         \"dollars\":80\n      },\n      \"repeats\":\"0\",\n      \"staff\":{\n         \"scheduled\":[\n            {\n               \"3820\":\"18.00\"\n            }\n         ],\n         \"available\":[\n            {\n               \"4910\":\"10.00\"\n            },\n            {\n               \"5215\":\"10.00\"\n            },\n            {\n               \"1063\":\"0.00\"\n            },\n            {\n               \"5412\":\"0.00\"\n            },\n            {\n               \"5216\":\"0.00\"\n            }\n         ],\n         \"sameday\":null,\n         \"mintime\":null,\n         \"overlap\":[\n            {\n               \"5141\":\"14.00\"\n            }\n         ],\n         \"unavail\":null,\n         \"vacation\":[\n            {\n               \"5019\":\"0.00\"\n            },\n            {\n               \"4944\":\"0.00\"\n            }\n         ],\n         \"overtime\":null\n      },\n      \"break\":8,\n      \"conflicts\":false\n   },\n  \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '94147'
+                      created:
+                        type: string
+                        example: '1338293250'
+                      published:
+                        type: string
+                        example: '1338345621'
+                      edited:
+                        type: string
+                        example: '1338293250'
+                      deleted:
+                        type: string
+                        example: '0'
+                      schedule:
+                        type: string
+                        example: '32409'
+                      type:
+                        type: string
+                        example: '0'
+                      needed:
+                        type: string
+                        example: '0'
+                      working:
+                        type: string
+                        example: '1'
+                      user:
+                        type: string
+                        example: '2'
+                      start_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      end_date:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '1126'
+                          month:
+                            type: string
+                            example: '5'
+                          day:
+                            type: string
+                            example: '29'
+                          year:
+                            type: string
+                            example: '2012'
+                          weekday:
+                            type: string
+                            example: Tue
+                          mname:
+                            type: string
+                            example: May
+                          week:
+                            type: string
+                            example: '22'
+                          dayid:
+                            type: integer
+                            example: 3
+                            default: 0
+                          formatted:
+                            type: string
+                            example: May 29, 2012
+                      length:
+                        type: integer
+                        example: 8
+                        default: 0
+                      title:
+                        type: string
+                        example: ''
+                      location:
+                        type: string
+                        example: '0'
+                      notes:
+                        type: string
+                        example: ''
+                      confirmed:
+                        type: string
+                        example: '0'
+                      perms:
+                        type: string
+                        example: '2'
+                      paidtime:
+                        type: string
+                        example: '8'
+                      start_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '33'
+                          time:
+                            type: string
+                            example: 08:00
+                      end_time:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: '65'
+                          time:
+                            type: string
+                            example: '16:00'
+                      schedule_name:
+                        type: string
+                        example: Break Cover
+                      employees:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '3820'
+                            name:
+                              type: string
+                              example: Aly
+                            status:
+                              type: string
+                              example: '1'
+                            wage:
+                              type: string
+                              example: '10'
+                            notified_day:
+                              type: string
+                              example: '0'
+                            notified_hour:
+                              type: string
+                              example: '0'
+                            last_active:
+                              type: string
+                              example: '1338389744'
+                            rate:
+                              type: string
+                              example: ''
+                            ratecard:
+                              type: string
+                              example: '0'
+                            cost:
+                              type: string
+                              example: '80.00'
+                      cost:
+                        type: object
+                        properties:
+                          staff:
+                            type: integer
+                            example: 1
+                            default: 0
+                          hours:
+                            type: integer
+                            example: 8
+                            default: 0
+                          dollars:
+                            type: integer
+                            example: 80
+                            default: 0
+                      repeats:
+                        type: string
+                        example: '0'
+                      staff:
+                        type: object
+                        properties:
+                          scheduled:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '3820':
+                                  type: string
+                                  example: '18.00'
+                          available:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '4910':
+                                  type: string
+                                  example: '10.00'
+                          sameday: {}
+                          mintime: {}
+                          overlap:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5141':
+                                  type: string
+                                  example: '14.00'
+                          unavail: {}
+                          vacation:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '5019':
+                                  type: string
+                                  example: '0.00'
+                          overtime: {}
+                      break:
+                        type: integer
+                        example: 8
+                        default: 0
+                      conflicts:
+                        type: boolean
+                        example: false
+                        default: true
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/shifts/94147/approve?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Shifts
+    delete:
+      summary: DELETE Shift Approve
+      description: '/shifts/:id/approve
+
+        Permission level: 3'
+      operationId: delete-shifts-approve
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "  {\n   \"status\":1,\n   \"data\":\"\",\n   \"error\": null\n  }"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: html
+          code: https://www.humanity.com/api/v2/shifts/94147/approve?access_token=xxxxxxx
+        samples-languages:
+        - html
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/{shift_id}/shiftbreaks?access_token=xxxxxxx:
+    get:
+      summary: GET Shift Breaks
+      description: '/shifts
+
+        Permission level: 5'
+      operationId: get-shift-breaks
+      parameters:
+      - name: shift_id
+        in: path
+        description: ID of a shift
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: updated_at
+        in: query
+        description: Updated at date
+        schema:
+          type: string
+      - name: deleted
+        in: query
+        description: enum (0, 1)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"employee\": \"2952814\",\n            \"breaks\": [\n                {\n                    \"id\": 138536,\n                    \"shift_employee_id\": 626646480,\n                    \"start\": \"2018-10-11 04:30:00\",\n                    \"end\": \"2018-10-11 04:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 12:19:51\",\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": null\n                }\n            ]\n        },\n        {\n            \"employee\": \"3213185\",\n            \"breaks\": [\n                {\n                    \"id\": 138537,\n                    \"shift_employee_id\": 626646481,\n                    \"start\": \"2018-10-11 05:30:00\",\n                    \"end\": \"2018-10-11 05:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 12:19:51\",\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": null\n                }\n            ]\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee:
+                          type: string
+                          example: '2952814'
+                        breaks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 138536
+                                default: 0
+                              shift_employee_id:
+                                type: integer
+                                example: 626646480
+                                default: 0
+                              start:
+                                type: string
+                                example: '2018-10-11 04:30:00'
+                              end:
+                                type: string
+                                example: '2018-10-11 04:45:00'
+                              company_id:
+                                type: integer
+                                example: 132017
+                                default: 0
+                              created_at:
+                                type: string
+                                example: '2018-10-11 12:19:51'
+                              updated_at: {}
+                              deleted_at: {}
+                              created_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                              updated_by: {}
+                              deleted_by: {}
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/485800755/shiftbreaks?access_token=xxxxxxx
+        samples-languages:
+        - http
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema: {}
+            examples:
+              Request Example:
+                value:
+                  breaks:
+                  - employee_id: 2952814
+                    start: '2018-10-11 04:30:00'
+                    end: '2018-10-11 04:45:00'
+                  - employee_id: 3213185
+                    start: '2018-10-11 05:30:00'
+                    end: '2018-10-11 05:45:00'
+      tags:
+      - Shifts
+    post:
+      summary: POST Shift Breaks
+      description: '/shifts
+
+        Permission level: 4'
+      operationId: post-shift-breaks
+      parameters:
+      - name: shift_id
+        in: path
+        description: ID of a shift
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: Content-Type
+        in: header
+        description: Content type for this request should be application/json
+        schema:
+          type: string
+          default: application/json
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - breaks
+              properties:
+                breaks:
+                  type: array
+                  description: 'Each object contains 3 fields: **employee_id**, **start** and **end**. **employee_id** represents an employee assigned to a shift for which we want to add a break. **start** and **end** are break start and break end values.'
+                  items:
+                    type: string
+            examples:
+              Request Example:
+                value:
+                  breaks:
+                  - employee_id: 2952814
+                    start: '2018-10-11 04:30:00'
+                    end: '2018-10-11 04:45:00'
+                  - employee_id: 3213185
+                    start: '2018-10-11 05:30:00'
+                    end: '2018-10-11 05:45:00'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"employee\": \"2952814\",\n            \"breaks\": [\n                {\n                    \"id\": 138534,\n                    \"shift_employee_id\": 626646480,\n                    \"start\": \"2018-10-11 04:30:00\",\n                    \"end\": \"2018-10-11 04:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 11:48:57\",\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": null\n                }\n            ]\n        },\n        {\n            \"employee\": \"3213185\",\n            \"breaks\": [\n                {\n                    \"id\": 138535,\n                    \"shift_employee_id\": 626646481,\n                    \"start\": \"2018-10-11 05:30:00\",\n                    \"end\": \"2018-10-11 05:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 11:48:57\",\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": null\n                }\n            ]\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee:
+                          type: string
+                          example: '2952814'
+                        breaks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 138534
+                                default: 0
+                              shift_employee_id:
+                                type: integer
+                                example: 626646480
+                                default: 0
+                              start:
+                                type: string
+                                example: '2018-10-11 04:30:00'
+                              end:
+                                type: string
+                                example: '2018-10-11 04:45:00'
+                              company_id:
+                                type: integer
+                                example: 132017
+                                default: 0
+                              created_at:
+                                type: string
+                                example: '2018-10-11 11:48:57'
+                              updated_at: {}
+                              deleted_at: {}
+                              created_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                              updated_by: {}
+                              deleted_by: {}
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/485800755/shiftbreaks?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    put:
+      summary: PUT Shift Breaks
+      description: '/shifts
+
+        Permission level: 4'
+      operationId: put-shift-breaks
+      parameters:
+      - name: shift_id
+        in: path
+        description: ID of a shift
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: Content-Type
+        in: header
+        description: Content type for this request should be application/json
+        schema:
+          type: string
+          default: application/json
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - breaks
+              properties:
+                breaks:
+                  type: array
+                  description: 'Each object contains 3 fields: **id**, **start** and **end**. **id** represents a shift break ID which is updated. **start** and **end** are new values for break start and break end.'
+                  items:
+                    type: string
+            examples:
+              Request Example:
+                value:
+                  breaks:
+                  - id: 138529
+                    start: '2018-10-11 04:30:00'
+                    end: '2018-10-11 05:30:00'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"employee\": \"2952814\",\n            \"breaks\": [\n                {\n                    \"id\": 138529,\n                    \"shift_employee_id\": 626646480,\n                    \"start\": \"2018-10-11 04:30:00\",\n                    \"end\": \"2018-10-11 05:30:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 10:49:32\",\n                    \"updated_at\": \"2018-10-11 11:24:52\",\n                    \"deleted_at\": null,\n                    \"created_by\": 1417022,\n                    \"updated_by\": 1417022,\n                    \"deleted_by\": null\n                }\n            ]\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee:
+                          type: string
+                          example: '2952814'
+                        breaks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 138529
+                                default: 0
+                              shift_employee_id:
+                                type: integer
+                                example: 626646480
+                                default: 0
+                              start:
+                                type: string
+                                example: '2018-10-11 04:30:00'
+                              end:
+                                type: string
+                                example: '2018-10-11 05:30:00'
+                              company_id:
+                                type: integer
+                                example: 132017
+                                default: 0
+                              created_at:
+                                type: string
+                                example: '2018-10-11 10:49:32'
+                              updated_at:
+                                type: string
+                                example: '2018-10-11 11:24:52'
+                              deleted_at: {}
+                              created_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                              updated_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                              deleted_by: {}
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/485800755/shiftbreaks?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    delete:
+      summary: DELETE Shift Breaks
+      description: '/shifts
+
+        Permission level: 4'
+      operationId: delete-shift-breaks
+      parameters:
+      - name: shift_id
+        in: path
+        description: ID of a shift
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: Content-Type
+        in: header
+        description: Content type for this request should be application/json
+        schema:
+          type: string
+          default: application/json
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - breaks
+              properties:
+                breaks:
+                  type: array
+                  description: Array of shift break IDs to delete.
+                  items:
+                    type: integer
+                    format: int32
+            examples:
+              Request Example:
+                value:
+                  breaks:
+                  - 138534
+                  - 138535
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"status\": 1,\n    \"data\": [\n        {\n            \"employee\": \"2952814\",\n            \"breaks\": [\n                {\n                    \"id\": 138534,\n                    \"shift_employee_id\": 626646480,\n                    \"start\": \"2018-10-11 04:30:00\",\n                    \"end\": \"2018-10-11 04:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 11:48:57\",\n                    \"updated_at\": null,\n                    \"deleted_at\": \"2018-10-11 11:58:26\",\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": 1417022\n                }\n            ]\n        },\n        {\n            \"employee\": \"3213185\",\n            \"breaks\": [\n                {\n                    \"id\": 138535,\n                    \"shift_employee_id\": 626646481,\n                    \"start\": \"2018-10-11 05:30:00\",\n                    \"end\": \"2018-10-11 05:45:00\",\n                    \"company_id\": 132017,\n                    \"created_at\": \"2018-10-11 11:48:57\",\n                    \"updated_at\": null,\n                    \"deleted_at\": \"2018-10-11 11:58:26\",\n                    \"created_by\": 1417022,\n                    \"updated_by\": null,\n                    \"deleted_by\": 1417022\n                }\n            ]\n        }\n    ],\n    \"metadata\": [],\n    \"token\": \"xxxxxxxxxxx\",\n    \"error\": null\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employee:
+                          type: string
+                          example: '2952814'
+                        breaks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 138534
+                                default: 0
+                              shift_employee_id:
+                                type: integer
+                                example: 626646480
+                                default: 0
+                              start:
+                                type: string
+                                example: '2018-10-11 04:30:00'
+                              end:
+                                type: string
+                                example: '2018-10-11 04:45:00'
+                              company_id:
+                                type: integer
+                                example: 132017
+                                default: 0
+                              created_at:
+                                type: string
+                                example: '2018-10-11 11:48:57'
+                              updated_at: {}
+                              deleted_at:
+                                type: string
+                                example: '2018-10-11 11:58:26'
+                              created_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                              updated_by: {}
+                              deleted_by:
+                                type: integer
+                                example: 1417022
+                                default: 0
+                  metadata:
+                    type: array
+                  token:
+                    type: string
+                    example: xxxxxxxxxxx
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/485800755/shiftbreaks?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/{shift}/swap:
+    post:
+      summary: POST Swap
+      description: '/shifts/:shift/swap
+
+        Permission level: 5'
+      operationId: get-swap
+      parameters:
+      - name: shift
+        in: path
+        description: shift id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - swap
+              - reason
+              properties:
+                swap:
+                  type: string
+                  description: Array of user_shift_id's (eg. "1435,5667") , you get user_shift_id with schedule.tradelist and swap bit set to 1
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: " {\n   \"status\":1,\n   \"data\":\"\",\n   \"error\": null\n  }"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 1
+                    default: 0
+                  data:
+                    type: string
+                    example: ''
+                  error: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: http
+          code: https://www.humanity.com/api/v2/shifts/16211316/swap?access_token=xxxxxxx
+        samples-languages:
+        - http
+      tags:
+      - Shifts
+    servers:
+    - url: https://www.humanity.com/api/v2
+  /shifts/{shiftId}/tasks:
+    put:
+      description: ''
+      operationId: get_new-endpoint
+      responses:
+        '200':
+          description: ''
+      parameters:
+      - in: path
+        name: shiftId
+        schema:
+          type: string
+        required: true
+      tags:
+      - Shifts
+      summary: Get new endpoint
+      x-summary-source: derived
+    servers:
+    - url: https://www.humanity.com/api/v2
+components:
+  securitySchemes:
+    sec0:
+      x-default: ''
+      type: apiKey
+      name: access_token
+      in: query
+x-refined-from:
+- humanity-default-openapi.yml
+- humanity-json-openapi.yml
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://platform.humanity.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://platform.humanity.com/reference/approve-availability.md
+  - https://platform.humanity.com/reference/approve-series.md
+  - https://platform.humanity.com/reference/create-availability-series.md
+  - https://platform.humanity.com/reference/create-datapoints.md
+  - https://platform.humanity.com/reference/create-driver.md
+  - https://platform.humanity.com/reference/create-master-tasks.md
+  - https://platform.humanity.com/reference/create-single-availability.md
+  - https://platform.humanity.com/reference/create-skill-expiration-data.md
+  - https://platform.humanity.com/reference/delete-availability.md
+  - https://platform.humanity.com/reference/delete-custom-field.md
+  - https://platform.humanity.com/reference/delete-datapoint.md
+  - https://platform.humanity.com/reference/delete-driver.md
+  - https://platform.humanity.com/reference/delete-employee-position.md
+  - https://platform.humanity.com/reference/delete-employee.md
+  - https://platform.humanity.com/reference/delete-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/delete-forecastdatatypes.md
+  - https://platform.humanity.com/reference/delete-future-availability.md
+  - https://platform.humanity.com/reference/delete-leave-type.md
+  - https://platform.humanity.com/reference/delete-leave.md
+  - https://platform.humanity.com/reference/delete-location.md
+  - https://platform.humanity.com/reference/delete-master-tasks.md
+  - https://platform.humanity.com/reference/delete-message.md
+  - https://platform.humanity.com/reference/delete-note.md
+  - https://platform.humanity.com/reference/delete-nottice.md
+  - https://platform.humanity.com/reference/delete-position-break-rules.md
+  - https://platform.humanity.com/reference/delete-position.md
+  - https://platform.humanity.com/reference/delete-ratecards.md
+  - https://platform.humanity.com/reference/delete-shift-breaks.md
+  - https://platform.humanity.com/reference/delete-shift.md
+  - https://platform.humanity.com/reference/delete-shifts-approve.md
+  - https://platform.humanity.com/reference/delete-skill.md
+  - https://platform.humanity.com/reference/delete-timeclock-event.md
+  - https://platform.humanity.com/reference/delete-timeclock-location.md
+  - https://platform.humanity.com/reference/delete-timeclock-terminal.md
+  - https://platform.humanity.com/reference/delete-timeclock.md
+  - https://platform.humanity.com/reference/delete-training-module.md
+  - https://platform.humanity.com/reference/delete-training-section.md
+  - https://platform.humanity.com/reference/delete-wall-message.md
+  - https://platform.humanity.com/reference/delete-weekly-availability.md
+  - https://platform.humanity.com/reference/get-availability-approve.md
+  - https://platform.humanity.com/reference/get-availability-by-series.md
+  - https://platform.humanity.com/reference/get-availability-in-date-period.md
+  - https://platform.humanity.com/reference/get-billing-packages.md
+  - https://platform.humanity.com/reference/get-budget.md
+  - https://platform.humanity.com/reference/get-business.md
+  - https://platform.humanity.com/reference/get-clear.md
+  - https://platform.humanity.com/reference/get-companies.md
+  - https://platform.humanity.com/reference/get-company-settings.md
+  - https://platform.humanity.com/reference/get-company.md
+  - https://platform.humanity.com/reference/get-custom-field.md
+  - https://platform.humanity.com/reference/get-custom-fields.md
+  - https://platform.humanity.com/reference/get-custom-report.md
+  - https://platform.humanity.com/reference/get-daily-peak-hours-report.md
+  - https://platform.humanity.com/reference/get-data-points.md
+  - https://platform.humanity.com/reference/get-datapoint-by-datapoints-unique-id.md
+  - https://platform.humanity.com/reference/get-datapoint.md
+  - https://platform.humanity.com/reference/get-datapoints.md
+  - https://platform.humanity.com/reference/get-driver.md
+  - https://platform.humanity.com/reference/get-drivers-from-company.md
+  - https://platform.humanity.com/reference/get-employee-by-eid.md
+  - https://platform.humanity.com/reference/get-employee-by-employee-id-copy.md
+  - https://platform.humanity.com/reference/get-employee-manage-positions.md
+  - https://platform.humanity.com/reference/get-employee-position.md
+  - https://platform.humanity.com/reference/get-employee-report.md
+  - https://platform.humanity.com/reference/get-employee-tasks.md
+  - https://platform.humanity.com/reference/get-employee.md
+  - https://platform.humanity.com/reference/get-employees-positions.md
+  - https://platform.humanity.com/reference/get-employees-preclockin.md
+  - https://platform.humanity.com/reference/get-employees.md
+  - https://platform.humanity.com/reference/get-forecast-datatypes.md
+  - https://platform.humanity.com/reference/get-forecastdatatype-by-unique_id.md
+  - https://platform.humanity.com/reference/get-forecastdatatype.md
+  - https://platform.humanity.com/reference/get-future-availability.md
+  - https://platform.humanity.com/reference/get-group-permisions.md
+  - https://platform.humanity.com/reference/get-group-reports.md
+  - https://platform.humanity.com/reference/get-leave-types-1.md
+  - https://platform.humanity.com/reference/get-leave-types-for-a-specific-employee.md
+  - https://platform.humanity.com/reference/get-leave.md
+  - https://platform.humanity.com/reference/get-leaves.md
+  - https://platform.humanity.com/reference/get-location.md
+  - https://platform.humanity.com/reference/get-locations.md
+  - https://platform.humanity.com/reference/get-master-tasks.md
+  - https://platform.humanity.com/reference/get-me.md
+  - https://platform.humanity.com/reference/get-message.md
+  - https://platform.humanity.com/reference/get-messages.md
+  - https://platform.humanity.com/reference/get-multiple.md
+  - https://platform.humanity.com/reference/get-note.md
+  - https://platform.humanity.com/reference/get-notes.md
+  - https://platform.humanity.com/reference/get-notices.md
+  - https://platform.humanity.com/reference/get-nottice.md
+  - https://platform.humanity.com/reference/get-number-of-requests.md
+  - https://platform.humanity.com/reference/get-onnow.md
+  - https://platform.humanity.com/reference/get-payroll-report.md
+  - https://platform.humanity.com/reference/get-position-breakrules.md
+  - https://platform.humanity.com/reference/get-position.md
+  - https://platform.humanity.com/reference/get-positions.md
+  - https://platform.humanity.com/reference/get-preclockins.md
+  - https://platform.humanity.com/reference/get-publish.md
+  - https://platform.humanity.com/reference/get-ratecard.md
+  - https://platform.humanity.com/reference/get-ratecards.md
+  - https://platform.humanity.com/reference/get-schedule-report.md
+  - https://platform.humanity.com/reference/get-shift-breaks.md
+  - https://platform.humanity.com/reference/get-shift-tasks.md
+  - https://platform.humanity.com/reference/get-shift.md
+  - https://platform.humanity.com/reference/get-shifts-approve.md
+  - https://platform.humanity.com/reference/get-shifts.md
+  - https://platform.humanity.com/reference/get-single-availability-slot.md
+  - https://platform.humanity.com/reference/get-skill.md
+  - https://platform.humanity.com/reference/get-skills.md
+  - https://platform.humanity.com/reference/get-swap.md
+  - https://platform.humanity.com/reference/get-timeclock-event.md
+  - https://platform.humanity.com/reference/get-timeclock-location.md
+  - https://platform.humanity.com/reference/get-timeclock-status.md
+  - https://platform.humanity.com/reference/get-timeclock-terminal.md
+  - https://platform.humanity.com/reference/get-timeclock.md
+  - https://platform.humanity.com/reference/get-timeclocks-terminal.md
+  - https://platform.humanity.com/reference/get-timeclocks.md
+  - https://platform.humanity.com/reference/get-timesheets-report.md
+  - https://platform.humanity.com/reference/get-trade.md
+  - https://platform.humanity.com/reference/get-trades.md
+  - https://platform.humanity.com/reference/get-training-module-comments.md
+  - https://platform.humanity.com/reference/get-training-module-signature.md
+  - https://platform.humanity.com/reference/get-training-module.md
+  - https://platform.humanity.com/reference/get-training-modules.md
+  - https://platform.humanity.com/reference/get-training-progress.md
+  - https://platform.humanity.com/reference/get-training-section.md
+  - https://platform.humanity.com/reference/get-training-sections.md
+  - https://platform.humanity.com/reference/get-wall-messages.md
+  - https://platform.humanity.com/reference/get-weekly-availability.md
+  - https://platform.humanity.com/reference/get-workunits-daily-report.md
+  - https://platform.humanity.com/reference/post-add-clock-time.md
+  - https://platform.humanity.com/reference/post-availability-approve.md
+  - https://platform.humanity.com/reference/post-budget.md
+  - https://platform.humanity.com/reference/post-copy-datapoints-by-datatype-unique-id.md
+  - https://platform.humanity.com/reference/post-copy-datapoints.md
+  - https://platform.humanity.com/reference/post-custom-fields.md
+  - https://platform.humanity.com/reference/post-datapoint.md
+  - https://platform.humanity.com/reference/post-employee-clockin.md
+  - https://platform.humanity.com/reference/post-employee-manage-positions.md
+  - https://platform.humanity.com/reference/post-employee-position.md
+  - https://platform.humanity.com/reference/post-employee.md
+  - https://platform.humanity.com/reference/post-employees-preclockin.md
+  - https://platform.humanity.com/reference/post-forecastdatatypes.md
+  - https://platform.humanity.com/reference/post-future-availability.md
+  - https://platform.humanity.com/reference/post-leave-request-all-day.md
+  - https://platform.humanity.com/reference/post-leave-request-hourly.md
+  - https://platform.humanity.com/reference/post-leave-types.md
+  - https://platform.humanity.com/reference/post-location.md
+  - https://platform.humanity.com/reference/post-message.md
+  - https://platform.humanity.com/reference/post-note.md
+  - https://platform.humanity.com/reference/post-nottice.md
+  - https://platform.humanity.com/reference/post-position-break-rules.md
+  - https://platform.humanity.com/reference/post-position.md
+  - https://platform.humanity.com/reference/post-save-note.md
+  - https://platform.humanity.com/reference/post-shift-breaks.md
+  - https://platform.humanity.com/reference/post-shift.md
+  - https://platform.humanity.com/reference/post-shifts-approve.md
+  - https://platform.humanity.com/reference/post-skills.md
+  - https://platform.humanity.com/reference/post-timeclock-event.md
+  - https://platform.humanity.com/reference/post-timeclock-location.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-clockout.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal-login.md
+  - https://platform.humanity.com/reference/post-timeclock-terminal.md
+  - https://platform.humanity.com/reference/post-timeclocks.md
+  - https://platform.humanity.com/reference/post-trade.md
+  - https://platform.humanity.com/reference/post-training-modules.md
+  - https://platform.humanity.com/reference/post-training-section.md
+  - https://platform.humanity.com/reference/post-wall-message.md
+  - https://platform.humanity.com/reference/put-approving-leave-request.md
+  - https://platform.humanity.com/reference/put-availability-approve.md
+  - https://platform.humanity.com/reference/put-company-settings.md
+  - https://platform.humanity.com/reference/put-custom-fields.md
+  - https://platform.humanity.com/reference/put-datapoint-by-the-datatype-unique-id.md
+  - https://platform.humanity.com/reference/put-datapoint.md
+  - https://platform.humanity.com/reference/put-employee-clockout.md
+  - https://platform.humanity.com/reference/put-employee-position.md
+  - https://platform.humanity.com/reference/put-employee.md
+  - https://platform.humanity.com/reference/put-enablingdisabling-leave-types-for-employees.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id-copy.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes-by-unique-id.md
+  - https://platform.humanity.com/reference/put-forecastdatatypes.md
+  - https://platform.humanity.com/reference/put-future-availability.md
+  - https://platform.humanity.com/reference/put-leave-type.md
+  - https://platform.humanity.com/reference/put-leaves.md
+  - https://platform.humanity.com/reference/put-location.md
+  - https://platform.humanity.com/reference/put-manage-time-clock-1.md
+  - https://platform.humanity.com/reference/put-manage-time-clock.md
+  - https://platform.humanity.com/reference/put-note.md
+  - https://platform.humanity.com/reference/put-nottice.md
+  - https://platform.humanity.com/reference/put-position.md
+  - https://platform.humanity.com/reference/put-ratecards.md
+  - https://platform.humanity.com/reference/put-rejecting-leave-request.md
+  - https://platform.humanity.com/reference/put-shift-breaks.md
+  - https://platform.humanity.com/reference/put-shift.md
+  - https://platform.humanity.com/reference/put-shifts-approve.md
+  - https://platform.humanity.com/reference/put-skill.md
+  - https://platform.humanity.com/reference/put-swap.md
+  - https://platform.humanity.com/reference/put-timeclock-event.md
+  - https://platform.humanity.com/reference/put-timeclock-terminal.md
+  - https://platform.humanity.com/reference/put-timeclocks.md
+  - https://platform.humanity.com/reference/put-trade.md
+  - https://platform.humanity.com/reference/put-training-module-comments.md
+  - https://platform.humanity.com/reference/put-training-module-complete.md
+  - https://platform.humanity.com/reference/put-training-module.md
+  - https://platform.humanity.com/reference/put-training-section-sync.md
+  - https://platform.humanity.com/reference/put-training-section.md
+  - https://platform.humanity.com/reference/put-wall-message.md
+  - https://platform.humanity.com/reference/put-weekly-availability.md
+  - https://platform.humanity.com/reference/reject-availability.md
+  - https://platform.humanity.com/reference/timeclock-terminal-clockin.md
+  - https://platform.humanity.com/reference/update-data-points.md
+  - https://platform.humanity.com/reference/update-employee-task.md
+  - https://platform.humanity.com/reference/update-employee-tasks.md
+  - https://platform.humanity.com/reference/update-master-tasks.md
+  merge:
+    pages: 214
+    deduped: 217
+    conflicts_kept_first: 0
