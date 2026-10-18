@@ -229,6 +229,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Custom Fields
+  tags_raw:
   - Customfields
   properties:
   - type: OpenAPI
@@ -239,6 +241,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -248,7 +252,8 @@ apis:
   description: The Default API from Humanity — 1 operation(s) for default.
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
-  tags:
+  tags: []
+  tags_raw:
   - Default
   properties:
   - type: OpenAPI
@@ -350,6 +355,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -380,6 +387,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -510,6 +519,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Time Clock
+  tags_raw:
   - Timeclock
   properties:
   - type: OpenAPI
@@ -520,6 +531,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Time Clocks
+  tags_raw:
   - Timeclocks
   properties:
   - type: OpenAPI
@@ -540,6 +553,8 @@ apis:
   humanURL: https://platform.humanity.com/
   baseURL: https://www.humanity.com/api/v2/
   tags:
+  - Trade
+  tags_raw:
   - Trades
   properties:
   - type: OpenAPI
