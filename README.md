@@ -64,6 +64,151 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Humanity is a company surfaced as a portfolio company of point-nine, seedcamp and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Humanity (Humanity Schedule) is an employee scheduling and workforce management platform owned by TCP Software (TimeClock Plus, LLC). It automates shift planning, closes coverage gaps, forecasts demand, and manages labor compliance across employees, positions, and locations, with time tracking, leave management, training, tasks, and payroll integration. Humanity exposes a public REST API (v1.0 and v2.0) documented on its ReadMe-hosted developer platform, using OAuth2 for authentication, so integrators can synchronize employees, shifts, timeclocks, leaves, reports, skills, and tasks with external HR, payroll, and workforce systems.
 
-Backed by: point-nine, seedcamp — https://www.humanity.com
+**Areas:** Company · Workforce Management · Employee Scheduling · Shift Planning · Time Tracking · Human Resources · Leave Management · Payroll · Workforce · Scheduling
+
+## Humanity on APIs.io
+
+Everything profiled for Humanity is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/humanity/](https://apis.io/providers/humanity/)** — or go straight to one of the APIs or properties below.
+
+### APIs (38)
+
+- [Humanity HVII Public API](https://apis.io/apis/humanity/humanity-hvii-public-api/) — The Humanity HVII Public API is a REST API for workforce management — employees, positions, locations, shifts, shift swaps and trades, timeclocks, leaves,…
+- [Humanity Availabilities API](https://apis.io/apis/humanity/humanity-availabilities-api/) — The Availabilities API from Humanity — 1 operation(s) for availabilities.
+- [Humanity Breakrules API](https://apis.io/apis/humanity/humanity-breakrules-api/) — The Breakrules API from Humanity — 2 operation(s) for breakrules.
+- [Humanity Companies API](https://apis.io/apis/humanity/humanity-companies-api/) — The Companies API from Humanity — 2 operation(s) for companies.
+- [Humanity Company API](https://apis.io/apis/humanity/humanity-company-api/) — The Company API from Humanity — 4 operation(s) for company.
+- [Humanity Customfields API](https://apis.io/apis/humanity/humanity-customfields-api/) — The Customfields API from Humanity — 2 operation(s) for customfields.
+- [Humanity Dashboard API](https://apis.io/apis/humanity/humanity-dashboard-api/) — The Dashboard API from Humanity — 1 operation(s) for dashboard.
+- [Humanity Default API](https://apis.io/apis/humanity/humanity-default-api/) — The Default API from Humanity — 1 operation(s) for default.
+- [Humanity Demand Driven Scheduling API](https://apis.io/apis/humanity/humanity-demand-driven-scheduling-api/) — The Demand Driven Scheduling API from Humanity — 3 operation(s) for demand driven scheduling.
+- [Humanity Employee Id API](https://apis.io/apis/humanity/humanity-employee-id-api/) — The Employee Id API from Humanity — 1 operation(s) for employee id.
+- [Humanity Employee Tasks API](https://apis.io/apis/humanity/humanity-employee-tasks-api/) — The Employee Tasks API from Humanity — 1 operation(s) for employee tasks.
+- [Humanity Employees API](https://apis.io/apis/humanity/humanity-employees-api/) — The Employees API from Humanity — 25 operation(s) for employees.
+- [Humanity Forecast API](https://apis.io/apis/humanity/humanity-forecast-api/) — The Forecast API from Humanity — 15 operation(s) for forecast.
+- [Humanity Groupaccounts API](https://apis.io/apis/humanity/humanity-groupaccounts-api/) — The Groupaccounts API from Humanity — 1 operation(s) for groupaccounts.
+- [Humanity Labour Forecasting API](https://apis.io/apis/humanity/humanity-labour-forecasting-api/) — The Labour Forecasting API from Humanity — 1 operation(s) for labour forecasting.
+- [Humanity Leave Types API](https://apis.io/apis/humanity/humanity-leave-types-api/) — The Leave Types API from Humanity — 3 operation(s) for leave types.
+- [Humanity Leaves API](https://apis.io/apis/humanity/humanity-leaves-api/) — The Leaves API from Humanity — 4 operation(s) for leaves.
+- [Humanity Locations API](https://apis.io/apis/humanity/humanity-locations-api/) — The Locations API from Humanity — 2 operation(s) for locations.
+- [Humanity Master Tasks API](https://apis.io/apis/humanity/humanity-master-tasks-api/) — The Master Tasks API from Humanity — 1 operation(s) for master tasks.
+- [Humanity Me API](https://apis.io/apis/humanity/humanity-me-api/) — The Me API from Humanity — 1 operation(s) for me.
+- [Humanity Messages API](https://apis.io/apis/humanity/humanity-messages-api/) — The Messages API from Humanity — 6 operation(s) for messages.
+- [Humanity New Endpoint 1 API](https://apis.io/apis/humanity/humanity-new-endpoint-1-api/) — The New Endpoint 1 API from Humanity — 1 operation(s) for new endpoint 1.
+- [Humanity New Endpoint API](https://apis.io/apis/humanity/humanity-new-endpoint-api/) — The New Endpoint API from Humanity — 1 operation(s) for new endpoint.
+- [Humanity Notes API](https://apis.io/apis/humanity/humanity-notes-api/) — The Notes API from Humanity — 2 operation(s) for notes.
+- [Humanity Payroll API](https://apis.io/apis/humanity/humanity-payroll-api/) — The Payroll API from Humanity — 3 operation(s) for payroll.
+- [Humanity Positions API](https://apis.io/apis/humanity/humanity-positions-api/) — The Positions API from Humanity — 3 operation(s) for positions.
+- [Humanity Preclockins API](https://apis.io/apis/humanity/humanity-preclockins-api/) — The Preclockins API from Humanity — 1 operation(s) for preclockins.
+- [Humanity Reports API](https://apis.io/apis/humanity/humanity-reports-api/) — The Reports API from Humanity — 6 operation(s) for reports.
+- [Humanity Sales API](https://apis.io/apis/humanity/humanity-sales-api/) — The Sales API from Humanity — 1 operation(s) for sales.
+- [Humanity Shifts API](https://apis.io/apis/humanity/humanity-shifts-api/) — The Shifts API from Humanity — 8 operation(s) for shifts.
+- [Humanity Skills API](https://apis.io/apis/humanity/humanity-skills-api/) — The Skills API from Humanity — 3 operation(s) for skills.
+- [Humanity Swap API](https://apis.io/apis/humanity/humanity-swap-api/) — The Swap API from Humanity — 1 operation(s) for swap.
+- [Humanity Terminal API](https://apis.io/apis/humanity/humanity-terminal-api/) — The Terminal API from Humanity — 3 operation(s) for terminal.
+- [Humanity Timeclock API](https://apis.io/apis/humanity/humanity-timeclock-api/) — The Timeclock API from Humanity — 4 operation(s) for timeclock.
+- [Humanity Timeclocks API](https://apis.io/apis/humanity/humanity-timeclocks-api/) — The Timeclocks API from Humanity — 9 operation(s) for timeclocks.
+- [Humanity Trade API](https://apis.io/apis/humanity/humanity-trade-api/) — The Trade API from Humanity — 2 operation(s) for trade.
+- [Humanity Trades API](https://apis.io/apis/humanity/humanity-trades-api/) — The Trades API from Humanity — 2 operation(s) for trades.
+- [Humanity Trainings API](https://apis.io/apis/humanity/humanity-trainings-api/) — The Trainings API from Humanity — 9 operation(s) for trainings.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [humanity](https://apis.io/servers/humanity/humanity/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Humanity Agentic Access](https://apis.io/agentic-access/humanity/humanity-agentic-access/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Humanity API Rules](https://apis.io/rules/humanity/humanity-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Humanity Authentication](https://apis.io/security/humanity/humanity-authentication/)
+- [Humanity Domain Security](https://apis.io/security/humanity/humanity-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.humanity.com)
+- [Documentation](https://platform.humanity.com/docs)
+- [Getting started](https://platform.humanity.com/docs/getting-started-with-authentication)
+- [API reference](https://platform.humanity.com/reference)
+- [Pricing](https://tcpsoftware.com/pricing/)
+- [Sign up](https://www.humanity.com/app/)
+- [Support](https://community.tcpsoftware.com/s/)
+- [Blog](https://tcpsoftware.com/resource-library/?type=post)
+- [Security](https://tcpsoftware.com/security/)
+- [Terms of service](https://tcpsoftware.com/legal/)
+- [Privacy policy](https://tcpsoftware.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 43.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 52.0 |
+| Contract governance | 31.8 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 42.9 |
+| Access clarity | 44.7 |
+
+**Agent readiness 23.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/humanity/](https://apis.io/providers/humanity/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Humanity: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/humanity/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
